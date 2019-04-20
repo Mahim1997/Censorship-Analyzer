@@ -282,8 +282,9 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btn_refreshInfo1" onAction="#refreshInfo" prefHeight="82.0" prefWidth="237.0" text="Refresh Info" GridPane.rowIndex="13" />
-            <JFXButton fx:id="btn_refreshInfo2" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" text="Refresh Info" />
+            <Button fx:id="btn_about" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeAbout" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="About" textAlignment="RIGHT" GridPane.rowIndex="13" />
+            <Button fx:id="btn_FAQ" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeFAQ" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="FAQ" GridPane.rowIndex="14" />
+            <Button fx:id="btn_relevantPapers" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeRelevantPapers" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Relevant Papers" GridPane.rowIndex="15" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="330.0" />
