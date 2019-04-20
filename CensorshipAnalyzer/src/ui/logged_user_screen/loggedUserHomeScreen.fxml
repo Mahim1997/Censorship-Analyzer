@@ -10,30 +10,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1200.0" stylesheets="@../../dark-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="103.0" layoutY="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXTextField fx:id="textField_contact" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <JFXButton fx:id="button_add" onAction="#submitGuest" prefHeight="40.0" prefWidth="230.0" text="Add Guest " GridPane.halignment="RIGHT" />
-            <JFXTextField editable="false" layoutX="315.0" layoutY="69.0" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Text cache="true" fill="#daa86b" strokeType="OUTSIDE" strokeWidth="0.0" text="ISP Censorship Analyzer" textAlignment="CENTER" wrappingWidth="823.1181640625" GridPane.columnIndex="1" GridPane.rowSpan="2">
                <font>
                   <Font name="System Bold Italic" size="55.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="textField_NID" labelFloat="true" prefHeight="38.0" prefWidth="54.0" promptText="Enter a valid NID" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <JFXTextField fx:id="textField_address" labelFloat="true" prefHeight="38.0" prefWidth="54.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <JFXTextField fx:id="textField_Rel" labelFloat="true" prefHeight="38.0" prefWidth="54.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-               <children>
-                  <JFXTextField fx:id="textField_firstName" labelFloat="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="168.0" promptText="First name" />
-                  <JFXTextField disable="true" editable="false" labelFloat="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" prefHeight="46.0" prefWidth="21.0" style="-fx-fill: -fx-red;" unFocusColor="#2c2a08" />
-                  <JFXTextField fx:id="textField_lastName" labelFloat="true" layoutX="126.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="208.0" promptText="Last name" />
-               </children>
-            </HBox>
-            <JFXButton fx:id="button_submit" onAction="#loadFullForm" prefHeight="40.0" prefWidth="92.0" text="Submit" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <JFXButton fx:id="button_logOut" onAction="#logOut" prefHeight="40.0" prefWidth="290.0" text="Log Out" GridPane.columnSpan="2" GridPane.rowIndex="18">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -50,7 +36,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <JFXButton onAction="#backToMain" prefHeight="40.0" prefWidth="143.0" text="Back" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn_refreshInfo" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" text="Refresh Info" GridPane.columnIndex="1" GridPane.rowIndex="18" />
             <Button fx:id="btn_viewSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#viewSettings" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="View Comparisons" GridPane.rowIndex="9">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -156,28 +142,155 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="15">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
             <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="16">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="17">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="18">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_currentNetwork" prefHeight="41.0" prefWidth="372.0" text="Grameen Phone" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="14">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_systemTime" prefHeight="41.0" prefWidth="372.0" text="12:15 am" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="15">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_systemDate" prefHeight="41.0" prefWidth="372.0" text="April 22, 2019" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="16">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_Location" prefHeight="41.0" prefWidth="372.0" text="Dhaka, Bangladesh" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="17">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_mode" prefHeight="41.0" prefWidth="372.0" text="Logged User" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="18">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="15">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="System Status" textAlignment="RIGHT" textFill="#0bf5ce" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Network Type" textAlignment="RIGHT" textFill="#0bf5ce" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Current Network" textAlignment="RIGHT" textFill="#0bf5ce" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="MAC Address" textAlignment="RIGHT" textFill="#0bf5ce" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="IP Address" textAlignment="RIGHT" textFill="#0bf5ce" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_systemStatus" prefHeight="41.0" prefWidth="372.0" text="Online" textAlignment="RIGHT" textFill="#fa5f7e" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_ipAddress" prefHeight="41.0" prefWidth="372.0" text="-" textAlignment="RIGHT" textFill="#fa5f7e" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_macAddress" prefHeight="41.0" prefWidth="372.0" text="-" textAlignment="RIGHT" textFill="#fa5f7e" GridPane.columnIndex="4" GridPane.rowIndex="6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_currentNetworkUpore" prefHeight="41.0" prefWidth="372.0" text="-" textAlignment="RIGHT" textFill="#fa5f7e" GridPane.columnIndex="4" GridPane.rowIndex="7">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_networkType" prefHeight="41.0" prefWidth="372.0" text="-" textAlignment="RIGHT" textFill="#fa5f7e" GridPane.columnIndex="4" GridPane.rowIndex="8">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn_refreshInfo1" onAction="#refreshInfo" prefHeight="82.0" prefWidth="237.0" text="Refresh Info" GridPane.rowIndex="13" />
+            <JFXButton fx:id="btn_refreshInfo2" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" text="Refresh Info" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="330.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="240.0" />
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="400.0" minWidth="10.0" prefWidth="369.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="55.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="206.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="400.0" minWidth="10.0" prefWidth="324.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="7.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="276.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -192,7 +305,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
