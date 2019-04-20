@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1200.0" stylesheets="@../../dark-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1200.0" style="-fx-background-color: #02030A;" stylesheets="@../../dark-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedUserHomeScreenController">
    <children>
       <GridPane layoutX="103.0" layoutY="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,7 +19,7 @@
                   <Font name="System Bold Italic" size="55.0" />
                </font>
             </Text>
-            <JFXButton fx:id="button_logOut" onAction="#logOut" prefHeight="40.0" prefWidth="290.0" text="Log Out" GridPane.columnSpan="2" GridPane.rowIndex="18">
+            <JFXButton fx:id="button_logOut" onAction="#logOut" prefHeight="193.0" prefWidth="290.0" style="-fx-background-color: #3033;" text="Log Out" GridPane.columnSpan="2" GridPane.rowIndex="18">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -36,7 +36,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <JFXButton fx:id="btn_refreshInfo" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" text="Refresh Info" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+            <JFXButton fx:id="btn_refreshInfo" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" style="-fx-background-color: #3033;" text="Refresh Info" GridPane.columnIndex="1" GridPane.rowIndex="18" />
             <Button fx:id="btn_viewSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#viewSettings" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="View Comparisons" GridPane.rowIndex="9">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -282,7 +282,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btn_about" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeAbout" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="About" textAlignment="RIGHT" GridPane.rowIndex="13" />
+            <Button fx:id="btn_about" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeAbout" prefHeight="111.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="About" textAlignment="RIGHT" GridPane.rowIndex="13" />
             <Button fx:id="btn_FAQ" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeFAQ" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="FAQ" GridPane.rowIndex="14" />
             <Button fx:id="btn_relevantPapers" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeRelevantPapers" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Relevant Papers" GridPane.rowIndex="15" />
          </children>
