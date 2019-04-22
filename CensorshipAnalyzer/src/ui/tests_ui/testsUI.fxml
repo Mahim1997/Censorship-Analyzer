@@ -18,7 +18,7 @@
                   <Image url="@../../misc/images2/batmanLego1.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="180.0" text="&lt;User Name&gt;" textFill="#359c37">
+            <Label fx:id="label_username" alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="180.0" text="&lt;User Name&gt;" textFill="#359c37">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

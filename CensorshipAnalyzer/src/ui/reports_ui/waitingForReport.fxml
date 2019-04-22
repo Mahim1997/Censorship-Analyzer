@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="1069.0" style="-fx-background-color: #212f3e;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="152.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="160.0" text="System Date" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="160.0" text="System Time" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="160.0" text="Network" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="160.0" text="IP Address" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="160.0" text="Location" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="130.0" prefWidth="39.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="160.0" text=":" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="160.0" text=":" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="160.0" text=":" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="160.0" text=":" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="160.0" text=":" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="152.0">
+               <children>
+                  <Label fx:id="label_date" prefHeight="21.0" prefWidth="160.0" text="System Date" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_time" prefHeight="21.0" prefWidth="160.0" text="System Time" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_network" prefHeight="21.0" prefWidth="160.0" text="Network" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_ip" prefHeight="21.0" prefWidth="160.0" text="IP Address" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_location" prefHeight="21.0" prefWidth="160.0" text="Location" textFill="#26bfbc">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="215.0" spacing="25.0" stylesheets="@../../../cssFiles/buttonCss2.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageView_UserPhoto" fitHeight="140.0" fitWidth="290.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../misc/images2/batmanLego1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_username" alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="180.0" text="&lt;User Name&gt;" textFill="#359c37">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_tcp1" mnemonicParsing="false" onAction="#goHome" prefHeight="84.0" prefWidth="215.0" text="Home" textFill="#e7e5e5">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#goBack" prefHeight="93.0" prefWidth="215.0" text="Back" textFill="#e7e5e5">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images3/back_transparent.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <TreeTableView fx:id="treeTable_table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TreeTableColumn fx:id="column_URL" prefWidth="178.0" text="URL" />
+          <TreeTableColumn fx:id="column_TypeOfTesting" prefWidth="195.0" text="Type Of Testing" />
+            <TreeTableColumn fx:id="column_CensoredOrNot" prefWidth="187.0" text="Censored/Not Censored" />
+            <TreeTableColumn fx:id="column_Details" prefWidth="293.0" text="Method of Censorship" />
+            <TreeTableColumn fx:id="column_Details1" prefWidth="293.0" text="Details" />
+        </columns>
+         <columnResizePolicy>
+            <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="50.0" top="20.0" />
+         </BorderPane.margin>
+      </TreeTableView>
+   </center>
+   <top>
+      <VBox prefHeight="99.0" prefWidth="1069.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="label_urlOrFileTesting" alignment="CENTER" prefHeight="46.0" prefWidth="1069.0" text="URL Testing for &lt;url name&gt;" textFill="#fcb511">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Label>
+            <HBox alignment="TOP_RIGHT" prefHeight="51.0" prefWidth="1069.0">
+               <children>
+                  <ImageView fx:id="imageView_StatusLoadingOrCompleted" fitHeight="45.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="27.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../misc/images3/loading_transparent.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="label_loadingOrCompletedStatus" prefHeight="61.0" prefWidth="286.0" text="Loading ..." textFill="#fcb511">
+                     <font>
+                        <Font name="System Bold Italic" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_howManyCompleted" prefHeight="51.0" prefWidth="706.0" text="0 out of 25 completed" textFill="#fcb511">
+                     <font>
+                        <Font name="System Bold Italic" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>

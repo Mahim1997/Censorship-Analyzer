@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1200.0" style="-fx-background-color: #02030A;" stylesheets="@../../dark-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedUserHomeScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1200.0" style="-fx-background-color: #012D;" stylesheets="@../../dark-theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedUserHomeScreenController">
    <children>
       <GridPane layoutX="103.0" layoutY="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,170 +20,73 @@
                   <Font name="System Bold Italic" size="55.0" />
                </font>
             </Text>
-            <JFXButton fx:id="button_logOut" onAction="#logOut" prefHeight="193.0" prefWidth="290.0" style="-fx-background-color: #3033;" text="Log Out" GridPane.columnSpan="2" GridPane.rowIndex="18">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </JFXButton>
-            <Button fx:id="btn_testSites" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#testSites" prefHeight="97.0" prefWidth="278.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Test Sites" GridPane.rowIndex="4">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Sign_Out_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <JFXButton fx:id="btn_refreshInfo" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" style="-fx-background-color: #3033;" text="Refresh Info" GridPane.columnIndex="1" GridPane.rowIndex="18" />
-            <Button fx:id="btn_viewSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#viewSettings" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="View Comparisons" GridPane.rowIndex="9">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Slider__32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btn_viewGraphs" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#viewGraphs" prefHeight="207.0" prefWidth="278.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="View Graphs" GridPane.rowIndex="8">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btn_checkHistory" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#checkHistory" prefHeight="147.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Report History" GridPane.rowIndex="5">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Xbox_Menu_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnMiscallenous" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#checkMiscallenous" prefHeight="151.0" prefWidth="278.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Miscallenous Tasks" GridPane.rowIndex="6">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Person_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btn_periodicUpdates" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#checkPeriodicUpdates" prefHeight="108.0" prefWidth="280.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Periodic Updates" GridPane.rowIndex="7">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Open_Envelope_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnHome" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHome" prefHeight="348.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Home" textFill="#e7e5e5" GridPane.rowIndex="3">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Home_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="System Time" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="15">
+            <JFXButton fx:id="btn_refreshInfo" onAction="#refreshInfo" prefHeight="60.0" prefWidth="237.0" style="-fx-background-color: #3033;" text="Refresh Info" GridPane.columnIndex="1" GridPane.rowIndex="32" />
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="System Time" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="32">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="System Date" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="16">
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="System Date" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="33">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Location" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="17">
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Location" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="35">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Mode" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="18">
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Mode" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="34">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Current Network" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="14">
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="372.0" text="Current Network" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="2" GridPane.rowIndex="31">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="14">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="31">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="16">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="35">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="17">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="33">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="18">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="34">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="label_currentNetwork" prefHeight="41.0" prefWidth="372.0" text="Grameen Phone" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="14">
+            <Label fx:id="label_currentNetwork" prefHeight="41.0" prefWidth="372.0" text="Grameen Phone" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="31">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="label_systemTime" prefHeight="41.0" prefWidth="372.0" text="12:15 am" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="15">
+            <Label fx:id="label_systemTime" prefHeight="41.0" prefWidth="372.0" text="12:15 am" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="32">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="label_systemDate" prefHeight="41.0" prefWidth="372.0" text="April 22, 2019" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="16">
+            <Label fx:id="label_systemDate" prefHeight="41.0" prefWidth="372.0" text="April 22, 2019" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="33">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="label_Location" prefHeight="41.0" prefWidth="372.0" text="Dhaka, Bangladesh" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="17">
+            <Label fx:id="label_Location" prefHeight="41.0" prefWidth="372.0" text="Dhaka, Bangladesh" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="35">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="label_mode" prefHeight="41.0" prefWidth="372.0" text="Logged User" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="18">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="15">
+            <Label fx:id="label_mode" prefHeight="41.0" prefWidth="372.0" text="Logged User" textAlignment="RIGHT" textFill="#f2cdcd" GridPane.columnIndex="4" GridPane.rowIndex="34">
                <font>
                   <Font size="20.0" />
                </font>
@@ -217,26 +121,6 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="4">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
             <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <font>
                   <Font size="20.0" />
@@ -252,7 +136,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="8">
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="32">
                <font>
                   <Font size="20.0" />
                </font>
@@ -282,18 +166,129 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btn_about" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeAbout" prefHeight="111.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="About" textAlignment="RIGHT" GridPane.rowIndex="13" />
-            <Button fx:id="btn_FAQ" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeFAQ" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="FAQ" GridPane.rowIndex="14" />
-            <Button fx:id="btn_relevantPapers" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeRelevantPapers" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Relevant Papers" GridPane.rowIndex="15" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="187.0" stroke="BLACK" strokeType="INSIDE" width="281.0" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="187.0" stroke="BLACK" strokeType="INSIDE" width="281.0" GridPane.rowIndex="10" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="187.0" stroke="BLACK" strokeType="INSIDE" width="283.0" GridPane.rowIndex="15" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="187.0" stroke="BLACK" strokeType="INSIDE" width="282.0" GridPane.rowIndex="20" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="398.0" stroke="BLACK" strokeType="INSIDE" width="284.0" GridPane.rowIndex="5" />
+            <Button fx:id="btnHome1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#goHome" prefHeight="58.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Home" textFill="#e7e5e5" GridPane.rowIndex="5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btn_testSites1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#testSites" prefHeight="97.0" prefWidth="278.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Test Sites" GridPane.rowIndex="6">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Sign_Out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btn_checkHistory1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#checkHistory" prefHeight="147.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Report History" GridPane.rowIndex="7">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Xbox_Menu_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnMiscallenous1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#checkMiscallenous" prefHeight="151.0" prefWidth="278.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Miscallenous Tasks" GridPane.rowIndex="9">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Person_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btn_periodicUpdates1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#checkPeriodicUpdates" prefHeight="108.0" prefWidth="280.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Periodic Updates" GridPane.rowIndex="11">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Open_Envelope_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btn_viewSettings1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#viewSettings" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="View Comparisons" GridPane.rowIndex="12">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="372.0" text=":" textFill="#f2cdcd" GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="187.0" stroke="BLACK" strokeType="INSIDE" width="280.0" GridPane.rowIndex="30" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#05071f" height="532.0" stroke="BLACK" strokeType="INSIDE" width="282.0" GridPane.rowIndex="29" />
+            <Button fx:id="btn_about11" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeAbout" prefHeight="111.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="About" textAlignment="RIGHT" GridPane.rowIndex="24" />
+            <Button fx:id="btn_FAQ11" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeFAQ" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="FAQ" GridPane.rowIndex="26" />
+            <Button fx:id="btn_relevantPapers11" alignment="CENTER" graphicTextGap="22.0" mnemonicParsing="false" onAction="#seeRelevantPapers" prefHeight="173.0" prefWidth="279.0" stylesheets="@../../../../../../../../Downloads/Programs/RestaurantMgtSampleUI-master/src/home/style.css" text="Relevant Papers" GridPane.rowIndex="28" />
+            <JFXButton fx:id="button_logOut1" onAction="#logOut" prefHeight="40.0" prefWidth="275.0" style="-fx-background-color: #3033;" text="Log Out" GridPane.rowIndex="32" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="330.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="240.0" />
             <ColumnConstraints hgrow="ALWAYS" maxWidth="400.0" minWidth="10.0" prefWidth="324.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="7.0" prefWidth="30.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="276.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="7.0" prefWidth="14.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="292.0" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
