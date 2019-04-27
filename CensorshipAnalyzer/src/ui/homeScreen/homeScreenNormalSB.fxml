@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1057.0" styleClass="border-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="710.0" prefWidth="264.0" styleClass="vbox_dashboard" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../misc/images2/batmanLego1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_UserName" text="&lt;UserName&gt;" />
+            <JFXButton fx:id="goHome" styleClass="dashBoardButton" text="Home">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="goToTestSites" styleClass="dashBoardButton" text="Test Sites">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/icons8_Box_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="goToReports" styleClass="dashBoardButton" text="Reports">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/reports.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="goToMisTasks" styleClass="dashBoardButton" text="Miscellanous Tasks">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/icons8_GPS_Antenna_64px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="goToPeriodicUpdates" styleClass="dashBoardButton" text="Periodic Updates">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/icons8_Sign_Out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="goToComparisons" styleClass="dashBoardButton" text="See Comparisons">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../misc/images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

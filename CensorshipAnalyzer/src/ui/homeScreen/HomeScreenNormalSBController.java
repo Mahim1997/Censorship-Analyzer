@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author esfs
  */
-public class Home_Screen_Controller implements Initializable {
+public class HomeScreenNormalSBController implements Initializable {
 
     /**
      * Initializes the controller class.
