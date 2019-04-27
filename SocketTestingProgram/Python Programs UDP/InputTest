@@ -1,0 +1,2 @@
+g = input("Enter your name: ")
+print(g)
