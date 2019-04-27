@@ -1,1 +1,81 @@
+*{
+    -fx-NavyBlueColor: #05071f;
+    -fx-HalkaGreenColor: #ffffff; /*TO DO*/
+    
+    -fx-WhiteTextColor: #ffffff;
+    -fx-LightBlueColor: #0798eb;
+    -fx-LightBackGround: #ac9ad9;
+    -fx-HalkaGrayishColor: #dfd2fa;
+    -fx-GaroNilColor: #123fa8;
+    
+    -fx-backGroundScreen: -fx-HalkaGrayishColor;
+    -fx-backGroundDashBoard: -fx-LightBlueColor;
+    
+    
+    
+    -fx-DashBoardWidth: 250px;
+    -fx-DashBoardHeight: 850px;
+    -fx-DashBoardBtnHeight: 70px;
+    -fx-DashBoard_Spacing: 20px;
+    
+    -fx-pinkColor: #d61ac6;
+    -fx-lightGreenColor: #29ff03;
+    -fx-magenta: #f50343;
+    -fx-DarkBlueTextColor: #09011c;
+}
 
+
+.border-pane{
+    -fx-background-color: -fx-backGroundScreen;
+}
+.vbox_dashboard{
+    -fx-background-color: -fx-backGroundDashBoard;
+    -fx-pref-width: -fx-DashBoardWidth;
+    -fx-pref-height: -fx-DashBoardHeight;
+    -fx-allignment: top-center;
+    -fx-spacing: -fx-DashBoard_Spacing;
+}
+.jfx-text-field{
+    -fx-text-fill: -fx-DarkBlueTextColor;
+    -fx-font-size: 17px;
+    -fx-allignment: CENTER;
+    -fx-editable: FALSE;
+}
+.label{
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 20px;
+}
+
+.jfx-button.dashBoardButton{
+    /*-fx-background-color: -fx-backGroundDashBoard;*/
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-pref-width: -fx-DashBoardWidth;
+    -fx-pref-height: -fx-DashBoardBtnHeight;
+}
+.dashBoardButton:hover{
+    -fx-background-color: -fx-GaroNilColor;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+}
+.jfx-button.firstScreenReportButton_Addresses{
+    -fx-background-color: -fx-pinkColor;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+.jfx-button.firstScreenBtnBriefings{
+    -fx-background-color: -fx-lightGreenColor;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;    
+}
+.jfx-button.firstScreenBtnUserCurrentInfo{
+    -fx-background-color: -fx-magenta;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 200px;     
+}

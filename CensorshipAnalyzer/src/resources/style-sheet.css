@@ -10,10 +10,18 @@
     
     -fx-backGroundScreen: -fx-HalkaGrayishColor;
     -fx-backGroundDashBoard: -fx-LightBlueColor;
+    
+    
+    
     -fx-DashBoardWidth: 250px;
     -fx-DashBoardHeight: 850px;
     -fx-DashBoardBtnHeight: 70px;
     -fx-DashBoard_Spacing: 20px;
+    
+    -fx-pinkColor: #d61ac6;
+    -fx-lightGreenColor: #29ff03;
+    -fx-magenta: #f50343;
+    -fx-DarkBlueTextColor: #09011c;
 }
 
 
@@ -27,8 +35,11 @@
     -fx-allignment: top-center;
     -fx-spacing: -fx-DashBoard_Spacing;
 }
-.text-field{
-    
+.jfx-text-field{
+    -fx-text-fill: -fx-DarkBlueTextColor;
+    -fx-font-size: 17px;
+    -fx-allignment: CENTER;
+    -fx-editable: FALSE;
 }
 .label{
     -fx-text-fill: -fx-WhiteTextColor;
@@ -46,4 +57,25 @@
     -fx-background-color: -fx-GaroNilColor;
     -fx-text-fill: -fx-WhiteTextColor;
     -fx-font-size: 18px;
+}
+.jfx-button.firstScreenReportButton_Addresses{
+    -fx-background-color: -fx-pinkColor;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+.jfx-button.firstScreenBtnBriefings{
+    -fx-background-color: -fx-lightGreenColor;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;    
+}
+.jfx-button.firstScreenBtnUserCurrentInfo{
+    -fx-background-color: -fx-magenta;
+    -fx-text-fill: -fx-WhiteTextColor;
+    -fx-font-size: 18px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 200px;     
 }

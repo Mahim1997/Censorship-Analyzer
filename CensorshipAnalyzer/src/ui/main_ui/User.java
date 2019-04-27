@@ -1,6 +1,8 @@
  
 package ui.main_ui;
 
+import ui.homeScreen.Main;
+
  
 public class User {
     public static String networkName;

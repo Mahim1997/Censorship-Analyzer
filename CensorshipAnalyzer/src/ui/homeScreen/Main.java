@@ -1,7 +1,14 @@
-package ui.main_ui;
+package ui.homeScreen;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ui.main_ui.SceneLoader;
 
 public class Main extends Application {
 
@@ -27,8 +34,17 @@ public class Main extends Application {
             Main.debug();
             return;
         }
-        System.out.println("-->>Inside Main.normalStart() .... ");
-        SceneLoader.loadScene(SceneLoader.homeScreenFXML);
+        System.out.println("--->>>TRYING to load scene ..... ");
+//            System.out.println("-->>Inside Main.normalStart() .... ");
+        Scene loadScene = SceneLoader.loadScene(SceneLoader.homeScreenFXML, this);
+        if (loadScene == null) {
+            System.out.println("<><><><><><><><><> Scene get null returned val");
+            return ;
+        }
+
+        stage.setScene(loadScene);
+        stage.setMaximized(true);
+        Main.stage.show();
 
     }
 
