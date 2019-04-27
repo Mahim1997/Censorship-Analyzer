@@ -2,13 +2,13 @@ package ui.main_ui;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import util.Interface.Scenes;
-import util.ScenesController.SceneLoader;
 
 public class Main extends Application {
 
     public static Stage stage;
     public static int DEBUG_MODE = 0;
+    public static int USER_DEBUG = 1;
+    public static String TITLE = "Censorship Analysis Tool";
 
     private static void debug() {
         System.out.println("Inside DEBUG");
@@ -21,13 +21,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
 
         Main.stage = primaryStage;
+        Main.stage.setTitle(Main.TITLE);
 
         if (Main.DEBUG_MODE == 1) {
             Main.debug();
             return;
         }
         System.out.println("-->>Inside Main.normalStart() .... ");
-        SceneLoader.loadScene(Scenes.initial_ui, this);
+        SceneLoader.loadScene(SceneLoader.homeScreenFXML);
 
     }
 
