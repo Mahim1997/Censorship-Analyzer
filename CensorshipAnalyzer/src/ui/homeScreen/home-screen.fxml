@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.homeScreen.Home_Screen_Controller">
-    
-</AnchorPane>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="824.0" prefWidth="1171.0" styleClass="border-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="824.0" prefWidth="243.0" spacing="20.0" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageView_userImage" fitHeight="199.0" fitWidth="253.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../misc/images2/batmanLego1.png" />
+               </image>
+               <effect>
+                  <Glow />
+               </effect>
+            </ImageView>
+            <Label fx:id="label_UserName" text="&lt;UserName&gt;" />
+            <JFXButton fx:id="btn_home" prefHeight="31.0" prefWidth="242.0" styleClass="dashBoardButton" text="Home" />
+            <JFXButton prefHeight="31.0" prefWidth="240.0" styleClass="dashBoardButton" text="Test Sites" />
+            <JFXButton prefHeight="31.0" prefWidth="239.0" styleClass="dashBoardButton" text="Reports" />
+            <JFXButton styleClass="dashBoardButton" text="Miscellaneous Tasks" />
+            <JFXButton styleClass="dashBoardButton" text="Periodic Updates" />
+            <JFXButton styleClass="dashBoardButton" text="Comparisons" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
