@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,12 +19,40 @@
                </image>
             </ImageView>
             <Label fx:id="label_userName" text="&lt;UserName&gt;" />
-            <JFXButton styleClass="dashBoardButton" text="Home" />
-            <JFXButton styleClass="dashBoardButton" text="Test Sites" />
-            <JFXButton styleClass="dashBoardButton" text="Reports" />
-            <JFXButton styleClass="dashBoardButton" text="Miscellanous Tasks" />
-            <JFXButton styleClass="dashBoardButton" text="Periodic Updates" />
-            <JFXButton styleClass="dashBoardButton" text="Comparisons" />
+            <JFXButton fx:id="btn_home" styleClass="dashBoardButton" text="Home">
+               <graphic>
+                  <Icon content="HOME">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </Icon>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btn_testSites" styleClass="dashBoardButton" text="Test Sites">
+               <graphic>
+                  <Icon content="FITNESS_CENTER" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btn_reports" styleClass="dashBoardButton" text="Reports">
+               <graphic>
+                  <Icon content="PLAYLIST_ADD_CHECK" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btn_miscTasks" styleClass="dashBoardButton" text="Miscellanous Tasks">
+               <graphic>
+                  <Icon content="NOTE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btn_periodicUpdates" styleClass="dashBoardButton" text="Periodic Updates">
+               <graphic>
+                  <Icon content="CHROME_READER_MODE" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btn_comparisons" styleClass="dashBoardButton" text="Comparisons">
+               <graphic>
+                  <Icon content="CAMERA" />
+               </graphic>
+            </JFXButton>
          </children>
       </VBox>
    </left>
