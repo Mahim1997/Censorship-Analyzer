@@ -92,14 +92,14 @@
                      </font>
                   </JFXTextArea>
                </children></HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="807.0" spacing="100.0">
+            <HBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="807.0" spacing="50.0">
                <children>
-                  <JFXButton fx:id="btn_addresses" prefHeight="134.0" prefWidth="244.0" styleClass="firstScreenReportButton_Addresses" text="Address" textFill="#bf1515">
+                  <JFXButton fx:id="btn_addresses" prefHeight="119.0" prefWidth="386.0" styleClass="firstScreenReportButton_Addresses" text="Address" textFill="#bf1515">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></JFXButton>
                   <JFXButton prefHeight="134.0" prefWidth="244.0" styleClass="firstScreenReportButton_Addresses" text="&lt;NIL&gt;" textFill="#bf1515" />
-                  <JFXButton fx:id="btn_networkInfo" prefHeight="134.0" prefWidth="244.0" styleClass="firstScreenReportButton_Addresses" text="Network Info" textFill="#bf1515" />
+                  <JFXButton fx:id="btn_networkInfo" prefHeight="119.0" prefWidth="310.0" styleClass="firstScreenReportButton_Addresses" text="Network Info" textFill="#bf1515" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" />

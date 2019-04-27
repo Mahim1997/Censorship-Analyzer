@@ -7,13 +7,18 @@ package ui.homeScreen;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.net.InetAddress;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import ui.main_ui.User;
 
 /**
  * FXML Controller class
@@ -54,6 +59,7 @@ public class HomeScreenNormalSBController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println("-->>>Controller initialise HomeScreenNormalSBController .... ");
+        setUpTexts();
     }
 
     @FXML
@@ -78,6 +84,27 @@ public class HomeScreenNormalSBController implements Initializable {
 
     @FXML
     private void goToComparisons(ActionEvent event) {
+    }
+
+    private void setUpTexts() {
+        try {
+            String ipAddress = InetAddress.getLocalHost().getHostAddress();
+            String macAddress = "8F-FA-23-9F-A3-E2";
+            label_ipAddress.setText(ipAddress);
+            
+            label_netName.setText(User.networkName);
+            label_netType.setText(User.networkType);
+            
+            label_location.setText(User.location);
+            label_UserName.setText(User.userFirstName + " " + User.userLastName);
+            
+            btn_addresses.setText("IP Address: " + ipAddress + "\n" + "MAC Address: " + macAddress);
+            btn_networkInfo.setText("Network Name: " + User.networkName + "\n" + "Network Type: " + User.networkType);
+            btn_userInfoCurrent.setText("Status: " + "Online" + "\n" + "Mode: " + "Logged User");
+            
+        } catch (UnknownHostException ex) {
+            System.out.println("IP Address paite problems ... ");
+        }
     }
 
 }

@@ -19,6 +19,7 @@ public class User {
     public static int numberOfCensoredDNS;
     public static int numberOfCensoredTCP;
     public static int numberOfCensoredHTTP;
+    public static String location;
     
     public static void initiateUser(){
         if(Main.USER_DEBUG == 1){
@@ -28,6 +29,8 @@ public class User {
             userFirstName = "Mahim";
             userLastName = "Mahbub";
             userPassword = "1505022";
+            
+            location = "Dhaka, Bangladesh";
             
             numberOfTests = 1221;
             numberOfDifferentURLs = 121;

@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ui.main_ui.SceneLoader;
+import ui.main_ui.User;
 
 public class Main extends Application {
 
@@ -26,7 +27,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
+        User.initiateUser();
         Main.stage = primaryStage;
         Main.stage.setTitle(Main.TITLE);
 
