@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -103,7 +104,7 @@
       </HBox>
    </bottom>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="215.0" spacing="25.0" stylesheets="@../../../cssFiles/buttonCss2.css" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="471.0" prefWidth="215.0" spacing="25.0" style="-fx-background-color: #05071f;" stylesheets="@../../../cssFiles/buttonCss2.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="imageView_UserPhoto" fitHeight="140.0" fitWidth="290.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -143,7 +144,7 @@
       </VBox>
    </left>
    <center>
-      <TreeTableView fx:id="treeTable_table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TreeTableView fx:id="treeTable_table" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #03a444;" BorderPane.alignment="CENTER">
         <columns>
           <TreeTableColumn fx:id="column_URL" prefWidth="178.0" text="URL" />
           <TreeTableColumn fx:id="column_TypeOfTesting" prefWidth="195.0" text="Type Of Testing" />
@@ -165,7 +166,7 @@
    <top>
       <VBox prefHeight="99.0" prefWidth="1069.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="label_urlOrFileTesting" alignment="CENTER" prefHeight="46.0" prefWidth="1069.0" text="URL Testing for &lt;url name&gt;" textFill="#fcb511">
+            <Label fx:id="label_urlOrFileTesting" alignment="CENTER" prefHeight="46.0" prefWidth="1069.0" text="URL Testing for &lt;url name&gt;" textFill="#11e4fa">
                <font>
                   <Font name="System Bold Italic" size="21.0" />
                </font>
@@ -180,12 +181,12 @@
                         <Image url="@../../misc/images3/loading_transparent.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="label_loadingOrCompletedStatus" prefHeight="61.0" prefWidth="286.0" text="Loading ..." textFill="#fcb511">
+                  <Label fx:id="label_loadingOrCompletedStatus" prefHeight="61.0" prefWidth="286.0" text="Loading ..." textFill="#fa1164">
                      <font>
                         <Font name="System Bold Italic" size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label_howManyCompleted" prefHeight="51.0" prefWidth="706.0" text="0 out of 25 completed" textFill="#fcb511">
+                  <Label fx:id="label_howManyCompleted" prefHeight="51.0" prefWidth="706.0" text="0 out of 25 completed" textFill="#11fa8d">
                      <font>
                         <Font name="System Bold Italic" size="21.0" />
                      </font>

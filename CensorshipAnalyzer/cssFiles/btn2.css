@@ -1,0 +1,38 @@
+* {
+/*    -fx-primary : #2A2E37;*/
+	-fx-primary : #232300;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-black: #1C1B1B;
+    -fx-light: #BDC79A;
+    -fx-green: #3CBA1D;
+}
+/*
+.button
+{
+-fx-background-color : #f27713;
+-fx-text-fill : #2a73ff;
+-fx-border-color : -fx-borderColor;
+-fx-border-radius: 20px;
+-fx-background-radius: 20px;
+-fx-font-size: 18pt;
+}
+*/
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 15pt;
+}
+.button:hover{
+-fx-background-color : #233011;
+}
+.button:pressed
+{
+-fx-background-color : #211333;
+}

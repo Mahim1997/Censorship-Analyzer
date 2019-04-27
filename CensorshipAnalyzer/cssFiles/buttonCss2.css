@@ -1,0 +1,37 @@
+/*
+Definitions
+*/
+* {
+    -fx-primary : #2A2E37;
+    -fx-borderColor : #FFFF8D;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-black: #1C1B1B;
+    -fx-light: #BDC79A;
+    -fx-green: #3CBA1D;
+}
+.button
+{
+-fx-background-color : #05071F;
+-fx-text-fill : #e7e5e5;
+-fx-border-color : -fx-borderColor;
+-fx-border-radius: 20px;
+-fx-background-radius: 20px;
+-fx-font-size: 13pt;
+}
+.button:hover{
+-fx-background-color : #10165F;
+}
+.button:pressed
+{
+-fx-background-color : #1620A1;
+}
+.text-field
+{
+    /*-fx-text-fill: -fx-primarytext;*/
+	-fx-text-fill: #fafa8b;
+    -fx-font-size : 17pt;
+    -jfx-focus-color: -fx-secondary;
+    /*-fx-text-fill: derive(-fx-secondary, 20%);*/
+}
