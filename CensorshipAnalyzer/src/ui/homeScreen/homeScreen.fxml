@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="745.0" styleClass="border-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="498.0" prefWidth="164.0" spacing="20.0" styleClass="vbox_dashboard" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../misc/images2/batmanLego1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_userName" text="&lt;UserName&gt;" />
+            <JFXButton styleClass="dashBoardButton" text="Home" />
+            <JFXButton styleClass="dashBoardButton" text="Test Sites" />
+            <JFXButton styleClass="dashBoardButton" text="Reports" />
+            <JFXButton styleClass="dashBoardButton" text="Miscellanous Tasks" />
+            <JFXButton styleClass="dashBoardButton" text="Periodic Updates" />
+            <JFXButton styleClass="dashBoardButton" text="Comparisons" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
