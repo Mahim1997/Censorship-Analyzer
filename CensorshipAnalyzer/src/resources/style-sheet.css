@@ -35,10 +35,22 @@
 .border-pane{
     -fx-background-color: -fx-backGroundScreen;
 }
+
+
 .hbox-nicher_part{
-    -fx-background-color: -fx-HalkaGrayishColor;
-      
+    /*-fx-background-color: -fx-HalkaGrayishColor;*/
+    -fx-background-color: -fx-backgroundColor;
+    -fx-text-fill: -fx-LightBlueColor;
 }
+/*
+.jfx-text-field-hBoxErNicher{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-allignment: CENTER;
+    -fx-editable: FALSE;
+}
+*/
+
 .vbox_dashboard{
     -fx-background-color: -fx-backGroundDashBoard;
     -fx-pref-width: -fx-DashBoardWidth;
@@ -47,7 +59,7 @@
     -fx-spacing: -fx-DashBoard_Spacing;
 }
 .jfx-text-field{
-    -fx-text-fill: -fx-DarkBlueTextColor;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 17px;
     -fx-allignment: CENTER;
     -fx-editable: FALSE;
@@ -69,13 +81,20 @@
     -fx-text-fill: -fx-WhiteTextColor;
     -fx-font-size: 18px;
 }
+
+
+
+
 .jfx-button.firstScreenReportButton_Addresses{
-    -fx-background-color: -fx-pinkColor;
+    -fx-background-color: -fx-GaroNilColor;
     -fx-text-fill: -fx-WhiteTextColor;
     -fx-font-size: 18px;
     -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 45px;
 }
+
+
+
 .jfx-button.firstScreenBtnBriefings{
     -fx-background-color: -fx-lightGreenColor;
     -fx-text-fill: -fx-WhiteTextColor;
@@ -83,6 +102,9 @@
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;    
 }
+
+
+
 .jfx-button.firstScreenBtnUserCurrentInfo{
     -fx-background-color: -fx-magenta;
     -fx-text-fill: -fx-WhiteTextColor;
