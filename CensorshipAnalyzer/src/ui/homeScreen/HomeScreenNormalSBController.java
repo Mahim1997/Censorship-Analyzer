@@ -28,28 +28,13 @@ import ui.main_ui.User;
 public class HomeScreenNormalSBController implements Initializable {
 
     @FXML
-    private BorderPane borderPane;
-    @FXML
     private Label label_UserName;
-    @FXML
     private JFXTextField label_netName;
-    @FXML
     private JFXTextField label_netType;
-    @FXML
     private JFXTextField label_ipAddress;
-    @FXML
     private JFXTextField label_location;
-    @FXML
-    private JFXTextField label_date;
-    @FXML
-    private JFXTextField label_time;
-    @FXML
     private JFXButton btn_addresses;
-    @FXML
     private JFXButton btn_networkInfo;
-    @FXML
-    private JFXButton btn_briefings;
-    @FXML
     private JFXButton btn_userInfoCurrent;
 
     /**
@@ -87,7 +72,7 @@ public class HomeScreenNormalSBController implements Initializable {
     }
 
     private void setUpTexts() {
-        try {
+        /*try {
             String ipAddress = InetAddress.getLocalHost().getHostAddress();
             String macAddress = "8F-FA-23-9F-A3-E2";
             label_ipAddress.setText(ipAddress);
@@ -104,7 +89,7 @@ public class HomeScreenNormalSBController implements Initializable {
             
         } catch (UnknownHostException ex) {
             System.out.println("IP Address paite problems ... ");
-        }
+        }*/
     }
 
 }

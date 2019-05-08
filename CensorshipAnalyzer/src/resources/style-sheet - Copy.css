@@ -8,14 +8,9 @@
     -fx-HalkaGrayishColor: #dfd2fa;
     -fx-GaroNilColor: #123fa8;
     
-    -fx-NavyBlueColor: #05071f;
-    -fx-DarkBlack: #02030a;
+    -fx-backGroundScreen: -fx-HalkaGrayishColor;
+    -fx-backGroundDashBoard: -fx-LightBlueColor;
     
-    -fx-backGroundScreen: -fx-DarkBlack;
-    
-    /*-fx-backGroundScreen: -fx-HalkaGrayishColor;*/
-    /*-fx-backGroundDashBoard: -fx-LightBlueColor;*/
-    -fx-backGroundDashBoard: -fx-NavyBlueColor;  
     
     
     -fx-DashBoardWidth: 250px;
@@ -29,15 +24,9 @@
     -fx-DarkBlueTextColor: #09011c;
 }
 
-.anchor-pane{
-    -fx-background-color: -fx-backGroundScreen;
-}
+
 .border-pane{
     -fx-background-color: -fx-backGroundScreen;
-}
-.hbox-nicher_part{
-    -fx-background-color: -fx-HalkaGrayishColor;
-      
 }
 .vbox_dashboard{
     -fx-background-color: -fx-backGroundDashBoard;

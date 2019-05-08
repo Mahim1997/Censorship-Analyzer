@@ -11,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1057.0" styleClass="border-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.homeScreen.HomeScreenNormalSBController">
-   <left>
-      <VBox alignment="TOP_CENTER" prefHeight="710.0" prefWidth="264.0" styleClass="vbox_dashboard" BorderPane.alignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="1160.0" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.homeScreen.HomeScreenNormalSBController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="710.0" prefWidth="264.0" styleClass="vbox_dashboard" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -77,88 +77,5 @@
             </JFXButton>
          </children>
       </VBox>
-   </left>
-   <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="50.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="126.0" prefWidth="807.0">
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-               <children>
-                  <JFXTextArea editable="false" focusColor="#dfd2fa" labelFloat="true" prefHeight="96.0" prefWidth="754.0" text="Welcome To C.A.T" unFocusColor="#dfd2fa">
-                     <font>
-                        <Font name="AR DECODE" size="63.0" />
-                     </font>
-                  </JFXTextArea>
-               </children></HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="807.0" spacing="50.0">
-               <children>
-                  <JFXButton fx:id="btn_addresses" prefHeight="119.0" prefWidth="386.0" styleClass="firstScreenReportButton_Addresses" text="Address" textFill="#bf1515">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin></JFXButton>
-                  <JFXButton prefHeight="134.0" prefWidth="244.0" styleClass="firstScreenReportButton_Addresses" text="&lt;NIL&gt;" textFill="#bf1515" />
-                  <JFXButton fx:id="btn_networkInfo" prefHeight="119.0" prefWidth="310.0" styleClass="firstScreenReportButton_Addresses" text="Network Info" textFill="#bf1515" />
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="168.0" prefWidth="807.0">
-               <children>
-                  <JFXButton fx:id="btn_briefings" prefHeight="134.0" prefWidth="244.0" styleClass="firstScreenBtnBriefings" text="Briefings" textFill="#bf1515" />
-               </children></HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="137.0" prefWidth="807.0">
-               <children>
-                  <JFXButton fx:id="btn_userInfoCurrent" prefHeight="134.0" prefWidth="244.0" styleClass="firstScreenBtnUserCurrentInfo" text="User Info Current" textFill="#bf1515" />
-               </children></HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets left="30.0" />
-         </BorderPane.margin>
-      </VBox>
-   </center>
-   <bottom>
-      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="100.0" prefWidth="156.0">
-               <children>
-                  <JFXTextField editable="false" text="Network Name :" />
-                  <JFXTextField editable="false" text="Network Type :" />
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="210.0">
-               <children>
-                  <JFXTextField fx:id="label_netName" editable="false" />
-                  <JFXTextField fx:id="label_netType" editable="false" />
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="140.0">
-               <children>
-                  <JFXTextField editable="false" text="IP Address:" />
-                  <JFXTextField editable="false" text="Location: " />
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="222.0">
-               <children>
-                  <JFXTextField fx:id="label_ipAddress" editable="false" />
-                  <JFXTextField fx:id="label_location" editable="false" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <JFXTextField editable="false" text="Date : " />
-                  <JFXTextField editable="false" text="Time : " />
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="206.0">
-               <children>
-                  <JFXTextField fx:id="label_date" editable="false" />
-                  <JFXTextField fx:id="label_time" editable="false" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </bottom>
-</BorderPane>
+   </children>
+</AnchorPane>

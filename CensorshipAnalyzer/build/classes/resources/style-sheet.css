@@ -8,9 +8,12 @@
     -fx-HalkaGrayishColor: #dfd2fa;
     -fx-GaroNilColor: #123fa8;
     
-    -fx-backGroundScreen: -fx-HalkaGrayishColor;
-    -fx-backGroundDashBoard: -fx-LightBlueColor;
+    -fx-NavyBlueColor: #05071f;
     
+    -fx-backGroundScreen: -fx-HalkaGrayishColor;
+    
+    /*-fx-backGroundDashBoard: -fx-LightBlueColor;*/
+    -fx-backGroundDashBoard: -fx-NavyBlueColor;  
     
     
     -fx-DashBoardWidth: 250px;
