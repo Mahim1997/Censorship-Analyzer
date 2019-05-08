@@ -124,12 +124,15 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="227.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="227.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="92.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton fx:id="btn_addresses" prefHeight="227.0" prefWidth="281.0" styleClass="firstScreenReportButton_Addresses" text="Address" textFill="#bf1515" GridPane.columnIndex="1" />
-            <JFXButton fx:id="btn_networkInfo" prefHeight="227.0" prefWidth="265.0" styleClass="firstScreenReportButton_Addresses" text="Network Info" textFill="#bf1515" />
+            <JFXButton fx:id="btn_addresses" prefHeight="109.0" prefWidth="321.0" styleClass="firstScreenReportButton_Addresses" text="Address" textFill="#bf1515" GridPane.columnIndex="1" />
+            <JFXButton fx:id="btn_networkInfo" prefHeight="113.0" prefWidth="317.0" styleClass="firstScreenReportButton_Addresses" text="Network Info" textFill="#bf1515" />
+            <JFXButton fx:id="btn_Stats" prefHeight="123.0" prefWidth="321.0" styleClass="firstScreenReportButton_Addresses" text="Stats" textFill="#bf1515" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn_ongoingTests" prefHeight="109.0" prefWidth="321.0" styleClass="firstScreenReportButton_Addresses" text="Ongoing Tests" textFill="#bf1515" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

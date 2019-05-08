@@ -27,6 +27,8 @@
     -fx-lightGreenColor: #29ff03;
     -fx-magenta: #f50343;
     -fx-DarkBlueTextColor: #09011c;
+    
+    -fx-HalkaBlack: #403c4a;
 }
 
 .anchor-pane{
@@ -86,11 +88,11 @@
 
 
 .jfx-button.firstScreenReportButton_Addresses{
-    -fx-background-color: -fx-GaroNilColor;
+    -fx-background-color: -fx-HalkaBlack; /*-fx-GaroNilColor;*/
     -fx-text-fill: -fx-WhiteTextColor;
     -fx-font-size: 18px;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 45px;
+    /*-fx-border-radius: 20px;
+    -fx-background-radius: 45px;*/
 }
 
 
