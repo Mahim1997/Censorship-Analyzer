@@ -15,9 +15,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="920.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TestSitesController">
    <children>
-      <JFXButton fx:id="goBack" layoutX="32.0" layoutY="38.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Back" />
-      <JFXButton fx:id="submit" layoutX="32.0" layoutY="152.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Submit" />
-      <JFXButton fx:id="dnsTesting" layoutX="24.0" layoutY="308.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="DNS Testing">
+      <JFXButton layoutX="32.0" layoutY="38.0" onAction="#goBack" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Back">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images_testSites/back2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="32.0" layoutY="152.0" onAction="#submitThings" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Submit">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images_testSites/tick_transparent.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutX="24.0" layoutY="308.0" onAction="#dnsTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="DNS Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -26,7 +42,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="tcpTesting" layoutX="24.0" layoutY="402.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="TCP Testing">
+      <JFXButton layoutX="24.0" layoutY="402.0" onAction="#tcpTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="TCP Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,7 +51,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="httpTesting" layoutX="24.0" layoutY="498.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="HTTP Testing">
+      <JFXButton layoutX="24.0" layoutY="498.0" onAction="#httpTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="HTTP Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,7 +60,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="allTesting" layoutX="24.0" layoutY="610.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="All Sequential Testing">
+      <JFXButton layoutX="24.0" layoutY="610.0" onAction="#allTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="All Sequential Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -84,7 +100,7 @@
                   </JFXToggleButton>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hbox_File" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="FILE :" textAlignment="CENTER" wrappingWidth="187.6708984375">
                      <font>
