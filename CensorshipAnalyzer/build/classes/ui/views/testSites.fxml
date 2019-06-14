@@ -92,7 +92,7 @@
                      </font>
                   </Text>
                   <JFXTextField fx:id="label_URLName" styleClass="jfx-text-field" />
-                  <JFXToggleButton fx:id="toggleButton_url" onAction="#toggleButton_singleURL" prefHeight="64.0" prefWidth="200.0" text="Single URL" textFill="#2deede">
+                  <JFXToggleButton fx:id="toggleButton_url" onAction="#toggleButton_singleURL" prefHeight="64.0" prefWidth="200.0" text="URL" textFill="#2deede">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -101,20 +101,29 @@
             </HBox>
             <HBox fx:id="hbox_File" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="FILE :" textAlignment="CENTER" wrappingWidth="187.6708984375">
+                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="FILE :" textAlignment="CENTER" wrappingWidth="142.6708984375">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Text>
-                  <JFXTextField fx:id="label_FileName" styleClass="jfx-text-field" />
-                  <JFXToggleButton fx:id="toggleButton_file" onAction="#toggleButton_singleFILE" prefHeight="64.0" prefWidth="200.0" text="Single FILE" textFill="#2deede">
+                  <JFXTextField fx:id="label_FileName" prefHeight="38.0" prefWidth="200.0" styleClass="jfx-text-field" />
+                  <JFXToggleButton fx:id="toggleButton_file" onAction="#toggleButton_singleFILE" prefHeight="64.0" prefWidth="126.0" text="FILE" textFill="#2deede">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </JFXToggleButton>
+                  <JFXButton onAction="#chooseFile" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/images_testSites/folder.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                </children>
             </HBox>
-            <JFXToggleButton onAction="#toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
+            <JFXToggleButton fx:id="toggleBtn_periodicCheck" onAction="#toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
                <font>
                   <Font size="20.0" />
                </font>
@@ -141,7 +150,7 @@
             </CheckBox>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text fill="#61ba38" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
+                  <Text fx:id="text_Hours" fill="#61ba38" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
                      <font>
                         <Font size="27.0" />
                      </font>

@@ -123,7 +123,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <JFXToggleButton onAction="#toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
+            <JFXToggleButton fx:id="toggleBtn_periodicCheck" onAction="#toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
                <font>
                   <Font size="20.0" />
                </font>
@@ -150,7 +150,7 @@
             </CheckBox>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text fill="#61ba38" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
+                  <Text fx:id="text_Hours" fill="#61ba38" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -163,7 +163,7 @@
                   </Text>
                </children>
             </HBox>
-            <CheckBox mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
+            <CheckBox fx:id="checkBx_accept" mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>
