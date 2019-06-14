@@ -28,8 +28,8 @@ public class Main extends Application {
 //        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML);
         STAGE_WIDTH = stage.getMaxWidth();
         STAGE_HEIGHT = stage.getMaxHeight();
-        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
-
+//        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
+        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
 
         stage.setOnCloseRequest((WindowEvent e) -> {
             Platform.exit();
