@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="1102.0" stylesheets="@../dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hall_management.ui.teacher.applications.Teacher_seeApplicationsController">
+   <children>
+      <TableView fx:id="tableview" layoutX="44.0" layoutY="55.0" prefHeight="676.0" prefWidth="1102.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+         <columns>
+            <TableColumn fx:id="col_application_id" prefWidth="75.0" text="Application ID" />
+            <TableColumn fx:id="col_studentID" prefWidth="75.0" text="Student ID" />
+            <TableColumn fx:id="col_application_date" prefWidth="75.0" text="Application Date" />
+            <TableColumn fx:id="col_currentRoomNumber" prefWidth="75.0" text="Current Room No." />
+            <TableColumn fx:id="col_applicationStatus" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="hasRoomsCol" prefWidth="316.0" text="Has Multiple Rooms" />
+            <TableColumn fx:id="btnCol" prefWidth="163.0" text="Verdict" />
+         </columns>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy></TableView>
+      <HBox alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="25.0" stylesheets="@../dark-theme.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton alignment="TOP_LEFT" buttonType="RAISED" maxWidth="100.0" minWidth="70.0" onAction="#goBack" prefHeight="55.0" prefWidth="100.0" snapToPixel="false" text="Back">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" size="50" />
+               </graphic>
+            </JFXButton>
+            <Text fx:id="text_Uporer" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-secondary;" text="SSSSSSSSSSSSSSSS" textAlignment="CENTER" wrappingWidth="772.0" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Text>
+            <JFXButton onAction="#refreshInfo" prefHeight="72.0" prefWidth="196.0" text="REFRESH " />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

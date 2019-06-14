@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="783.0" prefWidth="1202.0" stylesheets="@../dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hall_management.ui.student.formingTeamApply.TeamFormation_ApplyController">
+   <children>
+      <JFXTabPane layoutX="9.0" layoutY="14.0" prefHeight="783.0" prefWidth="1202.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab text="FootBall/Cricket">
+              <content>
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1202.0">
+                     <children>
+                        <GridPane hgap="20.0" layoutX="489.0" layoutY="55.0" prefHeight="523.0" prefWidth="692.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="55.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 11:" wrappingWidth="211.56004965305328" GridPane.rowIndex="11">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 10:" wrappingWidth="211.56004965305328" GridPane.rowIndex="10">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:" wrappingWidth="211.56004965305328" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3:" wrappingWidth="211.56004965305328" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4:" wrappingWidth="211.56004965305328" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 5:" wrappingWidth="211.56004965305328" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 9:" wrappingWidth="211.56004965305328" GridPane.rowIndex="9">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 8:" wrappingWidth="211.56004965305328" GridPane.rowIndex="8">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 7:" wrappingWidth="211.56004965305328" GridPane.rowIndex="7">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 6:" wrappingWidth="211.56004965305328" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e1ae78" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 :" wrappingWidth="211.56004965305328" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e079b6" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter ID : " wrappingWidth="211.56004965305328" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#e079b6" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter position :" wrappingWidth="211.56004965305328" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Text>
+                              <JFXTextField fx:id="textField_ID_1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="textField_ID_2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="textField_ID_3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <JFXTextField fx:id="textField_ID_10" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <JFXTextField fx:id="textField_ID_9" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <JFXTextField fx:id="textField_ID_8" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <JFXTextField fx:id="textField_ID_7" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <JFXTextField fx:id="textField_ID_6" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <JFXTextField fx:id="textField_ID_5" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <JFXTextField fx:id="textField_ID_4" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <JFXTextField fx:id="textField_position_5" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <JFXTextField fx:id="textField_position_4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <JFXTextField fx:id="textField_position_3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <JFXTextField fx:id="textField_position_2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="textField_position_1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="textField_ID_11" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                              <JFXTextField GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                              <JFXTextField fx:id="textField_position_8" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <JFXTextField fx:id="textField_position_7" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <JFXTextField fx:id="textField_position_6" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <JFXTextField fx:id="textField_position_9" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                              <JFXTextField fx:id="textField_position_10" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                              <JFXTextField fx:id="textField_position_11" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                           </children>
+                        </GridPane>
+                        <Text fx:id="text_WhatTypeTeam" fill="#e1ae78" layoutX="708.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inter Hall Team " wrappingWidth="240.9999928176403">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="text_UporerPart" fill="#e1ae78" layoutX="111.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="211.56004965305328">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#e1ae78" layoutX="14.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Name:" wrappingWidth="152.56004965305328">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="textField_TeamName_Football" layoutX="167.0" layoutY="186.0" prefHeight="38.0" prefWidth="266.0" />
+                        <JFXButton layoutX="21.0" layoutY="369.0" onAction="#checkThisName_IsAlreadyTaken" prefHeight="72.0" prefWidth="369.0" text="Check This Name Is Already Taken Or Not" />
+                        <Text fx:id="text_AlertForDuplicateTeamName" fill="#e1ae78" layoutX="20.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="392.5600496530533">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#e1ae78" layoutX="14.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Year:" wrappingWidth="152.56004965305328">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="textField_teamYear_Football" layoutX="167.0" layoutY="250.0" prefHeight="38.0" prefWidth="267.0" />
+                        <JFXButton layoutX="24.0" layoutY="463.0" onAction="#clearAll" prefHeight="63.0" prefWidth="106.0" text="Clear All" />
+                        <JFXButton alignment="TOP_LEFT" buttonType="RAISED" layoutX="14.0" layoutY="14.0" maxWidth="100.0" minWidth="70.0" onAction="#goBack" prefHeight="55.0" prefWidth="100.0" snapToPixel="false" text="Back">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="ARROW_LEFT" size="50" />
+                           </graphic>
+                        </JFXButton>
+                        <Text fill="#e1ae78" layoutX="14.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leader ID:" wrappingWidth="152.56004965305328">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <JFXTextField fx:id="textField_teamleaderID" layoutX="167.0" layoutY="305.0" prefHeight="38.0" prefWidth="267.0" />
+                        <ChoiceBox fx:id="choiceBox" layoutX="182.0" layoutY="32.0" prefWidth="150.0" />
+                        <JFXButton layoutX="413.0" layoutY="12.0" onAction="#loadStudentsOfThisHall" prefHeight="59.0" prefWidth="241.0" text="See Students Of This Hall" />
+                        <JFXButton layoutX="199.0" layoutY="462.0" onAction="#submitInfoOfTeam" prefHeight="65.0" prefWidth="192.0" text="Submit Info Of Team" />
+                        <ChoiceBox fx:id="choiceBox_teamType" layoutX="802.0" layoutY="655.0" prefWidth="150.0" AnchorPane.bottomAnchor="35.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Chess">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton layoutX="631.0" layoutY="380.0" onAction="#registerForChess" prefHeight="86.0" prefWidth="270.0" text="Register For Hall Chess" />
+                        <Text fx:id="text_For_Chess" fill="#e1ae78" layoutX="76.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1066.9999928176403">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <JFXButton layoutX="112.0" layoutY="27.0" onAction="#goBack" prefHeight="90.0" prefWidth="261.0" text="BACK" />
+                        <JFXButton layoutX="626.0" layoutY="241.0" onAction="#registerForUniversityChess" prefHeight="84.0" prefWidth="280.0" text="Register For University Chess" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>

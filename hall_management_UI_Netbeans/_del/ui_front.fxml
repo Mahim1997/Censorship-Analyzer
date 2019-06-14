@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hall_management_ui.ui_frontController">
+   <left>
+      <GridPane prefHeight="400.0" prefWidth="232.0" BorderPane.alignment="BOTTOM_RIGHT">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ToggleButton fx:id="button_select_login_std" mnemonicParsing="false" onKeyPressed="#selectType_student" onMouseClicked="#selectType_student" onMousePressed="#selectType_student" prefHeight="90.0" prefWidth="232.0" text="STUDENT" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="BOTTOM" />
+            <ToggleButton fx:id="button_select_login_tchr" mnemonicParsing="false" onContextMenuRequested="#selectType_teacher" onKeyPressed="#selectType_teacher" onKeyTyped="#selectType_teacher" onMouseClicked="#selectType_teacher" onMousePressed="#selectType_teacher" prefHeight="90.0" prefWidth="232.0" text="TEACHER" GridPane.rowIndex="4" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+            <ToggleButton fx:id="button_select_login_staff" mnemonicParsing="false" onContextMenuRequested="#selectType_staff" onKeyPressed="#selectType_staff" onKeyTyped="#selectType_staff" onMouseClicked="#selectType_staff" onMousePressed="#selectType_staff" prefHeight="90.0" prefWidth="232.0" text="STAFF" GridPane.rowIndex="6" GridPane.rowSpan="2" GridPane.valignment="BASELINE" />
+         </children>
+      </GridPane>
+   </left>
+   <center>
+      <GridPane prefHeight="400.0" prefWidth="363.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="text_userID" prefHeight="50.0" prefWidth="148.0" promptText="Enter ID Here" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID : " textAlignment="RIGHT" wrappingWidth="147.13671875" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password : " textAlignment="RIGHT" wrappingWidth="183.13671875" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <Button fx:id="button_signin" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitUserName" onContextMenuRequested="#submitUserName" onKeyPressed="#submitUserName" onMouseClicked="#submitUserName" onMousePressed="#submitUserName" prefHeight="47.0" prefWidth="83.0" text="Sign In" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="text_password" prefHeight="47.0" prefWidth="148.0" promptText="Enter Password (at least 4 digits)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

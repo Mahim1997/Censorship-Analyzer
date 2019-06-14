@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="784.0" prefWidth="963.0" stylesheets="@../dark-theme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="hall_management.ui.teacher.events.SeeTeamsController">
+   <children>
+      <TableView fx:id="tableview" layoutX="56.0" layoutY="143.0" prefHeight="535.0" prefWidth="819.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="125.0">
+         <columns>
+            <TableColumn fx:id="col_teamName" prefWidth="75.0" text="Team Name" />
+            <TableColumn fx:id="col_sport" prefWidth="75.0" text="Sport" />
+            <TableColumn fx:id="col_hallName" prefWidth="75.0" text="Hall Name" />
+            <TableColumn fx:id="col_teamType" prefWidth="75.0" text="Local/Global" />
+            <TableColumn fx:id="col_eventYear" prefWidth="75.0" text="Year" />
+            <TableColumn fx:id="col_pos" prefWidth="75.0" text="Position" />
+            <TableColumn fx:id="btn_col" prefWidth="75.0" text="See Students" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <JFXButton layoutX="116.0" layoutY="10.0" onAction="#goBack" prefHeight="57.0" prefWidth="280.0" text="BACK" />
+   </children>
+</AnchorPane>

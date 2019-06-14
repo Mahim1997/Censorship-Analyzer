@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="829.0" prefWidth="1210.0" stylesheets="@../teacher/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hall_management.ui.guest.GuestController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../teacher/dark-theme.css">
+         <center>
+            <JFXTabPane fx:id="tabPane" BorderPane.alignment="CENTER">
+               <tabs>
+                  <Tab onSelectionChanged="#loadProfile" text="Profile">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="346.0" fitWidth="373.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user-admin-1.png" />
+                                 </image>
+                              </ImageView>
+                              <GridPane layoutX="441.0" layoutY="50.0" prefHeight="418.0" prefWidth="541.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="266.0" minWidth="10.0" prefWidth="199.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="342.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-secondary;" text="NID :" wrappingWidth="190.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-secondary;" text="Full Name :" wrappingWidth="190.0" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-secondary;" text="Address :" wrappingWidth="190.0" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-secondary;" text="Contact Number :" wrappingWidth="190.0" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Text>
+                                    <JFXTextField fx:id="textLabel_NID" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="24.0" prefWidth="298.0" GridPane.columnIndex="1" />
+                                    <JFXTextField fx:id="textLabel_contactNo" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="53.0" prefWidth="342.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <JFXTextField fx:id="textLabel_address" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="342.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <JFXTextField fx:id="textLabel_FullName" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="323.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Text layoutX="155.0" layoutY="441.0" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-secondary;" text="Image" textAlignment="CENTER" wrappingWidth="78.44921875">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Text>
+                              <JFXButton fx:id="button_refresh" layoutX="412.0" layoutY="637.0" onAction="#refreshInfo" prefHeight="40.0" prefWidth="123.0" text="Refresh" />
+                              <JFXButton fx:id="button_SaveChanges" layoutX="786.0" layoutY="637.0" onAction="#saveChanges_toEditInfo" prefHeight="40.0" prefWidth="271.0" text="Save Changes" />
+                              <JFXToggleButton fx:id="toggleButton_edit" contentDisplay="RIGHT" layoutX="535.0" layoutY="610.0" onAction="#setCanEdit_toTrue" prefHeight="95.0" prefWidth="216.0" size="15.0" text="Edit" textFill="#d7b889">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </JFXToggleButton>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab onSelectionChanged="#load_enter_into_studentList" text="Students">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1079.0">
+                           <children>
+                              <TableView fx:id="tableview" layoutX="278.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="75.0">
+                                <columns>
+                                  <TableColumn fx:id="col_student_ID" prefWidth="160.0" text="Student ID" />
+                                  <TableColumn fx:id="col_studentFullName" prefWidth="327.0" text="Student Full Name" />
+                                    <TableColumn fx:id="col_hallName" prefWidth="232.0" text="Hall Name" />
+                                    <TableColumn fx:id="col_relation" prefWidth="227.0" text="Your Relation With Student" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </center>
+         <right>
+            <GridPane BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="131.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="5.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="691.0" prefWidth="125.0" stylesheets="@../student/dark-theme.css" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <JFXButton fx:id="button_loadProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadProfile" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Profile">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="USER" size="100" textAlignment="CENTER" wrappingWidth="100.0" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="button_students" contentDisplay="TOP" mnemonicParsing="false" onAction="#load_enter_into_studentList" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Students">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FILE" size="100" textAlignment="CENTER" wrappingWidth="100.0" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="button_loadSettings" contentDisplay="TOP" mnemonicParsing="false" onAction="#loadSettings" prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Settings" textAlignment="CENTER">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="COG" size="100" textAlignment="CENTER" wrappingWidth="100.0" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="button_signOut" contentDisplay="TOP" mnemonicParsing="false" onAction="#signOut" prefHeight="400.0" prefWidth="160.0" style="-fx-text-fill: -fx-red;" styleClass="toolbar-button" text="Sign out">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="SIGN_OUT" pickOnBounds="true" size="100" style="-fx-fill: -fx-red;" textAlignment="CENTER" wrappingWidth="100.0" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </right>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hall_management.ui.student.Student_addGuestFormController">
+   <children>
+      <GridPane layoutX="6.0" prefHeight="334.0" prefWidth="859.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField editable="false" prefHeight="53.0" prefWidth="430.0" text="NID : " />
+            <TextField fx:id="textField_NID" prefHeight="55.0" prefWidth="429.0" GridPane.columnIndex="1" />
+            <TextField editable="false" prefHeight="52.0" prefWidth="430.0" text="Name :" GridPane.rowIndex="1" />
+            <TextField fx:id="textField_name" prefHeight="55.0" prefWidth="429.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField editable="false" prefHeight="52.0" prefWidth="430.0" text="Contact Number :" GridPane.rowIndex="2" />
+            <TextField fx:id="textField_contact" prefHeight="51.0" prefWidth="429.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField editable="false" prefHeight="51.0" prefWidth="430.0" text="Address :" GridPane.rowIndex="3" />
+            <TextField fx:id="textField__addr" prefHeight="55.0" prefWidth="429.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField editable="false" prefHeight="53.0" prefWidth="430.0" text="Relation With You :" GridPane.rowIndex="4" />
+            <TextField fx:id="textField_Relation" prefHeight="49.0" prefWidth="429.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <Button fx:id="button_Submit" layoutX="137.0" layoutY="353.0" mnemonicParsing="false" onAction="#submitGuest" text="Submit" />
+      <Button fx:id="button_Back" layoutX="634.0" layoutY="353.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+   </children>
+</AnchorPane>
