@@ -13,13 +13,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
-
 /**
  * FXML Controller class
  *
@@ -59,7 +60,12 @@ public class HomeScreenController implements Initializable {
     @FXML
     private void testSites(ActionEvent event) {
         System.out.println(" ---->>>>>> TEST SITES Screen loading....");
-//        SceneLoader.loadScene(Scenes.testSitesScene, this);
+        
+//        System.out.println("javafx.version: " + System.getProperty("javafx.version"));
+//        System.out.println("java version: "+System.getProperty("java.version"));
+        
+        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
+ 
     }
 
     @FXML

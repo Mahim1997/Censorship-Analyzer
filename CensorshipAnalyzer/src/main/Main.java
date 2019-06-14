@@ -2,7 +2,6 @@ package main;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import util.loader.SceneLoader;
@@ -10,7 +9,9 @@ import ui.model.User;
 import util.loader.Scenes;
 
 public class Main extends Application {
-
+    public static double STAGE_WIDTH;
+    public static double STAGE_HEIGHT;
+    
     public static Stage stage;
 
     public static int USER_DEBUG = 1;
@@ -24,20 +25,17 @@ public class Main extends Application {
 
         System.out.println("--->>>TRYING to load scene ..... ");
 //            System.out.println("-->>Inside Main.normalStart() .... ");
-        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML);
-        if (loadScene == null) {
-            System.out.println("<><><><><><><><><> Scene get null returned val");
-            return;
-        }
+//        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML);
+        STAGE_WIDTH = stage.getMaxWidth();
+        STAGE_HEIGHT = stage.getMaxHeight();
+        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
 
-        stage.setScene(loadScene);
-        stage.setMaximized(true);
-        Main.stage.show();
 
         stage.setOnCloseRequest((WindowEvent e) -> {
             Platform.exit();
             System.exit(0);
         });
+        
     }
 
     public static void main(String[] args) {

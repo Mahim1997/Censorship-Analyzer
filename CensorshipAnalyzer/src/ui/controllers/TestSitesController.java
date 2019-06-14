@@ -8,17 +8,22 @@ package ui.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import util.loader.SceneLoader;
+import util.loader.Scenes;
 
 /**
  *
  * @author viper
  */
-public class TestSitesController {
+public class TestSitesController implements Initializable{
 
     @FXML
     private Text text_TestingMode;
@@ -51,6 +56,7 @@ public class TestSitesController {
 
     @FXML
     private void goBack(ActionEvent event) {
+        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
     @FXML
@@ -71,6 +77,11 @@ public class TestSitesController {
 
     @FXML
     private void allTesting(ActionEvent event) {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("Inside TestSitesController ... ");
     }
     
 }
