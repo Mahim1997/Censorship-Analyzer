@@ -30,6 +30,8 @@ public class HomeScreenController implements Initializable {
  
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private Label label_username;
  
     /**
      * Initializes the controller class.
@@ -58,6 +60,34 @@ public class HomeScreenController implements Initializable {
         anchorPane.getChildren().add(root);
         root.setMaxHeight(anchorPane.getMaxHeight());
         root.setPrefHeight(anchorPane.getMaxHeight());
+    }
+
+    @FXML
+    private void addProfilePicture(ActionEvent event) {
+    }
+
+    @FXML
+    private void goHome(ActionEvent event) {
+    }
+
+    @FXML
+    private void testSites(ActionEvent event) {
+    }
+
+    @FXML
+    private void seeReports(ActionEvent event) {
+    }
+
+    @FXML
+    private void miscallenousTasks(ActionEvent event) {
+    }
+
+    @FXML
+    private void periodicUpdates(ActionEvent event) {
+    }
+
+    @FXML
+    private void seeComparisons(ActionEvent event) {
     }
 
 }
