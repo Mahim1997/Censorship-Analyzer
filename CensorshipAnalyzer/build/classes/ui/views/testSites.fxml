@@ -163,7 +163,7 @@
                   </Text>
                </children>
             </HBox>
-            <CheckBox mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
+            <CheckBox fx:id="checkBx_accept" mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>

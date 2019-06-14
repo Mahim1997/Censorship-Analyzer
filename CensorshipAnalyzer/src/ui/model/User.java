@@ -22,6 +22,7 @@ public class User {
     public static int numberOfCensoredHTTP;
     public static String location;
     
+    public static String name;
     
     public static void initiateUser(){
         if(Main.USER_DEBUG == 1){
@@ -30,6 +31,7 @@ public class User {
             modeOfAccess = "Logged User";
             userFirstName = "Mahim";
             userLastName = "Mahbub";
+            name = userFirstName + " " + userLastName ;
             userPassword = "1505022";
             
             location = "Dhaka, Bangladesh";

@@ -67,18 +67,26 @@ public class TestSitesController implements Initializable {
     private double timeInHours;
     private boolean isPeriodicCheck;
     private boolean isAccepted;
-    private boolean isFileCheck; //1 -> file, 0 -> url
-    
+    private boolean isFileCheck;
+    private boolean isURLCheck;
+    private boolean isCustom;
+
     @FXML
     private CheckBox checkBx_accept;
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Inside TestSitesController ... ");
         setUpTexts();
+
         this.isPeriodicCheck = false;
         this.timeInHours = 0;
         this.isAccepted = false;
+        this.isCustom = false;
+        this.isFileCheck = false;
+        this.isURLCheck = false;
+        this.label_FileName.setEditable(false);
+        this.label_URLName.setEditable(false);
     }
 
     @FXML
@@ -86,16 +94,60 @@ public class TestSitesController implements Initializable {
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
+    private void retrieveThings() {
+        //Error checking as well
+        
+        try {
+            String hours = this.label_hours.getText();
+            double hour_double = Double.parseDouble(hours); //TO DO ... CHECK: ONLY KEEP INTEGERS !!!
+            this.timeInHours = hour_double;
+        } catch (Exception e) {
+            Notification.push("ERROR", "Time should be in hours", Notification.FAILURE);
+            return;
+        }
+
+        if (((this.isFileCheck == false) && (this.isURLCheck == false)) || ((this.isFileCheck == true) && (this.isURLCheck == true))) {
+            Notification.push("ERROR", "Pick any one of File/URL option", Notification.FAILURE);
+            return;
+        }
+
+        if (this.isFileCheck) {
+            this.fileNameToTest = this.label_FileName.getText();
+            if (this.fileNameToTest.trim().equals("")) {
+                Notification.push("ERROR", "Pick a valid File", Notification.FAILURE);
+                return;
+            }
+        } else if (this.isURLCheck) {
+            this.urlNameToTest = this.label_URLName.getText();
+            if (this.urlNameToTest.trim().equals("")) {
+                Notification.push("ERROR", "Pick a valid url", Notification.FAILURE);
+                return;
+            }
+        }
+
+    }
+
     @FXML
     private void submitThings(ActionEvent event) {
         if ("".equals(this.testingMode)) {
             Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
+            return;
         }
-        String str = "Test Type: " + this.testingMode + "\n" +
-                "Periodic: " + this.isPeriodicCheck + "\n" + 
-                "Time (periodic, hrs): " + this.timeInHours + "\n";
+        retrieveThings();   //Retrieve the items
         
-        Notification.push("Passing Through", str, Notification.SUCCESS ,Pos.CENTER);
+        String str = "Test Type: " + this.testingMode + "\n"
+                + "Periodic: " + this.isPeriodicCheck + "\n"
+                + "Time (periodic, hrs): " + this.timeInHours + "\n";
+
+        String s = str + 
+                "User name: " + User.name + "\n" +
+                "Network Name: " + User.networkName + "\n" +
+                "Network Type: " + User.networkType + "\n";
+        
+        System.out.println(s);
+
+
+        Notification.push("Passing Through", str, Notification.SUCCESS, Pos.CENTER);
     }
 
     @FXML
@@ -140,12 +192,15 @@ public class TestSitesController implements Initializable {
         if (this.toggleButton_url.isSelected() == true) {
             //Selected
             this.toggleButton_file.setSelected(false);
-            this.isFileCheck = false;
+            this.isURLCheck = true;
             this.label_FileName.clear();
+            this.isFileCheck = false;
             this.urlNameToTest = this.label_URLName.getText();
+            this.label_URLName.setEditable(true);
         } else {
             this.label_URLName.clear();
             this.urlNameToTest = "";
+            this.isURLCheck = false;
         }
     }
 
@@ -155,11 +210,13 @@ public class TestSitesController implements Initializable {
             //Selected
             this.toggleButton_url.setSelected(false);
             this.isFileCheck = true;
+            this.isURLCheck = false;
             this.label_URLName.clear();
             this.fileNameToTest = this.label_FileName.getText();
         } else {
             this.label_FileName.clear();
             this.fileNameToTest = "";
+            this.isFileCheck = false;
         }
     }
 
@@ -184,13 +241,13 @@ public class TestSitesController implements Initializable {
         }
     }
 
-    private void uncheckAll(){
+    private void uncheckAll() {
         this.checkBox_1Hour.setSelected(false);
         this.checkBox_2Hours.setSelected(false);
         this.checkBox_30Mins.setSelected(false);
         this.checkBox_Custom.setSelected(false);
     }
-    
+
     @FXML
     private void checkFor30Mins(ActionEvent event) {
         uncheckAll();
@@ -215,17 +272,15 @@ public class TestSitesController implements Initializable {
     @FXML
     private void checkForCustom(ActionEvent event) {
         uncheckAll();
-        String hours = this.label_hours.getText();
-        double hour_double = Double.parseDouble(hours); //TO DO ... CHECK: ONLY KEEP INTEGERS !!!
-        this.timeInHours = hour_double;
+        this.checkBox_Custom.setSelected(true);
+        this.isCustom = true;
     }
 
     @FXML
     private void checkBox_AcceptConditions(ActionEvent event) {
-        if(checkBx_accept.isSelected() == true){
+        if (checkBx_accept.isSelected() == true) {
             this.isAccepted = true;
-        }
-        else{
+        } else {
             this.isAccepted = false;
         }
     }
