@@ -12,7 +12,8 @@ public class User {
     public static String userLastName;    
     public static String userPassword;
     
-
+    public static String modeOfAccess;
+    
     public static int numberOfTests;
     public static int numberOfDifferentURLs;
     public static int numberOfCensordSites;
@@ -21,11 +22,12 @@ public class User {
     public static int numberOfCensoredHTTP;
     public static String location;
     
+    
     public static void initiateUser(){
         if(Main.USER_DEBUG == 1){
-            networkName = "Banglalink";
-            networkType = "Mobile";
-            
+            networkName = "XploreNet BD";
+            networkType = "ISP";
+            modeOfAccess = "Logged User";
             userFirstName = "Mahim";
             userLastName = "Mahbub";
             userPassword = "1505022";

@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="920.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TestSitesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="920.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TestSitesController">
    <children>
       <JFXButton layoutX="32.0" layoutY="38.0" onAction="#goBack" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Back">
          <graphic>
@@ -93,7 +92,7 @@
                      </font>
                   </Text>
                   <JFXTextField fx:id="label_URLName" styleClass="jfx-text-field" />
-                  <JFXToggleButton fx:id="toggleButton_singleURL" prefHeight="64.0" prefWidth="200.0" text="Single URL" textFill="#2deede">
+                  <JFXToggleButton fx:id="toggleButton_url" onAction="#toggleButton_singleURL" prefHeight="64.0" prefWidth="200.0" text="Single URL" textFill="#2deede">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -108,46 +107,46 @@
                      </font>
                   </Text>
                   <JFXTextField fx:id="label_FileName" styleClass="jfx-text-field" />
-                  <JFXToggleButton fx:id="toggleButton_singleFILE" prefHeight="64.0" prefWidth="200.0" text="Single FILE" textFill="#2deede">
+                  <JFXToggleButton fx:id="toggleButton_file" onAction="#toggleButton_singleFILE" prefHeight="64.0" prefWidth="200.0" text="Single FILE" textFill="#2deede">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </JFXToggleButton>
                </children>
             </HBox>
-            <JFXToggleButton fx:id="toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
+            <JFXToggleButton onAction="#toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
                <font>
                   <Font size="20.0" />
                </font>
             </JFXToggleButton>
-            <CheckBox fx:id="checkBox_30mins" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="30 mins (Default)" textFill="#2deede">
+            <CheckBox fx:id="checkBox_30Mins" mnemonicParsing="false" onAction="#checkFor30Mins" opacity="0.0" prefHeight="31.0" prefWidth="217.0" text="30 mins (Default)" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="checkBox_1Hour" mnemonicParsing="false" prefHeight="31.0" prefWidth="219.0" text="1 hour" textFill="#2deede">
+            <CheckBox fx:id="checkBox_1Hour" mnemonicParsing="false" onAction="#checkFor1Hour" opacity="0.0" prefHeight="31.0" prefWidth="219.0" text="1 hour" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="checkBox_2Hours" mnemonicParsing="false" prefHeight="31.0" prefWidth="215.0" text="2 hours" textFill="#2deede">
+            <CheckBox fx:id="checkBox_2Hours" mnemonicParsing="false" onAction="#checkFor2Hours" opacity="0.0" prefHeight="31.0" prefWidth="215.0" text="2 hours" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="checkBox_Custom" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Custom" textFill="#2deede">
+            <CheckBox fx:id="checkBox_Custom" mnemonicParsing="false" onAction="#checkForCustom" opacity="0.0" prefHeight="31.0" prefWidth="217.0" text="Custom" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>
             </CheckBox>
             <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
+                  <Text fill="#61ba38" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Text>
-                  <JFXTextField fx:id="label_URLName1" prefHeight="38.0" prefWidth="129.0" styleClass="jfx-text-field" />
+                  <JFXTextField fx:id="label_hours" opacity="0.0" prefHeight="38.0" prefWidth="129.0" styleClass="jfx-text-field" />
                   <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="43.6708984375">
                      <font>
                         <Font size="27.0" />
@@ -155,7 +154,7 @@
                   </Text>
                </children>
             </HBox>
-            <CheckBox fx:id="checkBox_AcceptConditions" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
+            <CheckBox mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>
