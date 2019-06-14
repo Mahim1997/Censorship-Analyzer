@@ -21,16 +21,7 @@ import javafx.scene.control.Label;
  */
 public class HomeScreenController implements Initializable {
 
-    @FXML
-    private Label label_UserName;
-    private JFXTextField label_netName;
-    private JFXTextField label_netType;
-    private JFXTextField label_ipAddress;
-    private JFXTextField label_location;
-    private JFXButton btn_addresses;
-    private JFXButton btn_networkInfo;
-    private JFXButton btn_userInfoCurrent;
-
+ 
     /**
      * Initializes the controller class.
      */
