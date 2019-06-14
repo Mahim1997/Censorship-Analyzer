@@ -4,6 +4,8 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -15,7 +17,43 @@
    <children>
       <JFXButton fx:id="goBack" layoutX="32.0" layoutY="38.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Back" />
       <JFXButton fx:id="submit" layoutX="32.0" layoutY="152.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Submit" />
-      <VBox alignment="TOP_CENTER" layoutX="322.0" layoutY="40.0" prefHeight="685.0" prefWidth="568.0" spacing="20.0" style="-fx-background-color: #0f00f0;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <JFXButton fx:id="dnsTesting" layoutX="24.0" layoutY="308.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="DNS Testing">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images_testSites/D_transparent.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="tcpTesting" layoutX="24.0" layoutY="402.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="TCP Testing">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images_testSites/T_transparent.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="httpTesting" layoutX="24.0" layoutY="498.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="HTTP Testing">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images_testSites/H_transparent.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="allTesting" layoutX="24.0" layoutY="610.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="All Sequential Testing">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/images_testSites/A_avengers.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <VBox alignment="TOP_CENTER" layoutX="322.0" layoutY="40.0" prefHeight="685.0" prefWidth="568.0" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
@@ -108,9 +146,5 @@
             </CheckBox>
          </children>
       </VBox>
-      <JFXButton fx:id="dnsTesting" layoutX="24.0" layoutY="308.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="DNS Testing" />
-      <JFXButton fx:id="tcpTesting" layoutX="24.0" layoutY="402.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="TCP Testing" />
-      <JFXButton fx:id="httpTesting" layoutX="24.0" layoutY="498.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="HTTP Testing" />
-      <JFXButton fx:id="allTesting" layoutX="24.0" layoutY="610.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="All Sequential Testing" />
    </children>
 </AnchorPane>
