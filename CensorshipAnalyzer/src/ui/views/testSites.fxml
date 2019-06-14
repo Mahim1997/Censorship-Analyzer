@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="920.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TestSitesController">
+   <children>
+      <JFXButton fx:id="goBack" layoutX="32.0" layoutY="38.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Back" />
+      <JFXButton fx:id="submit" layoutX="32.0" layoutY="152.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Submit" />
+      <VBox alignment="TOP_CENTER" layoutX="322.0" layoutY="40.0" prefHeight="685.0" prefWidth="568.0" spacing="20.0" style="-fx-background-color: #0f00f0;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Text fx:id="text_TestingMode" fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing Mode : " textAlignment="CENTER" wrappingWidth="284.6708984375">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="text_Mode" fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode: " textAlignment="CENTER" wrappingWidth="284.6708984375">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="URL :" textAlignment="CENTER" wrappingWidth="187.6708984375">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="label_URLName" styleClass="jfx-text-field" />
+                  <JFXToggleButton fx:id="toggleButton_singleURL" prefHeight="64.0" prefWidth="200.0" text="Single URL" textFill="#2deede">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXToggleButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="FILE :" textAlignment="CENTER" wrappingWidth="187.6708984375">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="label_FileName" styleClass="jfx-text-field" />
+                  <JFXToggleButton fx:id="toggleButton_singleFILE" prefHeight="64.0" prefWidth="200.0" text="Single FILE" textFill="#2deede">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXToggleButton>
+               </children>
+            </HBox>
+            <JFXToggleButton fx:id="toggleButton_periodicCheck" prefHeight="64.0" prefWidth="319.0" text="PERIODIC CHECK" textFill="#2deede">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXToggleButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

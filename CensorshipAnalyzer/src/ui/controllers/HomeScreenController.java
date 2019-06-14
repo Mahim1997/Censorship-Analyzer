@@ -41,25 +41,11 @@ public class HomeScreenController implements Initializable {
         // TODO
         System.out.println("-->>>Controller initialise HomeScreenController .... ");
 //        setUpTexts();
-        loadVBoxLeft();
+
     }
 
     private void setUpTexts() {
         
-    }
-
-    private void loadVBoxLeft() {
-        System.out.println("Loading VBOX Left ... ");
-        VBox root = null;
-        try{
-            root = FXMLLoader.load(getClass().getResource(Scenes.vBoxFXML));
-        }catch(Exception e){
-            System.out.println("--->>>EXCEPTION In LOADING V BOX left ... ");
-            e.printStackTrace();
-        }
-        anchorPane.getChildren().add(root);
-        root.setMaxHeight(anchorPane.getMaxHeight());
-        root.setPrefHeight(anchorPane.getMaxHeight());
     }
 
     @FXML
@@ -72,6 +58,8 @@ public class HomeScreenController implements Initializable {
 
     @FXML
     private void testSites(ActionEvent event) {
+        System.out.println(" ---->>>>>> TEST SITES Screen loading....");
+//        SceneLoader.loadScene(Scenes.testSitesScene, this);
     }
 
     @FXML

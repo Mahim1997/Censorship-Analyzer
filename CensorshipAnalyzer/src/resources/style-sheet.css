@@ -29,7 +29,17 @@
     -fx-DarkBlueTextColor: #09011c;
     
     -fx-HalkaBlack: #403c4a;
+
+    -fx-primary-darkTheme : #2A2E37;
+    -fx-secondary-darkTheme  : #FFFF8D;
+    -fx-primarytext-darkTheme  : #B2B2B2;
+    -fx-blue-darkTheme : #1976D2;
+    -fx-red-darkTheme : #FF0000;
+    -fx-black-darkTheme : #1C1B1B;
+    -fx-light-darkTheme : #BDC79A;
+    -fx-green-darkTheme : #3CBA1D;
 }
+
 
 .anchor-pane{
     -fx-background-color: -fx-backGroundScreen;
@@ -64,7 +74,8 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 17px;
     -fx-allignment: CENTER;
-    -fx-editable: FALSE;
+    -fx-editable: TRUE;
+    -fx-background-color: #BDC79A;
 }
 .label{
     -fx-text-fill: -fx-WhiteTextColor;
@@ -113,4 +124,19 @@
     -fx-font-size: 18px;
     -fx-border-radius: 20px;
     -fx-background-radius: 200px;     
+}
+
+.buttonDarkTheme{
+    -fx-text-fill: -fx-primarytext-darkTheme;
+    -fx-background-color: -fx-primary-darkTheme;
+    -fx-border-color: -fx-secondary-darkTheme;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 13pt;
+}
+
+.buttonDarkTheme:hover{
+    -fx-border-color: -fx-secondary-darkTheme;
+    -fx-background-color: -fx-secondary-darkTheme;
+    -fx-text-fill: -fx-primary-darkTheme;
 }

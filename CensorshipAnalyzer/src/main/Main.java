@@ -1,8 +1,10 @@
 package main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import util.loader.SceneLoader;
 import ui.model.User;
 import util.loader.Scenes;
@@ -10,29 +12,32 @@ import util.loader.Scenes;
 public class Main extends Application {
 
     public static Stage stage;
-    
+
     public static int USER_DEBUG = 1;
     public static String TITLE = "Censorship Analysis Tool";
- 
 
     @Override
     public void start(Stage primaryStage) {
         User.initiateUser();
         Main.stage = primaryStage;
         Main.stage.setTitle(Main.TITLE);
- 
+
         System.out.println("--->>>TRYING to load scene ..... ");
 //            System.out.println("-->>Inside Main.normalStart() .... ");
-        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML, this);
+        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML);
         if (loadScene == null) {
             System.out.println("<><><><><><><><><> Scene get null returned val");
-            return ;
+            return;
         }
 
         stage.setScene(loadScene);
         stage.setMaximized(true);
         Main.stage.show();
 
+        stage.setOnCloseRequest((WindowEvent e) -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public static void main(String[] args) {
@@ -40,7 +45,7 @@ public class Main extends Application {
     }
 
 }
- 
+
 
 /*
 Button btn = new Button();
