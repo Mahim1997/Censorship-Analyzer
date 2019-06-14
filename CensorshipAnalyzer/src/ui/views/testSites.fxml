@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -18,7 +19,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Text fx:id="text_TestingMode" fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing Mode : " textAlignment="CENTER" wrappingWidth="284.6708984375">
+                  <Text fx:id="text_TestingMode" fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing Mode : " textAlignment="CENTER" wrappingWidth="297.6708984375">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -65,7 +66,51 @@
                   <Font size="20.0" />
                </font>
             </JFXToggleButton>
+            <CheckBox fx:id="checkBox_30mins" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="30 mins (Default)" textFill="#2deede">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkBox_1Hour" mnemonicParsing="false" prefHeight="31.0" prefWidth="219.0" text="1 hour" textFill="#2deede">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkBox_2Hours" mnemonicParsing="false" prefHeight="31.0" prefWidth="215.0" text="2 hours" textFill="#2deede">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkBox_Custom" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Custom" textFill="#2deede">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </CheckBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours :" textAlignment="CENTER" wrappingWidth="149.6708984375">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="label_URLName1" prefHeight="38.0" prefWidth="129.0" styleClass="jfx-text-field" />
+                  <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="43.6708984375">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <CheckBox fx:id="checkBox_AcceptConditions" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </CheckBox>
          </children>
       </VBox>
+      <JFXButton fx:id="dnsTesting" layoutX="24.0" layoutY="308.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="DNS Testing" />
+      <JFXButton fx:id="tcpTesting" layoutX="24.0" layoutY="402.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="TCP Testing" />
+      <JFXButton fx:id="httpTesting" layoutX="24.0" layoutY="498.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="HTTP Testing" />
+      <JFXButton fx:id="allTesting" layoutX="24.0" layoutY="610.0" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="All Sequential Testing" />
    </children>
 </AnchorPane>
