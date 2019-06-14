@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import util.loader.SceneLoader;
 import ui.model.User;
+import util.loader.Scenes;
 
 public class Main extends Application {
 
@@ -22,7 +23,7 @@ public class Main extends Application {
  
         System.out.println("--->>>TRYING to load scene ..... ");
 //            System.out.println("-->>Inside Main.normalStart() .... ");
-        Scene loadScene = SceneLoader.loadScene(SceneLoader.homeScreenFXML, this);
+        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML, this);
         if (loadScene == null) {
             System.out.println("<><><><><><><><><> Scene get null returned val");
             return ;

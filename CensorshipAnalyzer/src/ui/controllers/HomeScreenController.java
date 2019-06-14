@@ -11,8 +11,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import util.loader.SceneLoader;
+import util.loader.Scenes;
 
 /**
  * FXML Controller class
@@ -22,59 +28,36 @@ import javafx.scene.control.Label;
 public class HomeScreenController implements Initializable {
 
  
+    @FXML
+    private AnchorPane anchorPane;
+ 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("-->>>Controller initialise HomeScreenNormalSBController .... ");
-        setUpTexts();
-    }
-
-    @FXML
-    private void goHome(ActionEvent event) {
-    }
-
-    @FXML
-    private void goToTestSites(ActionEvent event) {
-    }
-
-    @FXML
-    private void goToReports(ActionEvent event) {
-    }
-
-    @FXML
-    private void goToMisTasks(ActionEvent event) {
-    }
-
-    @FXML
-    private void goToPeriodicUpdates(ActionEvent event) {
-    }
-
-    @FXML
-    private void goToComparisons(ActionEvent event) {
+        System.out.println("-->>>Controller initialise HomeScreenController .... ");
+//        setUpTexts();
+        loadVBoxLeft();
     }
 
     private void setUpTexts() {
-        /*try {
-            String ipAddress = InetAddress.getLocalHost().getHostAddress();
-            String macAddress = "8F-FA-23-9F-A3-E2";
-            label_ipAddress.setText(ipAddress);
-            
-            label_netName.setText(User.networkName);
-            label_netType.setText(User.networkType);
-            
-            label_location.setText(User.location);
-            label_UserName.setText(User.userFirstName + " " + User.userLastName);
-            
-            btn_addresses.setText("IP Address: " + ipAddress + "\n" + "MAC Address: " + macAddress);
-            btn_networkInfo.setText("Network Name: " + User.networkName + "\n" + "Network Type: " + User.networkType);
-            btn_userInfoCurrent.setText("Status: " + "Online" + "\n" + "Mode: " + "Logged User");
-            
-        } catch (UnknownHostException ex) {
-            System.out.println("IP Address paite problems ... ");
-        }*/
+        
+    }
+
+    private void loadVBoxLeft() {
+        System.out.println("Loading VBOX Left ... ");
+        VBox root = null;
+        try{
+            root = FXMLLoader.load(getClass().getResource(Scenes.vBoxFXML));
+        }catch(Exception e){
+            System.out.println("--->>>EXCEPTION In LOADING V BOX left ... ");
+            e.printStackTrace();
+        }
+        anchorPane.getChildren().add(root);
+        root.setMaxHeight(anchorPane.getMaxHeight());
+        root.setPrefHeight(anchorPane.getMaxHeight());
     }
 
 }

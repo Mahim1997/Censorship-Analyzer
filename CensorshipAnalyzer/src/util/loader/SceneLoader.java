@@ -12,8 +12,6 @@ import javafx.scene.Scene;
 public class SceneLoader {
  
     public static Hashtable<String, Scene> table = new Hashtable<>();
-
-    public static String homeScreenFXML = "/ui/views/home.fxml";
     
     public static void addThing(String fileName, Scene scene) {
         table.put(fileName, scene);
@@ -37,7 +35,7 @@ public class SceneLoader {
             return scene;
 //        Main.stage.show();
         } catch (IOException ex) {
-            System.out.println("-->>Inside SceneLoader.loadScene() ... ");
+            System.out.println("-->>Inside SceneLoader.loadScene() ... EXCEPTION OCCURED");
             Logger.getLogger(SceneLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
