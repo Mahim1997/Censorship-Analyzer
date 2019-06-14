@@ -94,37 +94,45 @@ public class TestSitesController implements Initializable {
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
-    private void retrieveThings() {
+    private String retrieveThings() {
         //Error checking as well
-        
-        try {
-            String hours = this.label_hours.getText();
-            double hour_double = Double.parseDouble(hours); //TO DO ... CHECK: ONLY KEEP INTEGERS !!!
-            this.timeInHours = hour_double;
-        } catch (Exception e) {
-            Notification.push("ERROR", "Time should be in hours", Notification.FAILURE);
-            return;
+
+        if (this.isCustom == true) {
+            try {
+                String hours = this.label_hours.getText();
+                double hour_double = Double.parseDouble(hours); //TO DO ... CHECK: ONLY KEEP INTEGERS !!!
+                this.timeInHours = hour_double;
+            } catch (Exception e) {
+                Notification.push("ERROR", "Time should be in hours", Notification.FAILURE);
+                return "ERROR";
+            }
         }
 
         if (((this.isFileCheck == false) && (this.isURLCheck == false)) || ((this.isFileCheck == true) && (this.isURLCheck == true))) {
             Notification.push("ERROR", "Pick any one of File/URL option", Notification.FAILURE);
-            return;
+            return "ERROR";
         }
 
         if (this.isFileCheck) {
             this.fileNameToTest = this.label_FileName.getText();
             if (this.fileNameToTest.trim().equals("")) {
                 Notification.push("ERROR", "Pick a valid File", Notification.FAILURE);
-                return;
+                return "ERROR";
             }
         } else if (this.isURLCheck) {
             this.urlNameToTest = this.label_URLName.getText();
             if (this.urlNameToTest.trim().equals("")) {
                 Notification.push("ERROR", "Pick a valid url", Notification.FAILURE);
-                return;
+                return "ERROR";
             }
         }
 
+        if (this.isAccepted == false) {
+            Notification.push("WARNING", "Need to ACCEPT", Notification.WARNING);
+            return "ERROR";
+        }
+
+        return "SUCCESS";
     }
 
     @FXML
@@ -133,19 +141,29 @@ public class TestSitesController implements Initializable {
             Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
             return;
         }
-        retrieveThings();   //Retrieve the items
-        
+        String ret = retrieveThings(); //Retrieve the items
+        if (!ret.equals("SUCCESS")) {
+            return;
+        }
+
         String str = "Test Type: " + this.testingMode + "\n"
                 + "Periodic: " + this.isPeriodicCheck + "\n"
                 + "Time (periodic, hrs): " + this.timeInHours + "\n";
 
-        String s = str + 
-                "User name: " + User.name + "\n" +
-                "Network Name: " + User.networkName + "\n" +
-                "Network Type: " + User.networkType + "\n";
+        String ss = "";
+        if(this.isFileCheck == true){
+            ss = "File<" + this.fileNameToTest + ">\n";
+        }
+        else{
+            ss = "URL<" + this.urlNameToTest + ">\n";
+        }
         
+        String s = str
+                + "User name: " + User.name + "\n"
+                + "Network Name: " + User.networkName + "\n"
+                + "Network Type: " + User.networkType + "\n"
+                + ss;
         System.out.println(s);
-
 
         Notification.push("Passing Through", str, Notification.SUCCESS, Pos.CENTER);
     }
