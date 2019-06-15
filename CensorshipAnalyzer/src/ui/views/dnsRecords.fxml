@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="717.0" prefWidth="997.0" styleClass="anchor-pane" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.DNSRecordController">
    <top>
-      <GridPane hgap="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="126.0" prefWidth="599.0" BorderPane.alignment="TOP_RIGHT">
+      <GridPane hgap="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="599.0" BorderPane.alignment="TOP_RIGHT">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="556.0" minWidth="10.0" prefWidth="539.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="545.0" />
@@ -76,86 +78,6 @@
          </children>
       </GridPane>
    </top>
-   <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox fx:id="vbox_localIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="236.0" spacing="10.0">
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <JFXTextField />
-               </children>
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin>
-               <opaqueInsets>
-                  <Insets top="40.0" />
-               </opaqueInsets>
-            </VBox>
-            <VBox fx:id="vbox_stubbyIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="285.0" spacing="10.0">
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="IPs from Stubby" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-               </children>
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin>
-            </VBox>
-            <VBox fx:id="vbox_matchingIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="270.0" spacing="10.0">
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Matching IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-               </children>
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="206.0" spacing="10.0">
-               <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bogon IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <ImageView fx:id="imageView_bogonIP" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Private IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <ImageView fx:id="imageView_privateIP" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <ImageView fx:id="imageView_timeout" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin>
-            </VBox>
-         </children>
-         <opaqueInsets>
-            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-         </opaqueInsets>
-         <padding>
-            <Insets left="40.0" right="40.0" top="40.0" />
-         </padding>
-      </HBox>
-   </center>
    <left>
       <Text fill="#19948b" strokeType="OUTSIDE" strokeWidth="0.0" text="DNS RECORD" textAlignment="CENTER" wrappingWidth="314.6708984375" BorderPane.alignment="TOP_LEFT">
          <font>
@@ -163,4 +85,94 @@
          </font>
       </Text>
    </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox fx:id="vbox_localIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="236.0" spacing="10.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets top="40.0" />
+                     </opaqueInsets>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox fx:id="vbox_stubbyIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="285.0" spacing="10.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="IPs from Stubby" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox fx:id="vbox_matchingIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="270.0" spacing="10.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Matching IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="206.0" spacing="10.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bogon IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="imageView_bogonIP" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Private IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="imageView_privateIP" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="imageView_timeout" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="40.0" right="40.0" top="40.0" />
+               </padding>
+            </HBox>
+            <Line endX="1132.0" endY="40.0" startX="44.3291015625" startY="40.0" stroke="WHITE" />
+            <Line endX="1132.0" endY="678.0" startX="43.0" startY="678.0" stroke="WHITE" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>
