@@ -24,7 +24,7 @@
           <RowConstraints maxHeight="651.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="text_url" fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" wrappingWidth="511.6708984375">
+            <Text fx:id="text_url" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" wrappingWidth="511.6708984375">
                <font>
                   <Font size="30.0" />
                </font>
@@ -32,7 +32,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_NetworkName" fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name:" wrappingWidth="511.6708984375" GridPane.rowIndex="1">
+            <Text fx:id="text_NetworkName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name:" wrappingWidth="511.6708984375" GridPane.rowIndex="1">
                <font>
                   <Font size="30.0" />
                </font>
@@ -40,7 +40,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_date" fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="511.6708984375" GridPane.rowIndex="2">
+            <Text fx:id="text_date" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="511.6708984375" GridPane.rowIndex="2">
                <font>
                   <Font size="30.0" />
                </font>
@@ -48,7 +48,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_testType" fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1">
+            <Text fx:id="text_testType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1">
                <font>
                   <Font size="30.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_networkType" fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="text_networkType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="30.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_time" fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="30.0" />
                </font>
@@ -80,7 +80,7 @@
          <children>
             <VBox fx:id="vbox_localIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="236.0" spacing="10.0">
                <children>
-                  <Text fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Local IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -92,7 +92,7 @@
             </VBox>
             <VBox fx:id="vbox_stubbyIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="285.0" spacing="10.0">
                <children>
-                  <Text fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="IPs from Stubby" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="IPs from Stubby" textAlignment="CENTER" wrappingWidth="235.6708984375">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -104,7 +104,7 @@
             </VBox>
             <VBox fx:id="vbox_matchingIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="270.0" spacing="10.0">
                <children>
-                  <Text fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Matching IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Matching IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -116,21 +116,21 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="206.0" spacing="10.0">
                <children>
-                  <Text fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Bogon IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bogon IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Text>
                   <ImageView fx:id="imageView_bogonIP" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Private IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Private IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Text>
                   <ImageView fx:id="imageView_privateIP" fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fill="#702de3" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout" textAlignment="CENTER" wrappingWidth="156.6708984375">
                      <font>
                         <Font size="30.0" />
                      </font>
