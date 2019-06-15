@@ -188,3 +188,14 @@
 .custom-pane{
     -fx-background-color: derive(-fx-primary, 5%);
 }
+
+
+
+
+
+
+.mygridStyle Line {
+  -fx-stroke   : #ffffff;
+}
+
+
