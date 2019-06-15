@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,10 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="1025.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="111.0" layoutY="214.0" prefHeight="550.0" prefWidth="965.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="170.0">
+      <TableView fx:id="tableView" layoutX="111.0" layoutY="214.0" prefHeight="550.0" prefWidth="965.0" style="-fx-background-color: #3B2F48; -fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="300.0">
         <columns>
           <TableColumn prefWidth="75.0" text="URL" />
           <TableColumn prefWidth="75.0" text="Network Name" />
@@ -27,21 +30,85 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Text fill="WHITE" layoutX="30.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database Records" textAlignment="CENTER" wrappingWidth="288.6708984375">
+      <Text fill="WHITE" layoutX="20.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database Records" textAlignment="CENTER" wrappingWidth="249.6708984375">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <GridPane gridLinesVisible="true" layoutX="541.0" layoutY="19.0" prefHeight="115.0" prefWidth="422.0" style="-fx-border-color: #ffffff;" styleClass="mygridStyle">
+      <GridPane layoutX="497.0" layoutY="19.0" prefHeight="244.0" prefWidth="493.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="155.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="139.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" textAlignment="CENTER" wrappingWidth="128.6708984375">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="textField_url" prefHeight="38.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" textAlignment="CENTER" wrappingWidth="128.6708984375" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="textField_timeStart" prefHeight="38.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="textField_timeEnd" prefHeight="38.0" prefWidth="193.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type:" textAlignment="CENTER" wrappingWidth="128.6708984375" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name" textAlignment="CENTER" wrappingWidth="145.6708984375" GridPane.rowIndex="3">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type" textAlignment="CENTER" wrappingWidth="145.6708984375" GridPane.rowIndex="4">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Censored" textAlignment="CENTER" wrappingWidth="145.6708984375" GridPane.rowIndex="5">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Censored Type" textAlignment="CENTER" wrappingWidth="145.6708984375" GridPane.rowIndex="6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <JFXToggleButton fx:id="toggleButton_NetworkType" onAction="#toggleNetworkType" prefHeight="2.0" prefWidth="332.0" text="ISP" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+            <JFXToggleButton fx:id="toggleButtonCensored" onAction="#toggleCensored" prefHeight="2.0" prefWidth="332.0" text="No" textFill="WHITE" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <ChoiceBox fx:id="choiceBox_NetworkName" prefHeight="31.0" prefWidth="338.0" style="-fx-background-color: #000000;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="choiceBox_TestType" prefHeight="31.0" prefWidth="338.0" style="-fx-background-color: #000000;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="choiceBox_censoredType" prefHeight="31.0" prefWidth="357.0" style="-fx-background-color: #000000;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+         </children>
       </GridPane>
+      <Text fill="WHITE" layoutX="357.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter by:" textAlignment="CENTER" wrappingWidth="128.6708984375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="292.0" layoutY="163.0" onAction="#refreshInfo" prefHeight="46.0" prefWidth="136.0" text="Refresh" />
+      <JFXButton layoutX="821.0" layoutY="706.0" onAction="#nextPage" prefHeight="40.0" prefWidth="101.0" text="Next" />
+      <JFXButton layoutX="685.0" layoutY="706.0" onAction="#previousPage" prefHeight="40.0" prefWidth="101.0" text="Previous" />
+      <JFXButton layoutX="77.0" layoutY="163.0" onAction="#goBack" prefHeight="46.0" prefWidth="136.0" text="Back" />
+      <Text fx:id="text_whichPage" fill="WHITE" layoutX="342.0" layoutY="728.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Page 1" textAlignment="CENTER" wrappingWidth="233.6708984375">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
