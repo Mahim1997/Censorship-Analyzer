@@ -166,6 +166,9 @@ public class TestSitesController implements Initializable {
         System.out.println(s);
 
         Notification.push("Passing Through", str, Notification.SUCCESS, Pos.CENTER);
+        
+        //Switch Scene
+        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
     }
 
     @FXML

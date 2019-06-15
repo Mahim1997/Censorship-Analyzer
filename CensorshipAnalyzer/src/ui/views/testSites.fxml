@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="920.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TestSitesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="920.0" styleClass="anchor-pane" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TestSitesController">
    <children>
       <JFXButton layoutX="32.0" layoutY="38.0" onAction="#goBack" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="Back">
          <graphic>
@@ -163,7 +163,7 @@
                   </Text>
                </children>
             </HBox>
-            <CheckBox fx:id="checkBx_accept" mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="31.0" prefWidth="217.0" text="Accept Conditions" textFill="#2deede">
+            <CheckBox fx:id="checkBx_accept" mnemonicParsing="false" onAction="#checkBox_AcceptConditions" prefHeight="29.0" prefWidth="241.0" text="Accept Conditions" textFill="#2deede">
                <font>
                   <Font size="21.0" />
                </font>

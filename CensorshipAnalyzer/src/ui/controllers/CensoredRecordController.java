@@ -1,23 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ 
 package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
-
-/**
- *
- * @author mahim
- */
-public class CensoredRecordController {
+ 
+ 
+public class CensoredRecordController implements Initializable{
 
     @FXML
     private TableView<?> tableView;
@@ -62,6 +58,11 @@ public class CensoredRecordController {
 
     @FXML
     private void goBack(ActionEvent event) {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("--->>> Initializing CensoredRecordController.java ....");
     }
     
 }

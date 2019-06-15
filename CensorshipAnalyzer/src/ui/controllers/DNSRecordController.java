@@ -1,25 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ 
 package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
-/**
- *
- * @author viper
- */
+import util.loader.SceneLoader;
+import util.loader.Scenes;
+ 
 public class DNSRecordController implements Initializable{
 
  
@@ -61,7 +54,13 @@ public class DNSRecordController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
  
+        System.out.println("---->>> Initializing ... DNSRecordController .... ");
         this.vbox_localIPs.getChildren().add(new JFXTextField("IP 1"));
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
     }
     
     

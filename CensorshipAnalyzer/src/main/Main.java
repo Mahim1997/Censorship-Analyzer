@@ -25,11 +25,12 @@ public class Main extends Application {
 
         System.out.println("--->>>TRYING to load scene ..... ");
 //            System.out.println("-->>Inside Main.normalStart() .... ");
-//        Scene loadScene = SceneLoader.loadScene(Scenes.homeScreenFXML);
+        
         STAGE_WIDTH = stage.getMaxWidth();
         STAGE_HEIGHT = stage.getMaxHeight();
+        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
 //        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
-        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
+//        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
 
         stage.setOnCloseRequest((WindowEvent e) -> {
             Platform.exit();

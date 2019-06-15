@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
@@ -226,6 +227,7 @@
                   <Font name="System Bold Italic" size="35.0" />
                </font>
             </Text>
+            <JFXButton layoutX="283.0" layoutY="502.0" onAction="#goBack" prefHeight="57.0" prefWidth="163.0" text="Back" />
          </children>
       </AnchorPane>
    </center>
