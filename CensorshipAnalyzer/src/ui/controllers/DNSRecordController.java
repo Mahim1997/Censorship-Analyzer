@@ -47,6 +47,16 @@ public class DNSRecordController implements Initializable{
     private ImageView imageView_privateIP;
     @FXML
     private ImageView imageView_timeout;
+    @FXML
+    private ImageView imageView_invalidDomain;
+    @FXML
+    private ImageView imageView_noNameServers;
+    @FXML
+    private ImageView imageView_localServerRRCodeSet;
+    @FXML
+    private ImageView imageView_UnknownError;
+    @FXML
+    private Text text_censoredOrNot;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
