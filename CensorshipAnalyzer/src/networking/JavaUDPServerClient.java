@@ -60,8 +60,10 @@ public class JavaUDPServerClient {
             DatagramSocket datagramSock = new DatagramSocket();
             byte[] buff ;
             buff = msg.getBytes();
-            InetAddress addr = InetAddress.getLocalHost();
+            InetAddress addr = InetAddress.getByName("127.0.0.1");  //Loop-back IP
             DatagramPacket datagramPack = new DatagramPacket(buff, buff.length, addr , Config.PORT_PYTHON);
+            System.out.println("-->Sending msg <" + msg + ">");
+            datagramSock.send(datagramPack);
         } catch (Exception ex) {
             System.out.println("<><><><><><>   EXCEPTION IN JavaUDPServerClient.sendCommandToPython ... \n\n");
             System.exit(-1);

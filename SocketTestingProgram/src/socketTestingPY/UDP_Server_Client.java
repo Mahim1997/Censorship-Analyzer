@@ -1,8 +1,11 @@
 package socketTestingPY;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,4 +62,21 @@ public class UDP_Server_Client {
         UDP_Client.runClient(udp_ip_address, udp_PORT_Server_Python);
     }
 
+    
+    public static void sendMessage(String msg)
+    {
+        try {
+            int portPython = 7722;
+            DatagramSocket ds = new DatagramSocket();
+            byte[] buff = msg.getBytes();
+            DatagramPacket dp = new DatagramPacket(buff, buff.length, InetAddress.getByName("127.0.0.1"), portPython);
+            ds.send(dp);
+            System.out.println("-->Successfully sent msg <NEWLINE> \n--------------------------------------------------\n" 
+                    + msg + "\n--------------------------------------------------");
+        } catch (SocketException | UnknownHostException ex) {
+            Logger.getLogger(UDP_Server_Client.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UDP_Server_Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

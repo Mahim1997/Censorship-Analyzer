@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import networking.JavaUDPServerClient;
 import util.loader.SceneLoader;
 import ui.model.User;
 import util.loader.Scenes;
@@ -40,7 +41,13 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        testServerPython();
+//        launch(args);
+    }
+    
+    private static void testServerPython()
+    {
+        JavaUDPServerClient.sendCommandToPython("Hello Python");
     }
 
 }

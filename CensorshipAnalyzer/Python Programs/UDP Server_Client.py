@@ -14,11 +14,14 @@ UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
 # Send to server using created UDP socket
 
-n = 10
-while n > 0:
-    g = input('Enter msg to send to Java Server: ')	#Take input
-    bytesToSend = str.encode(g)
-    # UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-    UDPClientSocket.sendto(bytesToSend, serverAddressPort)
-    print('Message sent to server: ' + g)
-    n = n - 1
+
+
+
+#n = 10
+#while n > 0:
+ #   g = input('Enter msg to send to Java Server: ')	#Take input
+  #  bytesToSend = str.encode(g)
+   # # UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    #UDPClientSocket.sendto(bytesToSend, serverAddressPort)
+    #print('Message sent to server: ' + g)
+    #n = n - 1
