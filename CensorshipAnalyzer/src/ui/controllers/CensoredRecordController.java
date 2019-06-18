@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
+import tasks.Task;
  
  
 public class CensoredRecordController implements Initializable{
@@ -46,6 +47,7 @@ public class CensoredRecordController implements Initializable{
 
     @FXML
     private void refreshInfo(ActionEvent event) {
+        System.out.println("Refreshing Info ... ");
     }
 
     @FXML
@@ -63,6 +65,16 @@ public class CensoredRecordController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("--->>> Initializing CensoredRecordController.java ....");
+//        Timer timer = new Timer();
+        
     }
     
 }
+
+/*
+       Timer timer = new Timer();
+
+
+       // Schedule to run after every 3 second(3000 millisecond)
+       timer.schedule( new Task(), 3000);   
+*/

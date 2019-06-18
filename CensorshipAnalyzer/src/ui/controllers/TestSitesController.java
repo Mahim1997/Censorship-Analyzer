@@ -1,41 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.controllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import ui.model.User;
 import ui.sounds.Notification;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
 
-/**
- *
- * @author viper
- */
 public class TestSitesController implements Initializable {
 
     @FXML
-    private Text text_TestingMode;
-    @FXML
     private Text text_Mode;
-    @FXML
-    private JFXTextField label_URLName;
     @FXML
     private CheckBox checkBox_1Hour;
     @FXML
@@ -44,25 +34,16 @@ public class TestSitesController implements Initializable {
     private CheckBox checkBox_Custom;
     @FXML
     private HBox hbox_File;
-
-    private String testingMode = "";
-    private String fileNameToTest;
-    private String urlNameToTest;
-
-    @FXML
-    private JFXToggleButton toggleButton_url;
-    @FXML
-    private JFXToggleButton toggleButton_file;
     @FXML
     private CheckBox checkBox_30Mins;
     @FXML
     private JFXTextField label_hours;
     @FXML
-    private JFXTextField label_FileName;
-    @FXML
     private Text text_Hours;
     @FXML
     private JFXToggleButton toggleBtn_periodicCheck;
+    @FXML
+    private CheckBox checkBx_accept;
 
     private double timeInHours;
     private boolean isPeriodicCheck;
@@ -71,8 +52,20 @@ public class TestSitesController implements Initializable {
     private boolean isURLCheck;
     private boolean isCustom;
 
+    private String testingMode = "";
+    private String fileNameToTest;
+    private String urlNameToTest;
+
     @FXML
-    private CheckBox checkBx_accept;
+    private Text text_testingMode;
+    @FXML
+    private JFXTextField textField_url;
+    @FXML
+    private JFXTextField textField_fileName;
+    @FXML
+    private Tab tab_url;
+    @FXML
+    private Tab tab_file;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,90 +78,11 @@ public class TestSitesController implements Initializable {
         this.isCustom = false;
         this.isFileCheck = false;
         this.isURLCheck = false;
-        this.label_FileName.setEditable(false);
-        this.label_URLName.setEditable(false);
     }
 
     @FXML
     private void goBack(ActionEvent event) {
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
-    }
-
-    private String retrieveThings() {
-        //Error checking as well
-
-        if (this.isCustom == true) {
-            try {
-                String hours = this.label_hours.getText();
-                double hour_double = Double.parseDouble(hours); //TO DO ... CHECK: ONLY KEEP INTEGERS !!!
-                this.timeInHours = hour_double;
-            } catch (Exception e) {
-                Notification.push("ERROR", "Time should be in hours", Notification.FAILURE);
-                return "ERROR";
-            }
-        }
-
-        if (((this.isFileCheck == false) && (this.isURLCheck == false)) || ((this.isFileCheck == true) && (this.isURLCheck == true))) {
-            Notification.push("ERROR", "Pick any one of File/URL option", Notification.FAILURE);
-            return "ERROR";
-        }
-
-        if (this.isFileCheck) {
-            this.fileNameToTest = this.label_FileName.getText();
-            if (this.fileNameToTest.trim().equals("")) {
-                Notification.push("ERROR", "Pick a valid File", Notification.FAILURE);
-                return "ERROR";
-            }
-        } else if (this.isURLCheck) {
-            this.urlNameToTest = this.label_URLName.getText();
-            if (this.urlNameToTest.trim().equals("")) {
-                Notification.push("ERROR", "Pick a valid url", Notification.FAILURE);
-                return "ERROR";
-            }
-        }
-
-        if (this.isAccepted == false) {
-            Notification.push("WARNING", "Need to ACCEPT", Notification.WARNING);
-            return "ERROR";
-        }
-
-        return "SUCCESS";
-    }
-
-    @FXML
-    private void submitThings(ActionEvent event) {
-        if ("".equals(this.testingMode)) {
-            Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
-            return;
-        }
-        String ret = retrieveThings(); //Retrieve the items
-        if (!ret.equals("SUCCESS")) {
-            return;
-        }
-
-        String str = "Test Type: " + this.testingMode + "\n"
-                + "Periodic: " + this.isPeriodicCheck + "\n"
-                + "Time (periodic, hrs): " + this.timeInHours + "\n";
-
-        String ss = "";
-        if(this.isFileCheck == true){
-            ss = "File<" + this.fileNameToTest + ">\n";
-        }
-        else{
-            ss = "URL<" + this.urlNameToTest + ">\n";
-        }
-        
-        String s = str
-                + "User name: " + User.name + "\n"
-                + "Network Name: " + User.networkName + "\n"
-                + "Network Type: " + User.networkType + "\n"
-                + ss;
-        System.out.println(s);
-
-        Notification.push("Passing Through", str, Notification.SUCCESS, Pos.CENTER);
-        
-        //Switch Scene
-        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
     }
 
     @FXML
@@ -192,53 +106,13 @@ public class TestSitesController implements Initializable {
     }
 
     private void setUpTexts() {
-        String newText = this.text_Mode.getText();
-        newText += User.modeOfAccess;
-        this.text_Mode.setText(newText);
-
-        newText = this.text_TestingMode.getText();
-        newText += this.testingMode;
-        this.text_TestingMode.setText(newText);
+        this.text_Mode.setText(User.modeOfAccess);
+        this.text_testingMode.setText(this.testingMode);
     }
 
     private void setTestingMode(String tM) {
-        String newText = "Testing Mode: ";
-        newText += tM;
-        this.text_TestingMode.setText(newText);
         this.testingMode = tM;
-    }
-
-    @FXML
-    private void toggleButton_singleURL(ActionEvent event) {
-        if (this.toggleButton_url.isSelected() == true) {
-            //Selected
-            this.toggleButton_file.setSelected(false);
-            this.isURLCheck = true;
-            this.label_FileName.clear();
-            this.isFileCheck = false;
-            this.urlNameToTest = this.label_URLName.getText();
-            this.label_URLName.setEditable(true);
-        } else {
-            this.label_URLName.clear();
-            this.urlNameToTest = "";
-            this.isURLCheck = false;
-        }
-    }
-
-    @FXML
-    private void toggleButton_singleFILE(ActionEvent event) {
-        if (this.toggleButton_file.isSelected() == true) {
-            //Selected
-            this.toggleButton_url.setSelected(false);
-            this.isFileCheck = true;
-            this.isURLCheck = false;
-            this.label_URLName.clear();
-            this.fileNameToTest = this.label_FileName.getText();
-        } else {
-            this.label_FileName.clear();
-            this.fileNameToTest = "";
-            this.isFileCheck = false;
-        }
+        this.text_testingMode.setText(this.testingMode);
     }
 
     @FXML
@@ -311,8 +185,159 @@ public class TestSitesController implements Initializable {
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(null);
         System.out.println("File is : " + file.getAbsolutePath());
-        this.label_FileName.setText(file.getAbsolutePath());
+        this.textField_fileName.setText(file.getAbsolutePath());
         this.fileNameToTest = file.getAbsolutePath();
     }
 
+    private String retrieveThings() {
+        //Error checking as well
+        if ("".equals(this.testingMode)) {  //Should have a valid TESTING MODE
+            Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
+            return "ERROR";
+        }
+        if (this.isCustom == true) {
+            try {
+                String hours = this.label_hours.getText();
+                double hour_double = Double.parseDouble(hours); //TO DO ... CHECK: ONLY KEEP INTEGERS !!!
+                this.timeInHours = hour_double;
+            } catch (Exception e) {
+                Notification.push("ERROR", "Time should be in hours", Notification.FAILURE);
+                return "ERROR";
+            }
+        }
+
+        if (((this.isFileCheck == false) && (this.isURLCheck == false)) || ((this.isFileCheck == true) && (this.isURLCheck == true))) {
+            Notification.push("ERROR", "Pick any one of File/URL option", Notification.FAILURE);
+            return "ERROR";
+        }
+
+        if (this.isFileCheck) {
+            this.fileNameToTest = this.textField_fileName.getText();
+            if (this.fileNameToTest.trim().equals("")) {
+                Notification.push("ERROR", "Pick a valid File", Notification.FAILURE);
+                return "ERROR";
+            }
+        } else if (this.isURLCheck) {
+            this.urlNameToTest = this.textField_url.getText();
+            if (this.urlNameToTest.trim().equals("")) {
+                Notification.push("ERROR", "Pick a valid url", Notification.FAILURE);
+                return "ERROR";
+            }
+        }
+
+        if ((this.isAccepted == false) && (this.isFileCheck == true)) { //Should 'ACCEPT' for file_check
+            Notification.push("WARNING", "Need to ACCEPT", Notification.WARNING);
+            return "ERROR";
+        }
+
+        return "SUCCESS";
+    }
+
+    @FXML
+    private void submitURL(ActionEvent event) {
+        if ("".equals(this.testingMode)) {  //Should have a valid TESTING MODE
+            Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
+            return;
+        }
+
+        String str = "Test Type: " + this.testingMode + "\n"
+                + "Periodic: " + this.isPeriodicCheck + "\n"
+                + "Time (periodic, hrs): " + this.timeInHours + "\n";
+        String ss = "URL<" + this.urlNameToTest + ">\n";
+        String s = str
+                + "User name: " + User.name + "\n"
+                + "Network Name: " + User.networkName + "\n"
+                + "Network Type: " + User.networkType + "\n"
+                + ss;
+        System.out.println(s);
+
+        //Form a new command
+        //Send to Server_UDP
+        Notification.push("Passing Through for single URL", str, Notification.SUCCESS, Pos.CENTER);
+
+        //Switch Scene
+        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+    }
+
+    @FXML
+    private void submitFile(ActionEvent event) {
+        String ret = retrieveThings();
+        if (ret.equals("SUCCESS") == false) {
+            return;
+        }
+
+        String str = "Test Type: " + this.testingMode + "\n"
+                + "Periodic: " + this.isPeriodicCheck + "\n"
+                + "Time (periodic, hrs): " + this.timeInHours + "\n";
+        String ss = "File<" + this.fileNameToTest + ">\n";
+        String s = str
+                + "User name: " + User.name + "\n"
+                + "Network Name: " + User.networkName + "\n"
+                + "Network Type: " + User.networkType + "\n"
+                + ss;
+        System.out.println(s);
+
+        //Form a new command
+        //Send to Server_UDP
+        Notification.push("Passing Through for single URL", str, Notification.SUCCESS, Pos.CENTER);
+
+        //Switch Scene
+        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+
+    }
+
+    @FXML
+    private void selectURL_Tab(Event event) {
+        this.isURLCheck = true;
+        this.isFileCheck = false;
+    }
+
+    @FXML
+    private void selectFileTab(Event event) {
+        this.isFileCheck = true;
+        this.isURLCheck = false;
+    }
+
+    @FXML
+    private void viewFile(ActionEvent event) {
+        Stage stage = new Stage();
+        Scene scene = null;
+        //Load from fxml [TO Do]
+    }
+
 }
+
+/*
+String ret = retrieveThings(); //Retrieve the items
+        if (!ret.equals("SUCCESS")) {
+            return;
+        }
+
+        String str = "Test Type: " + this.testingMode + "\n"
+                + "Periodic: " + this.isPeriodicCheck + "\n"
+                + "Time (periodic, hrs): " + this.timeInHours + "\n";
+
+        String ss = "";
+        if(this.isFileCheck == true){
+            ss = "File<" + this.fileNameToTest + ">\n";
+        }
+        else{
+            ss = "URL<" + this.urlNameToTest + ">\n";
+        }
+        
+        String s = str
+                + "User name: " + User.name + "\n"
+                + "Network Name: " + User.networkName + "\n"
+                + "Network Type: " + User.networkType + "\n"
+                + ss;
+        System.out.println(s);
+        
+        
+        //Form a new command
+        //Send to Server_UDP
+
+        Notification.push("Passing Through", str, Notification.SUCCESS, Pos.CENTER);
+        
+        //Switch Scene
+        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+ */

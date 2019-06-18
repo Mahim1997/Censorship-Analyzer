@@ -29,7 +29,7 @@ public class Main extends Application {
         
         STAGE_WIDTH = stage.getMaxWidth();
         STAGE_HEIGHT = stage.getMaxHeight();
-        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
+        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
 //        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
 //        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
 
@@ -41,8 +41,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        testServerPython();
-//        launch(args);
+//        testServerPython();
+        launch(args);
     }
     
     private static void testServerPython()
