@@ -19,6 +19,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ui.model.User;
 import ui.sounds.Notification;
+import util.commands.CommandGenerator;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
 
@@ -173,11 +174,7 @@ public class TestSitesController implements Initializable {
 
     @FXML
     private void checkBox_AcceptConditions(ActionEvent event) {
-        if (checkBx_accept.isSelected() == true) {
-            this.isAccepted = true;
-        } else {
-            this.isAccepted = false;
-        }
+        this.isAccepted = checkBx_accept.isSelected() == true;
     }
 
     @FXML
@@ -240,25 +237,20 @@ public class TestSitesController implements Initializable {
             return;
         }
 
-        String str = "Test Type: " + this.testingMode + "\n"
-                + "Periodic: " + this.isPeriodicCheck + "\n"
-                + "Time (periodic, hrs): " + this.timeInHours + "\n";
-        String ss = "URL<" + this.urlNameToTest + ">\n";
-        String s = str
-                + "User name: " + User.name + "\n"
-                + "Network Name: " + User.networkName + "\n"
-                + "Network Type: " + User.networkType + "\n"
-                + ss;
-        System.out.println(s);
+        String command = CommandGenerator.getCommand(urlNameToTest, testingMode, false, "NULL", false, false, 0);
 
+        System.out.println("Command to send \n" + command);
+        
         //Form a new command
         //Send to Server_UDP
-        Notification.push("Passing Through for single URL", str, Notification.SUCCESS, Pos.CENTER);
+        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
 
         //Switch Scene
         SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
     }
 
+    
+    
     @FXML
     private void submitFile(ActionEvent event) {
         String ret = retrieveThings();
@@ -266,20 +258,14 @@ public class TestSitesController implements Initializable {
             return;
         }
 
-        String str = "Test Type: " + this.testingMode + "\n"
-                + "Periodic: " + this.isPeriodicCheck + "\n"
-                + "Time (periodic, hrs): " + this.timeInHours + "\n";
-        String ss = "File<" + this.fileNameToTest + ">\n";
-        String s = str
-                + "User name: " + User.name + "\n"
-                + "Network Name: " + User.networkName + "\n"
-                + "Network Type: " + User.networkType + "\n"
-                + ss;
-        System.out.println(s);
-
+        //File Read ... Read each line 
+        
+        
+        String command = "";
+        
         //Form a new command
         //Send to Server_UDP
-        Notification.push("Passing Through for single URL", str, Notification.SUCCESS, Pos.CENTER);
+        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
 
         //Switch Scene
         SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
@@ -308,36 +294,14 @@ public class TestSitesController implements Initializable {
 }
 
 /*
-String ret = retrieveThings(); //Retrieve the items
-        if (!ret.equals("SUCCESS")) {
-            return;
-        }
-
-        String str = "Test Type: " + this.testingMode + "\n"
-                + "Periodic: " + this.isPeriodicCheck + "\n"
-                + "Time (periodic, hrs): " + this.timeInHours + "\n";
-
-        String ss = "";
-        if(this.isFileCheck == true){
-            ss = "File<" + this.fileNameToTest + ">\n";
-        }
-        else{
-            ss = "URL<" + this.urlNameToTest + ">\n";
-        }
-        
-        String s = str
-                + "User name: " + User.name + "\n"
-                + "Network Name: " + User.networkName + "\n"
-                + "Network Type: " + User.networkType + "\n"
-                + ss;
-        System.out.println(s);
-        
-        
-        //Form a new command
-        //Send to Server_UDP
-
-        Notification.push("Passing Through", str, Notification.SUCCESS, Pos.CENTER);
-        
-        //Switch Scene
-        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+//        String str = "Test Type: " + this.testingMode + "\n"
+//                + "Periodic: " + this.isPeriodicCheck + "\n"
+//                + "Time (periodic, hrs): " + this.timeInHours + "\n";
+//        String ss = "File<" + this.fileNameToTest + ">\n";
+//        String s = str
+//                + "User name: " + User.userName + "\n"
+//                + "Network Name: " + User.networkName + "\n"
+//                + "Network Type: " + User.networkType + "\n"
+//                + ss;
+//        System.out.println(s);
  */

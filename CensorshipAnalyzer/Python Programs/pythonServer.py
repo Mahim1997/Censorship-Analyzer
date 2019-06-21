@@ -2,6 +2,8 @@ from dns_censorship_single_url_class import DNS_CENSORSHIP
 import socket
 import string
 
+from dbHandler import DBHandler
+
 def isSourceJava(msg):	#Simple function to check if contains source:java as the first line
 	x = msg.split(':')
 	if x[0]=='source':
@@ -24,19 +26,29 @@ def processMessage(msg):
 	typeOfTesting = getSecondColumn(splitMsg[3])
 	timestamp = getSecondColumn(splitMsg[4])
 	url = getSecondColumn(splitMsg[5])
-	periodicity = getSecondColumn(splitMsg[6])
-	isPeriodic = getSecondColumn(splitMsg[7])
+	isFile = getSecondColumn(splitMsg[6])	#isFile -> 0 then only url check ... so DO NOT add to database
+	periodicity = getSecondColumn(splitMsg[7])
+	isPeriodic = getSecondColumn(splitMsg[8])
+
+
 	fileNamePeriodic = "NULL"
 	iterationNumber = -1	 #Initialise to -1
 	if periodicity == 'forced':
 		iterationNumber = 0	#Initial check is 0th
 	if isPeriodic == 1:
-		fileNamePeriodic = getSecondColumn(splitMsg[8])
+		fileNamePeriodic = getSecondColumn(splitMsg[9])
+		iterationNumber = getSecondColumn(splitMsg[10])
 
 	if typeOfTesting == 'dns':
 		print('Run DNS .... ')
 		dns_check = DNS_CENSORSHIP()
+		if isFile == 0:
+			dns_check.ADD_TO_DATABASE = 0
+
+		db = DBHandler()
+		db.checkAndMakeConnection(userID)
 		dns_check.dns_censorship_check(url)
+
 	elif typeOfTesting == 'tcp':
 		print('Run TCP .....')
 	elif typeOfTesting == 'http':
@@ -77,5 +89,5 @@ def runServer():
 #--------------------------------------------------Main Program---------------------------------------------------------------
 
 #runServer()
-str = "source:java$userID:7$connectionID:4$typeOfTesting:dns$timestamp:17 June 2019, 4 45 am$url:www.google.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+str = "source:java$userID:2$connectionID:4$typeOfTesting:dns$timestamp:17 June 2019, 4 45 am$url:www.pornhub.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
 processMessage(str)

@@ -24,7 +24,7 @@ class DNS_CENSORSHIP:
 	NxDomain = 2
 	NoAnswer = 4
 	Iterate = 5
-    
+    ADD_TO_DATABASE = 1		#Initialize as ADD_TO_DATABASE
 
 	def printMessage(self,message):
 		print(message) 
@@ -307,8 +307,9 @@ class DNS_CENSORSHIP:
 					output.close()
 
 
-dns_check = DNS_CENSORSHIP()
-dns_check.dns_censorship_check()
+
+#dns_check = DNS_CENSORSHIP()
+#dns_check.dns_censorship_check()
 
 
 

@@ -27,6 +27,7 @@ class DNS_CENSORSHIP:
 	NoAnswer = 4
 	Iterate = 5
     
+	ERROR_CODE = 0 #error code for DNS censorship
 
 	def printMessage(self,message):
 		print(message) 
@@ -55,20 +56,26 @@ class DNS_CENSORSHIP:
 		"This checks if this ip resides in private ip range,loopback ip range"
 		if IPAddress(ip).is_loopback():
 			str = "loopback ip"
+			ERROR_CODE = 100			
 			return False, str;
 		if IPAddress(ip).is_private():
 			str = "private ip"
+			ERROR_CODE = 101
 			return False, str;
 		if IPAddress(ip).is_reserved():
 			str = "reserved ip"
+			ERROR_CODE = 102
 			return False, str;
 		if IPAddress(ip).is_multicast():
 			str = "multicast ip"
+			ERROR_CODE = 103
 			return False, str;
 		if IPAddress(ip).is_unicast() and not IPAddress(ip).is_private():
 			str = "public ip"
+			ERROR_CODE = 104
 			return True, str;
 		str = "undefined"
+		ERROR_CODE = 105
 		return True, str;
 
     
@@ -101,6 +108,7 @@ class DNS_CENSORSHIP:
 		if isNameResolved:
 			return True
 		else:
+			ERROR_CODE = 106
 			return False
 
 	def isLocalDnsOk(self):
@@ -119,6 +127,7 @@ class DNS_CENSORSHIP:
 			return True
 		else:
 			self.printMessage("-->Local Dns Server Unable to Resolve "+ HOST)
+			ERROR_CODE = 107
 			return False
 
 	def frequencyAnalysis(self,ipList,HOST):
@@ -141,7 +150,8 @@ class DNS_CENSORSHIP:
 						f.close()
 						return False
 					else:
-						message = "Censored: Local Dns Server resolved more than one  Domain name to same ip address"
+						message = "Censored: Local Dns Server resolved more than one domain name to same ip address"
+						ERROR_CODE = 108
 						self.writeToDetails(message,HOST)
 						f.close()
 						return True
@@ -195,6 +205,7 @@ class DNS_CENSORSHIP:
 		if len(a_set.intersection(b_set)) > 0: 
 			return True  
 		else: 
+			ERROR_CODE = 109
 			return False
 
 
@@ -225,6 +236,7 @@ class DNS_CENSORSHIP:
 		self.printMessage("->Local Dns Server:")
 		isNameResolved = False
 		attempt_count=1
+
 		for i in range(self.Iterate):
 			idLocal,messageLocal,answersFromLocal = dnsOb.QueryToLocalDnsServer(HOST)
 			errorCodeLocal.append(idLocal)
@@ -235,6 +247,7 @@ class DNS_CENSORSHIP:
 					ipListLocal.append(answer.to_text())
 				break
 			attempt_count = attempt_count+1
+
 		if not isNameResolved:
 			isNxDomain = False
 			isTimedOut = True
@@ -247,10 +260,12 @@ class DNS_CENSORSHIP:
 				if isOk:
 					self.printMessage("-->No Network Problem or Excessive Load")
 					self.printMessage("Censored: No Response From Local Dns Server")
+					ERROR_CODE = 110
 					message = "Censored: No Response From Local Dns Server"
 					self.writeToDetails(message,HOST)
 				else:
 					self.printMessage("-->Timed Out Occurred Due to Network Problem or Excessive Load")
+					ERROR_CODE = 111
 					message = "check network connectivity"
 					self.writeToDetails(message,HOST)
 					
@@ -261,11 +276,13 @@ class DNS_CENSORSHIP:
 					self.printMessage("-->Remote Dns Server Successfully Resolved "+HOST)
 					self.printMessage("-->"+HOST+"s is censored")
 					message = "Local Dns Server Returning rrset with rcode set"
+					ERROR_CODE = 112
 					self.writeToDetails(message,HOST)
 				else:
 					self.printMessage("-->Remote Dns Server Unable to Resolve "+HOST)
 					self.printMessage("-->Domain Name:"+HOST+" Does not Exist or Unknown Reason")
 					message = "Invalid Domain Name or Unknown Error Occured"
+					ERROR_CODE = 113
 					self.writeToDetails(message,HOST)
 		else:
 			isNameResolved = False
@@ -289,20 +306,24 @@ class DNS_CENSORSHIP:
 					istrue = self._checkIpLocalDns(ipListLocal,HOST)
 					if istrue:
 						self.printMessage("Domain Does not Exist or Unknown Error")
+						ERROR_CODE = 114
 				else:
 					self.printMessage("Remote Dns Server Unable to Resolve "+HOST)
+					ERROR_CODE = 115
 					self.checkIpLocalDns(ipListLocal,HOST)
 			else:
 				isOverlapped = self.checkOverlappedIp(ipListLocal,ipListRemote)
 				if isOverlapped:
 					self.printMessage("LSD and RDS Returned Overlapped Ip Address Set")
 					self.printMessage("Domain Name is not censored")
+					ERROR_CODE = 116
 					message = "Domain Name is not censored"
 					self.writeToDetails(message,HOST)
 					self.writeToLocalIPList(ipListLocal,HOST)
 				else:
 					self.printMessage("LSD and RDS Returned Non-Overlapped Ip Address Set")
 					self.checkIpLocalDns(ipListLocal,HOST)
+					ERROR_CODE = 117
 				
 				output = open("RemoteIpList.txt", "a")
 				for ip in ipListRemote:
@@ -310,11 +331,12 @@ class DNS_CENSORSHIP:
 				output.close()
 
 
+			print('\nFinally .... ERROR_CODE = ' + str(self.ERROR_CODE))
 # ------------------------------- TEST MAIN PROGRAM -------------------------------
-
+_is_main_ = False #Make it false for usin it to run by other python programs
 if _is_main_ == True :
 	dns_check = DNS_CENSORSHIP()
-	dns_check.dns_censorship_check("www.google.com")
+	dns_check.dns_censorship_check("www.ranker.com")
 
 
 

@@ -24,12 +24,11 @@ public class Main extends Application {
         Main.stage = primaryStage;
         Main.stage.setTitle(Main.TITLE);
 
-        System.out.println("--->>>TRYING to load scene ..... ");
-//            System.out.println("-->>Inside Main.normalStart() .... ");
-        
+        System.out.println("--->>> In Main.start() ... TRYING to load scene ..... ");
+//
         STAGE_WIDTH = stage.getMaxWidth();
         STAGE_HEIGHT = stage.getMaxHeight();
-        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
 //        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
 //        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
 

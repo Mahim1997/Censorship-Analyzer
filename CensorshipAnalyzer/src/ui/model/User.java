@@ -22,16 +22,19 @@ public class User {
     public static int numberOfCensoredHTTP;
     public static String location;
     
-    public static String name;
+    public static String userName;
+    
+    public static int userID;   //User ID [obtained from Database]
     
     public static void initiateUser(){
         if(Main.USER_DEBUG == 1){
+            userID = 7; //example
             networkName = "XploreNet BD";
             networkType = "ISP";
             modeOfAccess = "Logged User";
             userFirstName = "Mahim";
             userLastName = "Mahbub";
-            name = userFirstName + " " + userLastName ;
+            userName = userFirstName + " " + userLastName ;
             userPassword = "1505022";
             
             location = "Dhaka, Bangladesh";

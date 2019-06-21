@@ -16,7 +16,6 @@ UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
 
 
-
 #n = 10
 #while n > 0:
  #   g = input('Enter msg to send to Java Server: ')	#Take input
