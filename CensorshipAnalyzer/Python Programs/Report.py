@@ -22,7 +22,27 @@ class Report:
 	stubby_ip_addresses=[]
 
 
+	def printReport(self):
+		print("Report ID: " + str(self.reportID))
+		print("Connection ID: " + str(self.connectionID))
+		print("TimeStamp: " + str(self.timestamp))
+		print("URL: " + self.url)
+		print("Type of Test: " + self.type_of_testing)
+		print("Method Censorship: " + self.method_of_censorship)
+		print("Is File Check : " + str(self.is_file_check))
+		print("Is periodic Check: " + str(self.is_periodic))
+		print("File Name Periodic: " + self.file_name_periodic)
+		print("Iteration Number: " + str(self.iteration_number))
 
+		print("Censorship Code: " + str(self.censorship_code))
+		print("Mid box hop count: " + str(self.middle_box_hop_count))
+		print("Censorship Details: " + self.censorship_details)
+
+		print("Printing LocalIpAddresses: ")
+		print(*self.local_ip_addresses, sep = ",")
+
+		print("Printing StubbyIpAddresses: ")
+		print(*self.stubby_ip_addresses, sep = ",")
 
 
 def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber, censorshipCode, 

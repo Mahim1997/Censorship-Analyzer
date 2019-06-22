@@ -46,8 +46,10 @@ def processMessage(msg):
 			dns_check.ADD_TO_DATABASE = 0
 
 		db = DBHandler()
-		db.checkAndMakeConnection(userID)
-		dns_check.dns_censorship_check(url)
+		#db.checkAndMakeConnection(userID) 	#TO DO  [Problem [NoneType etc]]
+		
+		report = dns_check.dns_censorship_check(url)
+		db.handleReport(report)
 
 	elif typeOfTesting == 'tcp':
 		print('Run TCP .....')

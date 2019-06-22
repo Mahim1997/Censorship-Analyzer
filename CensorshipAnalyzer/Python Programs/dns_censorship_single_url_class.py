@@ -17,7 +17,7 @@ from json import load
 #from urllib2 import urlopen
 import sys
 from SocketFunctions import SocketFunctions
-
+from Report import Report
 
 
 _is_main_ = False	#To use this file as a module in somewhere else .... 
@@ -29,6 +29,8 @@ class DNS_CENSORSHIP:
 	Iterate = 5
     
 	ERROR_CODE = 0 #error code for DNS censorship
+
+	report = Report()
 
 	def printMessage(self,message):
 		print(message) 
@@ -104,6 +106,7 @@ class DNS_CENSORSHIP:
 				output = open("RemoteIpList.txt", "a")
 				for ip in answersFromRemote:
 					output.write(HOST + ":"+ip.to_text()+'\n')
+					#report.stubby_ip_addresses.append(ip.to_text()) 	#Place in Report
 				output.close()
 				break
 		if isNameResolved:
@@ -333,6 +336,14 @@ class DNS_CENSORSHIP:
 
 
 			print('\nFinally .... ERROR_CODE = ' + str(self.ERROR_CODE))
+			self.report.stubby_ip_addresses.extend(ipListRemote)
+			self.report.local_ip_addresses.extend(ipListLocal)
+			self.report.cenosorship_code = self.ERROR_CODE
+
+
+			#Finally returning report [TO DO few things more such as isFileCheck etc ]
+			return self.report 
+
 # ------------------------------- TEST MAIN PROGRAM -------------------------------
 _is_main_ = False #Make it false for usin it to run by other python programs
 if _is_main_ == True :
