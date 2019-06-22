@@ -27,7 +27,7 @@ class Database:
 		#Connection(connectionID(PK), network_name, global_IP, userID all FK's, location)
 		c.execute("CREATE TABLE IF NOT EXISTS 	Connection(connection_id INTEGER PRIMARY KEY,network_name TEXT, global_ip TEXT, user_id INTEGER, location TEXT,FOREIGN KEY (network_name,global_ip) REFERENCES Network(network_name,global_ip),FOREIGN KEY (user_id) REFERENCES USER(user_id))")
 	
-		#Report (reportID(PK), connectionID(FK), timestamp, url, isCensored, type_of_testing, method_of_censorship, isFileCheck, isPeriodic, fileName_Periodic, iterationNumber)
+		#Report (report_id(PK), connection_id(FK), time_stamp, url, is_censored, type_of_testing, method_of_censorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber)
 		c.execute("CREATE TABLE IF NOT EXISTS 	Report(report_id INTEGER PRIMARY KEY,connection_id INTEGER, time_stamp REAL UNIQUE, url TEXT, is_censored TEXT ,type_of_testing TEXT, method_of_censorship TEXT, isFileCheck TEXT, isPeriodic TEXT, fileNamePeriodic TEXT, iterationNumber INTEGER, FOREIGN KEY(connection_id) REFERENCES Connection(connection_id))")
 	
 

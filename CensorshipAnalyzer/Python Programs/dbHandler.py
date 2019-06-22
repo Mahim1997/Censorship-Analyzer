@@ -44,6 +44,31 @@ class DBHandler:
 	 
 
 	def handleReport(self, report):
-		print("Inside handleReport() ... printing report : ")
 		report.printReport()
-		pass
+		conn = sqlite3.connect("Client Data.db")
+		c = conn.cursor()
+		#c.execute("INSERT INTO Network VALUES(?, ?, ?)", ("Banglalink", "109.09.012", "Mobile Network") )
+		
+		#Table ... Report (report_id(PK), connection_id(FK), time_stamp, url, 
+			#is_censored, type_of_testing, method_of_censorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber)
+		print("Inserting into Report Table .... ")
+
+		c.execute("SELECT COUNT(*) FROM Report")
+		#conn.commit()
+		countGot = c.fetchall()
+		num = -1 
+		for row in countGot:
+			#print("Row[0] : " + str(row[0]))
+			num = row[0] 	#Don't know exactly why like this !!
+
+		report.reportID = num + 1
+		
+		c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+			( report.reportID, report.connectionID, report.timestamp, report.url, report.is_censored, report.type_of_testing,
+				report.method_of_censorship, report.is_file_check, report.is_periodic,
+				report.file_name_periodic, report.iteration_number))
+		conn.commit()
+
+		c.close()
+		conn.close()
+ 

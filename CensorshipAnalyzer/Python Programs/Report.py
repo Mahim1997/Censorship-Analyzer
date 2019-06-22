@@ -15,6 +15,7 @@ class Report:
 	iteration_number="NONE"
 
 	#DNS PART
+	is_censored = "NONE"
 	censorship_code=0
 	middle_box_hop_count=0
 	censorship_details="NONE"
@@ -24,16 +25,20 @@ class Report:
 
 
 	def printReport(self):
+		print("---------------------------- PRINTING REPORT BEGIN--------------------------")
 		print("Report ID: " + str(self.reportID))
 		print("Connection ID: " + str(self.connectionID))
 		print("TimeStamp: " + str(self.timestamp))
 		print("URL: " + self.url)
 		print("Type of Test: " + self.type_of_testing)
+		print("Is Censored? " + self.is_censored)
+		
 		print("Method Censorship: " + self.method_of_censorship)
 		print("Is File Check : " + str(self.is_file_check))
 		print("Is periodic Check: " + str(self.is_periodic))
 		print("File Name Periodic: " + self.file_name_periodic)
 		print("Iteration Number: " + str(self.iteration_number))
+
 
 		print("Censorship Code: " + str(self.censorship_code))
 		print("Mid box hop count: " + str(self.middle_box_hop_count))
@@ -45,6 +50,7 @@ class Report:
 		print("Printing StubbyIpAddresses: ")
 		print(*self.stubby_ip_addresses, sep = " , ")
 
+		print("---------------------------- PRINTING REPORT DONE --------------------------")
 
 def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber, censorshipCode, 
 	midboxHopCount, censorshipDetails, ip_local, ip_stubby):
@@ -68,7 +74,7 @@ def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFil
 	return rep 
 
 #-------------------------------------------------------------
-isMain=True 	#Keep false to be called by outside file
+isMain=False 	#Keep false to be called by outside file
 
 if isMain == True:
 	rep = Report()

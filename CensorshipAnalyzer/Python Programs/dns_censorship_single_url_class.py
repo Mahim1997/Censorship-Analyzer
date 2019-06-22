@@ -29,7 +29,7 @@ class DNS_CENSORSHIP:
 	Iterate = 5
     
 	ERROR_CODE = 0 #error code for DNS censorship
-
+	IS_CENSORED = "YES"
 	report = Report()
 
 	def printMessage(self,message):
@@ -321,6 +321,7 @@ class DNS_CENSORSHIP:
 					self.printMessage("LSD and RDS Returned Overlapped Ip Address Set")
 					self.printMessage("Domain Name is not censored")
 					ERROR_CODE = 116
+					IS_CENSORED = "NO" 	#NOT CENSORED
 					message = "Domain Name is not censored"
 					self.writeToDetails(message,HOST)
 					self.writeToLocalIPList(ipListLocal,HOST)
@@ -339,7 +340,7 @@ class DNS_CENSORSHIP:
 			self.report.stubby_ip_addresses.extend(ipListRemote)
 			self.report.local_ip_addresses.extend(ipListLocal)
 			self.report.cenosorship_code = self.ERROR_CODE
-
+			self.report.is_censored = self.IS_CENSORED
 
 			#Finally returning report [TO DO few things more such as isFileCheck etc ]
 			return self.report 
