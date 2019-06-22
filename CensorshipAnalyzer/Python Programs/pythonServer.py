@@ -6,9 +6,10 @@ from dbHandler import DBHandler
 
 def isSourceJava(msg):	#Simple function to check if contains source:java as the first line
 	x = msg.split(':')
-	if x[0]=='source':
-		if x[1] == 'java':
-			return True
+	
+	if x[1] == 'java':
+		return True
+
 	return False
 
 def getSecondColumn(msg):	#To get the second column after : thing
@@ -21,6 +22,7 @@ def processMessage(msg):
 	splitMsg = msg.split('$')
 	if isSourceJava(splitMsg[0])==False:
 		return
+
 	userID = getSecondColumn(splitMsg[1])
 	connectionID = getSecondColumn(splitMsg[2])
 	typeOfTesting = getSecondColumn(splitMsg[3])
@@ -29,7 +31,7 @@ def processMessage(msg):
 	isFile = getSecondColumn(splitMsg[6])	#isFile -> 0 then only url check ... so DO NOT add to database
 	periodicity = getSecondColumn(splitMsg[7])
 	isPeriodic = getSecondColumn(splitMsg[8])
-
+	
 
 	fileNamePeriodic = "NULL"
 	iterationNumber = -1	 #Initialise to -1
@@ -38,8 +40,8 @@ def processMessage(msg):
 	if isPeriodic == 1:
 		fileNamePeriodic = getSecondColumn(splitMsg[9])
 		iterationNumber = getSecondColumn(splitMsg[10])
-
-	if typeOfTesting == 'dns':
+	
+	if typeOfTesting == 'DNS':
 		print('Run DNS .... ')
 		dns_check = DNS_CENSORSHIP()
 		if isFile == 0:
@@ -59,11 +61,11 @@ def processMessage(msg):
 
 		db.handleReport(report)
 
-	elif typeOfTesting == 'tcp':
+	elif typeOfTesting == 'TCP':
 		print('Run TCP .....')
-	elif typeOfTesting == 'http':
+	elif typeOfTesting == 'HTTP':
 		print('Run HTTP .... ')
-	elif typeOfTesting == 'all':
+	elif typeOfTesting == 'ALL':
 		print('Run All ..... ')
 	else :
 		return
@@ -100,4 +102,7 @@ def runServer():
 
 runServer()
 #str = "source:java$userID:2$connectionID:4$typeOfTesting:dns$timestamp:17 June 2019, 4 45 am$url:www.pornhub.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+#processMessage(str)
+
+#str ='source:java$userID:7$connectionID:7$typeOfTesting:DNS$timestamp:23/06/2019 04:06:22$url:null$isFile:0$periodicity:forced$isPeriodic:no$fileNamePeriodic:NULL$iterationNumber:0$periodInHours:0$'
 #processMessage(str)

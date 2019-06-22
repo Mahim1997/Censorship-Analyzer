@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import ui.model.User;
 
-public class CommandGenerator {
+public class ComdGen {
 
     private static String getConnectionID_UsingPython() {
         int DEBUG_CONNECTION_ID = 1;
@@ -12,29 +12,30 @@ public class CommandGenerator {
         if (DEBUG_CONNECTION_ID == 1) {
             return "7";
         }
-
+        
         //Use Python Module ... 
+        
         return null;
     }
 
     private static String getGeneralCommands() {
         String s = "";
-        s += "source:java$";
-        s += ("connectionID:" + getConnectionID_UsingPython() + "$");
+        s += "source:java\n";
+        s += ("connectionID:" + getConnectionID_UsingPython() + "\n");
 
-        return s;
+        return null;
     }
 
     private static String getLine(String first, String last) {
-        return (first + ":" + last + "$");
+        return (first + ":" + last + "\n");
     }
 
     private static String getLine(String first, int last) {
-        return (first + ":" + String.valueOf(last) + "$");
+        return (first + ":" + String.valueOf(last) + "\n");
     }
 
     private static String getLine(String first, double last) {
-        return (first + ":" + String.valueOf(last) + "$");
+        return (first + ":" + String.valueOf(last) + "\n");
     }
 
     private static String getCurrentTime() {

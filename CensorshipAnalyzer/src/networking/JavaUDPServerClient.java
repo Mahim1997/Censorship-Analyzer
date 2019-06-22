@@ -56,6 +56,8 @@ public class JavaUDPServerClient {
     
     public static void sendCommandToPython(String msg)
     {
+        System.out.println("Sending to python : ");
+        System.out.println(msg);
         try {
             DatagramSocket datagramSock = new DatagramSocket();
             byte[] buff ;

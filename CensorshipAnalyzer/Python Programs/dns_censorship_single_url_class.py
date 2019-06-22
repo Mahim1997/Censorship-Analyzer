@@ -183,6 +183,7 @@ class DNS_CENSORSHIP:
 			self.writeToLocalIPList(ipList,HOST)
 			self.printMessage("Domain Name is not censored")
 			message = "Domain Name is not censored"
+			self.IS_CENSORED = "NO"
 			self.writeToDetails(message,HOST)
 
 
@@ -321,7 +322,7 @@ class DNS_CENSORSHIP:
 					self.printMessage("LSD and RDS Returned Overlapped Ip Address Set")
 					self.printMessage("Domain Name is not censored")
 					ERROR_CODE = 116
-					IS_CENSORED = "NO" 	#NOT CENSORED
+					self.IS_CENSORED = "NO" 	#NOT CENSORED
 					message = "Domain Name is not censored"
 					self.writeToDetails(message,HOST)
 					self.writeToLocalIPList(ipListLocal,HOST)

@@ -251,7 +251,7 @@ public class TestSitesController implements Initializable {
             Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
             return;
         }
-
+        this.urlNameToTest = this.textField_url.getText();
         //Form a new command
         String command = CommandGenerator.getCommand(urlNameToTest, testingMode, false, "NULL", false, false, 0);
 
