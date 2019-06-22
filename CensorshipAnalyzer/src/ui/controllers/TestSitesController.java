@@ -58,7 +58,7 @@ public class TestSitesController implements Initializable {
     private boolean isCustom;
 
     private String testingMode = "";
-    private String fileNameToTest;
+    private String absoluteFilePathNameToTest;
     private String urlNameToTest;
 
     @FXML
@@ -72,7 +72,7 @@ public class TestSitesController implements Initializable {
     @FXML
     private Tab tab_file;
 
-    private String fileNameToShow;
+    private String fileNameNormalToTest;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -188,9 +188,11 @@ public class TestSitesController implements Initializable {
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(null);
         System.out.println("File is : " + file.getAbsolutePath());
-        this.textField_fileName.setText(file.getAbsolutePath());
-        this.fileNameToTest = file.getAbsolutePath();
-        this.fileNameToShow = file.getName();
+//        this.textField_fileName.setText(file.getName());    //Just the name is to be displayed
+        this.textField_fileName.setText(file.getAbsolutePath());    //Just the name is to be displayed
+
+        this.absoluteFilePathNameToTest = file.getAbsolutePath();
+        this.fileNameNormalToTest = file.getName();
     }
 
     private String retrieveThings() {
@@ -216,8 +218,8 @@ public class TestSitesController implements Initializable {
         }
 
         if (this.isFileCheck) {
-            this.fileNameToTest = this.textField_fileName.getText();
-            if (this.fileNameToTest.trim().equals("")) {
+            this.absoluteFilePathNameToTest = this.textField_fileName.getText();
+            if (this.absoluteFilePathNameToTest.trim().equals("")) {
                 Notification.push("ERROR", "Pick a valid File", Notification.FAILURE);
                 return "ERROR";
             }
@@ -292,14 +294,21 @@ public class TestSitesController implements Initializable {
         try {
             Stage stage = new Stage();
             //Load from fxml [TO Do] In a new Stage
+            this.absoluteFilePathNameToTest = this.textField_fileName.getText();
+            this.fileNameNormalToTest = trimName(this.absoluteFilePathNameToTest);
+            
+            System.out.println("BEFORE .... this.absPathFile = " + this.absoluteFilePathNameToTest + " , this.normalFileName = " + this.fileNameNormalToTest);
+            
             String fileNameFXMLToLoad = Scenes.fileViewFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
             Parent root = loader.load();
             
-            FileViewerController controller = (FileViewerController)loader.getController();
-            controller.setFileName(this.fileNameToShow);
+
             
+            FileViewerController controller = (FileViewerController)loader.getController();
+            controller.setFileName(this.fileNameNormalToTest, this.absoluteFilePathNameToTest);
+            controller.showData();
             
             Scene scene = new Scene(root);//, Main.STAGE_WIDTH, Main.STAGE_HEIGHT);
             stage.setScene(scene);
@@ -307,8 +316,18 @@ public class TestSitesController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Notification.push("Error", "Error in loading file", Notification.FAILURE, Pos.BOTTOM_RIGHT);
+            ex.printStackTrace();
         }
 
+    }
+
+    private String trimName(String s) {
+        String[]sArr = s.split("/");
+        
+        String normalTrimmedFileName = sArr[sArr.length - 1];
+        
+//        System.out.println("-->File Name : (In TestSitesController.java) is " + normalTrimmedFileName);
+        return normalTrimmedFileName;
     }
 
 }

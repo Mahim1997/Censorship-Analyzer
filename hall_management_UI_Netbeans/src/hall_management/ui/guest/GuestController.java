@@ -364,7 +364,7 @@ public class GuestController implements Initializable,Controller {
         ObservableList<Student_OfThisGuest> data = FXCollections.observableArrayList(list);
 
         col_student_ID.setCellValueFactory(
-                new PropertyValueFactory<Student_ForGuardToSee, String>("studentID")
+                new PropertyValueFactory<>("studentID")
         );
         col_studentFullName.setCellValueFactory(
                 new PropertyValueFactory<>("studentFullName")
