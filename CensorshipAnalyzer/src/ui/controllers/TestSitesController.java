@@ -3,13 +3,16 @@ package ui.controllers;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Tab;
@@ -17,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import main.Main;
 import ui.model.User;
 import ui.sounds.Notification;
 import util.commands.CommandGenerator;
@@ -68,6 +72,8 @@ public class TestSitesController implements Initializable {
     @FXML
     private Tab tab_file;
 
+    private String fileNameToShow;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Inside TestSitesController ... ");
@@ -184,6 +190,7 @@ public class TestSitesController implements Initializable {
         System.out.println("File is : " + file.getAbsolutePath());
         this.textField_fileName.setText(file.getAbsolutePath());
         this.fileNameToTest = file.getAbsolutePath();
+        this.fileNameToShow = file.getName();
     }
 
     private String retrieveThings() {
@@ -240,7 +247,7 @@ public class TestSitesController implements Initializable {
         String command = CommandGenerator.getCommand(urlNameToTest, testingMode, false, "NULL", false, false, 0);
 
         System.out.println("Command to send \n" + command);
-        
+
         //Form a new command
         //Send to Server_UDP
         Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
@@ -249,8 +256,6 @@ public class TestSitesController implements Initializable {
         SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
     }
 
-    
-    
     @FXML
     private void submitFile(ActionEvent event) {
         String ret = retrieveThings();
@@ -259,10 +264,8 @@ public class TestSitesController implements Initializable {
         }
 
         //File Read ... Read each line 
-        
-        
         String command = "";
-        
+
         //Form a new command
         //Send to Server_UDP
         Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
@@ -286,9 +289,26 @@ public class TestSitesController implements Initializable {
 
     @FXML
     private void viewFile(ActionEvent event) {
-        Stage stage = new Stage();
-        Scene scene = null;
-        //Load from fxml [TO Do]
+        try {
+            Stage stage = new Stage();
+            //Load from fxml [TO Do] In a new Stage
+            String fileNameFXMLToLoad = Scenes.fileViewFXML;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+            Parent root = loader.load();
+            
+            FileViewerController controller = (FileViewerController)loader.getController();
+            controller.setFileName(this.fileNameToShow);
+            
+            
+            Scene scene = new Scene(root);//, Main.STAGE_WIDTH, Main.STAGE_HEIGHT);
+            stage.setScene(scene);
+            stage.setMaximized(false);
+            stage.show();
+        } catch (IOException ex) {
+            Notification.push("Error", "Error in loading file", Notification.FAILURE, Pos.BOTTOM_RIGHT);
+        }
+
     }
 
 }

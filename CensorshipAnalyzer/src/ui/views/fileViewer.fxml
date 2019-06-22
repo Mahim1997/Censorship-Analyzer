@@ -20,8 +20,12 @@
       </Text>
       <TableView fx:id="tableView" layoutX="109.0" layoutY="159.0" prefHeight="619.0" prefWidth="819.0" style="-fx-background-color: #aaaaaa;">
         <columns>
-          <TableColumn prefWidth="816.0" />
+          <TableColumn prefWidth="816.0" text="Index" />
+            <TableColumn prefWidth="816.0" text="URL" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </AnchorPane>

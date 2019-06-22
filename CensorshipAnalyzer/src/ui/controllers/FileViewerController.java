@@ -30,9 +30,10 @@ public class FileViewerController implements Initializable{
         
         //Read each line
         //Place in the table view
-        
+         
     }
-    
+
+  
     
     
 }

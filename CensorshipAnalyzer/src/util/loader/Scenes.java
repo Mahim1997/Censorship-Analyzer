@@ -7,4 +7,5 @@ public class Scenes {
     public static String testSitesScene = "/ui/views/testSites.fxml";
     public static String dnsRecords = "/ui/views/dnsRecords.fxml";
     public static String censoredRecordsFXML = "/ui/views/censoredRecords.fxml";
+    public static String fileViewFXML = "/ui/views/fileViewer.fxml";
 }
