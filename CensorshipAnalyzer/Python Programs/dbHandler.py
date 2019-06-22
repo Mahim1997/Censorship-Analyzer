@@ -67,6 +67,15 @@ class DBHandler:
 			( report.reportID, report.connectionID, report.timestamp, report.url, report.is_censored, report.type_of_testing,
 				report.method_of_censorship, report.is_file_check, report.is_periodic,
 				report.file_name_periodic, report.iteration_number))
+		
+		for ip in report.local_ip_addresses:
+			c.execute("INSERT INTO LocalIpAddresses VALUES (?, ?)", 
+				(report.reportID, ip))
+		
+		for ip in report.stubby_ip_addresses:
+			c.execute("INSERT INTO StubbyIpAddresses VALUES (?, ?)", 
+				(report.reportID, ip))
+			
 		conn.commit()
 
 		c.close()
