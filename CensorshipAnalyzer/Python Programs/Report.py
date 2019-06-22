@@ -1,5 +1,6 @@
 from copy import deepcopy
 import string
+from datetime import datetime
 
 class Report:
 	reportID=0
@@ -39,10 +40,10 @@ class Report:
 		print("Censorship Details: " + self.censorship_details)
 
 		print("Printing LocalIpAddresses: ")
-		print(*self.local_ip_addresses, sep = ",")
+		print(*self.local_ip_addresses, sep = " , ")
 
 		print("Printing StubbyIpAddresses: ")
-		print(*self.stubby_ip_addresses, sep = ",")
+		print(*self.stubby_ip_addresses, sep = " , ")
 
 
 def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber, censorshipCode, 
@@ -67,10 +68,13 @@ def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFil
 	return rep 
 
 #-------------------------------------------------------------
-isMain=False 	#Keep false to be called by outside file
+isMain=True 	#Keep false to be called by outside file
 
 if isMain == True:
 	rep = Report()
 	ip_local = ['197.00.01.01' '100.00.11.2']
 	ip_stubby = ['209.11.49.69' '400.10.51.3']
 	rep = formTestReport(7, 4, "1 15 am June 23", "www.google.com", "DNS", "DNS", "NO", "NO", "domain.txt", 6, 107, 0, "Details TO DO", ip_local, ip_stubby)
+	ts = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+	rep.timestamp = ts 
+	rep.printReport()

@@ -1,7 +1,7 @@
 from dns_censorship_single_url_class import DNS_CENSORSHIP
 import socket
 import string
-
+from datetime import datetime
 from dbHandler import DBHandler
 
 def isSourceJava(msg):	#Simple function to check if contains source:java as the first line
@@ -49,6 +49,14 @@ def processMessage(msg):
 		#db.checkAndMakeConnection(userID) 	#TO DO  [Problem [NoneType etc]]
 		
 		report = dns_check.dns_censorship_check(url)
+		#Further modifications .... 
+		report.url = url
+		report.timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S') 	#In this format
+		report.is_file_check = isFile
+		report.is_periodic = isPeriodic
+		report.file_name_periodic = fileNamePeriodic
+		report.iteration_number = iterationNumber
+
 		db.handleReport(report)
 
 	elif typeOfTesting == 'tcp':
