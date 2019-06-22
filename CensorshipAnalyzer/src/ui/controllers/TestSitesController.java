@@ -2,10 +2,14 @@ package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -21,6 +25,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.Main;
+import networking.JavaUDPServerClient;
+import ui.model.ModelURL;
 import ui.model.User;
 import ui.sounds.Notification;
 import util.commands.CommandGenerator;
@@ -73,7 +79,7 @@ public class TestSitesController implements Initializable {
     private Tab tab_file;
 
     private String fileNameNormalToTest;
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Inside TestSitesController ... ");
@@ -246,14 +252,15 @@ public class TestSitesController implements Initializable {
             return;
         }
 
+        //Form a new command
         String command = CommandGenerator.getCommand(urlNameToTest, testingMode, false, "NULL", false, false, 0);
 
         System.out.println("Command to send \n" + command);
 
-        //Form a new command
         //Send to Server_UDP
-        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
+        JavaUDPServerClient.sendCommandToPython(command);
 
+//        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
         //Switch Scene
         SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
     }
@@ -264,13 +271,6 @@ public class TestSitesController implements Initializable {
         if (ret.equals("SUCCESS") == false) {
             return;
         }
-
-        //File Read ... Read each line 
-        String command = "";
-
-        //Form a new command
-        //Send to Server_UDP
-        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
 
         //Switch Scene
         SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
@@ -296,20 +296,18 @@ public class TestSitesController implements Initializable {
             //Load from fxml [TO Do] In a new Stage
             this.absoluteFilePathNameToTest = this.textField_fileName.getText();
             this.fileNameNormalToTest = trimName(this.absoluteFilePathNameToTest);
-            
+
             System.out.println("BEFORE .... this.absPathFile = " + this.absoluteFilePathNameToTest + " , this.normalFileName = " + this.fileNameNormalToTest);
-            
+
             String fileNameFXMLToLoad = Scenes.fileViewFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
             Parent root = loader.load();
-            
 
-            
-            FileViewerController controller = (FileViewerController)loader.getController();
+            FileViewerController controller = (FileViewerController) loader.getController();
             controller.setFileName(this.fileNameNormalToTest, this.absoluteFilePathNameToTest);
             controller.showData();
-            
+
             Scene scene = new Scene(root);//, Main.STAGE_WIDTH, Main.STAGE_HEIGHT);
             stage.setScene(scene);
             stage.setMaximized(false);
@@ -322,25 +320,12 @@ public class TestSitesController implements Initializable {
     }
 
     private String trimName(String s) {
-        String[]sArr = s.split("/");
-        
+        String[] sArr = s.split("/");
+
         String normalTrimmedFileName = sArr[sArr.length - 1];
-        
+
 //        System.out.println("-->File Name : (In TestSitesController.java) is " + normalTrimmedFileName);
         return normalTrimmedFileName;
     }
 
 }
-
-/*
-//        String str = "Test Type: " + this.testingMode + "\n"
-//                + "Periodic: " + this.isPeriodicCheck + "\n"
-//                + "Time (periodic, hrs): " + this.timeInHours + "\n";
-//        String ss = "File<" + this.fileNameToTest + ">\n";
-//        String s = str
-//                + "User name: " + User.userName + "\n"
-//                + "Network Name: " + User.networkName + "\n"
-//                + "Network Type: " + User.networkType + "\n"
-//                + ss;
-//        System.out.println(s);
- */

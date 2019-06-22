@@ -51,6 +51,11 @@ public class DNSRecordController implements Initializable{
     @FXML
     private Text text_censoredOrNot;
     
+    
+
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
  

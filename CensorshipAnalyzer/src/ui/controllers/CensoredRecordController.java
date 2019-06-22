@@ -1,4 +1,3 @@
- 
 package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
@@ -11,10 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
-import tasks.Task;
- 
- 
-public class CensoredRecordController implements Initializable{
+
+public class CensoredRecordController implements Initializable {
 
     @FXML
     private TableView<?> tableView;
@@ -37,6 +34,15 @@ public class CensoredRecordController implements Initializable{
     @FXML
     private Text text_whichPage;
 
+    private boolean isFileChecking;
+    private String fileName_absPath;
+
+    private void setFileName(String f) {
+        this.fileName_absPath = f;
+    }
+    private boolean isForcedCheck;
+    
+    
     @FXML
     private void toggleNetworkType(ActionEvent event) {
     }
@@ -66,9 +72,9 @@ public class CensoredRecordController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("--->>> Initializing CensoredRecordController.java ....");
 //        Timer timer = new Timer();
-        
+
     }
-    
+
 }
 
 /*

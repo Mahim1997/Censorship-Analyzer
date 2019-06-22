@@ -98,6 +98,6 @@ def runServer():
 
 #--------------------------------------------------Main Program---------------------------------------------------------------
 
-#runServer()
-str = "source:java$userID:2$connectionID:4$typeOfTesting:dns$timestamp:17 June 2019, 4 45 am$url:www.pornhub.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
-processMessage(str)
+runServer()
+#str = "source:java$userID:2$connectionID:4$typeOfTesting:dns$timestamp:17 June 2019, 4 45 am$url:www.pornhub.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+#processMessage(str)
