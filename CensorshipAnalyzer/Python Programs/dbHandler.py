@@ -68,11 +68,24 @@ class DBHandler:
 				report.method_of_censorship, report.is_file_check, report.is_periodic,
 				report.file_name_periodic, report.iteration_number))
 		
-		for ip in report.local_ip_addresses:
+		localIP = []
+		remoteIP = []
+
+		for ipAdd in report.local_ip_addresses:
+			if ipAdd not in localIP:
+				localIP.append(ipAdd)
+		
+		for ipAdd in report.stubby_ip_addresses:
+			if ipAdd not in remoteIP:
+				remoteIP.append(ipAdd)
+
+
+
+		for ip in localIP:
 			c.execute("INSERT INTO LocalIpAddresses VALUES (?, ?)", 
 				(report.reportID, ip))
 		
-		for ip in report.stubby_ip_addresses:
+		for ip in remoteIP:
 			c.execute("INSERT INTO StubbyIpAddresses VALUES (?, ?)", 
 				(report.reportID, ip))
 			

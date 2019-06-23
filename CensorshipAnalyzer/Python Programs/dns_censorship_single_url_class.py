@@ -214,6 +214,12 @@ class DNS_CENSORSHIP:
 			return False
 
 
+	def formReport(self, error_code, ip_list_local, ip_list_stubby, is_censored):
+		self.report.stubby_ip_addresses.extend(ip_list_stubby)
+		self.report.local_ip_addresses.extend(ip_list_local)
+		self.report.cenosorship_code = error_code
+		self.report.is_censored = is_censored
+		return self.report 
     #success,publicip = getMyGlobalIp()
     #if success:
     #   print("Public Ip:%s"%(publicip))
@@ -284,11 +290,16 @@ class DNS_CENSORSHIP:
 					ERROR_CODE = 112
 					self.writeToDetails(message,HOST)
 				else:
-					self.printMessage("-->Remote Dns Server Unable to Resolve "+HOST)
-					self.printMessage("-->Domain Name:"+HOST+" Does not Exist or Unknown Reason")
-					message = "Invalid Domain Name or Unknown Error Occured"
-					ERROR_CODE = 113
-					self.writeToDetails(message,HOST)
+					try:
+						self.printMessage("-->Remote Dns Server Unable to Resolve "+HOST)
+						self.printMessage("-->Domain Name:"+HOST+" Does not Exist or Unknown Reason")
+						message = "Invalid Domain Name or Unknown Error Occured"
+						ERROR_CODE = 113
+						self.writeToDetails(message,HOST)
+					except:
+						print("===========================>>> error1")
+			#	def formReport(self, error_code, ip_list_local, ip_list_stubby, is_censored):
+			return self.formReport(ERROR_CODE, ipListLocal, ipListRemote, self.IS_CENSORED) 
 		else:
 			isNameResolved = False
 			self.printMessage("->Remote Dns Server:")
@@ -338,13 +349,8 @@ class DNS_CENSORSHIP:
 
 
 			print('\nFinally .... ERROR_CODE = ' + str(self.ERROR_CODE))
-			self.report.stubby_ip_addresses.extend(ipListRemote)
-			self.report.local_ip_addresses.extend(ipListLocal)
-			self.report.cenosorship_code = self.ERROR_CODE
-			self.report.is_censored = self.IS_CENSORED
-
 			#Finally returning report [TO DO few things more such as isFileCheck etc ]
-			return self.report 
+			return self.formReport(ERROR_CODE, ipListLocal, ipListRemote, self.IS_CENSORED)  
 
 # ------------------------------- TEST MAIN PROGRAM -------------------------------
 _is_main_ = False #Make it false for usin it to run by other python programs

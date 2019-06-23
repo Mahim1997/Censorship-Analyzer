@@ -8,4 +8,5 @@ public class Scenes {
     public static String dnsRecords = "/ui/views/dnsRecords.fxml";
     public static String censoredRecordsFXML = "/ui/views/censoredRecords.fxml";
     public static String fileViewFXML = "/ui/views/fileViewer.fxml";
+    public static String censoredRecordsWaitingFXML = "/ui/views/censoredRecords_ForWaiting.fxml";
 }

@@ -4,10 +4,11 @@ conn = sqlite3.connect("Client Data.db")
 c = conn.cursor()
 class Database:
 	def dropTables(self):
-		c.execute("DROP TABLE IF EXISTS Network")
-		c.execute("DROP TABLE IF EXISTS USER")
+		#c.execute("DROP TABLE IF EXISTS Network")
+		#c.execute("DROP TABLE IF EXISTS USER")
+		
+		#c.execute("DROP TABLE IF EXISTS Connection")
 		c.execute("DROP TABLE IF EXISTS Report")
-		c.execute("DROP TABLE IF EXISTS Connection")
 		c.execute("DROP TABLE IF EXISTS DnsDescription")
 		c.execute("DROP TABLE IF EXISTS LocalIpAddresses")
 		c.execute("DROP TABLE IF EXISTS StubbyIpAddresses")

@@ -7,6 +7,7 @@ import javafx.stage.WindowEvent;
 import networking.JavaUDPServerClient;
 import util.loader.SceneLoader;
 import ui.model.User;
+import util.database.DBHandler;
 import util.loader.Scenes;
 
 public class Main extends Application {
@@ -34,6 +35,7 @@ public class Main extends Application {
 
         stage.setOnCloseRequest((WindowEvent e) -> {
             Platform.exit();
+            DBHandler.closeConnection();
             System.exit(0);
         });
         
@@ -41,13 +43,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 //        testServerPython();
-        launch(args);
+        DBHandler.initialiseDBConnection();
+        DBHandler.testQuery();
+//        launch(args);
     }
     
-    private static void testServerPython()
-    {
-        JavaUDPServerClient.sendCommandToPython("Hello Python");
-    }
+  
 
 }
 

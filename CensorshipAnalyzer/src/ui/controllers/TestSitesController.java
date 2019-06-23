@@ -2,9 +2,7 @@ package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,9 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.Main;
 import networking.JavaUDPServerClient;
-import ui.model.ModelURL;
 import ui.model.User;
 import ui.sounds.Notification;
 import util.commands.CommandGenerator;
@@ -247,33 +243,61 @@ public class TestSitesController implements Initializable {
 
     @FXML
     private void submitURL(ActionEvent event) {
-        if ("".equals(this.testingMode)) {  //Should have a valid TESTING MODE
-            Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
-            return;
-        }
-        this.urlNameToTest = this.textField_url.getText();
-        //Form a new command
-        String command = CommandGenerator.getCommand(urlNameToTest, testingMode, false, "NULL", false, false, 0);
+        try {
+            if ("".equals(this.testingMode)) {  //Should have a valid TESTING MODE
+                Notification.push("Warning", "Should choose one testing type", Notification.WARNING, Pos.BOTTOM_RIGHT);
+                return;
+            }
+            this.urlNameToTest = this.textField_url.getText();
+            //Form a new command
+            String command = CommandGenerator.getCommand(urlNameToTest, testingMode, false, "NULL", false, false, 0);
 
-        System.out.println("Command to send \n" + command);
+            System.out.println("Command to send \n" + command);
 
-        //Send to Server_UDP
-        JavaUDPServerClient.sendCommandToPython(command);
+            //Send to Server_UDP
+            JavaUDPServerClient.sendCommandToPython(command);
 
 //        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
-        //Switch Scene
-        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+//Switch Scene
+            String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+            Parent root = loader.load();
+
+            SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsWaitingFXML);
+
+            CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
+            controller.setUpInitial(false, this.urlNameToTest, this.absoluteFilePathNameToTest, -1, -1);
+        } catch (IOException ex) {
+            System.out.println("--->>EXCEPTION in TestSitesController.java line 272 ... ");
+            Logger.getLogger(TestSitesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void submitFile(ActionEvent event) {
-        String ret = retrieveThings();
-        if (ret.equals("SUCCESS") == false) {
+        try {
+            String ret = retrieveThings();
+            if (ret.equals("SUCCESS") == false) {
+                return;
+            }
+
+            //Switch Scene
+//        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
+            String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+            Parent root = loader.load();
+
+            SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsWaitingFXML);
+
+            CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
+            controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, -1, -1);
+
+        } catch (IOException ex) {
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
             return;
         }
-
-        //Switch Scene
-        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
 
     }
 
