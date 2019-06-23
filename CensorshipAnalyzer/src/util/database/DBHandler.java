@@ -44,6 +44,27 @@ public class DBHandler {
         }
     }
 
+    //---------------------------------- Queries ----------------------------------------------
+    public static int getLatestReportID() {
+        return ReportQueryHandler.getCurrentLastReportID();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    //---------------------------------- Queries ----------------------------------------------    
     public static void testQuery() {
         String sql = "SELECT * FROM Report";
 
@@ -55,11 +76,12 @@ public class DBHandler {
             while (rs.next()) {
                 System.out.print("Report: ");
                 System.out.println(rs.getString("report_id") + ", " + rs.getString("connection_id") + ", "
-                + rs.getString("time_stamp") + ", " + rs.getString("url"));
+                        + rs.getString("time_stamp") + ", " + rs.getString("url"));
 
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
+
 }

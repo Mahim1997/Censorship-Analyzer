@@ -42,10 +42,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        testServerPython();
         DBHandler.initialiseDBConnection();
-        DBHandler.testQuery();
-//        launch(args);
+//        DBHandler.testQuery();
+//        System.out.println("Final Report ID (Count): " + DBHandler.getLatestReportID());
+        launch(args);
     }
     
   

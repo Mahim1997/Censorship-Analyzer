@@ -131,7 +131,8 @@ public class CensoredRecordController_Waiting {
     }
 
     private void runForURL() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Inside CensoredRecordController_Waiting.java .... runForURL() ... ");
+        
     }
 
     @FXML
