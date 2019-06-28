@@ -1,4 +1,4 @@
-from dns_censorship_single_url_class import DNS_CENSORSHIP
+from dns_censorship_single_url_class_updated import DNS_CENSORSHIP
 import socket
 import string
 from datetime import datetime
@@ -59,6 +59,9 @@ def processMessage(msg):
 		report.file_name_periodic = fileNamePeriodic
 		report.iteration_number = iterationNumber
 
+		print("Inside pythonServer.py ... typeOfTesting('dns') <PRINTING REPORT> url = " + url)
+		report.printReport()
+
 		db.handleReport(report)
 
 	elif typeOfTesting == 'TCP':
@@ -100,9 +103,9 @@ def runServer():
 
 #--------------------------------------------------Main Program---------------------------------------------------------------
 
-runServer()
-#str = "source:java$userID:2$connectionID:4$typeOfTesting:dns$timestamp:17 June 2019, 4 45 am$url:www.pornhub.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
-#processMessage(str)
+#runServer()
+str = "source:java$userID:2$connectionID:4$typeOfTesting:DNS$timestamp:17 June 2019, 4 45 am$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+processMessage(str)
 
 #str ='source:java$userID:7$connectionID:7$typeOfTesting:DNS$timestamp:23/06/2019 04:06:22$url:www.youtube.com$isFile:0$periodicity:forced$isPeriodic:no$fileNamePeriodic:NULL$iterationNumber:0$periodInHours:0$'
 #processMessage(str)
