@@ -5,9 +5,18 @@
  */
 package util.workerAndStates;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
+import main.Config;
 import ui.controllers.CensoredRecordController;
 import ui.controllers.CensoredRecordController_Waiting;
+import ui.model.Report;
 import util.loader.Scenes;
 
 /**
@@ -51,6 +60,39 @@ public class WorkerThread implements Runnable {
         }
     }
 
+   
+
+    private void runForCensoredRecordController_Waiting() {
+
+        try {
+            System.out.println("Initiating server .... ");
+            DatagramSocket serverSocket = new DatagramSocket(Config.PORT_JAVA);
+
+            byte[] receiveData = new byte[1024];
+
+            while (willRun) {
+                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                serverSocket.receive(receivePacket);
+                String receivedString = new String(receivePacket.getData());
+                System.out.println("RECEIVED: " + receivedString);
+
+                Report report = StringProcessor.processStringAndFormReport(receivedString);
+                Platform.runLater(() -> {
+                    this.controller_censored_waiting.refreshInfo(report);
+                });
+
+            }
+        } catch (SocketException ex) {
+            System.out.println("Socket Exception in runForCensoredController_Waiting in WorkerThread.java");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            System.out.println("I/O Exception in runForCensoredController_Waiting in WorkerThread.java");
+        }
+    }
+
+}
+
+/*
     private void runForCensoredRecordController_Waiting() {
         while (willRun) {
             long timeNow = System.currentTimeMillis();
@@ -63,5 +105,4 @@ public class WorkerThread implements Runnable {
             }
         }
     }
-
-}
+ */

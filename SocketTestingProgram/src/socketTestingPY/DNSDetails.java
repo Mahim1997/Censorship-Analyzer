@@ -11,15 +11,15 @@ public class DNSDetails {
     private List<String> listIpStubby;
     private List<String> matchedIPs;
     
-    private int errorCode;
+    private int errorCode = 0;
     
-    private boolean isBogonIP;
-    private boolean isTimeout;
-    private boolean isPrivateIP;
-    private boolean isInvalidDomain;
-    private boolean isNoNameServers;
-    private boolean localServerRRCodeSet;
-    private boolean unknownError;
+    private boolean isBogonIP = false;
+    private boolean isTimeout = false;
+    private boolean isPrivateIP = false;
+    private boolean isInvalidDomain = false;
+    private boolean isNoNameServers = false;
+    private boolean localServerRRCodeSet = false;
+    private boolean unknownError = false;
     
     
     private String errorMsgCensorship;

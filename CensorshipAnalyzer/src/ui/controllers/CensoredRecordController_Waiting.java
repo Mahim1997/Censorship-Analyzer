@@ -57,7 +57,8 @@ public class CensoredRecordController_Waiting {
     
     WorkerThread worker;
     
-    List<Report> listOfReportsGotFromWaiting;
+    public List<Report> reportsListToBeRefreshed = new ArrayList<>();
+    
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
@@ -166,24 +167,50 @@ public class CensoredRecordController_Waiting {
     }
 
     private int refreshCounter = 0;
-    public void refreshInfo() {
-        //Actually load the info from database ... 
+    
+    public void refreshInfo(Report report) {
+        System.out.println("-------------------------------------- Inside refreshInfo() refreshCnt = " + refreshCounter + "--------------------------------");
+        System.out.println("-->>Inside refreshInfo() ... refreshCnt = " + refreshCounter);
         refreshCounter++;
-        System.out.println("---------------------============= REFRESHING INFO " + refreshCounter + " ============---------------------------------------");
         
+        this.reportsListToBeRefreshed.add(report);
         
-        //Try to read from database ... 
-        List<Report> reports = DBHandler.getListOfReports(this.reportIndex_Start, this.reportIndex_End);
-
-//        List<Report> reports = DBHandler.getListOfReports(1, 6);        //TO CHECK
-        
-        System.out.println("PRINTING reports inside refreshInfo() ... ");
-        //Print TO CHECK
-        reports.forEach((Report r) -> {
-            System.out.println(r.toString());
+        System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
+        int si = 0;
+        this.reportsListToBeRefreshed.forEach((t) -> {
+            System.out.println(si + "->" + t.toString());
+            System.out.println("\n\n");
         });
         
-        System.out.println("----------------------========================== *** ======================-----------------------------------\n\n");
         
+        //loadTableViewAgain(); //TODO
+        
+        System.out.println("-------------------------================== ***** ================-----------------------------------");
     }
 }
+
+/*
+class UDPServer
+{
+   public static void main(String args[]) throws Exception
+      {
+         DatagramSocket serverSocket = new DatagramSocket(9876);
+            byte[] receiveData = new byte[1024];
+            byte[] sendData = new byte[1024];
+            while(true)
+               {
+                  DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                  serverSocket.receive(receivePacket);
+                  String sentence = new String( receivePacket.getData());
+                  System.out.println("RECEIVED: " + sentence);
+                  InetAddress IPAddress = receivePacket.getAddress();
+                  int port = receivePacket.getPort();
+                  String capitalizedSentence = sentence.toUpperCase();
+                  sendData = capitalizedSentence.getBytes();
+                  DatagramPacket sendPacket =
+                  new DatagramPacket(sendData, sendData.length, IPAddress, port);
+                  serverSocket.send(sendPacket);
+               }
+      }
+}
+*/
