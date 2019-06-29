@@ -93,7 +93,7 @@ public class CommandGenerator {
         s += getLine("typeOfTesting", testTypeName);
         s += getLine("timestamp", getCurrentTime());
         s += getLine("url", url);
-        s += getLine("isFile", 0);
+        s += getLine("isFile", 1);
         s += getLine("periodicity", "forced");
         s += getLine("isPeriodic", "no");
         s += getLine("fileNamePeriodic", fileFullPathName);

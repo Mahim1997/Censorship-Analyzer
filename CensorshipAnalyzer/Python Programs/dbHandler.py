@@ -58,10 +58,13 @@ class DBHandler:
 		countGot = c.fetchall()
 		num = -1 
 		for row in countGot:
-			#print("Row[0] : " + str(row[0]))
+			print("--->>>>>>> In handleReport () ... Row[0] : " + str(row[0]))
 			num = row[0] 	#Don't know exactly why like this !!
 
 		report.reportID = num + 1
+
+		print("===>>>>>>>>>>> In dbHandler.handleReport() ... before inserting into REPORT ... printing it ")
+		report.printReport()
 		
 		c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
 			( report.reportID, report.connectionID, report.timestamp, report.url, report.is_censored, report.type_of_testing,
@@ -89,7 +92,7 @@ class DBHandler:
 
 		for ip in remoteIP:
 			print(ip + ", ")
-		
+
 
 		for ip in localIP:
 			c.execute("INSERT INTO LocalIpAddresses VALUES (?, ?)", 

@@ -28,6 +28,11 @@ def processMessage(msg):
 	typeOfTesting = getSecondColumn(splitMsg[3])
 	timestamp = getSecondColumn(splitMsg[4])
 	url = getSecondColumn(splitMsg[5])
+
+	if url == 'none':
+		print("url is none so return")
+		return 
+
 	isFile = getSecondColumn(splitMsg[6])	#isFile -> 0 then only url check ... so DO NOT add to database
 	periodicity = getSecondColumn(splitMsg[7])
 	isPeriodic = getSecondColumn(splitMsg[8])
@@ -59,8 +64,8 @@ def processMessage(msg):
 		report.file_name_periodic = fileNamePeriodic
 		report.iteration_number = iterationNumber
 
-		print("Inside pythonServer.py ... typeOfTesting('dns') <PRINTING REPORT> url = " + url)
-		report.printReport()
+		#print("Inside pythonServer.py ... typeOfTesting('dns') <PRINTING REPORT> url = " + url)
+		#report.printReport()
 
 		db.handleReport(report)
 
