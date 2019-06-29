@@ -12,13 +12,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import networking.JavaUDPServerClient;
+import util.workerAndStates.WorkerThread;
 import util.commands.CommandGenerator;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
 
 public class CensoredRecordController_Waiting {
 
-    
     @FXML
     private TableView tableView;
     @FXML
@@ -79,11 +79,27 @@ public class CensoredRecordController_Waiting {
         } else {
             runForURL();
         }
+
+        runWorkerThread();
+    }
+
+    //Run the worker thread
+    private void runWorkerThread() {
+        WorkerThread worker = new WorkerThread(this);
+        worker.setFxmlToRun(Scenes.censoredRecordsWaitingFXML);
+        
+        Thread t = new Thread(worker);  //Create thread object 
+        t.start();  //Start the thread
+        
     }
 
     @FXML
     private void refreshInfo(ActionEvent event) {
 
+    }
+
+    public void refreshInfo() {
+        System.out.println("Refreshing info ... ");
     }
 
     @FXML
@@ -107,37 +123,37 @@ public class CensoredRecordController_Waiting {
             }
         } catch (FileNotFoundException ex) {
             System.out.println("EXCEPTION in reading file .... ");
-            return null ;
+            return null;
         } catch (IOException ex) {
             System.out.println("Exception in reading file 2 ... ");
-            return null ;
+            return null;
         }
         return list;
     }
 
     private void runForFile() {
         List<String> list = readFile();
-        if(list == null){
-            return ;
+        if (list == null) {
+            return;
         }
         list.add(urlName);
-        for(String url: list){
+        for (String url : list) {
             //Make command ...
             String command = CommandGenerator.generateCommandFileNonPeriodicForcedCheck(url, CensoredRecordController_Waiting.this.absFileName, "DNS");
             //Send to UDP
             JavaUDPServerClient.sendCommandToPython(command);
         }
-        
+
     }
 
     private void runForURL() {
         System.out.println("Inside CensoredRecordController_Waiting.java .... runForURL() ... ");
-        
+
     }
 
     @FXML
     private void clickForDetails(ActionEvent event) {
-        
+
     }
 
 }

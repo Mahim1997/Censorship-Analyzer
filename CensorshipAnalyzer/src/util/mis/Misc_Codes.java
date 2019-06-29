@@ -1,15 +1,19 @@
-package socketTestingPY;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package util.mis;
 
 import java.util.ArrayList;
 import java.util.List;
+import ui.model.*;
 
-public class Main {
-
-    public static void main(String[] arsgs) {
-//        UDP_Server_Client.sendMessage("Hello python");
-        setUpReport();
-    }
-
+/**
+ *
+ * @author mahim
+ */
+public class Misc_Codes {
     private static void setUpReport() {
         Report report = new Report();
         report.setReportID(1);
