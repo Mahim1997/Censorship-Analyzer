@@ -55,10 +55,10 @@ public class WorkerThread implements Runnable {
         while (willRun) {
             long timeNow = System.currentTimeMillis();
             if ((timeNow - startTime) == delayTime) {
-                Platform.runLater(() -> {
-                    controller_censored_waiting.refreshInfo();
-                });
-
+//                Platform.runLater(() -> {
+//                    controller_censored_waiting.refreshInfo();
+//                });
+                controller_censored_waiting.refreshInfo();
                 startTime = timeNow;    //Update the startTime ... 
             }
         }

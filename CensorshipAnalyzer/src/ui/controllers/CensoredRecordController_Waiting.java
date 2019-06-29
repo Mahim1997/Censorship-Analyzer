@@ -163,18 +163,25 @@ public class CensoredRecordController_Waiting {
         //TODO
     }
 
-
+    private int refreshCounter = 0;
     public void refreshInfo() {
         //Actually load the info from database ... 
-        System.out.println("Refreshing info ... ");
+        refreshCounter++;
+        System.out.println("---------------------============= REFRESHING INFO " + refreshCounter + " ============---------------------------------------");
+        
         
         //Try to read from database ... 
         List<Report> reports = DBHandler.getListOfReports(this.reportIndex_Start, this.reportIndex_End);
+
+//        List<Report> reports = DBHandler.getListOfReports(1, 6);        //TO CHECK
         
+        System.out.println("PRINTING reports inside refreshInfo() ... ");
         //Print TO CHECK
         reports.forEach((Report r) -> {
             System.out.println(r.toString());
         });
+        
+        System.out.println("----------------------========================== *** ======================-----------------------------------\n\n");
         
     }
 }

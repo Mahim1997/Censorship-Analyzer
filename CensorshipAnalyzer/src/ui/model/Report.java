@@ -50,8 +50,15 @@ public class Report {
 
     @Override
     public String toString() {
-        return "Report{" + "reportID=" + reportID + ", url=" + url + ", networkName=" + networkName + ", networkType=" + networkType + ", time=" + time + ", testType=" + testType + ", isCensored=" + isCensored + ", censoredType=" + censoredType + ", dns_details=" + dns_details.toString() + '}';
+        if (this.dns_details == null) {
+            return "Report{" + "reportID=" + reportID + ", url=" + url + ", networkName=" + networkName + ", networkType=" + networkType + ", time=" + time + ", testType=" + testType + ", isCensored=" + isCensored + ", censoredType=" + censoredType + '}';
+
+        } else {
+            return "Report{" + "reportID=" + reportID + ", url=" + url + ", networkName=" + networkName + ", networkType=" + networkType + ", time=" + time + ", testType=" + testType + ", isCensored=" + isCensored + ", censoredType=" + censoredType + ", dns_details=" + dns_details.toString() + '}';
+
+        }
     }
+    
 
     public void setReportID(int reportID) {
         this.reportID = reportID;

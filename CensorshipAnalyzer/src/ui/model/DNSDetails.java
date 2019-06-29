@@ -117,7 +117,14 @@ public class DNSDetails {
     
     @Override
     public String toString() {
-        return "DNSDetails{reportID" + report.getReportID() + ", listIpLocalDNSServer=" + getFromList(listIpLocalDNSServer) + ", listIpStubby=" + getFromList(listIpStubby) + ", matchedIPs=" + getFromList(matchedIPs) + ", errorCode=" + errorCode + ", isBogonIP=" + isBogonIP + ", isTimeout=" + isTimeout + ", isPrivateIP=" + isPrivateIP + ", isInvalidDomain=" + isInvalidDomain + ", isNoNameServers=" + isNoNameServers + ", localServerRRCodeSet=" + localServerRRCodeSet + ", unknownError=" + unknownError + ", errorMsgCensorship=" + errorMsgCensorship + '}';
+        
+        if(this.report == null){
+            return "DNSDetails{listIpLocalDNSServer=" + getFromList(listIpLocalDNSServer) + ", listIpStubby=" + getFromList(listIpStubby) + ", matchedIPs=" + getFromList(matchedIPs) + ", errorCode=" + errorCode + ", isBogonIP=" + isBogonIP + ", isTimeout=" + isTimeout + ", isPrivateIP=" + isPrivateIP + ", isInvalidDomain=" + isInvalidDomain + ", isNoNameServers=" + isNoNameServers + ", localServerRRCodeSet=" + localServerRRCodeSet + ", unknownError=" + unknownError + ", errorMsgCensorship=" + errorMsgCensorship + '}';            
+        }
+        else{
+            return "DNSDetails{report_id = " + String.valueOf(this.report.getReportID()) +", listIpLocalDNSServer=" + getFromList(listIpLocalDNSServer) + ", listIpStubby=" + getFromList(listIpStubby) + ", matchedIPs=" + getFromList(matchedIPs) + ", errorCode=" + errorCode + ", isBogonIP=" + isBogonIP + ", isTimeout=" + isTimeout + ", isPrivateIP=" + isPrivateIP + ", isInvalidDomain=" + isInvalidDomain + ", isNoNameServers=" + isNoNameServers + ", localServerRRCodeSet=" + localServerRRCodeSet + ", unknownError=" + unknownError + ", errorMsgCensorship=" + errorMsgCensorship + '}';
+        }
+
     }
 
     public boolean isIsPrivateIP() {

@@ -62,12 +62,13 @@ public class ReportQueryHandler {
             } else {
                 query = "SELECT * FROM Report, Connection where Connection.connection_id = Report.connection_id AND Report.report_id >= " + String.valueOf(startIdx) + " AND Report.report_id <= " + String.valueOf(endIdx);
             }
-
+            System.out.println("===--->>> Query is <" + query + ">");
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
 
-            Report report = new Report();
+
             while (rs.next()) {
+                Report report = new Report();
                 report.setReportID(rs.getInt(1));
                 report.setTime(rs.getString(3));
                 report.setUrl(rs.getString(4));
@@ -77,14 +78,25 @@ public class ReportQueryHandler {
                 report.setNetworkName(rs.getString(15));
                 report.setNetworkType(getNetworkType(report.getNetworkName()));
                 report.setCensorship_code(rs.getInt(12));
+                
+                System.out.println("-->>Adding to the list the report ... printing the report");
+                System.out.println(report.toString());
+                
+                list.add(report);   //Add to the list of reports
                 //DNS Details set kora baaki aache
+            }
+           
+            System.out.println("--->>>Outside first while loop first SQL statement, printing list of reporsts .... ");
+            for(int i=0; i<list.size(); i++){
+                Report get = list.get(i);
+                System.out.println(get.toString());
             }
 
             //Now ... adding the DNS_Details for each report ... 
             String sql;
             for (int i = 0; i < list.size(); i++) {
                 Report rep = list.get(i);
-
+                System.out.println("CHECKING inside for loop i = " + i + " , report id = " + rep.getReportID());
                 //For now it is skipped
 //                if(rep.getCensoredType().equals("DNS") == false){
 //                    continue;
@@ -94,7 +106,7 @@ public class ReportQueryHandler {
                 details_dns.setReport(rep);
 
                 //Local IP Addresses ... 
-                sql = "SELECT report_id, local_ip from LocalIpAddresses WHERE LocalIpAddresses.report_id = " + String.valueOf(rep.getReportID());
+                sql = "SELECT * from LocalIpAddresses WHERE LocalIpAddresses.report_id = " + String.valueOf(rep.getReportID());
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery(sql);
                 List<String> listIpLocal = new ArrayList<>();
@@ -104,7 +116,7 @@ public class ReportQueryHandler {
                 }
 
                 //Now do the same with Stubby IP Addresses ... 
-                sql = "SELECT report_id, local_ip from StubbyIpAddresses WHERE StubbyIpAddresses.report_id = " + String.valueOf(rep.getReportID());
+                sql = "SELECT * from StubbyIpAddresses WHERE StubbyIpAddresses.report_id = " + String.valueOf(rep.getReportID());
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery(sql);
                 List<String> listIpStubby = new ArrayList<>();
@@ -118,10 +130,17 @@ public class ReportQueryHandler {
                 details_dns.setListIpStubby(listIpStubby);
 
             }
+            
+//            System.out.println("========>>> BEFORE RETURNING ... printing list .... ");
+//            list.forEach((t) -> {
+//                System.out.println(t.toString());
+//                System.out.println("\n\n----------------------------------------\n\n");
+//            });
 
             return list;
         } catch (SQLException ex) {
             System.out.println("-->>EXCEPTION in ReportQueryHandler.getListOfReports() ... ");
+//            ex.printStackTrace();
         }
 
         return null;
