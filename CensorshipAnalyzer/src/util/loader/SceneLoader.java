@@ -75,17 +75,5 @@ public class SceneLoader {
         Main.stage.setMaximized(true);
 //        Main.stage.show();
     }
-
-    public static Stage loadSceneInDifferentStage(Parent root) {
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-//        stage.setHeight(Main.STAGE_HEIGHT);
-//        stage.setWidth(Main.STAGE_WIDTH);
-//        stage.setMaximized(true);
-        stage.show();
-        
-        return stage;
-//        Main.stage.show();
-    }
+ 
 }

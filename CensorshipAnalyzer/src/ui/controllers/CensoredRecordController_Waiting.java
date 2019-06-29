@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -189,10 +190,14 @@ public class CensoredRecordController_Waiting {
             Parent root = loader.load();
             DNSRecordController controller = (DNSRecordController) loader.getController();
 
-            Stage stage = SceneLoader.loadSceneInDifferentStage(root);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
 
             controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
             controller.showThings();
+
+            stage.show();
 
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");

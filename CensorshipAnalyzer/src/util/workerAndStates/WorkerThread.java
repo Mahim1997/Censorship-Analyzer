@@ -84,7 +84,7 @@ public class WorkerThread implements Runnable {
             }
         } catch (SocketException ex) {
             System.out.println("Socket Exception in runForCensoredController_Waiting in WorkerThread.java");
-            ex.printStackTrace();
+//            ex.printStackTrace();
         } catch (IOException ex) {
             System.out.println("I/O Exception in runForCensoredController_Waiting in WorkerThread.java");
         }
