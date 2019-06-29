@@ -3,6 +3,7 @@ package ui.model;
 import javafx.scene.control.Button;
 
 public class Report {
+
     private int reportID;
     private String url;
     private String networkName;
@@ -12,10 +13,12 @@ public class Report {
     private String isCensored;
     private String censoredType;
     private Button btn_details;
-    
+
+    private int censorship_code;
+
     private DNSDetails dns_details;
-    
-    public Report(){
+
+    public Report() {
         //If we do this now, then reportID values etc will become null
 //        this.dns_details = new DNSDetails(this);
     }
@@ -32,7 +35,14 @@ public class Report {
         //Probably this will work ... 
         this.dns_details = new DNSDetails(this);
     }
-    
+
+    public int getCensorship_code() {
+        return censorship_code;
+    }
+
+    public void setCensorship_code(int censorship_code) {
+        this.censorship_code = censorship_code;
+    }
 
     public int getReportID() {
         return reportID;
@@ -118,7 +128,5 @@ public class Report {
     public void setDns_details(DNSDetails dns_details) {
         this.dns_details = dns_details;
     }
-    
-    
-    
+
 }

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,6 +54,8 @@ public class CensoredRecordController_Waiting {
 
     private int reportIndex_Start;
     private int reportIndex_End;
+    
+    WorkerThread worker;
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
@@ -85,7 +88,7 @@ public class CensoredRecordController_Waiting {
 
     //Run the worker thread
     private void runWorkerThread() {
-        WorkerThread worker = new WorkerThread(this);
+        this.worker = new WorkerThread(this);
         worker.setFxmlToRun(Scenes.censoredRecordsWaitingFXML);
 
         Thread t = new Thread(worker);  //Create thread object 
@@ -98,13 +101,14 @@ public class CensoredRecordController_Waiting {
 
     }
 
-    public void refreshInfo() {
-        System.out.println("Refreshing info ... ");
-    }
-
     @FXML
     private void goBack(ActionEvent event) {
         //Actually goHome 
+        if(this.worker != null){
+            //make the boolean flag = false for the thread ... 
+            this.worker.setWillRun(false);
+        }
+        
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
@@ -159,8 +163,18 @@ public class CensoredRecordController_Waiting {
         //TODO
     }
 
-    private List<Report> loadReportsFromDatabase() {
-        return DBHandler.getListOfReports(this.reportIndex_Start, this.reportIndex_End);
-    }
 
+    public void refreshInfo() {
+        //Actually load the info from database ... 
+        System.out.println("Refreshing info ... ");
+        
+        //Try to read from database ... 
+        List<Report> reports = DBHandler.getListOfReports(this.reportIndex_Start, this.reportIndex_End);
+        
+        //Print TO CHECK
+        reports.forEach((Report r) -> {
+            System.out.println(r.toString());
+        });
+        
+    }
 }

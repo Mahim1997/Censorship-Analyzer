@@ -20,20 +20,28 @@ public class WorkerThread implements Runnable {
 
     public String fxmlToRun;
 
-    public void setFxmlToRun(String fxmlToRun) {
-        this.fxmlToRun = fxmlToRun;
-    }
-
     CensoredRecordController_Waiting controller_censored_waiting;
+
+    long startTime;
+
+    int delayHowMuch = 5;   //How many seconds  [eg. 5]
+
+    long delayTime = delayHowMuch * 1000; // * 1000 to get the ms
+
+    public boolean willRun = true;
 
     public WorkerThread(CensoredRecordController_Waiting con) {
         this.startTime = System.currentTimeMillis();
         this.controller_censored_waiting = con;
     }
 
-    long startTime;
-    long delayTime = 2000; //2 seconds
-    public boolean willRun = true;
+    public void setFxmlToRun(String fxmlToRun) {
+        this.fxmlToRun = fxmlToRun;
+    }
+
+    public void setWillRun(boolean flag) {
+        this.willRun = flag;
+    }
 
     @Override
     public void run() {
