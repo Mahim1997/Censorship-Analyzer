@@ -64,6 +64,8 @@ public class CensoredRecordController_Waiting {
     WorkerThread worker;
 
     public List<Report> reportsListToBeRefreshed = new ArrayList<>();
+    @FXML
+    private Text text_waiting;
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
@@ -154,9 +156,9 @@ public class CensoredRecordController_Waiting {
         list.add(urlName);
         for (String url : list) {
             System.out.println("URL Sending to python is <" + url + ">");
-            if(url == null){
+            if (url == null) {
                 System.out.println("URL IS NULL HERE ... return;");
-                return ;
+                return;
             }
             //Make command ...
             String command = CommandGenerator.generateCommandFileNonPeriodicForcedCheck(url, CensoredRecordController_Waiting.this.absFileName, "DNS");
@@ -218,7 +220,7 @@ public class CensoredRecordController_Waiting {
         column_details.setCellValueFactory( //Button for details
                 new PropertyValueFactory<>("btn_details")
         );
-        
+
         this.tableView.setItems(data);
     }
 
@@ -238,7 +240,14 @@ public class CensoredRecordController_Waiting {
         });
 
         loadTableView();
-        //loadTableViewAgain(); //TODO
+
+        int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;
+        if (this.reportsListToBeRefreshed.size() == numRecordsNeeded) {
+            this.worker.setWillRun(false);  //i.e. stop the thread from listening ... 
+            //set the text to DONE as well ...
+            this.text_waiting.setText("COMPLETED !!");
+
+        }
 
         System.out.println("-------------------------================== ***** ================-----------------------------------");
     }

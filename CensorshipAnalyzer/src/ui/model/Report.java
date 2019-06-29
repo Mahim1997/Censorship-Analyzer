@@ -21,6 +21,7 @@ public class Report {
     public Report() {
         //If we do this now, then reportID values etc will become null
 //        this.dns_details = new DNSDetails(this);
+        this.btn_details = new Button("Details");
     }
 
     public Report(int reportID, String url, String networkName, String networkType, String time, String testType, String isCensored, String censoredType) {
