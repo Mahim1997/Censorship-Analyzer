@@ -108,7 +108,7 @@ public class CensoredRecordController_Waiting {
 
     @FXML
     private void refreshInfo(ActionEvent event) {
-
+        // Not needed 
     }
 
     @FXML
@@ -121,6 +121,7 @@ public class CensoredRecordController_Waiting {
 
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
+    
 
     private List<String> readFile() {
         List<String> list = new ArrayList<>();
@@ -168,14 +169,22 @@ public class CensoredRecordController_Waiting {
 
     }
 
-    private void runForURL() {
-        System.out.println("Inside CensoredRecordController_Waiting.java .... runForURL() ... ");
+    private void runForURL() {  //TO DO
+        System.out.println("Inside CensoredRecordController_Waiting.java .... runForURL() ... TODO!! ");
 
     }
 
+    public void goToDetailsDNSRecord(int reportID){
+        //Called when button is clicked ... 
+        System.out.println("------->>> Method goToDetailsDNSRecord() is called reportID = " + reportID);
+    }
+    
+    
     @FXML
-    private void clickForDetails(ActionEvent event) {
+    private void clickForDetails(ActionEvent event) {   //TODO //Python -> File -> Java [Visualize what is going on]
         //TODO
+        System.out.println("Inside click for details ... ");
+        
     }
 
 
@@ -231,14 +240,16 @@ public class CensoredRecordController_Waiting {
         System.out.println("-->>Inside refreshInfo() ... refreshCnt = " + refreshCounter);
         refreshCounter++;
 
+        //Before adding report ... to initialize the button make sure 'this' class is instantiated
+        report.setController2(this);
+        
         this.reportsListToBeRefreshed.add(report);
 
         System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
         int si = 0;
-        this.reportsListToBeRefreshed.forEach((t) -> {
-            System.out.println(si + "->" + t.toString());
-        });
-
+        for(int i=0; i<this.reportsListToBeRefreshed.size(); i++){
+            System.out.println(i  + "-->" + this.reportsListToBeRefreshed.get(i).toString());
+        }
         loadTableView();
 
         int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;

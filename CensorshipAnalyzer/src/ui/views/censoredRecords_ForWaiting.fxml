@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="1025.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.CensoredRecordController_Waiting">
    <children>
-      <TableView fx:id="tableView" fixedCellSize="20.0" layoutX="111.0" layoutY="205.0" prefHeight="493.0" prefWidth="965.0" style="-fx-background-color: #3B2F48; -fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="205.0">
+      <TableView fx:id="tableView" layoutX="111.0" layoutY="205.0" prefHeight="493.0" prefWidth="965.0" style="-fx-background-color: #3B2F48; -fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="205.0">
         <columns>
             <TableColumn fx:id="column_reportID" prefWidth="142.0" text="Report ID" />
           <TableColumn fx:id="column_url" prefWidth="142.0" text="URL" />

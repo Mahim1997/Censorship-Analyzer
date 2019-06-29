@@ -115,12 +115,12 @@ class DBHandler:
 
 		MESSAGE = report.getReportString()
 
-		# print("----------------------------------- SENDING TO JAVA UDP ------------------------------------------")
+		print("----------------------------------- SENDING TO JAVA UDP ------------------------------------------")
 		# print("UDP target IP:", UDP_IP)
 		# print("UDP target port:", UDP_PORT)
-		# print("message:", MESSAGE)
-
-		print("Sending to Java UDP ... [7731] In dbHandler.py ")
+		print("message:", MESSAGE)
+		print("----------------------------------------------------------------------------------------------------")
+		# print("Sending to Java UDP ... [7731] In dbHandler.py ")
 
 		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 		sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))

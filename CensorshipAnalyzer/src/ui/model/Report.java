@@ -1,6 +1,8 @@
 package ui.model;
 
 import javafx.scene.control.Button;
+import ui.controllers.CensoredRecordController;
+import ui.controllers.CensoredRecordController_Waiting;
 
 public class Report {
 
@@ -18,10 +20,32 @@ public class Report {
 
     private DNSDetails dns_details;
 
+    //---------------------------- Controllers ------------------------------------
+    private CensoredRecordController_Waiting controller2;
+    private CensoredRecordController controller1;
+
+    public void setController2(CensoredRecordController_Waiting controller2) {
+        this.controller2 = controller2;
+    }
+
+    public void setController1(CensoredRecordController controller1) {
+        this.controller1 = controller1;
+    }
+    //---------------------------- Controllers ------------------------------------
+    
+    
     public Report() {
         //If we do this now, then reportID values etc will become null
 //        this.dns_details = new DNSDetails(this);
         this.btn_details = new Button("Details");
+        this.btn_details.setOnAction((event) -> {
+            if(this.controller2 != null){
+                this.controller2.goToDetailsDNSRecord(this.reportID);
+            }
+            else if(this.controller1 != null){
+                //Same thing also here ... 
+            }
+        });
     }
 
     public Report(int reportID, String url, String networkName, String networkType, String time, String testType, String isCensored, String censoredType) {
@@ -59,7 +83,6 @@ public class Report {
 
         }
     }
-    
 
     public void setReportID(int reportID) {
         this.reportID = reportID;

@@ -68,7 +68,7 @@ public class WorkerThread implements Runnable {
             System.out.println("Initiating server .... ");
             DatagramSocket serverSocket = new DatagramSocket(Config.PORT_JAVA);
 
-            byte[] receiveData = new byte[1024];
+            byte[] receiveData = new byte[Config.RECEIVE_BYTES];
 
             while (willRun) {
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
