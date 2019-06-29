@@ -14,8 +14,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import networking.JavaUDPServerClient;
+import ui.model.Report;
 import util.workerAndStates.WorkerThread;
 import util.commands.CommandGenerator;
+import util.database.DBHandler;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
 
@@ -51,7 +53,6 @@ public class CensoredRecordController_Waiting {
 
     private int reportIndex_Start;
     private int reportIndex_End;
- 
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
@@ -65,7 +66,6 @@ public class CensoredRecordController_Waiting {
         }
         this.reportIndex_Start = start;
         this.reportIndex_End = end;
-        
 
         if (this.isFile == true) {
             System.out.println("RUnning for file ... this.absFile = " + this.absFileName + " , this.file = " + this.fileName);
@@ -87,10 +87,10 @@ public class CensoredRecordController_Waiting {
     private void runWorkerThread() {
         WorkerThread worker = new WorkerThread(this);
         worker.setFxmlToRun(Scenes.censoredRecordsWaitingFXML);
-        
+
         Thread t = new Thread(worker);  //Create thread object 
         t.start();  //Start the thread
-        
+
     }
 
     @FXML
@@ -156,7 +156,11 @@ public class CensoredRecordController_Waiting {
 
     @FXML
     private void clickForDetails(ActionEvent event) {
+        //TODO
+    }
 
+    private List<Report> loadReportsFromDatabase() {
+        return DBHandler.getListOfReports(this.reportIndex_Start, this.reportIndex_End);
     }
 
 }

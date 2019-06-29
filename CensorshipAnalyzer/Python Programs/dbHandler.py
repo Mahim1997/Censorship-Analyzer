@@ -63,10 +63,10 @@ class DBHandler:
 
 		report.reportID = num + 1
 		
-		c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+		c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
 			( report.reportID, report.connectionID, report.timestamp, report.url, report.is_censored, report.type_of_testing,
 				report.method_of_censorship, report.is_file_check, report.is_periodic,
-				report.file_name_periodic, report.iteration_number))
+				report.file_name_periodic, report.iteration_number, report.censorship_code, report.censorship_details))
 		
 		localIP = []
 		remoteIP = []
@@ -80,6 +80,16 @@ class DBHandler:
 				remoteIP.append(ipAdd)
 
 
+		print("Inside dbHandler ... printing local ip addresses : ")
+
+		for ip in localIP:
+			print(ip + ", ")
+
+		print("Inside dbHandler ... prinitng repmote ip addresses : ")
+
+		for ip in remoteIP:
+			print(ip + ", ")
+		
 
 		for ip in localIP:
 			c.execute("INSERT INTO LocalIpAddresses VALUES (?, ?)", 

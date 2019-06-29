@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+import ui.model.Report;
 
 public class DBHandler {
 
     static Connection conn = null;
 
-    public static void initialiseDBConnection() {
+    public static void openConnection() {
 
         try {
             // db parameters  
@@ -28,7 +28,7 @@ public class DBHandler {
             System.out.println(e.getMessage());
         } catch (ClassNotFoundException ex) {
             System.out.println("CLASS FINDING PROBLEM");
-            Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
     }
@@ -39,16 +39,24 @@ public class DBHandler {
                 conn.close();
             } catch (SQLException ex) {
                 System.out.println("ERROR in closing connection");
-                Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
-    //---------------------------------- Queries ----------------------------------------------
+    //---------------------------------- Queries from ReportQueryHandler ... ----------------------------------------------
     public static int getLatestReportID() {
-        return ReportQueryHandler.getCurrentLastReportID();
+        openConnection();
+        int currentLastReportID = ReportQueryHandler.getCurrentLastReportID();
+        closeConnection();
+        return currentLastReportID;
     }
     
+    public static List<Report> getListOfReports(int startIdx, int endIdx){
+        openConnection();
+        List<Report> listOfReports = ReportQueryHandler.getListOfReports(startIdx, endIdx);
+        closeConnection();
+        return listOfReports;
+    }
     
     
     

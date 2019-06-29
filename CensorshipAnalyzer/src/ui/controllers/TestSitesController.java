@@ -26,6 +26,7 @@ import networking.JavaUDPServerClient;
 import ui.model.User;
 import ui.sounds.Notification;
 import util.commands.CommandGenerator;
+import util.database.DBHandler;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
 
@@ -282,21 +283,19 @@ public class TestSitesController implements Initializable {
                 return;
             }
 
-            //Switch Scene
-//        SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsFXML);
             String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
             
             Parent root = loader.load();
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
-            controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, -1, -1);
+            int idxCurrentMaxReport = DBHandler.getLatestReportID();
+            controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, (idxCurrentMaxReport + 1), -1);
             
             SceneLoader.loadSceneInSameStage(root);
             
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
-            return;
         }
 
     }
@@ -338,7 +337,6 @@ public class TestSitesController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Notification.push("Error", "Error in loading file", Notification.FAILURE, Pos.BOTTOM_RIGHT);
-            ex.printStackTrace();
         }
 
     }

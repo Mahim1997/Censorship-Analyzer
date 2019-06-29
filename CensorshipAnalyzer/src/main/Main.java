@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import networking.JavaUDPServerClient;
 import util.loader.SceneLoader;
 import ui.model.User;
 import util.database.DBHandler;
@@ -42,7 +41,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        DBHandler.initialiseDBConnection();
+//        DBHandler.initialiseDBConnection();
 //        DBHandler.testQuery();
 //        System.out.println("Final Report ID (Count): " + DBHandler.getLatestReportID());
         launch(args);
