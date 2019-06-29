@@ -52,7 +52,7 @@ public class SceneLoader {
             Scene scene = new Scene(root);//, Main.STAGE_WIDTH, Main.STAGE_HEIGHT);
             SceneLoader.addThing(fileName, scene);
 //        Main.stage.setScene(scene);
-            
+
             Main.stage.setScene(scene);
             Main.stage.setHeight(Main.STAGE_HEIGHT);
             Main.stage.setWidth(Main.STAGE_WIDTH);
@@ -64,5 +64,14 @@ public class SceneLoader {
             Logger.getLogger(SceneLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public static void loadSceneInSameStage(Parent root) {
+        Scene scene = new Scene(root);
+        Main.stage.setScene(scene);
+        Main.stage.setHeight(Main.STAGE_HEIGHT);
+        Main.stage.setWidth(Main.STAGE_WIDTH);
+        Main.stage.setMaximized(true);
+//        Main.stage.show();
     }
 }

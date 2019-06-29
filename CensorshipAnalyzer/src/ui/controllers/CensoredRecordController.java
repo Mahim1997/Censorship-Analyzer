@@ -41,8 +41,7 @@ public class CensoredRecordController implements Initializable {
         this.fileName_absPath = f;
     }
     private boolean isForcedCheck;
-    
-    
+
     @FXML
     private void toggleNetworkType(ActionEvent event) {
     }
@@ -83,4 +82,4 @@ public class CensoredRecordController implements Initializable {
 
        // Schedule to run after every 3 second(3000 millisecond)
        timer.schedule( new Task(), 3000);   
-*/
+ */

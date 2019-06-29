@@ -6,10 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import networking.JavaUDPServerClient;
 import util.workerAndStates.WorkerThread;
@@ -47,21 +49,13 @@ public class CensoredRecordController_Waiting {
     private String urlName;
     private String absFileName;
 
-    private int startReportIdx;
-    private int endReportIdx;
-
-    private void setUp() {
-        if (this.isFile == true) {
-            this.text_URL.setText("FILE:");
-            this.text_url_actual.setText(this.fileName);
-        } else {
-            this.text_URL.setText("URL:");
-            this.text_url_actual.setText(this.urlName);
-        }
-    }
+    private int reportIndex_Start;
+    private int reportIndex_End;
+ 
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
+//        this.text_url_actual.setText("FLALALADMALMDLASMDLASMD");
         this.isFile = isFile;
         this.absFileName = absPath;
         if (this.isFile == true) {
@@ -69,14 +63,20 @@ public class CensoredRecordController_Waiting {
         } else {
             this.urlName = name;
         }
-        this.startReportIdx = start;
-        this.endReportIdx = end;
-        setUp();
+        this.reportIndex_Start = start;
+        this.reportIndex_End = end;
+        
 
         if (this.isFile == true) {
             System.out.println("RUnning for file ... this.absFile = " + this.absFileName + " , this.file = " + this.fileName);
+            this.text_URL.setText("FILE: ");
+            this.text_URL.setFill(Color.WHITE);
+            this.text_url_actual.setText(this.fileName);
+            this.text_url_actual.setFill(Color.WHITE);
             runForFile();
         } else {
+            this.text_URL.setText("URL: ");
+            this.text_url_actual.setText(this.urlName);
             runForURL();
         }
 
@@ -104,6 +104,7 @@ public class CensoredRecordController_Waiting {
 
     @FXML
     private void goBack(ActionEvent event) {
+        //Actually goHome 
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
@@ -128,6 +129,8 @@ public class CensoredRecordController_Waiting {
             System.out.println("Exception in reading file 2 ... ");
             return null;
         }
+        this.reportIndex_End = list.size() + this.reportIndex_Start;
+        System.out.println("============>>> HERE [Line 136] , Report start idx = " + this.reportIndex_Start + " , report end idx = " + this.reportIndex_End);
         return list;
     }
 

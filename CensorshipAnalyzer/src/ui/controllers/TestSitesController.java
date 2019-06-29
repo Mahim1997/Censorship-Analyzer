@@ -287,13 +287,13 @@ public class TestSitesController implements Initializable {
             String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+            
             Parent root = loader.load();
-
-            SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsWaitingFXML);
-
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
             controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, -1, -1);
-
+            
+            SceneLoader.loadSceneInSameStage(root);
+            
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
             return;
