@@ -6,19 +6,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import networking.JavaUDPServerClient;
-import ui.model.ModelURL;
 import ui.model.Report;
 import util.workerAndStates.WorkerThread;
 import util.commands.CommandGenerator;
@@ -107,11 +107,6 @@ public class CensoredRecordController_Waiting {
     }
 
     @FXML
-    private void refreshInfo(ActionEvent event) {
-        // Not needed 
-    }
-
-    @FXML
     private void goBack(ActionEvent event) {
         //Actually goHome 
         if (this.worker != null) {
@@ -121,7 +116,6 @@ public class CensoredRecordController_Waiting {
 
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
-    
 
     private List<String> readFile() {
         List<String> list = new ArrayList<>();
@@ -174,17 +168,43 @@ public class CensoredRecordController_Waiting {
 
     }
 
-    public void goToDetailsDNSRecord(int reportID){
+    private Report getReport(int reportID) {
+        for (Report report : this.reportsListToBeRefreshed) {
+            if (report.getReportID() == reportID) {
+                return report;
+            }
+        }
+        return null;
+    }
+
+    public void goToDetailsDNSRecord(int reportID) {
         //Called when button is clicked ... 
         System.out.println("------->>> Method goToDetailsDNSRecord() is called reportID = " + reportID);
+
+        try {
+            String fileNameFXMLToLoad = Scenes.dnsRecords;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+
+            Parent root = loader.load();
+            DNSRecordController controller = (DNSRecordController) loader.getController();
+
+            Stage stage = SceneLoader.loadSceneInDifferentStage(root);
+
+            controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
+            controller.showThings();
+
+        } catch (IOException ex) {
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
+        }
+
     }
-    
-    
+
     @FXML
     private void clickForDetails(ActionEvent event) {   //TODO //Python -> File -> Java [Visualize what is going on]
         //TODO
-        System.out.println("Inside click for details ... ");
-        
+        System.out.println("Inside click for details ... load from a file ... python writes to that file .... ");
+
     }
 
 
@@ -242,13 +262,13 @@ public class CensoredRecordController_Waiting {
 
         //Before adding report ... to initialize the button make sure 'this' class is instantiated
         report.setController2(this);
-        
+
         this.reportsListToBeRefreshed.add(report);
 
         System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
         int si = 0;
-        for(int i=0; i<this.reportsListToBeRefreshed.size(); i++){
-            System.out.println(i  + "-->" + this.reportsListToBeRefreshed.get(i).toString());
+        for (int i = 0; i < this.reportsListToBeRefreshed.size(); i++) {
+            System.out.println(i + "-->" + this.reportsListToBeRefreshed.get(i).toString());
         }
         loadTableView();
 

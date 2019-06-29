@@ -30,7 +30,6 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <JFXButton layoutX="189.0" layoutY="103.0" onAction="#refreshInfo" prefHeight="46.0" prefWidth="136.0" text="Refresh" />
       <JFXButton layoutX="44.0" layoutY="103.0" onAction="#goBack" prefHeight="46.0" prefWidth="136.0" text="Home" />
       <Text fx:id="text_URL" fill="WHITE" layoutX="420.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="123.6708984375">
          <font>

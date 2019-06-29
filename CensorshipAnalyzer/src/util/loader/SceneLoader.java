@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class SceneLoader {
 
@@ -72,6 +73,19 @@ public class SceneLoader {
         Main.stage.setHeight(Main.STAGE_HEIGHT);
         Main.stage.setWidth(Main.STAGE_WIDTH);
         Main.stage.setMaximized(true);
+//        Main.stage.show();
+    }
+
+    public static Stage loadSceneInDifferentStage(Parent root) {
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+//        stage.setHeight(Main.STAGE_HEIGHT);
+//        stage.setWidth(Main.STAGE_WIDTH);
+//        stage.setMaximized(true);
+        stage.show();
+        
+        return stage;
 //        Main.stage.show();
     }
 }

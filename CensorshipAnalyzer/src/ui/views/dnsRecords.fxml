@@ -44,7 +44,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_date" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="511.6708984375" GridPane.rowIndex="2">
+            <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="582.6708984375" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
@@ -61,14 +61,6 @@
                </GridPane.margin>
             </Text>
             <Text fx:id="text_networkType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Text>
-            <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
@@ -227,7 +219,7 @@
                   <Font name="System Bold Italic" size="35.0" />
                </font>
             </Text>
-            <JFXButton layoutX="283.0" layoutY="502.0" onAction="#goBack" prefHeight="57.0" prefWidth="163.0" text="Back" />
+            <JFXButton layoutX="283.0" layoutY="502.0" onAction="#exitWindow" prefHeight="57.0" prefWidth="163.0" text="Exit" />
          </children>
       </AnchorPane>
    </center>
