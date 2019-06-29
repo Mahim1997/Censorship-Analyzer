@@ -11,6 +11,7 @@
    <children>
       <TableView fx:id="tableView" fixedCellSize="20.0" layoutX="111.0" layoutY="214.0" prefHeight="550.0" prefWidth="965.0" style="-fx-background-color: #3B2F48; -fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="300.0">
         <columns>
+            <TableColumn fx:id="column_reportID" prefWidth="142.0" text="Report ID" />
           <TableColumn fx:id="column_url" prefWidth="142.0" text="URL" />
           <TableColumn fx:id="column_networkName" prefWidth="161.0" text="Network Name" />
             <TableColumn fx:id="column_networkType" prefWidth="120.0" text="Network Type" />

@@ -8,13 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import networking.JavaUDPServerClient;
+import ui.model.ModelURL;
 import ui.model.Report;
 import util.workerAndStates.WorkerThread;
 import util.commands.CommandGenerator;
@@ -46,6 +50,8 @@ public class CensoredRecordController_Waiting {
     private TableColumn column_censoredType;
     @FXML
     private TableColumn column_details;
+    @FXML
+    private TableColumn column_reportID;
 
     private boolean isFile;
     private String fileName;
@@ -54,11 +60,10 @@ public class CensoredRecordController_Waiting {
 
     private int reportIndex_Start;
     private int reportIndex_End;
-    
+
     WorkerThread worker;
-    
+
     public List<Report> reportsListToBeRefreshed = new ArrayList<>();
-    
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
@@ -107,11 +112,11 @@ public class CensoredRecordController_Waiting {
     @FXML
     private void goBack(ActionEvent event) {
         //Actually goHome 
-        if(this.worker != null){
+        if (this.worker != null) {
             //make the boolean flag = false for the thread ... 
             this.worker.setWillRun(false);
         }
-        
+
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
@@ -148,6 +153,11 @@ public class CensoredRecordController_Waiting {
         }
         list.add(urlName);
         for (String url : list) {
+            System.out.println("URL Sending to python is <" + url + ">");
+            if(url == null){
+                System.out.println("URL IS NULL HERE ... return;");
+                return ;
+            }
             //Make command ...
             String command = CommandGenerator.generateCommandFileNonPeriodicForcedCheck(url, CensoredRecordController_Waiting.this.absFileName, "DNS");
             //Send to UDP
@@ -166,25 +176,70 @@ public class CensoredRecordController_Waiting {
         //TODO
     }
 
-    private int refreshCounter = 0;
-    
+
+    /* Report:
+    private int reportID;
+    private String url;
+    private String networkName;
+    private String networkType;
+    private String time;
+    private String testType;
+    private String isCensored;
+    private String censoredType;
+    private Button btn_details;
+
+    private int censorship_code;
+     */
+    private void loadTableView() {
+        //Load the table view here ...
+        ObservableList<Report> data = FXCollections.observableArrayList(this.reportsListToBeRefreshed);
+
+        column_reportID.setCellValueFactory(
+                new PropertyValueFactory<>("reportID")
+        );
+        column_url.setCellValueFactory(
+                new PropertyValueFactory<>("url")
+        );
+        column_time.setCellValueFactory(
+                new PropertyValueFactory<>("time")
+        );
+        column_testType.setCellValueFactory(
+                new PropertyValueFactory<>("testType")
+        );
+        column_networkType.setCellValueFactory(
+                new PropertyValueFactory<>("networkType")
+        );
+        column_censoredType.setCellValueFactory(
+                new PropertyValueFactory<>("censoredType")
+        );
+        column_censored.setCellValueFactory(
+                new PropertyValueFactory<>("isCensored")
+        );
+        column_details.setCellValueFactory( //Button for details
+                new PropertyValueFactory<>("btn_details")
+        );
+        
+        this.tableView.setItems(data);
+    }
+
+    private int refreshCounter = 0; //Test purposes
+
     public void refreshInfo(Report report) {
         System.out.println("-------------------------------------- Inside refreshInfo() refreshCnt = " + refreshCounter + "--------------------------------");
         System.out.println("-->>Inside refreshInfo() ... refreshCnt = " + refreshCounter);
         refreshCounter++;
-        
+
         this.reportsListToBeRefreshed.add(report);
-        
+
         System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
         int si = 0;
         this.reportsListToBeRefreshed.forEach((t) -> {
             System.out.println(si + "->" + t.toString());
-            System.out.println("\n\n");
         });
-        
-        
+
+        loadTableView();
         //loadTableViewAgain(); //TODO
-        
+
         System.out.println("-------------------------================== ***** ================-----------------------------------");
     }
 }
@@ -213,4 +268,4 @@ class UDPServer
                }
       }
 }
-*/
+ */
