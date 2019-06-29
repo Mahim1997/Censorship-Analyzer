@@ -1,6 +1,9 @@
 import sqlite3
 from isp_info import Ip_info, Get_Ip_Info
+
+
 class DBHandler:
+
 	ob = Get_Ip_Info()
 	global_ip = ob.get_global_ip()
 
@@ -12,7 +15,7 @@ class DBHandler:
 		c.close()
 		conn.close()
 
-	#User (user_id(PK), email_address, password, user_name)
+	# User (user_id(PK), email_address, password, user_name)
 	def addToUser(self, uId, eM, pas, uN):
 		self.openConnection()
 		c.execute("INSERT INTO User(user_id, email_address, password, user_name) VALUES (?, ?, ?, ?)", 
@@ -20,7 +23,7 @@ class DBHandler:
 		conn.commit()
 		self.closeConnection()
 
-	#addToUser(3, 'vipergon22e@gmail.com', '1234', 'mahim') 	#Kam hoise
+	# addToUser(3, 'vipergon22e@gmail.com', '1234', 'mahim') 	#Kam hoise
 	def getCurrentConnection(self):
 		pass
 
@@ -29,7 +32,7 @@ class DBHandler:
 		self.openConnection()
 		c.execute("SELECT * FROM Connection WHERE Connection.user_id = ? AND Connection.network_name = ? AND Connection.location = ?", (uIDGiven, networkName, location))
 		conn.commit()
-		#TO DO !!!!!!
+		# TO DO !!!!!!
 		self.closeConnection()
 
 	def checkAndMakeConnection(self, uIDGiven):
@@ -44,6 +47,9 @@ class DBHandler:
 	 
 
 	def handleReport(self, report):
+		# Open file to write for JAVA
+
+
 		report.printReport()
 		conn = sqlite3.connect("Client Data.db")
 		c = conn.cursor()
@@ -102,6 +108,22 @@ class DBHandler:
 			c.execute("INSERT INTO StubbyIpAddresses VALUES (?, ?)", 
 				(report.reportID, ip))
 			
+
+		# ---------- Transfer over socket to JAVA [JAVA Listening PORT = 7731] --------------
+		UDP_IP = '127.0.0.1' 	# loop back ip
+		UDP_PORT = 7731 		# Java listening port
+
+		MESSAGE = report.getReportString()
+
+		print("----------------------------------- SENDING TO JAVA UDP ------------------------------------------")
+		print("UDP target IP:", UDP_IP)
+		print("UDP target port:", UDP_PORT)
+		print("message:", MESSAGE)
+
+		# sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+		# sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))
+
+
 		conn.commit()
 
 		c.close()

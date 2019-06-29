@@ -4,7 +4,7 @@ msgFromClient = "Hello UDP Server"
 
 bytesToSend = str.encode(msgFromClient)
 
-serverAddressPort = ("127.0.0.1", 7722)	#Loop Back
+serverAddressPort = ("127.0.0.1", 7722)	#Loop Back			# 7722 is python port number, 7731 is java port number
 
 bufferSize = 1024
 

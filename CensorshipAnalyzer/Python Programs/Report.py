@@ -41,8 +41,9 @@ class Report:
 
 
 		print("Censorship Code: " + str(self.censorship_code))
-		print("Mid box hop count: " + str(self.middle_box_hop_count))
 		print("Censorship Details: " + self.censorship_details)
+		print("Mid box hop count: " + str(self.middle_box_hop_count))
+		
 
 		print("Printing LocalIpAddresses: ")
 		print(*self.local_ip_addresses, sep = " , ")
@@ -51,6 +52,37 @@ class Report:
 		print(*self.stubby_ip_addresses, sep = " , ")
 
 		print("---------------------------- PRINTING REPORT DONE --------------------------")
+
+
+
+
+	def getReportString(self):
+		strReport = "ReportID:" + str(self.reportID)
+		strReport = strReport + "$ConnectionID:" + str(self.connectionID)
+		strReport = strReport + "$TimeStamp:" + str(self.timestamp)
+		strReport = strReport + "$URL:" + self.url 
+		strReport = strReport + "$Type_of_Test:" + self.type_of_testing
+		strReport = strReport + "$is_censored:" + self.is_censored
+		strReport = strReport + "$method_of_censorship:" + self.method_of_censorship
+		strReport = strReport + "$is_file_check:" + str(self.is_file_check)
+		strReport = strReport + "$is_periodic:" + str(self.is_periodic)
+		strReport = strReport + "$file_name_periodic:" + self.file_name_periodic
+		strReport = strReport + "$iteration_number:" + str(self.iteration_number)
+		strReport = strReport + "$censorship_code:" + str(self.censorship_code)
+		strReport = strReport + "$censorshipDetails:" + self.censorship_details
+		strReport = strReport + "$middle_box_hop_count:" + str(self.middle_box_hop_count)
+
+		strReport = strReport + "$local_ip_addresses:"
+		for ip in self.local_ip_addresses:
+			strReport = strReport + ip + ","
+
+		strReport = strReport + "$stubby_ip_addresses:"
+		for ip in self.stubby_ip_addresses:
+			strReport = strReport + ip + ","
+		strReport = strReport + "$END$"
+
+		return strReport
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber, censorshipCode, 
 	midboxHopCount, censorshipDetails, ip_local, ip_stubby):

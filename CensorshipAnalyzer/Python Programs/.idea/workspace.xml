@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba69c987-1109-4f79-9178-5f2263b1025f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Client Data.db" beforeDir="false" afterPath="$PROJECT_DIR$/Client Data.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clientDatabase.py" beforeDir="false" afterPath="$PROJECT_DIR$/clientDatabase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/controllers/CensoredRecordController_Waiting.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/controllers/CensoredRecordController_Waiting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/controllers/TestSitesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/controllers/TestSitesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/util/database/DBHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/util/database/DBHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/util/database/ReportQueryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/util/database/ReportQueryHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbHandler.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-60">
+            <state relative-caret-position="-206">
+              <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -58,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pythonServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+            <state relative-caret-position="280">
+              <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -71,6 +67,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/dbHandler.py" />
+      </list>
+    </option>
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -188,8 +191,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pythonServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+        <state relative-caret-position="280">
+          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
           </folding>
@@ -198,7 +201,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dbHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
+        <state relative-caret-position="-206">
+          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

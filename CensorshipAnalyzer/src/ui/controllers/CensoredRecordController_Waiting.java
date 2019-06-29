@@ -56,6 +56,8 @@ public class CensoredRecordController_Waiting {
     private int reportIndex_End;
     
     WorkerThread worker;
+    
+    List<Report> listOfReportsGotFromWaiting;
 
     public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
