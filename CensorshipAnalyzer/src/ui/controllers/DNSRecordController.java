@@ -51,6 +51,8 @@ public class DNSRecordController {
     private Text text_localServerRRCodeSet;
     @FXML
     private Text text_UnknownError;
+    @FXML
+    private Text text_details;
 
     public void setUpThings(Report report, Stage stage) {
         this.report = report;
@@ -58,7 +60,9 @@ public class DNSRecordController {
     }
 
     public void showThings() {
-        this.text_NetworkName.setText("Network Name: " + "Banglalink");
+        this.text_NetworkName.setText("Network Name: " + this.report.getNetworkName());
+        this.text_networkType.setText("Network Type:" + this.report.getNetworkType());
+        
         this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIsCensored());
         this.text_time.setText("Time: " + this.report.getTime());
         this.text_testType.setText("Test Type: " + this.report.getTestType());
@@ -77,17 +81,52 @@ public class DNSRecordController {
 //        String crossImagePathName = "../../resources/images_testSites/X_transparent.png";
 //        String crossImagePathName = "resources/images_testSites/D.png";
         String whatToDisplay = "NO";
+//        if (errorCode == 0) {
+        this.text_UnknownError.setText(whatToDisplay);
+        this.text_bognoIP.setText(whatToDisplay);
+        this.text_invalidDomain.setText(whatToDisplay);
+        this.text_localServerRRCodeSet.setText(whatToDisplay);
+        this.text_noNameServers.setText(whatToDisplay);
+        this.text_privateIP.setText(whatToDisplay);
+        this.text_timeout.setText(whatToDisplay);
+//        }
+        formDetailsUsingErrorCode(errorCode);
 
-        if (errorCode == 0) {
-            this.text_UnknownError.setText(whatToDisplay);
-            this.text_bognoIP.setText(whatToDisplay);
-            this.text_invalidDomain.setText(whatToDisplay);
-            this.text_localServerRRCodeSet.setText(whatToDisplay);
-            this.text_noNameServers.setText(whatToDisplay);
-            this.text_privateIP.setText(whatToDisplay);
-            this.text_timeout.setText(whatToDisplay);
+    }
+
+    private void formDetailsUsingErrorCode(int errorCode) {
+        String text;// = "" ;
+        switch (errorCode) {
+            case 110:
+                text = "Local DNS Server may be down";
+                break;
+            case 111:
+                text = "No such domain";
+                this.text_invalidDomain.setText("YES");
+                break;
+            case 112:
+                text = "Timeout ... ";
+                this.text_timeout.setText("YES");
+                break;
+            case 113:
+                text = "Local DNS Server returns Bogon IP";
+                this.text_bognoIP.setText("YES");
+                break;
+            case 114:
+                text = "Local DNS Server returns public IP but no response from Stubby";
+                break;
+            case 115:
+                text = "Local DNS Server returns Bogon IP";
+                this.text_bognoIP.setText("YES");
+                break;
+            case 116:
+                text = "Local DNS Server returns public IP [NOT CENSORED]";
+                break;
+            default:
+                text = "Not censored";
+                break;
         }
-
+        this.text_details.setText("Details:" + text);
     }
 
     private void loadIPListMatched() {

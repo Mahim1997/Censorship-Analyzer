@@ -82,7 +82,12 @@
          <content>
             <AnchorPane prefHeight="480.0" prefWidth="1362.0">
                <children>
-                  <HBox prefHeight="384.0" prefWidth="1335.0" spacing="20.0">
+                  <Text fx:id="text_details" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DETAILS:" textAlignment="CENTER" wrappingWidth="909.6708984375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <HBox prefHeight="384.0" prefWidth="1335.0" spacing="20.0" AnchorPane.topAnchor="40.0">
                      <children>
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
                         <VBox fx:id="vbox_localIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="236.0" spacing="10.0">
