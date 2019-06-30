@@ -71,7 +71,7 @@
       </GridPane>
    </top>
    <left>
-      <Text fill="#19948b" strokeType="OUTSIDE" strokeWidth="0.0" text="DNS RECORD" textAlignment="CENTER" wrappingWidth="314.6708984375" BorderPane.alignment="TOP_LEFT">
+      <Text fx:id="text_censoredOrNot" fill="#19948b" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED/NOT" textAlignment="CENTER" wrappingWidth="314.6708984375" BorderPane.alignment="TOP_LEFT">
          <font>
             <Font name="System Bold Italic" size="35.0" />
          </font>
@@ -213,11 +213,6 @@
             </HBox>
             <Line endX="1316.0" endY="40.0" startX="44.3291015625" startY="40.0" stroke="WHITE" />
             <Line endX="1316.0" endY="419.0" startX="39.999969482421875" startY="419.0" stroke="WHITE" />
-            <Text fx:id="text_censoredOrNot" fill="#19948b" layoutX="898.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED/NOT" textAlignment="CENTER" wrappingWidth="314.6708984375">
-               <font>
-                  <Font name="System Bold Italic" size="35.0" />
-               </font>
-            </Text>
          </children>
       </AnchorPane>
    </center>
