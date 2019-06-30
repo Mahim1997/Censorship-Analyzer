@@ -19,6 +19,16 @@ public class Report {
     private int censorship_code;
 
     private DNSDetails dns_details;
+    
+    private String global_ip;
+
+    public String getGlobal_ip() {
+        return global_ip;
+    }
+
+    public void setGlobal_ip(String global_ip) {
+        this.global_ip = global_ip;
+    }
 
     //---------------------------- Controllers ------------------------------------
     private CensoredRecordController_Waiting controller2;

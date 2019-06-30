@@ -114,7 +114,7 @@ class DBHandler:
 		UDP_PORT = 7731 		# Java listening port
 
 		MESSAGE = report.getReportString()
-
+		
 		print("----------------------------------- SENDING TO JAVA UDP ------------------------------------------")
 		# print("UDP target IP:", UDP_IP)
 		# print("UDP target port:", UDP_PORT)

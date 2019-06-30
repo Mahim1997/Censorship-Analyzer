@@ -58,7 +58,7 @@ public class DNSRecordController {
     }
 
     public void showThings() {
-        this.text_NetworkName.setText("Network name: " + this.report.getNetworkName());
+        this.text_NetworkName.setText("Network Name: " + "Banglalink");
         this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIsCensored());
         this.text_time.setText("Time: " + this.report.getTime());
         this.text_testType.setText("Test Type: " + this.report.getTestType());

@@ -8,20 +8,16 @@ package util.workerAndStates;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import main.Config;
-import ui.controllers.CensoredRecordController;
 import ui.controllers.CensoredRecordController_Waiting;
 import ui.model.Report;
 import util.loader.Scenes;
 
 /**
  *
- * @author viper
+ * @author mahim
  */
 //Use this in the initializable method ... 
 //new Thread(new Worker(this)).start();

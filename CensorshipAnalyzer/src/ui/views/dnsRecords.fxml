@@ -35,7 +35,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_NetworkName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name:" wrappingWidth="511.6708984375" GridPane.rowIndex="1">
+            <Text fx:id="text_NetworkName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Global IP:" wrappingWidth="511.6708984375" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>

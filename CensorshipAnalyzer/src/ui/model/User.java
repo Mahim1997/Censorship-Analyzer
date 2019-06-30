@@ -5,7 +5,7 @@ import main.Main;
 
  
 public class User {
-    public static String networkName;
+    public static String networkName ;
     public static String networkType;
 
     public static String userFirstName;
@@ -29,8 +29,8 @@ public class User {
     public static void initiateUser(){
         if(Main.USER_DEBUG == 1){
             userID = 7; //example
-            networkName = "XploreNet BD";
-            networkType = "ISP";
+            networkName = "Banglalink";
+            networkType = "Mobile";
             modeOfAccess = "Logged User";
             userFirstName = "Mahim";
             userLastName = "Mahbub";

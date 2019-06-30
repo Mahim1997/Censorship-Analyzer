@@ -2,6 +2,9 @@ from copy import deepcopy
 import string
 from datetime import datetime
 
+from isp_info import Ip_info
+from isp_info import Get_Ip_Info
+
 class Report:
 	reportID=0
 	connectionID=0
@@ -71,6 +74,17 @@ class Report:
 		strReport = strReport + "$censorship_code:" + str(self.censorship_code)
 		strReport = strReport + "$censorshipDetails:" + self.censorship_details
 		strReport = strReport + "$middle_box_hop_count:" + str(self.middle_box_hop_count)
+
+		# Latest added
+		# strReport = strReport + "$global_ip: -"
+		ob = Get_Ip_Info()
+		global_ip = ob.get_global_ip()
+		if global_ip is not None:
+			ip_details = ob.get_ip_info(global_ip)
+			if ip_details is not None:
+				pass
+				# strReport = strReport + "$global_ip:" + ip_details.global_ip_network
+		# Latest added 
 
 		strReport = strReport + "$local_ip_addresses:"
 		for ip in self.local_ip_addresses:

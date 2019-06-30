@@ -245,6 +245,9 @@ public class CensoredRecordController_Waiting {
         column_networkType.setCellValueFactory(
                 new PropertyValueFactory<>("networkType")
         );
+        column_networkName.setCellValueFactory(
+                new PropertyValueFactory<>("networkName")
+        );
         column_censoredType.setCellValueFactory(
                 new PropertyValueFactory<>("censoredType")
         );
