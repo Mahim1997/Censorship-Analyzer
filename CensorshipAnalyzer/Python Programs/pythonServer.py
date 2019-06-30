@@ -63,7 +63,7 @@ def processMessage(msg):
 		report.is_periodic = isPeriodic
 		report.file_name_periodic = fileNamePeriodic
 		report.iteration_number = iterationNumber
-
+		report.type_of_testing = "DNS"
 		#print("Inside pythonServer.py ... typeOfTesting('dns') <PRINTING REPORT> url = " + url)
 		#report.printReport()
 

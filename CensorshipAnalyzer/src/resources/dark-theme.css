@@ -17,7 +17,9 @@
 .root{
     -fx-background-color: -fx-primary;
 }
-
+.scroll-pane{
+   -fx-background-color:transparent;
+}
 .glyph-icon
 {
     -fx-fill: -fx-primarytext;

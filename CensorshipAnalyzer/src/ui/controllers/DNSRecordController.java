@@ -1,14 +1,10 @@
 package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import com.sun.prism.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -34,25 +30,27 @@ public class DNSRecordController {
     private VBox vbox_stubbyIPs;
     @FXML
     private VBox vbox_matchingIPs;
-    @FXML
-    private ImageView imageView_bogonIP;
-    @FXML
-    private ImageView imageView_privateIP;
-    @FXML
-    private ImageView imageView_timeout;
-    @FXML
-    private ImageView imageView_invalidDomain;
-    @FXML
-    private ImageView imageView_noNameServers;
-    @FXML
-    private ImageView imageView_localServerRRCodeSet;
-    @FXML
-    private ImageView imageView_UnknownError;
+
     @FXML
     private Text text_censoredOrNot;
 
     private Report report;
+
     private Stage stage;
+    @FXML
+    private Text text_bognoIP;
+    @FXML
+    private Text text_privateIP;
+    @FXML
+    private Text text_timeout;
+    @FXML
+    private Text text_invalidDomain;
+    @FXML
+    private Text text_noNameServers;
+    @FXML
+    private Text text_localServerRRCodeSet;
+    @FXML
+    private Text text_UnknownError;
 
     public void setUpThings(Report report, Stage stage) {
         this.report = report;
@@ -75,19 +73,21 @@ public class DNSRecordController {
     private void loadImages() {
         int errorCode = this.report.getCensorship_code();
         System.out.println("---->>>Inside loadImages() ... errorCode = " + errorCode);
-        
-        String crossImagePathName = "../../resources/images_testSites/X_transparent.png";
-        
-        crossImagePathName = "X_transparent.png";
-//        crossImagePathName = "../../resources/images_testSites/X_transparent.png";
-        
-        if(errorCode == 0){
-            //all images are to be loaded for NOT
-//                this.imageView_UnknownError.setImage(new Image(new FileInputStream(crossImagePathName)));
-//            this.imageView_bogonIP.setImage(new Image(crossImagePathName));
 
+//        String crossImagePathName = "../../resources/images_testSites/X_transparent.png";
+//        String crossImagePathName = "resources/images_testSites/D.png";
+        String whatToDisplay = "NO";
+
+        if (errorCode == 0) {
+            this.text_UnknownError.setText(whatToDisplay);
+            this.text_bognoIP.setText(whatToDisplay);
+            this.text_invalidDomain.setText(whatToDisplay);
+            this.text_localServerRRCodeSet.setText(whatToDisplay);
+            this.text_noNameServers.setText(whatToDisplay);
+            this.text_privateIP.setText(whatToDisplay);
+            this.text_timeout.setText(whatToDisplay);
         }
-        
+
     }
 
     private void loadIPListMatched() {
@@ -95,13 +95,15 @@ public class DNSRecordController {
         DNSDetails details_dns = this.report.getDns_details();
         List<JFXTextField> textFieldList = new ArrayList<>();
 
-        for(String ip: details_dns.getMatchedIPs()){
+        for (String ip : details_dns.getMatchedIPs()) {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             textField.setText(ip);
+            textField.setEditable(false);
+            textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
             textFieldList.add(textField);
         }
-        
+
         //Finally add to the vbox
         this.vbox_matchingIPs.getChildren().addAll(textFieldList);
 
@@ -114,6 +116,8 @@ public class DNSRecordController {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             textField.setText(ip);
+            textField.setEditable(false);
+            textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
             textFieldList.add(textField);
         }
 
@@ -128,6 +132,9 @@ public class DNSRecordController {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             textField.setText(ip);
+            textField.setEditable(false);
+            textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
+
             textFieldList.add(textField);
         }
 

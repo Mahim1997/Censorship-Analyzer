@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -78,142 +78,173 @@
       </Text>
    </left>
    <center>
-      <AnchorPane prefHeight="480.0" prefWidth="1362.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="384.0" prefWidth="1335.0" spacing="20.0">
+      <ScrollPane>
+         <content>
+            <AnchorPane prefHeight="480.0" prefWidth="1362.0">
                <children>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox fx:id="vbox_localIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="236.0" spacing="10.0">
+                  <HBox prefHeight="384.0" prefWidth="1335.0" spacing="20.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="vbox_localIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="236.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Local IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                           <opaqueInsets>
+                              <Insets top="40.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="vbox_stubbyIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="285.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IPs from Stubby" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="vbox_matchingIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="270.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Matching IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="316.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bogon IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_bognoIP" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Private IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_privateIP" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_timeout" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid domain" textAlignment="CENTER" wrappingWidth="174.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_invalidDomain" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No Name Servers" textAlignment="CENTER" wrappingWidth="183.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_noNameServers" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Local Server RR code set" textAlignment="CENTER" wrappingWidth="158.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_localServerRRCodeSet" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Unknown Error" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="text_UnknownError" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="156.6708984375">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="428.0" prefWidth="0.0" />
                      </children>
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin>
                      <opaqueInsets>
-                        <Insets top="40.0" />
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                      </opaqueInsets>
-                  </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox fx:id="vbox_stubbyIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="285.0" spacing="10.0">
-                     <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="IPs from Stubby" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox fx:id="vbox_matchingIPs" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="270.0" spacing="10.0">
-                     <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Matching IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="316.0" spacing="10.0">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bogon IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_bogonIP" fitHeight="36.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Private IP" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_privateIP" fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Timeout" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_timeout" fitHeight="44.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid domain" textAlignment="CENTER" wrappingWidth="174.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_invalidDomain" fitHeight="37.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="No Name Servers" textAlignment="CENTER" wrappingWidth="183.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_noNameServers" fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local Server RR code set" textAlignment="CENTER" wrappingWidth="158.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_localServerRRCodeSet" fitHeight="41.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Unknown Error" textAlignment="CENTER" wrappingWidth="156.6708984375">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fx:id="imageView_UnknownError" fitHeight="42.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                           </children>
-                        </HBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <Separator orientation="VERTICAL" prefHeight="428.0" prefWidth="0.0" />
+                     <padding>
+                        <Insets left="40.0" right="40.0" top="40.0" />
+                     </padding>
+                  </HBox>
+                  <Line endX="1293.0" endY="40.0" startX="44.3291015625" startY="40.0" stroke="WHITE" />
                </children>
-               <opaqueInsets>
-                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </padding>
-            </HBox>
-            <Line endX="1316.0" endY="40.0" startX="44.3291015625" startY="40.0" stroke="WHITE" />
-            <Line endX="1316.0" endY="419.0" startX="39.999969482421875" startY="419.0" stroke="WHITE" />
-         </children>
-      </AnchorPane>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

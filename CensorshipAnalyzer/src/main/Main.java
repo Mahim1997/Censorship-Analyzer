@@ -1,7 +1,13 @@
 package main;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import util.loader.SceneLoader;
@@ -28,7 +34,22 @@ public class Main extends Application {
 //
         STAGE_WIDTH = stage.getMaxWidth();
         STAGE_HEIGHT = stage.getMaxHeight();
+        
+        /*
+        try {
+            Parent root = FXMLLoader.load(this.getClass().getResource("test.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+        } catch (IOException ex) {
+            System.out.println("======>>> EXCEPTION WHILE LOADING ");
+            ex.printStackTrace();
+        }
+        */
+        
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
+
+
 //        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
 //        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
 
