@@ -322,7 +322,8 @@ public class CensoredRecordController_Waiting {
     }
 
     private void stopWorkerThreadFromRunning() {
-        this.worker.setWillRun(false);  //i.e. stop the thread from listening ... 
+        this.worker.setWillRun(false);  
+        JavaUDPServerClient.sendThreadExitCommand();    //Send a loop-back command to JAVA PORT
     }
 }
 

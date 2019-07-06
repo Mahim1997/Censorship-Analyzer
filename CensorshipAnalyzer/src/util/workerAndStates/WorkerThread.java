@@ -72,10 +72,17 @@ public class WorkerThread implements Runnable {
 //                while (this.willRun == true) {
                     DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                     serverSocket.receive(receivePacket);
-
+                    
                     String receivedString = new String(receivePacket.getData());
                     System.out.println("RECEIVED: " + receivedString);
 
+                    //EXIT CHECKING BEGIN
+                    if(receivedString.equals("SOURCE_JAVA_EXIT_THREAD")){
+                        this.willRun = false;
+                        break;
+                    }
+                    //EXIT CHECKING DONE
+                    
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     Platform.runLater(() -> {
                         System.out.println("+++>>> Platform.runLater() ... refreshInfo(report) ... ");
