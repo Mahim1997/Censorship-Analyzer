@@ -17,15 +17,30 @@ class Report:
 	file_name_periodic="NONE"
 	iteration_number="NONE"
 
-	#DNS PART
+
 	is_censored = "NONE"
 	censorship_code=0
 	middle_box_hop_count=0
 	censorship_details="NONE"
 
+	#DNS PART
 	local_ip_addresses=[]
 	stubby_ip_addresses=[]
 
+
+	#TCP PART
+	msg_to_set = "NONE"
+	ip_addresses_resolved = []
+	successIter_tor_list_http = []
+	successIter_ls_list_http = [] 
+	successIter_tor_list_https = []
+ 	successIter_ls_list_https = []
+ 	censored_arr_http = []
+ 	censored_arr_https = []
+ 	hop_count_http = -1 
+ 	hop_count_https = -1
+
+ 	#HTTP Part
 
 	def printReport(self):
 		print("---------------------------- PRINTING REPORT BEGIN--------------------------")
@@ -84,16 +99,40 @@ class Report:
 			if ip_details is not None:
 				pass
 				# strReport = strReport + "$global_ip:" + ip_details.global_ip_network
-		# Latest added 
+		# Latest added [NOT YET WORKING]
 
-		strReport = strReport + "$local_ip_addresses:"
-		for ip in self.local_ip_addresses:
-			strReport = strReport + ip + ","
+		typeTesting = self.type_of_testing
 
-		strReport = strReport + "$stubby_ip_addresses:"
-		for ip in self.stubby_ip_addresses:
-			strReport = strReport + ip + ","
-		strReport = strReport + "$END$"
+		if typeTesting == "DNS":
+			strReport = strReport + "$local_ip_addresses:"
+			for ip in self.local_ip_addresses:
+				strReport = strReport + ip + ","
+
+			strReport = strReport + "$stubby_ip_addresses:"
+			for ip in self.stubby_ip_addresses:
+				strReport = strReport + ip + ","
+			strReport = strReport + "$END$"
+
+		elif typeOfTesting == 'TCP':
+			strReport = strReport + "$ipListRemote:"
+			for ip in self.ip_addresses_resolved:
+				strReport = strReport + ip + ","
+
+			strReport = strReport + "$successIter_tor_list_http:"
+			for ip in self.successIter_tor_list_http:
+				strReport = strReport + ip + ","
+
+			strReport = strReport + "$successIter_ls_list_http:"
+			for ip in self.successIter_ls_list_http:
+				strReport = strReport + ip + ","
+
+			strReport = strReport + "$successIter_tor_list_https:"
+			for ip in self.successIter_tor_list_https:
+				strReport = strReport + ip + ","
+
+			strReport = strReport + "$successIter_ls_list_https:"
+			for ip in self.successIter_ls_list_https:
+				strReport = strReport + ip + ","
 
 		return strReport
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------

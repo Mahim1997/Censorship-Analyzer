@@ -46,6 +46,11 @@ class DBHandler:
 			flag = checkIfConnectionExists(self, uIDGiven, ip_details.organisation, ip_details.location, ip_details.global_ip_network)
 	 
 
+
+	def handleReport_TCP(self, report):
+		
+
+
 	def handleReport(self, report):
 		# Open file to write for JAVA
 

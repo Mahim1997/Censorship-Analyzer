@@ -1,4 +1,5 @@
 from dns_censorship_single_url_class_updated import DNS_CENSORSHIP
+from tcp_censorship_analyzer import TCP_3_WAY_HANDSHAKE
 import socket
 import string
 from datetime import datetime
@@ -71,8 +72,36 @@ def processMessage(msg):
 
 	elif typeOfTesting == 'TCP':
 		print('Run TCP .....')
+
+		tcp_check = TCP_3_WAY_HANDSHAKE()
 		
-		
+		db = DBHandler()
+		# Check for 5 iterations
+		msg_to_set, ip_addresses_resolved, successIter_tor_list_http, successIter_ls_list_http, successIter_tor_list_https, 
+		successIter_ls_list_https, censored_arr_http, censored_arr_https ,hop_count_http, hop_count_https = tcp_check.tcp_handshake_check(url, 5)
+
+		report = Report()
+		report.url = url 
+		report.timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S') 	#In this format
+		report.is_file_check = isFile
+		report.is_periodic = isPeriodic
+		report.file_name_periodic = fileNamePeriodic
+		report.iteration_number = iterationNumber
+		report.type_of_testing = "TCP"
+
+		report.ip_addresses_resolved = ip_addresses_resolved
+		report.successIter_ls_list_https = successIter_ls_list_https
+		report.successIter_tor_list_https = successIter_tor_list_https
+		report.successIter_ls_list_http = successIter_ls_list_http
+		report.successIter_tor_list_http = successIter_tor_list_http 
+		report.censored_arr_https = censored_arr_https
+		report.censored_arr_http = censored_arr_http
+
+		report.hop_count_https = hop_count_https
+		report.hop_count_http = hop_count_http
+
+		db.handleReport_TCP(report)
+
 	elif typeOfTesting == 'HTTP':
 		print('Run HTTP .... ')
 	elif typeOfTesting == 'ALL':
