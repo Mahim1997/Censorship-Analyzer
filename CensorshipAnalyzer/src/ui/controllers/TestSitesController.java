@@ -255,20 +255,22 @@ public class TestSitesController implements Initializable {
 
             System.out.println("Command to send \n" + command);
 
-            //Send to Server_UDP
-            JavaUDPServerClient.sendCommandToPython(command);
-
+            //Send to Server_UDP   .... done in the controller class
+//            JavaUDPServerClient.sendCommandToPython(command);
 //        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
 //Switch Scene
+
             String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+
             Parent root = loader.load();
-
-            SceneLoader.loadSceneInSameStage(Scenes.censoredRecordsWaitingFXML);
-
+            
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
-            controller.setUpInitial(false, this.urlNameToTest, this.absoluteFilePathNameToTest, -1, -1);
+            controller.setUpInitial(false, this.urlNameToTest, command, -1, -1);
+
+            SceneLoader.loadSceneInSameStage(root);
+
         } catch (IOException ex) {
             System.out.println("--->>EXCEPTION in TestSitesController.java line 272 ... ");
             Logger.getLogger(TestSitesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -286,14 +288,14 @@ public class TestSitesController implements Initializable {
             String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
-            
+
             Parent root = loader.load();
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
             int idxCurrentMaxReport = DBHandler.getLatestReportID();
             controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, (idxCurrentMaxReport + 1), -1);
-            
+
             SceneLoader.loadSceneInSameStage(root);
-            
+
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
         }

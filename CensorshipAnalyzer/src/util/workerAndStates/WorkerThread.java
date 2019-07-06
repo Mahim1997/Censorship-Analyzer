@@ -54,6 +54,7 @@ public class WorkerThread implements Runnable {
         if (this.fxmlToRun.equals(Scenes.censoredRecordsWaitingFXML)) {
             runForCensoredRecordController_Waiting();
         }
+        System.out.println("+++>>> WorkerThread.run() ends .... ");
     }
 
    
@@ -61,22 +62,21 @@ public class WorkerThread implements Runnable {
     private void runForCensoredRecordController_Waiting() {
 
         try {
-            System.out.println("Initiating server .... ");
-            DatagramSocket serverSocket = new DatagramSocket(Config.PORT_JAVA);
-
-            byte[] receiveData = new byte[Config.RECEIVE_BYTES];
-
-            while (willRun) {
-                DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                serverSocket.receive(receivePacket);
-                String receivedString = new String(receivePacket.getData());
-                System.out.println("RECEIVED: " + receivedString);
-
-                Report report = StringProcessor.processStringAndFormReport(receivedString);
-                Platform.runLater(() -> {
-                    this.controller_censored_waiting.refreshInfo(report);
-                });
-
+            System.out.println("<><><><><><><><><> Initiating server .... inside WorkerThread.runForCensoredRecordController_Waiting() ...... <><><><><> ");
+            try (DatagramSocket serverSocket = new DatagramSocket(Config.PORT_JAVA)) {  //try-with-resources ... auto-close socket
+                byte[] receiveData = new byte[Config.RECEIVE_BYTES];
+                while (willRun) {
+                    DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                    serverSocket.receive(receivePacket);
+                    String receivedString = new String(receivePacket.getData());
+                    System.out.println("RECEIVED: " + receivedString);
+                    
+                    Report report = StringProcessor.processStringAndFormReport(receivedString);
+                    Platform.runLater(() -> {
+                        this.controller_censored_waiting.refreshInfo(report);
+                    });
+                }
+                //Server ends here .... try-with-resources ... auto-close here ...
             }
         } catch (SocketException ex) {
             System.out.println("Socket Exception in runForCensoredController_Waiting in WorkerThread.java");

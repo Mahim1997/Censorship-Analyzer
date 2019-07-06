@@ -23,7 +23,6 @@ import networking.JavaUDPServerClient;
 import ui.model.Report;
 import util.workerAndStates.WorkerThread;
 import util.commands.CommandGenerator;
-import util.database.DBHandler;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
 
@@ -68,11 +67,10 @@ public class CensoredRecordController_Waiting {
     @FXML
     private Text text_waiting;
 
-    public void setUpInitial(boolean isFile, String name, String absPath, int start, int end) {
+    public void setUpInitial(boolean isFile, String name, String absolutPathOrCommandForURL, int start, int end) {
         System.out.println("\n========>>Inside SetupInitial .... ");
-//        this.text_url_actual.setText("FLALALADMALMDLASMDLASMD");
         this.isFile = isFile;
-        this.absFileName = absPath;
+        this.absFileName = absolutPathOrCommandForURL;
         if (this.isFile == true) {
             this.fileName = name;
         } else {
@@ -83,18 +81,26 @@ public class CensoredRecordController_Waiting {
 
         if (this.isFile == true) {
             System.out.println("RUnning for file ... this.absFile = " + this.absFileName + " , this.file = " + this.fileName);
-            this.text_URL.setText("FILE: ");
-            this.text_URL.setFill(Color.WHITE);
-            this.text_url_actual.setText(this.fileName);
-            this.text_url_actual.setFill(Color.WHITE);
+//            this.text_URL.setText("FILE: ");
+//            this.text_URL.setFill(Color.WHITE);
+//            this.text_url_actual.setText(this.fileName);
+//            this.text_url_actual.setFill(Color.WHITE);
+            fillTextsWithColor("FILE: ", this.fileName, Color.WHITE);
             runForFile();
         } else {
-            this.text_URL.setText("URL: ");
-            this.text_url_actual.setText(this.urlName);
-            runForURL();
+            System.out.println("Running for URL .... this.url = " + this.urlName + " , ... RUNNING !!");
+            
+            fillTextsWithColor("URL: ", this.urlName, Color.WHITE);
+            runForURL(absolutPathOrCommandForURL);
         }
 
         runWorkerThread();
+    }
+    private void fillTextsWithColor(String textForLeft, String textForRight, Color color){
+        this.text_URL.setText(textForLeft);
+        this.text_url_actual.setText(textForRight);
+        this.text_URL.setFill(color);
+        this.text_url_actual.setFill(color);
     }
 
     //Run the worker thread
@@ -113,35 +119,11 @@ public class CensoredRecordController_Waiting {
         if (this.worker != null) {
             //make the boolean flag = false for the thread ... 
             this.worker.setWillRun(false);
+        
         }
+        
 
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
-    }
-
-    private List<String> readFile() {
-        List<String> list = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(this.absFileName))) {
-            String line = reader.readLine();
-            int index = 1;
-            while (line != null) {
-//                System.out.println(line);
-                // read next line
-                line = reader.readLine();
-                if (line != null) {
-                    list.add(line);
-                }
-
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println("EXCEPTION in reading file .... ");
-            return null;
-        } catch (IOException ex) {
-            System.out.println("Exception in reading file 2 ... ");
-            return null;
-        }
-        this.reportIndex_End = list.size() + this.reportIndex_Start;
-        System.out.println("============>>> HERE [Line 136] , Report start idx = " + this.reportIndex_Start + " , report end idx = " + this.reportIndex_End);
-        return list;
     }
 
     private void runForFile() {
@@ -164,8 +146,9 @@ public class CensoredRecordController_Waiting {
 
     }
 
-    private void runForURL() {  //TO DO
+    private void runForURL(String commandProvided) {  //TO DO
         System.out.println("Inside CensoredRecordController_Waiting.java .... runForURL() ... TODO!! ");
+        JavaUDPServerClient.sendCommandToPython(commandProvided);
 
     }
 
@@ -205,6 +188,32 @@ public class CensoredRecordController_Waiting {
 
     }
 
+    private List<String> readFile() {
+        List<String> list = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.absFileName))) {
+            String line = reader.readLine();
+            int index = 1;
+            while (line != null) {
+//                System.out.println(line);
+                // read next line
+                line = reader.readLine();
+                if (line != null) {
+                    list.add(line);
+                }
+
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("EXCEPTION in reading file .... ");
+            return null;
+        } catch (IOException ex) {
+            System.out.println("Exception in reading file 2 ... ");
+            return null;
+        }
+        this.reportIndex_End = list.size() + this.reportIndex_Start;
+        System.out.println("============>>> HERE [Line 136] , Report start idx = " + this.reportIndex_Start + " , report end idx = " + this.reportIndex_End);
+        return list;
+    }
+
     @FXML
     private void clickForDetails(ActionEvent event) {   //TODO //Python -> File -> Java [Visualize what is going on]
         //TODO
@@ -230,6 +239,11 @@ public class CensoredRecordController_Waiting {
         //Load the table view here ...
         ObservableList<Report> data = FXCollections.observableArrayList(this.reportsListToBeRefreshed);
 
+        System.out.println("========>>> INSIDE LoadTableView ... this.reportsListToBeRefreshed.size = " + this.reportsListToBeRefreshed.size() + " .. printing ");
+        this.reportsListToBeRefreshed.forEach((r) -> {
+            System.out.println(r.toString());
+        });
+        
         column_reportID.setCellValueFactory(
                 new PropertyValueFactory<>("reportID")
         );
@@ -271,24 +285,40 @@ public class CensoredRecordController_Waiting {
         //Before adding report ... to initialize the button make sure 'this' class is instantiated
         report.setController2(this);
 
-        this.reportsListToBeRefreshed.add(report);
+        this.reportsListToBeRefreshed.add(report);  //Report is added
 
-        System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
-        int si = 0;
-        for (int i = 0; i < this.reportsListToBeRefreshed.size(); i++) {
-            System.out.println(i + "-->" + this.reportsListToBeRefreshed.get(i).toString());
+        if (this.isFile == true) {  //File
+            System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
+            for (int i = 0; i < this.reportsListToBeRefreshed.size(); i++) {
+                System.out.println(i + "-->" + this.reportsListToBeRefreshed.get(i).toString());
+            }
+            loadTableView();
+
+            int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;
+            if (this.reportsListToBeRefreshed.size() == numRecordsNeeded) {
+               //Stop worker thread from running
+                stopWorkerThreadFromRunning();
+                //set the text to DONE as well ...
+                this.text_waiting.setText("COMPLETED !!");
+
+            }
+
+            System.out.println("-------------------------================== ***** ================-----------------------------------");
+        }else{   //URL
+            System.out.println("--------------------- URL : this.listReports.size = " + this.reportsListToBeRefreshed.size() + "  ---------------------------- ");
+//            this.reportsListToBeRefreshed.add(report);
+//            System.out.println(report.toString());
+            loadTableView();
+            this.text_waiting.setText("COMPLETED !!! ");
+            
+            //Stop worker Thread from running
+            stopWorkerThreadFromRunning();
+            System.out.println("============================ ****URL Running REFRESH COMPLETED*** ===================================");
         }
-        loadTableView();
+    }
 
-        int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;
-        if (this.reportsListToBeRefreshed.size() == numRecordsNeeded) {
-            this.worker.setWillRun(false);  //i.e. stop the thread from listening ... 
-            //set the text to DONE as well ...
-            this.text_waiting.setText("COMPLETED !!");
-
-        }
-
-        System.out.println("-------------------------================== ***** ================-----------------------------------");
+    private void stopWorkerThreadFromRunning() {
+        this.worker.setWillRun(false);  //i.e. stop the thread from listening ... 
     }
 }
 

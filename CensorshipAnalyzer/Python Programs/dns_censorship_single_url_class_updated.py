@@ -164,6 +164,8 @@ class DNS_CENSORSHIP:
 		
 	
 	def formReport(self, error_code, ip_list_local, ip_list_stubby, is_censored):
+		self.report.local_ip_addresses = []
+		self.report.stubby_ip_addresses = []
 		self.report.stubby_ip_addresses.extend(ip_list_stubby)
 		self.report.local_ip_addresses.extend(ip_list_local)
 		self.report.cenosorship_code = error_code

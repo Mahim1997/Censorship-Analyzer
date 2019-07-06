@@ -71,6 +71,8 @@ def processMessage(msg):
 
 	elif typeOfTesting == 'TCP':
 		print('Run TCP .....')
+		
+		
 	elif typeOfTesting == 'HTTP':
 		print('Run HTTP .... ')
 	elif typeOfTesting == 'ALL':
