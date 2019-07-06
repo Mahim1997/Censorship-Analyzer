@@ -4,6 +4,8 @@ import socket
 import string
 from datetime import datetime
 from dbHandler import DBHandler
+from TCP_Description import TCP_Description
+from Report import Report
 
 def isSourceJava(msg):	#Simple function to check if contains source:java as the first line
 	x = msg.split(':')
@@ -77,8 +79,9 @@ def processMessage(msg):
 		
 		db = DBHandler()
 		# Check for 5 iterations
-		msg_to_set, ip_addresses_resolved, successIter_tor_list_http, successIter_ls_list_http, successIter_tor_list_https, 
-		successIter_ls_list_https, censored_arr_http, censored_arr_https ,hop_count_http, hop_count_https = tcp_check.tcp_handshake_check(url, 5)
+		description = TCP_Description()
+
+		description = tcp_check.tcp_handshake_check(url, 5)
 
 		report = Report()
 		report.url = url 
@@ -89,16 +92,16 @@ def processMessage(msg):
 		report.iteration_number = iterationNumber
 		report.type_of_testing = "TCP"
 
-		report.ip_addresses_resolved = ip_addresses_resolved
-		report.successIter_ls_list_https = successIter_ls_list_https
-		report.successIter_tor_list_https = successIter_tor_list_https
-		report.successIter_ls_list_http = successIter_ls_list_http
-		report.successIter_tor_list_http = successIter_tor_list_http 
-		report.censored_arr_https = censored_arr_https
-		report.censored_arr_http = censored_arr_http
+		report.ip_addresses_resolved = description.ip_addresses_resolved
+		report.successIter_ls_list_https = description.successIter_ls_list_https
+		report.successIter_tor_list_https = description.successIter_tor_list_https
+		report.successIter_ls_list_http = description.successIter_ls_list_http
+		report.successIter_tor_list_http = description.successIter_tor_list_http 
+		report.censored_arr_https = description.censored_arr_https
+		report.censored_arr_http = description.censored_arr_http
 
-		report.hop_count_https = hop_count_https
-		report.hop_count_http = hop_count_http
+		report.hop_count_https = description.hop_count_https
+		report.hop_count_http = description.hop_count_http
 
 		db.handleReport_TCP(report)
 

@@ -34,11 +34,11 @@ class Report:
 	successIter_tor_list_http = []
 	successIter_ls_list_http = [] 
 	successIter_tor_list_https = []
- 	successIter_ls_list_https = []
- 	censored_arr_http = []
- 	censored_arr_https = []
- 	hop_count_http = -1 
- 	hop_count_https = -1
+	successIter_ls_list_https = []
+	censored_arr_http = []
+	censored_arr_https = []
+	hop_count_http = -1 
+	hop_count_https = -1
 
  	#HTTP Part
 
@@ -67,7 +67,7 @@ class Report:
 			print(*self.local_ip_addresses, sep = " , ")
 			print("Printing StubbyIpAddresses: ")
 			print(*self.stubby_ip_addresses, sep = " , ")
-			
+
 		elif self.type_of_testing == "TCP":
 			print("Printing resolved ips:")
 			print(*self.ip_addresses_resolved, sep = " , ")
@@ -179,7 +179,6 @@ def formTestReport(repID, conID, time, url, typeTesting, methodCensorship, isFil
 
 #-------------------------------------------------------------
 isMain=False 	#Keep false to be called by outside file
-
 if isMain == True:
 	rep = Report()
 	ip_local = ['197.00.01.01' '100.00.11.2']

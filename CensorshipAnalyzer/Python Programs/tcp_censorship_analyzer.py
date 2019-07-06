@@ -3,6 +3,7 @@ import socks
 import socket
 import time
 from SocketFunctions_updated import SocketFunctions
+from TCP_Description import TCP_Description
 
 tor_url = "https://check.torproject.org/"
 tor_ip = "127.0.0.1"
@@ -220,14 +221,18 @@ class TCP_3_WAY_HANDSHAKE:
 				self.msg_to_set = self.msg_to_set + "#Tcp 3-way handshake failure via tor for the ip " + ip + " , port = " + port.__str__() 
 								#print ("Tcp 3-way handshake failure via tor: "+ip+" port:"+port.__str__())
 		
-
-
-		return self.msg_to_set, ipListRemote ,successIter_tor_list_http, successIter_ls_list_http, successIter_tor_list_https, successIter_ls_list_https, censored_arr_http, censored_arr_https , self.hop_count_http, self.hop_count_https
+		description = TCP_Description()
+		description.form_Description(self.msg_to_set, ipListRemote, successIter_tor_list_http, successIter_ls_list_http, 
+			successIter_tor_list_https, successIter_ls_list_https, censored_arr_http, censored_arr_https,
+			self.hop_count_http, self.hop_count_https) 
+		
+		return description
+		#return self.msg_to_set, ipListRemote ,successIter_tor_list_http, successIter_ls_list_http, successIter_tor_list_https, successIter_ls_list_https, censored_arr_http, censored_arr_https , self.hop_count_http, self.hop_count_https
 		#--------------------- My end --------------------------------------
 
 
 
-is_main = True
+is_main = False
 HOST = "www.xvideos.com"
 if is_main == True:
 	ob = TCP_3_WAY_HANDSHAKE()
