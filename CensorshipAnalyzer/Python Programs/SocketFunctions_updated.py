@@ -24,6 +24,7 @@ import time
 import errno
 
 class SocketFunctions:
+	TOR_PORT = 9050
 	def is_bogon_ip(self,ip):
 		networks = [
 			"0.0.0.0/8",
@@ -69,7 +70,7 @@ class SocketFunctions:
 			return False
 
 	def socketConnectTor(self,ip):
-		socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9150, True)
+		socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", self.TOR_PORT, True)
 		s = socks.socksocket()
 		s.settimeout(10)
 		print(ip)
