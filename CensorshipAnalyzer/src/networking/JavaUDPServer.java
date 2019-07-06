@@ -3,12 +3,24 @@ package networking;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import javafx.application.Platform;
+import java.net.SocketException;
+import main.Config;
 
 public class JavaUDPServer {
 
-    private static final int BYTE_SIZE = 1024;
+    private static final int BYTE_SIZE = 4096;
 
+//    static DatagramSocket serverJava;
+//    
+//    public static void initialiseServerJava(){
+//        try {
+//            serverJava = new DatagramSocket(Config.PORT_JAVA);
+//        } catch (SocketException ex) {
+//            ex.printStackTrace();
+//        }
+//        
+//    }
+//    
     protected static void runServer(DatagramSocket socket, String udp_ip_address, int udp_PORT_Server_Java) {
         byte[] receivedBytes = new byte[BYTE_SIZE];
         DatagramPacket rPacket;
@@ -22,9 +34,7 @@ public class JavaUDPServer {
             String data = new String(rPacket.getData()) ;
             System.out.println("<RECEIVED in Java> : " + data);
             
-            Platform.runLater(() -> {
-                
-            });
+            
             
         }
     }

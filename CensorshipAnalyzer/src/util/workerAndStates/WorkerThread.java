@@ -38,26 +38,27 @@ public class WorkerThread implements Runnable {
     public WorkerThread(CensoredRecordController_Waiting con) {
         this.startTime = System.currentTimeMillis();
         this.controller_censored_waiting = con;
+        System.out.println("-->>> WokerThread constructor ... ");
     }
 
     public void setFxmlToRun(String fxmlToRun) {
         this.fxmlToRun = fxmlToRun;
     }
 
-    public void setWillRun(boolean flag) {
+    public synchronized void setWillRun(boolean flag) {
+        System.out.println("--++-->> Worker.setWillRun(" + flag + ") is called");
         this.willRun = flag;
     }
 
     @Override
     public void run() {
         //if conditions ... 
+        System.out.println("+++++>>>>>>>> WorkerThread.run() method initialising .... ");
         if (this.fxmlToRun.equals(Scenes.censoredRecordsWaitingFXML)) {
             runForCensoredRecordController_Waiting();
         }
         System.out.println("+++>>> WorkerThread.run() ends .... ");
     }
-
-   
 
     private void runForCensoredRecordController_Waiting() {
 
@@ -65,24 +66,31 @@ public class WorkerThread implements Runnable {
             System.out.println("<><><><><><><><><> Initiating server .... inside WorkerThread.runForCensoredRecordController_Waiting() ...... <><><><><> ");
             try (DatagramSocket serverSocket = new DatagramSocket(Config.PORT_JAVA)) {  //try-with-resources ... auto-close socket
                 byte[] receiveData = new byte[Config.RECEIVE_BYTES];
-                while (willRun) {
+                System.out.println("Inside WorkerThread ... listReports.size = " + this.controller_censored_waiting.reportsListToBeRefreshed.size() + " , "
+                        + "this.controller.numReports = " + this.controller_censored_waiting.numberOfReportsNeeded);
+                while (this.controller_censored_waiting.reportsListToBeRefreshed.size() < this.controller_censored_waiting.numberOfReportsNeeded) {  //should be while ???
+//                while (this.willRun == true) {
                     DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                     serverSocket.receive(receivePacket);
+
                     String receivedString = new String(receivePacket.getData());
                     System.out.println("RECEIVED: " + receivedString);
-                    
+
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     Platform.runLater(() -> {
+                        System.out.println("+++>>> Platform.runLater() ... refreshInfo(report) ... ");
                         this.controller_censored_waiting.refreshInfo(report);
                     });
+                    System.out.println("++>>> After platform.runLater() list.size = " + this.controller_censored_waiting.reportsListToBeRefreshed.size());
                 }
                 //Server ends here .... try-with-resources ... auto-close here ...
+                System.out.println("+++++++>>>> )))) >>>> Server Ends HERE !!!");
             }
         } catch (SocketException ex) {
-            System.out.println("Socket Exception in runForCensoredController_Waiting in WorkerThread.java");
+            System.out.println("+++-------+++++++++++>>>>>>>>>>>>>> Socket Exception in runForCensoredController_Waiting in WorkerThread.java");
 //            ex.printStackTrace();
         } catch (IOException ex) {
-            System.out.println("I/O Exception in runForCensoredController_Waiting in WorkerThread.java");
+            System.out.println("++++--------+++++++++ >>>> I/O Exception in runForCensoredController_Waiting in WorkerThread.java");
         }
     }
 

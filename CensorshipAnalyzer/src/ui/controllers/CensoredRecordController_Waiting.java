@@ -63,11 +63,15 @@ public class CensoredRecordController_Waiting {
 
     WorkerThread worker;
 
-    public List<Report> reportsListToBeRefreshed = new ArrayList<>();
+    public List<Report> reportsListToBeRefreshed;//= new ArrayList<>();
     @FXML
     private Text text_waiting;
 
+    public int numberOfReportsNeeded;
+
     public void setUpInitial(boolean isFile, String name, String absolutPathOrCommandForURL, int start, int end) {
+        this.reportsListToBeRefreshed = new ArrayList<>();
+
         System.out.println("\n========>>Inside SetupInitial .... ");
         this.isFile = isFile;
         this.absFileName = absolutPathOrCommandForURL;
@@ -80,23 +84,21 @@ public class CensoredRecordController_Waiting {
         this.reportIndex_End = end;
 
         if (this.isFile == true) {
-            System.out.println("RUnning for file ... this.absFile = " + this.absFileName + " , this.file = " + this.fileName);
-//            this.text_URL.setText("FILE: ");
-//            this.text_URL.setFill(Color.WHITE);
-//            this.text_url_actual.setText(this.fileName);
-//            this.text_url_actual.setFill(Color.WHITE);
             fillTextsWithColor("FILE: ", this.fileName, Color.WHITE);
-            runForFile();
+            runForFile();   //Also updates the numberOfReports needed 
+            System.out.println("RUnning for file ... this.absFile = " + this.absFileName + " , this.file = " + this.fileName + " this.numReports = " + this.numberOfReportsNeeded);
+
         } else {
             System.out.println("Running for URL .... this.url = " + this.urlName + " , ... RUNNING !!");
-            
+            this.numberOfReportsNeeded = 1; //ONLY one for URL
             fillTextsWithColor("URL: ", this.urlName, Color.WHITE);
             runForURL(absolutPathOrCommandForURL);
         }
 
         runWorkerThread();
     }
-    private void fillTextsWithColor(String textForLeft, String textForRight, Color color){
+
+    private void fillTextsWithColor(String textForLeft, String textForRight, Color color) {
         this.text_URL.setText(textForLeft);
         this.text_url_actual.setText(textForRight);
         this.text_URL.setFill(color);
@@ -104,12 +106,14 @@ public class CensoredRecordController_Waiting {
     }
 
     //Run the worker thread
+    Thread workerThread_thread;
+
     private void runWorkerThread() {
         this.worker = new WorkerThread(this);
         worker.setFxmlToRun(Scenes.censoredRecordsWaitingFXML);
 
-        Thread t = new Thread(worker);  //Create thread object 
-        t.start();  //Start the thread
+        workerThread_thread = new Thread(worker);  //Create thread object 
+        workerThread_thread.start();  //Start the thread    
 
     }
 
@@ -119,15 +123,14 @@ public class CensoredRecordController_Waiting {
         if (this.worker != null) {
             //make the boolean flag = false for the thread ... 
             this.worker.setWillRun(false);
-        
+//            this.workerThread_thread.stop();
         }
-        
 
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
     private void runForFile() {
-        List<String> list = readFile();
+        List<String> list = readFile(); //Call readFile() function ... also it updates the numberOfReports
         if (list == null) {
             return;
         }
@@ -210,7 +213,8 @@ public class CensoredRecordController_Waiting {
             return null;
         }
         this.reportIndex_End = list.size() + this.reportIndex_Start;
-        System.out.println("============>>> HERE [Line 136] , Report start idx = " + this.reportIndex_Start + " , report end idx = " + this.reportIndex_End);
+        this.numberOfReportsNeeded = Math.abs(this.reportIndex_End - this.reportIndex_Start);
+        System.out.println("============>>> HERE [Line 218] , Report start idx = " + this.reportIndex_Start + " , report end idx = " + this.reportIndex_End);
         return list;
     }
 
@@ -221,8 +225,9 @@ public class CensoredRecordController_Waiting {
 
     }
 
+    private void loadTableView() {
 
-    /* Report:
+        /* Report:
     private int reportID;
     private String url;
     private String networkName;
@@ -234,8 +239,7 @@ public class CensoredRecordController_Waiting {
     private Button btn_details;
 
     private int censorship_code;
-     */
-    private void loadTableView() {
+         */
         //Load the table view here ...
         ObservableList<Report> data = FXCollections.observableArrayList(this.reportsListToBeRefreshed);
 
@@ -243,7 +247,7 @@ public class CensoredRecordController_Waiting {
         this.reportsListToBeRefreshed.forEach((r) -> {
             System.out.println(r.toString());
         });
-        
+
         column_reportID.setCellValueFactory(
                 new PropertyValueFactory<>("reportID")
         );
@@ -278,7 +282,7 @@ public class CensoredRecordController_Waiting {
     private int refreshCounter = 0; //Test purposes
 
     public void refreshInfo(Report report) {
-        System.out.println("-------------------------------------- Inside refreshInfo() refreshCnt = " + refreshCounter + "--------------------------------");
+        System.out.println("-------------------------------------- Inside refreshInfo(loadTableView()) refreshCnt = " + refreshCounter + "--------------------------------");
         System.out.println("-->>Inside refreshInfo() ... refreshCnt = " + refreshCounter);
         refreshCounter++;
 
@@ -288,15 +292,15 @@ public class CensoredRecordController_Waiting {
         this.reportsListToBeRefreshed.add(report);  //Report is added
 
         if (this.isFile == true) {  //File
-            System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
-            for (int i = 0; i < this.reportsListToBeRefreshed.size(); i++) {
-                System.out.println(i + "-->" + this.reportsListToBeRefreshed.get(i).toString());
-            }
+//            System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
+//            for (int i = 0; i < this.reportsListToBeRefreshed.size(); i++) {
+//                System.out.println(i + "-->" + this.reportsListToBeRefreshed.get(i).toString());
+//            }
             loadTableView();
 
-            int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;
-            if (this.reportsListToBeRefreshed.size() == numRecordsNeeded) {
-               //Stop worker thread from running
+//            int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;
+            if (this.reportsListToBeRefreshed.size() == this.numberOfReportsNeeded) {
+                //Stop worker thread from running
                 stopWorkerThreadFromRunning();
                 //set the text to DONE as well ...
                 this.text_waiting.setText("COMPLETED !!");
@@ -304,13 +308,13 @@ public class CensoredRecordController_Waiting {
             }
 
             System.out.println("-------------------------================== ***** ================-----------------------------------");
-        }else{   //URL
+        } else {   //URL
             System.out.println("--------------------- URL : this.listReports.size = " + this.reportsListToBeRefreshed.size() + "  ---------------------------- ");
 //            this.reportsListToBeRefreshed.add(report);
 //            System.out.println(report.toString());
             loadTableView();
             this.text_waiting.setText("COMPLETED !!! ");
-            
+
             //Stop worker Thread from running
             stopWorkerThreadFromRunning();
             System.out.println("============================ ****URL Running REFRESH COMPLETED*** ===================================");
