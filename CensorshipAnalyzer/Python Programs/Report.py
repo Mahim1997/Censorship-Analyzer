@@ -39,8 +39,8 @@ class Report:
 	censored_arr_https = []
 	hop_count_http = -1 
 	hop_count_https = -1
-	tor_connection_unsuccessfull = False
-
+	tor_connection_unsuccessfull_HTTP = False
+	tor_connection_unsuccessfull_HTTPS = False
  	#HTTP Part
 
 	def printReport(self):
@@ -137,6 +137,10 @@ class Report:
 			strReport = strReport + "$hop_count_http:" + str(self.hop_count_http)
 			strReport = strReport + "$hop_count_https:" + str(self.hop_count_https)
 
+			strReport = strReport + "$tor_connection_unsuccessfull_HTTP:" + str(self.tor_connection_unsuccessfull_HTTP)
+			strReport = strReport + "$tor_connection_unsuccessfull_HTTPS:" + str(self.tor_connection_unsuccessfull_HTTPS)
+
+			strReport = strReport + "$"
 			strReport = strReport + "$ipListRemote:"
 			for ip in self.ip_addresses_resolved:
 				strReport = strReport + str(ip) + ","

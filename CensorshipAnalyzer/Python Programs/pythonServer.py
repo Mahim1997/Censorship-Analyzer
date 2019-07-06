@@ -103,6 +103,9 @@ def processMessage(msg):
 		report.hop_count_https = description.hop_count_https
 		report.hop_count_http = description.hop_count_http
 
+		report.tor_connection_unsuccessfull_HTTP = description.tor_connection_unsuccessfull_HTTP
+		report.tor_connection_unsuccessfull_HTTPS = description.tor_connection_unsuccessfull_HTTPS
+
 		db.handleReport_TCP(report)
 
 	elif typeOfTesting == 'HTTP':
