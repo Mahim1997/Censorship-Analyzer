@@ -53,8 +53,9 @@ class DBHandler:
 		c = conn.cursor()
 
 		print("Priinting report inside handleReport_TCP() ... ")
-		report.printReport()
-
+		
+		strReport = report.getReportString()
+		print(strReport)
 
 		#conn.commit()
 		c.close()

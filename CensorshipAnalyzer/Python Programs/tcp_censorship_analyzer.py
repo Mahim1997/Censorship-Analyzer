@@ -21,6 +21,8 @@ class TCP_3_WAY_HANDSHAKE:
 
 	hop_count_http = -1
 	hop_count_https = -1
+	tor_connection_unsuccessfull_HTTP = False
+	tor_connection_unsuccessfull_HTTPS = False
 
 	def is_tor_running(self):
 #---------------------------------------------------Tor Connection Check---------------------------------------------------
@@ -156,6 +158,7 @@ class TCP_3_WAY_HANDSHAKE:
 					break
 
 			if not statusTor:	#Full connection failure via tor
+				self.tor_connection_unsuccessfull_HTTP = True
 				self.msg_to_set = self.msg_to_set + "#Tcp 3-way handshake failure via tor for the ip " + ip + " , port = " + port.__str__() 
 								#print ("Tcp 3-way handshake failure via tor: "+ip+" port:"+port.__str__())
 		
@@ -218,13 +221,14 @@ class TCP_3_WAY_HANDSHAKE:
 					break
 
 			if not statusTor:	#Full connection failure via tor
+				self.tor_connection_unsuccessfull_HTTPS = True
 				self.msg_to_set = self.msg_to_set + "#Tcp 3-way handshake failure via tor for the ip " + ip + " , port = " + port.__str__() 
 								#print ("Tcp 3-way handshake failure via tor: "+ip+" port:"+port.__str__())
 		
 		description = TCP_Description()
 		description.form_Description(self.msg_to_set, ipListRemote, successIter_tor_list_http, successIter_ls_list_http, 
 			successIter_tor_list_https, successIter_ls_list_https, censored_arr_http, censored_arr_https,
-			self.hop_count_http, self.hop_count_https) 
+			self.hop_count_http, self.hop_count_https, self.tor_connection_unsuccessfull_HTTP, self.tor_connection_unsuccessfull_HTTPS) 
 		
 		return description
 		#return self.msg_to_set, ipListRemote ,successIter_tor_list_http, successIter_ls_list_http, successIter_tor_list_https, successIter_ls_list_https, censored_arr_http, censored_arr_https , self.hop_count_http, self.hop_count_https
