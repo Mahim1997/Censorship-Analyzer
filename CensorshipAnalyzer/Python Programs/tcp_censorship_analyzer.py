@@ -50,7 +50,7 @@ class TCP_3_WAY_HANDSHAKE:
 		print(statusLocal)'''
 	
 		#---------------------------------------------------------------DNS resolution-----------------------------------------------
-		print(HOST)
+		print("Checking TCP for url: " + HOST)
 		isResolved = False
 		ipListRemote = []
 		for i in range(iteration):
@@ -79,35 +79,43 @@ class TCP_3_WAY_HANDSHAKE:
 		statusLocal = False
 		
 		#--------------------- My beginning --------------------------------------
-		self.msg_to_set = ""
+		self.msg_to_set = "url:" + HOST
 		for ip in ipListRemote: 	#EACH IP
 			#HTTP CHECK
 			port = 80
-			self.msg_to_set = self.msg_to_set + "###IP:" + str(ip) + "###"
+			self.msg_to_set = self.msg_to_set + "\nIP:" + str(ip) + " , port = " + str(port) + "\n"
 			for j in range(self.Iterate):
 				# 5 times iteration
+				#print(str(j+1) + "th try for TOR CHeck ... ip = " + str(ip))
 				statusTor = dnsOb.socketConnectTor(ip)
 				if not statusTor:	#Do not check for local server connection
-					self.msg_to_set = self.msg_to_set + str(j) + "th iteration TOR Connection Unsuccesful"
+					#print("NOT statusTOR (i.e. false)")	
+					pass
+					# self.msg_to_set = self.msg_to_set + "##" + str((j+1)) + "th iteration TOR Connection Unsuccesful"
 				if statusTor:	#Check for local server connection
-					self.msg_to_set = self.msg_to_set + str(j) + "th iteration TOR Connection Succesful"					
+					self.msg_to_set = self.msg_to_set + "##" + str((j+1)) + "th iteration TOR Connection Succesful"					
+					#print("STATUS TOR IS TRUE")
 					#Now 5 times local ip target
 					for k in range(self.Iterate):
 						statusLocal = dnsOb.socketConnectLocal(ip)
+						#print(str(k+1) + "th check for Local Connection ip = " + str(ip))
 						if not statusLocal:
-							self.msg_to_set = self.msg_to_set + str(k) + "th iteration Local Server Connection Unsuccesful"
+							#print("Status LDS is false")
+							# self.msg_to_set = self.msg_to_set + "#" + str((k+1)) + "th iteration Local Server Connection Unsuccesful"
 							time.sleep(2)
 						if statusLocal:
-							self.msg_to_set = self.msg_to_set + str(k) + "th iteration Local Server Connection Succesful"
+							# print("Status LDS is true")
+							self.msg_to_set = self.msg_to_set + "#" + str((k+1)) + "th iteration Local Server Connection Succesful"
+							self.msg_to_set = self.msg_to_set + "#Not censored for ip = " + str(ip) + " , in port = " + str(port)
 							break
 
 					if not statusLocal:
 						status,hop_count,message = dnsOb.tcp_ttl_find(ip,port,2)
 						if status:
 							self.msg_to_set = self.msg_to_set + "#Not TCP Censored for ip = " + ip + " , port = " + port.__str__()
-							#print ("Not TCP Censored: "+ip+" port:"+port.__str__())
+							print ("--->>> Not TCP Censored: "+ip+" port:"+port.__str__())
 						else:
-							#print ("TCP Censored: "+ip+" port:"+port.__str__())
+							print ("++===>> TCP Censored: "+ip+" port:"+port.__str__())
 							self.msg_to_set = self.msg_to_set + "#TCP Censored for ip = " + ip + " , port = " + port.__str__()
 							if hop_count == None:
 								#print("Unknown Hop Count"+" :-> "+message)
@@ -120,13 +128,59 @@ class TCP_3_WAY_HANDSHAKE:
 			if not statusTor:	#Full connection failure via tor
 				self.msg_to_set = self.msg_to_set + "#Tcp 3-way handshake failure via tor for the ip " + ip + " , port = " + port.__str__() 
 								#print ("Tcp 3-way handshake failure via tor: "+ip+" port:"+port.__str__())
+		
+
+		#--------------------- Now for HTTPS --------------------------------------
+
+		for ip in ipListRemote: 	#EACH IP
+			#HTTPS CHECK
+			port = 443
+			self.msg_to_set = self.msg_to_set + "\nIP:" + str(ip) + " , port = " + str(port) + "\n"
+			for j in range(self.Iterate):
+				# 5 times iteration
+				statusTor = dnsOb.socketConnectTor(ip)
+				if not statusTor:	#Do not check for local server connection
+					pass
+					# self.msg_to_set = self.msg_to_set + "##" + str((j+1)) + "th iteration TOR Connection Unsuccesful"
+				if statusTor:	#Check for local server connection
+					self.msg_to_set = self.msg_to_set + "##" + str((j+1)) + "th iteration TOR Connection Succesful"					
+					#Now 5 times local ip target
+					for k in range(self.Iterate):
+						statusLocal = dnsOb.socketConnectLocal(ip)
+						if not statusLocal:
+							# self.msg_to_set = self.msg_to_set + "#" + str((k+1)) + "th iteration Local Server Connection Unsuccesful"
+							time.sleep(2)
+						if statusLocal:
+							self.msg_to_set = self.msg_to_set + "#" + str((k+1)) + "th iteration Local Server Connection Succesful"
+							self.msg_to_set = self.msg_to_set + "#Not censored for ip = " + str(ip) + " , in port = " + str(port)
+							break
+
+					if not statusLocal:
+						status,hop_count,message = dnsOb.tcp_ttl_find(ip,port,2)
+						if status:
+							self.msg_to_set = self.msg_to_set + "#Not TCP Censored for ip = " + ip + " , port = " + port.__str__()
+							#print ("Not TCP Censored: "+ip+" port:"+port.__str__())
+						else:
+							#print ("TCP Censored: "+ip+" port:"+port.__str__())
+							self.msg_to_set = self.msg_to_set + "#TCP Censored for ip = " + ip + " , port = " + port.__str__()
+							if hop_count == None:
+								#print("Unknown Hop Count"+" :-> "+message)
+								self.msg_to_set = self.msg_to_set + "#Hop count = unknwon , msg = " + message
+							else:
+								#print("Hop Count: "+hop_count.__str__()+" :-> "+message)
+								self.msg_to_set = self.msg_to_set + "#Hop count = " + hop_count.__str__() + " , msg = " + message
+					break
+
+			if not statusTor:	#Full connection failure via tor
+				self.msg_to_set = self.msg_to_set + "#Tcp 3-way handshake failure via tor for the ip " + ip + " , port = " + port.__str__() 
+								#print ("Tcp 3-way handshake failure via tor: "+ip+" port:"+port.__str__())
+
 		#--------------------- My end --------------------------------------
 
 
 
-
 is_main = True
-HOST = "www.google.com"
+HOST = "www.xvideos.com"
 if is_main == True:
 	ob = TCP_3_WAY_HANDSHAKE()
 	ob.tcp_handshake_check(HOST, 5, tor_ip, tor_port_1)
