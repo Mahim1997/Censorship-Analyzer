@@ -62,12 +62,31 @@ class Report:
 		print("Censorship Details: " + self.censorship_details)
 		print("Mid box hop count: " + str(self.middle_box_hop_count))
 		
+		if self.type_of_testing == "DNS":
+			print("Printing LocalIpAddresses: ")
+			print(*self.local_ip_addresses, sep = " , ")
+			print("Printing StubbyIpAddresses: ")
+			print(*self.stubby_ip_addresses, sep = " , ")
+			
+		elif self.type_of_testing == "TCP":
+			print("Printing resolved ips:")
+			print(*self.ip_addresses_resolved, sep = " , ")
+			print("Printing successIter_tor_list_http:")
+			print(*self.successIter_tor_list_http, sep = " , ")
+			print("Printing successIter_ls_list_http:")
+			print(*self.successIter_ls_list_http, sep = " , ")
 
-		print("Printing LocalIpAddresses: ")
-		print(*self.local_ip_addresses, sep = " , ")
+			print("Printing successIter_tor_list_https:")
+			print(*self.successIter_tor_list_https, sep = " , ")
+			print("Printing successIter_ls_list_https:")
+			print(*self.successIter_ls_list_https, sep = " , ")
 
-		print("Printing StubbyIpAddresses: ")
-		print(*self.stubby_ip_addresses, sep = " , ")
+			print("Printing censored_arr_http:")
+			print(*self.censored_arr_http, sep = " , ")
+			print("Printing censored_arr_https:")
+			print(*self.censored_arr_https, sep = " , ")
+
+			print("Printing hop_count_http = " + str(self.hop_count_http) + ",hop_count_https = " + str(self.hop_count_https))
 
 		print("---------------------------- PRINTING REPORT DONE --------------------------")
 

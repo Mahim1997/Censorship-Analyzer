@@ -48,8 +48,17 @@ class DBHandler:
 
 
 	def handleReport_TCP(self, report):
-		
 
+		conn = sqlite3.connect("Client Data.db")
+		c = conn.cursor()
+
+		print("Priinting report inside handleReport_TCP() ... ")
+		report.printReport()
+
+
+		#conn.commit()
+		c.close()
+		conn.close()
 
 	def handleReport(self, report):
 		# Open file to write for JAVA
