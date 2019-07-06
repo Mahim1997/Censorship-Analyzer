@@ -8,12 +8,13 @@ class Database:
 		#c.execute("DROP TABLE IF EXISTS USER")
 		
 		#c.execute("DROP TABLE IF EXISTS Connection")
-		c.execute("DROP TABLE IF EXISTS Report")
-		c.execute("DROP TABLE IF EXISTS DnsDescription")
-		c.execute("DROP TABLE IF EXISTS LocalIpAddresses")
-		c.execute("DROP TABLE IF EXISTS StubbyIpAddresses")
-		c.execute("DROP TABLE IF EXISTS HTTPDescription")
+		#c.execute("DROP TABLE IF EXISTS Report")
+		#c.execute("DROP TABLE IF EXISTS DnsDescription")
+		#c.execute("DROP TABLE IF EXISTS LocalIpAddresses")
+		#c.execute("DROP TABLE IF EXISTS StubbyIpAddresses")
+		#c.execute("DROP TABLE IF EXISTS HTTPDescription")
 		c.execute("DROP TABLE IF EXISTS TCPDescription")
+
 		conn.commit()
 
 
@@ -41,7 +42,7 @@ class Database:
 		c.execute("CREATE TABLE IF NOT EXISTS 	HTTPDescription(report_id INTEGER PRIMARY KEY,content_tor TEXT, content_local TEXT, comparison_percentage REAL, final_verdict TEXT, middle_box_hop_count INTEGER,FOREIGN KEY(report_id) REFERENCES Report(report_id))")
 	
 		#TCPDescrption(reportID(FK, PK),tor_3_way_handshake_status, local_3_way_handshake_status, error_message, middle_box_hop)
-		c.execute("CREATE TABLE IF NOT EXISTS 	TCPDescription(report_id INTEGER PRIMARY KEY, tor_3_way_handshake_status TEXT, local_3_way_handshake_status TEXT, error_message TEXT, middle_box_hop_count INTEGER,FOREIGN KEY(report_id) REFERENCES Report(report_id))")
+		#c.execute("CREATE TABLE IF NOT EXISTS 	TCPDescription(report_id INTEGER PRIMARY KEY, tor_3_way_handshake_status TEXT, local_3_way_handshake_status TEXT, error_message TEXT, middle_box_hop_count INTEGER,FOREIGN KEY(report_id) REFERENCES Report(report_id))")
 	
 		conn.commit(); #Very Very important			
 		
@@ -50,9 +51,15 @@ class Database:
 #db = Database()
 #db.dropTables()
 #db.createTable()
+
+#c.execute("CREATE TABLE IF NOT EXISTS IP_TOR(report_id INTEGER, ip_tor TEXT, iteration_success_tor TEXT, censored_tor TEXT, PRIMARY KEY(report_id, ip_tor), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+#c.execute("CREATE TABLE IF NOT EXISTS IP_LOCAL(report_id INTEGER, ip_local TEXT, iteration_success_local TEXT, censored_local TEXT, PRIMARY KEY(report_id, ip_local), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+
 c.close()
 conn.close()
 
 #c.execute("DROP TABLE IF EXISTS Report")
 #Report (report_id(PK), connection_id(FK), time_stamp, url, is_censored, type_of_testing, method_of_censorship, isFileCheck, isPeriodic, fileNamePeriodic, iterationNumber, censorship_error_code, censorship_details)
 #c.execute("CREATE TABLE IF NOT EXISTS 	Report(report_id INTEGER PRIMARY KEY,connection_id INTEGER, time_stamp REAL, url TEXT, is_censored TEXT ,type_of_testing TEXT, method_of_censorship TEXT, isFileCheck TEXT, isPeriodic TEXT, fileNamePeriodic TEXT, iterationNumber INTEGER, censorship_error_code INTEGER, censorship_details TEXT, FOREIGN KEY(connection_id) REFERENCES Connection(connection_id))")
+
+

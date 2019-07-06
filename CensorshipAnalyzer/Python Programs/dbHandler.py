@@ -57,6 +57,22 @@ class DBHandler:
 		strReport = report.getReportString()
 		print(strReport)
 
+		c.execute("SELECT COUNT(*) FROM Report")  #Get the count from Report
+		countGot = c.fetchall()
+		num = -1 
+		for row in countGot:
+			print("--->>>>>>> In handleReport () ... Row[0] : " + str(row[0]))
+			num = row[0] 	#Don't know exactly why like this !!
+
+		report.reportID = num + 1
+
+		c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+			( report.reportID, report.connectionID, report.timestamp, report.url, report.is_censored, report.type_of_testing,
+				report.method_of_censorship, report.is_file_check, report.is_periodic,
+				report.file_name_periodic, report.iteration_number, report.censorship_code, report.censorship_details))
+
+
+
 		#conn.commit()
 		c.close()
 		conn.close()
