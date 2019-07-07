@@ -100,8 +100,16 @@ class DBHandler:
 
 		print("Adding to database is done for TCP record ... ")
 
+
+		#Send to java over UDP
+		MESSAGE = report.getReportString()
+		self.sendToJava(MESSAGE)
+
+
 		#Apply commit
 		conn.commit()
+
+
 
 		c.close()
 		conn.close()
@@ -169,13 +177,24 @@ class DBHandler:
 			c.execute("INSERT INTO StubbyIpAddresses VALUES (?, ?)", 
 				(report.reportID, ip))
 			
+		# send to java
+		MESSAGE = report.getReportString()
+		self.sendToJava(MESSAGE)
 
+		conn.commit()
+
+		c.close()
+		conn.close()
+ 
+
+
+	def sendToJava(self, MESSAGE):
 		# ---------- Transfer over socket to JAVA [JAVA Listening PORT = 7731] --------------
 		UDP_IP = '127.0.0.1' 	# loop back ip
 		UDP_PORT = 7731 		# Java listening port
 
-		MESSAGE = report.getReportString()
-		
+		# MESSAGE = report.getReportString()
+
 		print("----------------------------------- SENDING TO JAVA UDP ------------------------------------------")
 		# print("UDP target IP:", UDP_IP)
 		# print("UDP target port:", UDP_PORT)
@@ -185,10 +204,4 @@ class DBHandler:
 
 		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 		sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))
-
-
-		conn.commit()
-
-		c.close()
-		conn.close()
- 
+		# -------------------------- Done sending to JAVA ------------------------------------------
