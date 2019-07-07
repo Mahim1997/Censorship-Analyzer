@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="823.0" prefWidth="1867.0" styleClass="anchor-pane" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TCPRecordController">
+   <top>
+      <GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="599.0" styleClass="mygridStyle" BorderPane.alignment="TOP_RIGHT">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="556.0" minWidth="10.0" prefWidth="270.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="279.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="245.0" minHeight="0.0" prefHeight="62.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="509.0" minHeight="0.0" prefHeight="83.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="651.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="text_url" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" wrappingWidth="511.6708984375">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="text_NetworkName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Global IP:" wrappingWidth="511.6708984375" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="582.6708984375" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="text_testType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="text_networkType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+      </GridPane>
+   </top>
+   <left>
+      <Text fx:id="text_censoredOrNot" fill="#19948b" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED/NOT" textAlignment="CENTER" wrappingWidth="314.6708984375" BorderPane.alignment="TOP_LEFT">
+         <font>
+            <Font name="System Bold Italic" size="35.0" />
+         </font>
+      </Text>
+   </left>
+   <center>
+      <ScrollPane>
+         <content>
+            <AnchorPane prefHeight="480.0" prefWidth="1362.0">
+               <children>
+                  <Text fx:id="text_details" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DETAILS:" textAlignment="CENTER" wrappingWidth="909.6708984375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <HBox prefHeight="384.0" prefWidth="1335.0" spacing="20.0" AnchorPane.topAnchor="40.0">
+                     <children>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="vbox_resolvedIPs" alignment="TOP_CENTER" prefHeight="314.0" prefWidth="258.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Resolved IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                           <opaqueInsets>
+                              <Insets top="40.0" />
+                           </opaqueInsets>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="vbox_HTTPSuccessAttemptTOR" alignment="TOP_CENTER" prefHeight="314.0" prefWidth="314.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTP Success Attempt TOR" textAlignment="CENTER" wrappingWidth="290.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox fx:id="vbox_HTTPSuccessAttemptLocalServer" alignment="TOP_CENTER" prefHeight="373.0" prefWidth="265.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTP Success Attempt Local Server" textAlignment="CENTER" wrappingWidth="264.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="428.0" prefWidth="0.0" />
+                        <VBox fx:id="vbox_HTTPSSuccessAttemptTOR" alignment="TOP_CENTER" prefHeight="321.0" prefWidth="291.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTPS Success Attempt TOR" textAlignment="CENTER" wrappingWidth="290.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="vbox_HTTPSSuccessAttemptLocalServer" alignment="TOP_CENTER" prefHeight="314.0" prefWidth="314.0" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTPS Success Attempt Local Server" textAlignment="CENTER" wrappingWidth="290.6708984375">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="40.0" right="40.0" top="40.0" />
+                     </padding>
+                  </HBox>
+                  <Line endX="1293.0" endY="40.0" startX="44.3291015625" startY="40.0" stroke="WHITE" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

@@ -18,7 +18,17 @@ public class Report {
 
     private int censorship_code;
 
-    private DNSDetails dns_details;
+    private DNSDetails dns_details;     //For DNS Details
+    private TCPDetails tcp_details;     //For TCP Details
+
+    public TCPDetails getTcp_details() {
+        return tcp_details;
+    }
+
+    public void setTcp_details(TCPDetails tcp_details) {
+        this.tcp_details = tcp_details;
+    }
+    
     
     private String global_ip;
 

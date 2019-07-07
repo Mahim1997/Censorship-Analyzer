@@ -98,20 +98,20 @@ class Report:
 
 
 	def getReportString(self):
-		strReport = "ReportID:" + str(self.reportID)
-		strReport = strReport + "$ConnectionID:" + str(self.connectionID)
-		strReport = strReport + "$TimeStamp:" + str(self.timestamp)
-		strReport = strReport + "$URL:" + self.url 
-		strReport = strReport + "$Type_of_Test:" + self.type_of_testing
-		strReport = strReport + "$is_censored:" + self.is_censored
-		strReport = strReport + "$method_of_censorship:" + self.method_of_censorship
-		strReport = strReport + "$is_file_check:" + str(self.is_file_check)
-		strReport = strReport + "$is_periodic:" + str(self.is_periodic)
-		strReport = strReport + "$file_name_periodic:" + self.file_name_periodic
-		strReport = strReport + "$iteration_number:" + str(self.iteration_number)
-		strReport = strReport + "$censorship_code:" + str(self.censorship_code)
-		strReport = strReport + "$censorshipDetails:" + self.censorship_details
-		strReport = strReport + "$middle_box_hop_count:" + str(self.middle_box_hop_count)
+		strReport = "ReportID:" + str(self.reportID)	#0
+		strReport = strReport + "$ConnectionID:" + str(self.connectionID)	#1
+		strReport = strReport + "$TimeStamp:" + str(self.timestamp)	#2
+		strReport = strReport + "$URL:" + self.url 					#3
+		strReport = strReport + "$Type_of_Test:" + self.type_of_testing	#4
+		strReport = strReport + "$is_censored:" + self.is_censored	#5
+		strReport = strReport + "$method_of_censorship:" + self.method_of_censorship #6
+		strReport = strReport + "$is_file_check:" + str(self.is_file_check) #7
+		strReport = strReport + "$is_periodic:" + str(self.is_periodic) #8
+		strReport = strReport + "$file_name_periodic:" + self.file_name_periodic #9
+		strReport = strReport + "$iteration_number:" + str(self.iteration_number) #10
+		strReport = strReport + "$censorship_code:" + str(self.censorship_code) #11
+		strReport = strReport + "$censorshipDetails:" + self.censorship_details #12
+		strReport = strReport + "$middle_box_hop_count:" + str(self.middle_box_hop_count) #13
 
 		# Latest added
 		# strReport = strReport + "$global_ip: -"
@@ -126,49 +126,48 @@ class Report:
 
 		 
 
-		if self.type_of_testing == "DNS":
+		if self.type_of_testing == "DNS": 			
 			strReport = strReport + "$local_ip_addresses:"
-			for ip in self.local_ip_addresses:
+			for ip in self.local_ip_addresses: 				#14
 				strReport = strReport + str(ip) + ","
 
 			strReport = strReport + "$stubby_ip_addresses:"
-			for ip in self.stubby_ip_addresses:
+			for ip in self.stubby_ip_addresses: 			#15
 				strReport = strReport + str(ip) + ","
 			strReport = strReport + "$END$"
 
 		elif self.type_of_testing == "TCP":
-			strReport = strReport + "$hop_count_http:" + str(self.hop_count_http)
-			strReport = strReport + "$hop_count_https:" + str(self.hop_count_https)
+			strReport = strReport + "$hop_count_http:" + str(self.hop_count_http) #14
+			strReport = strReport + "$hop_count_https:" + str(self.hop_count_https) #15
 
-			strReport = strReport + "$tor_connection_unsuccessfull_HTTP:" + str(self.tor_connection_unsuccessfull_HTTP)
-			strReport = strReport + "$tor_connection_unsuccessfull_HTTPS:" + str(self.tor_connection_unsuccessfull_HTTPS)
+			strReport = strReport + "$tor_connection_unsuccessfull_HTTP:" + str(self.tor_connection_unsuccessfull_HTTP) #16
+			strReport = strReport + "$tor_connection_unsuccessfull_HTTPS:" + str(self.tor_connection_unsuccessfull_HTTPS) #17
 
-			strReport = strReport + "$"
 			strReport = strReport + "$ipListRemote:"
-			for ip in self.ip_addresses_resolved:
+			for ip in self.ip_addresses_resolved:  	#18
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_tor_list_http:"
-			for ip in self.successIter_tor_list_http:
+			strReport = strReport + "$successIter_tor_list_http:" 	#19
+ 			for ip in self.successIter_tor_list_http:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_ls_list_http:"
+			strReport = strReport + "$successIter_ls_list_http:" 	#20
 			for ip in self.successIter_ls_list_http:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_tor_list_https:"
+			strReport = strReport + "$successIter_tor_list_https:" 	#21
 			for ip in self.successIter_tor_list_https:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_ls_list_https:"
+			strReport = strReport + "$successIter_ls_list_https:" 	#22
 			for ip in self.successIter_ls_list_https:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$censored_arr_http:"
+			strReport = strReport + "$censored_arr_http:" 	#23
 			for ip in self.censored_arr_http:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$censored_arr_https:"
+			strReport = strReport + "$censored_arr_https:"	#24
 			for ip in self.censored_arr_https:
 				strReport = strReport + str(ip) + ","
 
