@@ -31,16 +31,19 @@ class Report:
 	#TCP PART
 	msg_to_set = "NONE"
 	ip_addresses_resolved = []
+
 	successIter_tor_list_http = []
 	successIter_ls_list_http = [] 
 	successIter_tor_list_https = []
 	successIter_ls_list_https = []
+
 	censored_arr_http = []
 	censored_arr_https = []
-	hop_count_http = -1 
-	hop_count_https = -1
-	tor_connection_unsuccessfull_HTTP = False
-	tor_connection_unsuccessfull_HTTPS = False
+
+	hop_count_http = -1 	#TO ADD IN REPORT IN DATABASE
+	hop_count_https = -1	#TO ADD IN REPORT IN DATABASE
+	tor_connection_unsuccessfull_HTTP = False 	#TO ADD IN REPORT IN DATABASE
+	tor_connection_unsuccessfull_HTTPS = False 	#TO ADD IN REPORT IN DATABASE
  	#HTTP Part
 
 	def printReport(self):

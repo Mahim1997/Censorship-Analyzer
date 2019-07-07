@@ -52,8 +52,28 @@ class Database:
 #db.dropTables()
 #db.createTable()
 
-#c.execute("CREATE TABLE IF NOT EXISTS IP_TOR(report_id INTEGER, ip_tor TEXT, iteration_success_tor TEXT, censored_tor TEXT, PRIMARY KEY(report_id, ip_tor), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
-#c.execute("CREATE TABLE IF NOT EXISTS IP_LOCAL(report_id INTEGER, ip_local TEXT, iteration_success_local TEXT, censored_local TEXT, PRIMARY KEY(report_id, ip_local), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+isMain=False
+
+if isMain == True:
+	print("Inside clientDatabase.py main ... ")
+	c.execute("DROP TABLE IF EXISTS IP_HTTP_FOR_TCP")
+	c.execute("DROP TABLE IF EXISTS IP_HTTPS_FOR_TCP")
+	c.execute("DROP TABLE IF EXISTS IP_TOR_HTTPS")
+	c.execute("DROP TABLE IF EXISTS IP_LOCAL_HTTPS")
+
+	#c.execute("CREATE TABLE IF NOT EXISTS IP_TOR_HTTP(report_id INTEGER, ip_tor TEXT, iteration_success_tor TEXT, is_censored TEXT, PRIMARY KEY(report_id, ip_tor), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+	#c.execute("CREATE TABLE IF NOT EXISTS IP_LOCAL_HTTP(report_id INTEGER, ip_local TEXT, iteration_success_local TEXT, PRIMARY KEY(report_id, ip_local), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+
+	#c.execute("CREATE TABLE IF NOT EXISTS IP_TOR_HTTPS(report_id INTEGER, ip_tor TEXT, iteration_success_tor TEXT, is_censored TEXT, PRIMARY KEY(report_id, ip_tor), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+	#c.execute("CREATE TABLE IF NOT EXISTS IP_LOCAL_HTTPS(report_id INTEGER, ip_local TEXT, iteration_success_local TEXT, PRIMARY KEY(report_id, ip_local), FOREIGN KEY(report_id) REFERENCES Report(report_id) )")
+	
+	c.execute("CREATE TABLE IF NOT EXISTS IP_HTTP_FOR_TCP(report_id INTEGER, ip_address TEXT, iteration_success_tor TEXT, iteration_success_local TEXT, is_censored TEXT, PRIMARY KEY(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES Report(report_id))")
+	c.execute("CREATE TABLE IF NOT EXISTS IP_HTTPS_FOR_TCP(report_id INTEGER, ip_address TEXT, iteration_success_tor TEXT, iteration_success_local TEXT, is_censored TEXT, PRIMARY KEY(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES Report(report_id))")
+
+	conn.commit()
+
+
+
 
 c.close()
 conn.close()
