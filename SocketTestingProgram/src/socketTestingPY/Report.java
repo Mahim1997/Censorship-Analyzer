@@ -17,6 +17,7 @@ public class Report {
     private int censorship_code;
 
     private DNSDetails dns_details;
+    
 
     public Report() {
         //If we do this now, then reportID values etc will become null
