@@ -63,24 +63,21 @@ public class TCPRecordController {
         loadCensoredOrNot();
     }
 
-    private void setUpText(String text) {
-        String t = this.text_censoredOrNot.getText();
-        this.text_censoredOrNot.setText(t + "\n" + text);
-    }
-
     private void loadCensoredOrNot() {
         boolean isCensoredHTTP = false;
         boolean isCensoredHTTPS = false;
 
+//        System.out.println("---------------------------Inside loadCensoredOrNot()---------------------------");
+//        System.out.println("report.getTcp_details().getIs_censored_http_thisIP()");
         for (String is_censored_http_thisIP : report.getTcp_details().getIs_censored_http_thisIP()) {
-            if (is_censored_http_thisIP.equals("0") || is_censored_http_thisIP.toUpperCase().equals("FALSE") || is_censored_http_thisIP.toUpperCase().equals("NO")) {
+            if (is_censored_http_thisIP.equals("1") || is_censored_http_thisIP.toUpperCase().equals("FALSE") || is_censored_http_thisIP.toUpperCase().equals("NO")) {
                 isCensoredHTTP = true;
                 break;
             }
         }
 
         for (String is_censoredHTTPS_This_IP : report.getTcp_details().getIs_censored_https_thisIP()) {
-            if (is_censoredHTTPS_This_IP.equals("0") || is_censoredHTTPS_This_IP.toUpperCase().equals("FALSE") || is_censoredHTTPS_This_IP.toUpperCase().equals("NO")) {
+            if (is_censoredHTTPS_This_IP.equals("1") || is_censoredHTTPS_This_IP.toUpperCase().equals("FALSE") || is_censoredHTTPS_This_IP.toUpperCase().equals("NO")) {
                 isCensoredHTTPS = true;
                 break;
             }
@@ -94,15 +91,32 @@ public class TCPRecordController {
         }
     }
 
+    private void setUpText(String text) {
+        this.text_censoredOrNot.setText("Is Censored?" + "\n" + text);
+    }
+
     private void loadResolvedIPList() {
         //Form the matched set
         TCPDetails details_tcp = this.report.getTcp_details();
         List<JFXTextField> textFieldList = new ArrayList<>();
 
+        List<String> is_censored_http_arr  = this.report.getTcp_details().getIs_censored_http_thisIP();
+        List<String> is_censored_https_arr = this.report.getTcp_details().getIs_censored_https_thisIP();
+        int index = 0;
         for (String ip : details_tcp.getIp_addresses_resolved()) {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
-            textField.setText(ip);
+
+//            textField.setText(ip);
+
+            if(is_censored_http_arr.get(index).equals("1") || is_censored_https_arr.get(index).equals("1")){
+                textField.setText(ip + " (CENSORED)");
+            }else{
+                textField.setText(ip + " (NOT CENSORED) ") ;
+            }
+
+            index++;
+
             textField.setEditable(false);
             textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
             textFieldList.add(textField);
@@ -120,7 +134,7 @@ public class TCPRecordController {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             if (isWithin(iteration_success)) {
-                textField.setText("Attempt " + iteration_success + " Successful (NOT CENSORED)");
+                textField.setText("Attempt " + iteration_success + " Successful");
             }
             textField.setEditable(false);
             textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
@@ -138,10 +152,7 @@ public class TCPRecordController {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             if (isWithin(iteration_success)) {
-                textField.setText("Attempt " + iteration_success + " Successful (NOT CENSORED)");
-            }
-            if (is_censored_http(iteration_success) == true) {
-                textField.setText("Censored");
+                textField.setText("Attempt " + iteration_success + " Successful)");
             }
             textField.setEditable(false);
             textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
@@ -174,7 +185,7 @@ public class TCPRecordController {
             JFXTextField textField = new JFXTextField();
 //            textField.setText(iteration_success);
             if (isWithin(iteration_success)) {
-                textField.setText("Attempt " + iteration_success + " Successful (NOT CENSORED)");
+                textField.setText("Attempt " + iteration_success + " Successful");
             }
             textField.setEditable(false);
             textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
@@ -192,10 +203,7 @@ public class TCPRecordController {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             if (isWithin(iteration_success)) {
-                textField.setText("Attempt " + iteration_success + " Successful (NOT CENSORED)");
-            }
-            if (is_censored_https(iteration_success) == true) {
-                textField.setText("Censored");
+                textField.setText("Attempt " + iteration_success + " Successful");
             }
             textField.setEditable(false);
             textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");

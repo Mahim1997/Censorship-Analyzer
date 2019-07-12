@@ -189,13 +189,18 @@ public class TestSitesController implements Initializable {
     @FXML
     private void chooseFile(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        File file = fc.showOpenDialog(null);
-        System.out.println("File is : " + file.getAbsolutePath());
-//        this.textField_fileName.setText(file.getName());    //Just the name is to be displayed
-        this.textField_fileName.setText(file.getAbsolutePath());    //Just the name is to be displayed
 
-        this.absoluteFilePathNameToTest = file.getAbsolutePath();
-        this.fileNameNormalToTest = file.getName();
+        File file = fc.showOpenDialog(null);
+
+        if (file != null) {
+            System.out.println("File is : " + file.getAbsolutePath());
+//        this.textField_fileName.setText(file.getName());    //Just the name is to be displayed
+            this.textField_fileName.setText(file.getAbsolutePath());    //Just the name is to be displayed
+
+            this.absoluteFilePathNameToTest = file.getAbsolutePath();
+            this.fileNameNormalToTest = file.getName();
+        }
+
     }
 
     private String retrieveThings() {
@@ -259,13 +264,12 @@ public class TestSitesController implements Initializable {
 //            JavaUDPServerClient.sendCommandToPython(command);
 //        Notification.push("Passing Through for single URL", command, Notification.SUCCESS, Pos.CENTER);
 //Switch Scene
-
             String fileNameFXMLToLoad = Scenes.censoredRecordsWaitingFXML;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
 
             Parent root = loader.load();
-            
+
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
             controller.setUpInitial(false, this.urlNameToTest, command, -1, -1);
 

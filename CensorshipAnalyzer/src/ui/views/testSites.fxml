@@ -27,7 +27,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="24.0" layoutY="308.0" onAction="#dnsTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="DNS Testing">
+      <JFXButton layoutX="24.0" layoutY="308.0" onAction="#dnsTesting" prefHeight="64.0" prefWidth="263.0" styleClass="buttonDarkTheme" text="DNS Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +36,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="24.0" layoutY="402.0" onAction="#tcpTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="TCP Testing">
+      <JFXButton layoutX="24.0" layoutY="402.0" onAction="#tcpTesting" prefHeight="64.0" prefWidth="263.0" styleClass="buttonDarkTheme" text="TCP Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,7 +45,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="24.0" layoutY="498.0" onAction="#httpTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="HTTP Testing">
+      <JFXButton layoutX="24.0" layoutY="498.0" onAction="#httpTesting" prefHeight="64.0" prefWidth="263.0" styleClass="buttonDarkTheme" text="HTTP Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +54,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="24.0" layoutY="610.0" onAction="#allTesting" prefHeight="64.0" prefWidth="221.0" styleClass="buttonDarkTheme" text="All Sequential Testing">
+      <JFXButton layoutX="24.0" layoutY="610.0" onAction="#allTesting" prefHeight="64.0" prefWidth="263.0" styleClass="buttonDarkTheme" text="All Sequential Testing">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
