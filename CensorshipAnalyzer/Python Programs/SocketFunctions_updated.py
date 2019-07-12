@@ -25,6 +25,10 @@ import errno
 
 class SocketFunctions:
 	TOR_PORT = 9050
+	
+	def __init__(self):
+		self.orig_sock     =  socket.socket
+	
 	def is_bogon_ip(self,ip):
 		networks = [
 			"0.0.0.0/8",
@@ -79,9 +83,11 @@ class SocketFunctions:
 		try:
 			s.connect((ip, port))         # "random" IP address and port
 			print("Successfully Connected")
+			socket.socket = self.orig_sock
 			return True
 		except Exception as e:
 			print("Caught exception socket.error : %s" % e)
+			socket.socket = self.orig_sock
 			return False
 
 	
@@ -90,11 +96,13 @@ class SocketFunctions:
 			socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, ip, port,True)
 			socket.socket = socks.socksocket
 			response = requests.get(url,timeout = timeout_1)
+			socket.socket = self.orig_sock
 			if response.status_code is 200:
 				return True
 			else:
 				return False
 		except:
+			socket.socket = self.orig_sock
 			return False
 					
 

@@ -143,31 +143,38 @@ class Report:
 			strReport = strReport + "$tor_connection_unsuccessfull_HTTP:" + str(self.tor_connection_unsuccessfull_HTTP) #16
 			strReport = strReport + "$tor_connection_unsuccessfull_HTTPS:" + str(self.tor_connection_unsuccessfull_HTTPS) #17
 
+			#18
 			strReport = strReport + "$ipListRemote:"
-			for ip in self.ip_addresses_resolved:  	#18
+			for ip in self.ip_addresses_resolved:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_tor_list_http:" 	#19
- 			for ip in self.successIter_tor_list_http:
+			#19
+			strReport = strReport + "$successIter_tor_list_http:"
+			for ip in self.successIter_tor_list_http:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_ls_list_http:" 	#20
+			#20
+			strReport = strReport + "$successIter_ls_list_http:"
 			for ip in self.successIter_ls_list_http:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_tor_list_https:" 	#21
+			#21
+			strReport = strReport + "$successIter_tor_list_https:"
 			for ip in self.successIter_tor_list_https:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$successIter_ls_list_https:" 	#22
+			#22
+			strReport = strReport + "$successIter_ls_list_https:"
 			for ip in self.successIter_ls_list_https:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$censored_arr_http:" 	#23
+			#23
+			strReport = strReport + "$censored_arr_http:"
 			for ip in self.censored_arr_http:
 				strReport = strReport + str(ip) + ","
 
-			strReport = strReport + "$censored_arr_https:"	#24
+			#24
+			strReport = strReport + "$censored_arr_https:"
 			for ip in self.censored_arr_https:
 				strReport = strReport + str(ip) + ","
 
