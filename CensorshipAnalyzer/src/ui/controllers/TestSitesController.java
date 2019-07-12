@@ -22,7 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import networking.JavaUDPServerClient;
 import ui.model.User;
 import ui.sounds.Notification;
 import util.commands.CommandGenerator;

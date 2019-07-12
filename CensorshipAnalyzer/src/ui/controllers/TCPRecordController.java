@@ -61,6 +61,9 @@ public class TCPRecordController {
         loadHTTPSSuccessIteration_TOR();
         loadHTTPSSuccessIteration_LocalServer();
         loadCensoredOrNot();
+        
+        //For now DO NOTHING in showDetails
+        this.text_details.setText("");
     }
 
     private void loadCensoredOrNot() {
@@ -152,7 +155,7 @@ public class TCPRecordController {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             if (isWithin(iteration_success)) {
-                textField.setText("Attempt " + iteration_success + " Successful)");
+                textField.setText("Attempt " + iteration_success + " Successful");
             }
             textField.setEditable(false);
             textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");

@@ -178,6 +178,7 @@ public class CensoredRecordController_Waiting {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            stage.setTitle("DNS Details");
             stage.setScene(scene);
 
             controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
@@ -340,8 +341,10 @@ public class CensoredRecordController_Waiting {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            stage.setTitle("TCP Details");
             stage.setScene(scene);
 
+            
             controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
             controller.showThings();
 

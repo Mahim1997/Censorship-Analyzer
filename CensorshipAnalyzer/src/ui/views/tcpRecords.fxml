@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1535.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TCPRecordController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="2114.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TCPRecordController">
    <children>
       <ScrollPane layoutX="6.0" layoutY="226.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
          <content>
@@ -24,7 +24,7 @@
                         <Font size="30.0" />
                      </font>
                   </Text>
-                  <HBox prefHeight="445.0" prefWidth="1638.0" spacing="20.0" AnchorPane.topAnchor="40.0">
+                  <HBox prefHeight="599.0" prefWidth="2081.0" spacing="20.0" AnchorPane.topAnchor="40.0">
                      <children>
                         <Separator orientation="VERTICAL" prefHeight="200.0" />
                         <VBox fx:id="vbox_resolvedIPs" alignment="TOP_CENTER" prefHeight="314.0" prefWidth="579.0" spacing="10.0" HBox.hgrow="SOMETIMES">

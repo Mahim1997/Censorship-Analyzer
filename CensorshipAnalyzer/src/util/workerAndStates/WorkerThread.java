@@ -77,7 +77,7 @@ public class WorkerThread implements Runnable {
                     System.out.println("RECEIVED: " + receivedString);
 
                     //EXIT CHECKING BEGIN
-                    if(receivedString.equals("SOURCE_JAVA_EXIT_THREAD")){
+                    if(receivedString.contains(Config.END_MESSAGE)){
                         this.willRun = false;
                         break;
                     }

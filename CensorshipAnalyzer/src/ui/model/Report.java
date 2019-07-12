@@ -1,5 +1,7 @@
 package ui.model;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import ui.controllers.CensoredRecordController;
 import ui.controllers.CensoredRecordController_Waiting;
@@ -58,20 +60,28 @@ public class Report {
         //If we do this now, then reportID values etc will become null
 //        this.dns_details = new DNSDetails(this);
         this.btn_details = new Button("Details");
-        this.btn_details.setOnAction((event) -> {
-            if(this.controller2 != null){
-                String testType = this.getTestType();
-                System.out.println("\n================+>>>>>>>>>Inside Report ... getTestType() = " + testType + "\n");
-                if(testType.toUpperCase().equals("DNS")){ //if test type is DNS
-                    this.controller2.goToDetailsDNSRecord(this.reportID);
-                }else if(testType.toUpperCase().equals("TCP")){ // if test type is TCP
-                    this.controller2.goToDetailsTCPRecord(this.reportID);
-                }else if(testType.toUpperCase().equals("HTTP")){
-                    
+        this.btn_details.setOnAction((ActionEvent event) -> {
+            if (Report.this.controller2 != null) {
+                String testType_Local = Report.this.getTestType();
+                System.out.println("\n================+>>>>>>>>>Inside Report ... getTestType() = " + testType_Local + "\n");
+                switch (testType_Local.toUpperCase()) {
+                    case "DNS":
+                        //if test type is DNS
+                        Report.this.controller2.goToDetailsDNSRecord(Report.this.reportID);
+                        break;
+                    case "TCP":
+                        // if test type is TCP
+                        Report.this.controller2.goToDetailsTCPRecord(Report.this.reportID);
+                        break;
+                    case "HTTP":
+                        //TO DO
+                        System.out.println("==========+>>>>>>>>> Inside Report.Report() constructor .... TO DO LINE 78");
+                        break;
+                    default:
+                        break;
                 }
-            }
-            else if(this.controller1 != null){
-                //Same thing also here ... 
+            } else if (Report.this.controller1 != null) {
+                //Same thing also here ...
             }
         });
     }
