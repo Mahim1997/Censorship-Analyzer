@@ -66,7 +66,7 @@
       <HBox alignment="CENTER" layoutX="283.0" layoutY="20.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing Mode : " textAlignment="CENTER" wrappingWidth="198.6708984375">
+            <Text fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Testing Mode: " textAlignment="CENTER" wrappingWidth="206.6708984375">
                <font>
                   <Font size="27.0" />
                </font>
@@ -82,7 +82,7 @@
                   <Font size="27.0" />
                </font>
             </Text>
-            <Text fx:id="text_Mode" fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged User" textAlignment="CENTER" wrappingWidth="163.6708984375">
+            <Text fx:id="text_Mode" fill="#61ba38" strokeType="OUTSIDE" strokeWidth="0.0" text="Logged User" textAlignment="CENTER" wrappingWidth="193.6708984375">
                <font>
                   <Font size="27.0" />
                </font>
@@ -90,8 +90,8 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" />
          </children>
       </HBox>
-      <Line endX="955.0" endY="20.0" startX="283.0" startY="20.0" stroke="WHITE" />
-      <Line endX="941.5" endY="110.0" layoutX="10.0" layoutY="10.0" startX="276.0" startY="110.0" stroke="WHITE" />
+      <Line endX="990.0" endY="20.0" startX="283.0" startY="20.0" stroke="WHITE" />
+      <Line endX="979.0" endY="110.0" layoutX="10.0" layoutY="10.0" startX="276.0" startY="110.0" stroke="WHITE" />
       <JFXTabPane layoutX="297.0" layoutY="206.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="743.0" style="-fx-background-color: #aaaaaa;" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="206.0">
          <tabs>
             <Tab fx:id="tab_url" onSelectionChanged="#selectURL_Tab" text="URL">
