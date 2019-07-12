@@ -60,7 +60,15 @@ public class Report {
         this.btn_details = new Button("Details");
         this.btn_details.setOnAction((event) -> {
             if(this.controller2 != null){
-                this.controller2.goToDetailsDNSRecord(this.reportID);
+                String testType = this.getTestType();
+                System.out.println("\n================+>>>>>>>>>Inside Report ... getTestType() = " + testType + "\n");
+                if(testType.toUpperCase().equals("DNS")){ //if test type is DNS
+                    this.controller2.goToDetailsDNSRecord(this.reportID);
+                }else if(testType.toUpperCase().equals("TCP")){ // if test type is TCP
+                    this.controller2.goToDetailsTCPRecord(this.reportID);
+                }else if(testType.toUpperCase().equals("HTTP")){
+                    
+                }
             }
             else if(this.controller1 != null){
                 //Same thing also here ... 

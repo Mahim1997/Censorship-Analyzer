@@ -322,8 +322,34 @@ public class CensoredRecordController_Waiting {
     }
 
     private void stopWorkerThreadFromRunning() {
-        this.worker.setWillRun(false);  
+        this.worker.setWillRun(false);
         JavaUDPServerClient.sendThreadExitCommand();    //Send a loop-back command to JAVA PORT
+    }
+
+    public void goToDetailsTCPRecord(int reportID) {
+        //Called when button is clicked ... 
+        System.out.println("------->>> Method goToDetailsTCPRecord() is called reportID = " + reportID);
+
+        try {
+            String fileNameFXMLToLoad = Scenes.tcpRecords;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+
+            Parent root = loader.load();
+            TCPRecordController controller = (TCPRecordController) loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
+            controller.showThings();
+
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
+        }
     }
 }
 
