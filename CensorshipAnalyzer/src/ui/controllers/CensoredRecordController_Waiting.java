@@ -68,8 +68,9 @@ public class CensoredRecordController_Waiting {
     private Text text_waiting;
 
     public int numberOfReportsNeeded;
+    private String testingMode; //To send to Python Server
 
-    public void setUpInitial(boolean isFile, String name, String absolutPathOrCommandForURL, int start, int end) {
+    public void setUpInitial(boolean isFile, String name, String absolutPathOrCommandForURL, int start, int end, String testingMode) {
         this.reportsListToBeRefreshed = new ArrayList<>();
 
         System.out.println("\n========>>Inside SetupInitial .... ");
@@ -82,6 +83,7 @@ public class CensoredRecordController_Waiting {
         }
         this.reportIndex_Start = start;
         this.reportIndex_End = end;
+        this.testingMode = testingMode;
 
         if (this.isFile == true) {
             fillTextsWithColor("FILE: ", this.fileName, Color.WHITE);
@@ -98,6 +100,7 @@ public class CensoredRecordController_Waiting {
         runWorkerThread();
     }
 
+    
     private void fillTextsWithColor(String textForLeft, String textForRight, Color color) {
         this.text_URL.setText(textForLeft);
         this.text_url_actual.setText(textForRight);
@@ -142,7 +145,7 @@ public class CensoredRecordController_Waiting {
                 return;
             }
             //Make command ...
-            String command = CommandGenerator.generateCommandFileNonPeriodicForcedCheck(url, CensoredRecordController_Waiting.this.absFileName, "DNS");
+            String command = CommandGenerator.generateCommandFileNonPeriodicForcedCheck(url, CensoredRecordController_Waiting.this.absFileName, this.testingMode);
             //Send to UDP
             JavaUDPServerClient.sendCommandToPython(command);
         }
@@ -354,6 +357,8 @@ public class CensoredRecordController_Waiting {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
         }
     }
+
+
 }
 
 /*

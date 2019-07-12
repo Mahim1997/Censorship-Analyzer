@@ -270,7 +270,7 @@ public class TestSitesController implements Initializable {
             Parent root = loader.load();
 
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
-            controller.setUpInitial(false, this.urlNameToTest, command, -1, -1);
+            controller.setUpInitial(false, this.urlNameToTest, command, -1, -1, this.testingMode);
 
             SceneLoader.loadSceneInSameStage(root);
 
@@ -295,7 +295,7 @@ public class TestSitesController implements Initializable {
             Parent root = loader.load();
             CensoredRecordController_Waiting controller = (CensoredRecordController_Waiting) loader.getController();
             int idxCurrentMaxReport = DBHandler.getLatestReportID();
-            controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, (idxCurrentMaxReport + 1), -1);
+            controller.setUpInitial(true, this.fileNameNormalToTest, this.absoluteFilePathNameToTest, (idxCurrentMaxReport + 1), -1, this.testingMode);
 
             SceneLoader.loadSceneInSameStage(root);
 
