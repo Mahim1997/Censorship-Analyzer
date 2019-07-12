@@ -145,8 +145,8 @@ def runServer():
 
 #--------------------------------------------------Main Program---------------------------------------------------------------
 
-run_cmd = False
-if run_cmd == True:
+run_serv = True
+if run_serv == True:
 	runServer()
 else:
 	str = "source:java$userID:2$connectionID:4$typeOfTesting:TCP$timestamp:17 June 2019, 4 45 am$url:www.youtube.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
