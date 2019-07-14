@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="1025.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.CensoredRecordController_Waiting">
+   <children>
+      <TableView fx:id="tableView" layoutX="111.0" layoutY="205.0" prefHeight="493.0" prefWidth="965.0" style="-fx-background-color: #3B2F48; -fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="205.0">
+        <columns>
+            <TableColumn fx:id="column_reportID" prefWidth="142.0" text="Report ID" />
+          <TableColumn fx:id="column_url" prefWidth="142.0" text="URL" />
+          <TableColumn fx:id="column_networkName" prefWidth="161.0" text="Network Name" />
+            <TableColumn fx:id="column_networkType" prefWidth="120.0" text="Network Type" />
+            <TableColumn fx:id="column_time" prefWidth="167.0" text="Time" />
+            <TableColumn fx:id="column_testType" prefWidth="93.0" text="Test Type" />
+            <TableColumn fx:id="column_censored" prefWidth="81.0" text="Censored" />
+            <TableColumn fx:id="column_censoredType" prefWidth="115.0" text="Censored Type" />
+            <TableColumn fx:id="column_details" prefWidth="84.0" text="Details" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text fx:id="text_waiting" fill="WHITE" layoutX="20.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waiting ..." textAlignment="CENTER" wrappingWidth="249.6708984375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="44.0" layoutY="103.0" onAction="#goBack" prefHeight="46.0" prefWidth="136.0" text="Home" />
+      <Text fx:id="text_URL" fill="WHITE" layoutX="420.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="123.6708984375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="text_url_actual" fill="WHITE" layoutX="544.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="469.6708984375">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="408.0" layoutY="114.0" onAction="#clickForDetails" text="Click For Details" />
+   </children>
+</AnchorPane>

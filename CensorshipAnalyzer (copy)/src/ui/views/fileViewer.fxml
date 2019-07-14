@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="854.0" prefWidth="1030.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.FileViewerController">
+   <children>
+      <Text fill="#ef1cff" layoutX="205.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File:" textAlignment="CENTER" wrappingWidth="78.6708984375" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="746.3291015625">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="text_fileName" fill="#ef1cff" layoutX="284.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="594.6708984375">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tableView" layoutX="109.0" layoutY="159.0" prefHeight="619.0" prefWidth="819.0">
+        <columns>
+          <TableColumn fx:id="column_index" prefWidth="816.0" text="Index" />
+            <TableColumn fx:id="column_url" prefWidth="816.0" text="URL" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

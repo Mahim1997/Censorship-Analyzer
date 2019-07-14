@@ -7,6 +7,8 @@ from dbHandler import DBHandler
 from TCP_Description import TCP_Description
 from Report import Report
 
+from http_censorship_check import http_https_data
+
 def isSourceJava(msg):	#Simple function to check if contains source:java as the first line
 	x = msg.split(':')
 	
@@ -110,6 +112,24 @@ def processMessage(msg):
 
 	elif typeOfTesting == 'HTTP':
 		print('Run HTTP .... ')
+		db = DBHandler()
+		report = Report()
+		http_obj = http_https_data()
+
+		report.url = url 
+		report.timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S') 	#In this format
+		report.is_file_check = isFile
+		report.is_periodic = isPeriodic
+		report.file_name_periodic = fileNamePeriodic
+		report.iteration_number = iterationNumber
+		report.type_of_testing = "HTTP"
+
+		description = HTTP_Description()
+
+		description = http_obj.http_censorship_check(url)
+		report.ip_addresses_resolved = description.ip_addresses_resolved
+		
+
 	elif typeOfTesting == 'ALL':
 		print('Run All ..... ')
 	else :

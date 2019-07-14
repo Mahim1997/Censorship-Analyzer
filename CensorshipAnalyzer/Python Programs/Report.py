@@ -44,7 +44,21 @@ class Report:
 	hop_count_https = -1	#TO ADD IN REPORT IN DATABASE
 	tor_connection_unsuccessfull_HTTP = False 	#TO ADD IN REPORT IN DATABASE
 	tor_connection_unsuccessfull_HTTPS = False 	#TO ADD IN REPORT IN DATABASE
+
  	#HTTP Part
+	ip_addresses_resolved = []
+	is_invalid_url = 0
+	is_fin_bit_set = 0
+	is_rst_bit_set = 0
+	is_http_censored = 0
+	is_tcp_censored = 0
+	is_domain_doesnot_exist = 0
+	threshold_for_comparison = 0.300# Default
+	is_content_mismatch_wrt_threshold = 0# 0->No, 1->Yes [CENSORED]
+	content_local_server = ""
+	content_tor_server = ""
+	status_code_local_server = 0
+	status_code_tor = 0
 
 	def printReport(self):
 		print("---------------------------- PRINTING REPORT BEGIN--------------------------")
@@ -177,6 +191,16 @@ class Report:
 			strReport = strReport + "$censored_arr_https:"
 			for ip in self.censored_arr_https:
 				strReport = strReport + str(ip) + ","
+
+		elif self.type_of_testing == "HTTP":
+			strReport = strReport + "$ip_addresses_resolved:"
+			for ip in self.ip_addresses_resolved:
+				strReport = strReport + str(ip) + ","
+			strReport = strReport + "$is_invalid_url:" + str(is_invalid_url)
+			strReport = strReport + "$is_fin_bit_set:" + str(is_fin_bit_set)
+			strReport = strReport + "$is_rst_bit_set:" + str(is_rst_bit_set)
+			strReport = strReport + "$is_http_censored:" + str(is_http_censored)
+			strReport = strReport + "$"
 
 		return strReport
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
