@@ -15,7 +15,7 @@ tor_timeout = 10
 dnsOb = SocketFunctions()
 
 class TCP_3_WAY_HANDSHAKE:
-	Iterate = 2
+	Iterate = 5
 	msg_to_set = ""
 	tor_port = 9050
 
@@ -143,12 +143,10 @@ class TCP_3_WAY_HANDSHAKE:
 						if status:
 							#censored_arr_http[ipIter] = 0
 							censored_arr_http.append(0)
-							successIter_ls_list_http.append(-1)
 							self.msg_to_set = self.msg_to_set + "#Not TCP Censored for ip = " + ip + " , port = " + port.__str__()
 						else:
 							#censored_arr_http[ipIter] = 1
 							censored_arr_http.append(1)
-							successIter_ls_list_http.append(-1)
 							self.msg_to_set = self.msg_to_set + "#TCP Censored for ip = " + ip + " , port = " + port.__str__()
 							if self.hop_count_http == None:
 								self.hop_count_http = -1  #-1 for NONE
@@ -208,12 +206,10 @@ class TCP_3_WAY_HANDSHAKE:
 						if status:
 							#censored_arr_https[ipIter] = 0
 							censored_arr_https.append(0)
-							successIter_ls_list_https.append(-1)
 							self.msg_to_set = self.msg_to_set + "#Not TCP Censored for ip = " + ip + " , port = " + port.__str__()
 						else:
 							#censored_arr_https[ipIter] = 1
 							censored_arr_https.append(1)
-							successIter_ls_list_https.append(-1)
 							self.msg_to_set = self.msg_to_set + "#TCP Censored for ip = " + ip + " , port = " + port.__str__()
 							if self.hop_count_https == None:
 								self.hop_count_https = -1  #-1 for NONE
