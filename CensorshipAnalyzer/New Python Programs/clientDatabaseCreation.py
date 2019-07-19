@@ -43,25 +43,30 @@ class DataBaseCreator:
         # For Report
         self.c.execute(
             "CREATE TABLE IF NOT EXISTS REPORT(report_id INTEGER PRIMARY KEY, connection_id INTEGER, timestamp "
-            "TEXT, url TEXT, type_of_testing TEXT, is_censored INTEGER, isPeriodic INTEGER, fileNamePeriodic "
-            "TEXT, iterationNumber INTEGER, censorship_details TEXT, FOREIGN KEY(connection_id) REFERENCES "
+            "TEXT, url TEXT, type_of_testing TEXT, is_censored INTEGER, is_periodic INTEGER, file_name_periodic "
+            "TEXT, iteration_number INTEGER, censorship_details TEXT, FOREIGN KEY(connection_id) REFERENCES "
             "CONNECTION(connection_id))")
 
         # DNS Description
         self.c.execute("CREATE TABLE IF NOT EXISTS DNS_DESCRIPTION(report_id INTEGER PRIMARY KEY, is_timeout INTEGER, "
                        "is_loopback INTEGER, is_multicast INTEGER, is_broadcast INTEGER, is_private INTEGER, "
-                       "is_reserved "
-                       "INTEGER, is_nxDomain INTEGER, is_noAnswerPacket INTEGER, topButNotAuthorative INTEGER, "
-                       "is_non_overlapping_ip_list INTEGER, FOREIGN KEY(report_id) REFERENCES REPORT(report_id))")
+                       "is_bogon INTEGER, is_unknown_error INTEGER , is_nxDomain INTEGER, is_noAnswerPacket INTEGER, "
+                       "is_stubby_failed INTEGER, is_topExistingButAuthNotExisting INTEGER, is_timeout_local_server INTEGER"
+                       "is_non_overlapping_ip_list INTEGER, is_first_8_to_24_bit_match INTEGER, FOREIGN KEY(report_id) REFERENCES REPORT(report_id))")
 
+        # Inside DNS Description Tables [DNS_IP_LIST_LOCAL: Local IP List]
         self.c.execute("CREATE TABLE IF NOT EXISTS DNS_IP_LIST_LOCAL(report_id INTEGER, ip_address TEXT, PRIMARY KEY"
                        "(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES REPORT(report_id) )")
+
+        # Inside DNS Description Tables [DNS_IP_LIST_STUBBY: Remote IP List]
         self.c.execute("CREATE TABLE IF NOT EXISTS DNS_IP_LIST_STUBBY(report_id INTEGER, ip_address TEXT, PRIMARY KEY"
                        "(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES REPORT(report_id) )")
 
         # TCP Description [per ip address]
         self.c.execute("CREATE TABLE IF NOT EXISTS TCP_DESCRIPTION(report_id INTEGER, ip_address TEXT, port INTEGER, "
                        "is_tor_not_censored INTEGER, is_time_out INTEGER, is_fin_bit_set INTEGER, is_rst_bit_set INTEGER, "
+                       "successful_iteration_number_local_server INTEGER, successful_iteration_number_tor INTEGER, "
+                       "is_tor_connect_successful INTEGER, middle_box_hop_count INTEGER, "
                        "is_censored_TCP INTEGER, PRIMARY KEY(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES "
                        "REPORT(report_id))")
 
@@ -84,5 +89,6 @@ isMain: bool = True
 if isMain:
     # Run this file
     obj = DataBaseCreator()
+    obj.dropTables()
     obj.createTables()
     obj.closeConnection()

@@ -11,11 +11,11 @@ class Report:
     connection_id = 0  # Default [FK]
     time_stamp = "NULL"
     url = "NULL"
-    is_censored = 0  # False
     type_of_testing = "NULL"  # DNS, TCP, HTTP, HTTPS
+    is_censored = 0  # False
 
     # For periodic things
-    is_file_check = 0  # Default False
+    is_file_check = 0  # Default False [useless in database]
     is_periodic = 0  # False
     file_name_periodic = "NULL"  # Default
     iteration_number = 0  # For file periodic checkings

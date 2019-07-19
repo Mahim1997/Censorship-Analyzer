@@ -2,9 +2,8 @@ class TCPDescription:
     # per ip
     report_id = 0  # [PK, FK]
     ip_address = ""  # PK
-    is_tor_not_connected = 0  # Default 0
     port_number = 80
-
+    is_tor_not_connected = 0  # Default 0
     is_time_out = 0  # Default false
     is_fin_bit_set = 0  # Default 0
     is_rst_bit_set = 0  # Default 0
@@ -12,11 +11,12 @@ class TCPDescription:
     # If not censored then there should be iteration successful
     successful_iteration_number_local_server = 0  # Default 0 [Local Server]
     successful_iteration_number_tor = 0  # Default is 0 [Tor Browser]
-
     is_tor_connect_successful = 1
 
     # Middle box hop count
     middle_box_hop_count = 0
+
+    # Is TCP Censored ... is_censored_TCP [INTEGER] in database .... to handle from report_arr
 
     description_tcp = ""
     def getTCPDescription(self):
