@@ -146,7 +146,7 @@ run_serv: bool = True
 if run_serv:
 	runServer()
 else:
-	str = "source:java$userID:2$connectionID:4$typeOfTesting:TCP$timestamp:NULL$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+	str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
 	#str = 'source:java#userID:2#connectionID:4#typeOfTesting:TCP#timestamp:NULL#url:www.xvideos.com#periodicity:forced#isPeriodic:yes#fileNamePeriodic:1505022.txt#iterationNumber:4'
 	processMessage(str)
 # runServer()

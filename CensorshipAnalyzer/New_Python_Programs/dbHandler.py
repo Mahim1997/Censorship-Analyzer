@@ -33,12 +33,23 @@ class DBHandler:
 
         report.reportID = num + 1
 
-		c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?")
+        #  Inserting into Report Table
+        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                  (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
+                   report.is_censored, report.is_periodic, report.file_name_periodic, report.iteration_number,
+                   report.censorship_details))
+
+        #  Inserting into DNS Description
+		c.execute("INSERT INTO DNS_DESCRIPTION VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+				  (report.report_id, report.dns_description.is_timeout, report.dns_description.is_loopback,
+				   report.dns_description.is_multicast, report.dns_description.is_broadcast, report.dns_description.is_private
+				   report.dns_description.is_reserved, report.dns_description.is_nxDomain, report.dns_description.is_noAnswerPacket,
+				   report.dns_description.)
+				  )
 
         conn.commit()
         c.close()
         conn.close()
-        pass
 
     def handleReport_TCP(self, report):
 
@@ -189,4 +200,4 @@ class DBHandler:
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
         sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))
-    # -------------------------- Done sending to JAVA ------------------------------------------
+# -------------------------- Done sending to JAVA ------------------------------------------

@@ -3,13 +3,14 @@ import sqlite3
 
 # Client-side database
 class DataBaseCreator:
-    conn = None
-    c = None
+    conn = sqlite3.connect("Client_DataBase.db")
+    c = conn.cursor()
 
     def __init__(self):
         # Establish connection with the database
-        self.conn = sqlite3.connect("Client_DataBase.db")
-        self.c = self.conn.cursor()
+        # self.conn = sqlite3.connect("Client_DataBase.db")
+        # self.c = self.conn.cursor()
+        print("_init_ is done ...")
 
     def dropTables(self):
         self.c.execute("DROP TABLE IF EXISTS Network")
@@ -51,7 +52,7 @@ class DataBaseCreator:
         self.c.execute("CREATE TABLE IF NOT EXISTS DNS_DESCRIPTION(report_id INTEGER PRIMARY KEY, is_timeout INTEGER, "
                        "is_loopback INTEGER, is_multicast INTEGER, is_broadcast INTEGER, is_private INTEGER, "
                        "is_bogon INTEGER, is_unknown_error INTEGER , is_nxDomain INTEGER, is_noAnswerPacket INTEGER, "
-                       "is_stubby_failed INTEGER, is_topExistingButAuthNotExisting INTEGER, is_timeout_local_server INTEGER"
+                       "is_stubby_failed INTEGER, is_topExistingButAuthNotExisting INTEGER, is_timeout_local_server INTEGER, "
                        "is_non_overlapping_ip_list INTEGER, is_first_8_to_24_bit_match INTEGER, FOREIGN KEY(report_id) REFERENCES REPORT(report_id))")
 
         # Inside DNS Description Tables [DNS_IP_LIST_LOCAL: Local IP List]
@@ -89,6 +90,6 @@ isMain: bool = True
 if isMain:
     # Run this file
     obj = DataBaseCreator()
-    obj.dropTables()
+    # obj.dropTables()
     obj.createTables()
     obj.closeConnection()
