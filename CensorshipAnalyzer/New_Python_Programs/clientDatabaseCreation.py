@@ -53,7 +53,8 @@ class DataBaseCreator:
                        "is_loopback INTEGER, is_multicast INTEGER, is_broadcast INTEGER, is_private INTEGER, "
                        "is_bogon INTEGER, is_unknown_error INTEGER , is_nxDomain INTEGER, is_noAnswerPacket INTEGER, "
                        "is_stubby_failed INTEGER, is_topExistingButAuthNotExisting INTEGER, is_timeout_local_server INTEGER, "
-                       "is_non_overlapping_ip_list INTEGER, is_first_8_to_24_bit_match INTEGER, FOREIGN KEY(report_id) REFERENCES REPORT(report_id))")
+                       "is_non_overlapping_ip_list INTEGER, is_first_8_to_24_bit_match INTEGER, middle_box_hop_count INTEGER, "
+                       "FOREIGN KEY(report_id) REFERENCES REPORT(report_id))")
 
         # Inside DNS Description Tables [DNS_IP_LIST_LOCAL: Local IP List]
         self.c.execute("CREATE TABLE IF NOT EXISTS DNS_IP_LIST_LOCAL(report_id INTEGER, ip_address TEXT, PRIMARY KEY"
