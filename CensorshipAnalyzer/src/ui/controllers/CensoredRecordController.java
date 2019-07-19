@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
+import util.loader.SceneLoader;
+import util.loader.Scenes;
 
 public class CensoredRecordController implements Initializable {
 
@@ -65,6 +67,7 @@ public class CensoredRecordController implements Initializable {
 
     @FXML
     private void goBack(ActionEvent event) {
+        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
     }
 
     @Override

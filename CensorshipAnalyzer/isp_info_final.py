@@ -72,7 +72,7 @@ class Get_Ip_Info:
 			return None
 
 	
-
+# dig TXT +short o-o.myaddr.l.google.com @ns1.google.com [To see global IP address]
 ob = Get_Ip_Info()
 ip_details = ob.get_ip_info()
 if ip_details != None:
