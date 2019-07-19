@@ -15,16 +15,17 @@ class DNSDescription:
     is_topExistingButAuthNotExisting = 0  # Top level DNS Server has this domain but the authorative dns servers do not
     is_timeout_local_server = 0
 
-    # Ip address lists
-    ip_address_list_local = []
-    ip_address_list_stubby = []
-
     # IS overlapping or not ?
     is_non_overlapping_ip_list = 0  # Default 0/False
     is_first_8_to_24_bit_match = 0  # Default False
 
     # Middle box hop count
     middle_box_hop_count = 0
+
+    # Ip address lists
+    ip_address_list_local = []
+    ip_address_list_stubby = []
+
     str_dns_description = ""
 
     def __init__(self):
