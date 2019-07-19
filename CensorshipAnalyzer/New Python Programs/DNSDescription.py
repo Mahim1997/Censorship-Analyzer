@@ -13,6 +13,7 @@ class DNSDescription:
     is_noAnswerPacket = 0
     is_stubby_failed = 0
     is_topExistingButAuthNotExisting = 0  # Top level DNS Server has this domain but the authorative dns servers do not
+    is_timeout_local_server = 0
 
     # Ip address lists
     ip_address_list_local = []
@@ -20,6 +21,7 @@ class DNSDescription:
 
     # IS overlapping or not ?
     is_non_overlapping_ip_list = 0  # Default 0/False
+    is_first_8_to_24_bit_match = 0  # Default False
 
     # Middle box hop count
     middle_box_hop_count = 0
@@ -42,6 +44,8 @@ class DNSDescription:
         self.str_dns_description = self.str_dns_description + "$is_noAnswerPacket:" + str(self.is_noAnswerPacket)
         self.str_dns_description = self.str_dns_description + "$is_stubby_failed:" + str(self.is_stubby_failed)
         self.str_dns_description = self.str_dns_description + "$is_topExistingButAuthNotExisting:" + str(self.is_topExistingButAuthNotExisting)
+        self.str_dns_description = self.str_dns_description + "$is_timeout_local_server:" + str(self.is_timeout_local_server)
+        self.str_dns_description = self.str_dns_description + "$is_first_8_to_24_bit_match:" + str(self.is_first_8_to_24_bit_match)
 
         # Now the ip list local
         self.str_dns_description = self.str_dns_description + "$ip_address_list_local:"

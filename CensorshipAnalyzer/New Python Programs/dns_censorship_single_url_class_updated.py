@@ -253,7 +253,7 @@ class DNS_CENSORSHIP:
 				elif noanswerL:
 					self.report.dns_description.is_noAnswerPacket = 1
 				elif timeoutL:
-					self.report.dns_description.timeoutL = 1
+					self.report.dns_description.is_timeout_local_server = 1
 				else:
 					self.report.dns_description.is_unknown_error = 1
 
@@ -282,7 +282,7 @@ class DNS_CENSORSHIP:
 						elif noanswerL:
 							self.report.dns_description.is_noAnswerPacket = 1
 						elif timeoutL:
-							self.report.dns_description.timeoutL = 1
+							self.report.dns_description.is_timeout_local_server = 1
 						else:
 							self.report.dns_description.is_unknown_error = 1
 		else:
@@ -367,6 +367,7 @@ class DNS_CENSORSHIP:
 						isOverlapped = self.ipMaching(ipListLocal, ipListRemote)
 						if isOverlapped:
 							print(HOST + " is not censored(first 8-24 bit matched)")
+							self.report.dns_description.is_first_8_to_24_bit_match = 1
 						else:
 							print("Non-overlapped ip set")
 							self.report.dns_description.is_non_overlapping_ip_list = 1

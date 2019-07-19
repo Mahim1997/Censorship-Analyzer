@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc5ffce3-9bec-4806-9235-3e845a722528" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DNSDescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/DNSDescription.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report.py" beforeDir="false" afterPath="$PROJECT_DIR$/Report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCPDescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/TCPDescription.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dns_censorship_single_url_class_updated.py" beforeDir="false" afterPath="$PROJECT_DIR$/dns_censorship_single_url_class_updated.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,22 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dns_censorship_single_url_class_updated.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="381" column="26" lean-forward="true" selection-start-line="381" selection-start-column="26" selection-end-line="381" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Report.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="49" column="69" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+            <state relative-caret-position="552">
+              <caret line="47" column="71" lean-forward="true" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -41,10 +26,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dns_censorship_single_url_class_updated.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="597">
+              <caret line="369" column="82" selection-start-line="369" selection-start-column="56" selection-end-line="369" selection-end-column="82" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DNSDescription.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="759">
+              <caret line="47" column="130" selection-start-line="47" selection-start-column="130" selection-end-line="47" selection-end-column="130" />
             </state>
           </provider>
         </entry>
@@ -96,6 +93,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>timeOutL</find>
+      <find>is_unknown_error</find>
+      <find>is_nxDomain</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -105,9 +109,9 @@
         <option value="$PROJECT_DIR$/HTTPSDescription.py" />
         <option value="$PROJECT_DIR$/HTTPDescription.py" />
         <option value="$PROJECT_DIR$/TCPDescription.py" />
-        <option value="$PROJECT_DIR$/DNSDescription.py" />
-        <option value="$PROJECT_DIR$/dns_censorship_single_url_class_updated.py" />
         <option value="$PROJECT_DIR$/Report.py" />
+        <option value="$PROJECT_DIR$/dns_censorship_single_url_class_updated.py" />
+        <option value="$PROJECT_DIR$/DNSDescription.py" />
       </list>
     </option>
   </component>
@@ -170,7 +174,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12506917" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12451577" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -213,13 +217,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TCPDescription.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Python Programs/Report.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -227,10 +224,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="47" column="71" lean-forward="true" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TCPDescription.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dns_censorship_single_url_class_updated.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="381" column="26" lean-forward="true" selection-start-line="381" selection-start-column="26" selection-end-line="381" selection-end-column="26" />
+        <state relative-caret-position="597">
+          <caret line="369" column="82" selection-start-line="369" selection-start-column="56" selection-end-line="369" selection-end-column="82" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -239,18 +253,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DNSDescription.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="49" column="69" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="759">
+          <caret line="47" column="130" selection-start-line="47" selection-start-column="130" selection-end-line="47" selection-end-column="130" />
         </state>
       </provider>
     </entry>
