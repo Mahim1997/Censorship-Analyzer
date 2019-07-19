@@ -29,7 +29,9 @@ class Report:
 
     # Final objects for descripiton
     # DNS stays as it is
-
+    # TCP arrays of descriptions ...
+    tcp_description_arr = []
+    http_description_arr = []
     # Final report string
     str_report = ""
 
@@ -57,7 +59,10 @@ class Report:
             self.str_report = self.str_report + "$middle_box_hop_count:" + str(
                 self.tcp_description.middle_box_hop_count)  # 12
             # TO DO !!! [CHANGE AS DNS]
-            str_tcp_description = self.tcp_description.getTCPDescription()
+            str_tcp_description = ""
+            for desc in self.tcp_description_arr:
+                str_tcp_description = str_tcp_description + desc.getTCPDescription()
+            # str_tcp_description = self.tcp_description.getTCPDescription()
             self.str_report = self.str_report + str_tcp_description
 
         return self.str_report

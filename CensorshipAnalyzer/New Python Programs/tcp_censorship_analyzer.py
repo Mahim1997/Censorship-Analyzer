@@ -186,7 +186,7 @@ class TCP_3_WAY_HANDSHAKE:
 # --------------------- My end --------------------------------------
 
 
-is_main = True
+is_main = False
 if is_main:
 	print("Running tcp checker ")
 	ob = TCP_3_WAY_HANDSHAKE()

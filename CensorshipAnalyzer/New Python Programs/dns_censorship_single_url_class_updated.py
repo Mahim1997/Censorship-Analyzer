@@ -379,7 +379,7 @@ class DNS_CENSORSHIP:
 	# return self.formReport(self.ERROR_CODE, ipListLocal, ipListRemote, self.IS_CENSORED)
 
 
-is_Main = True
+is_Main = False
 if is_Main:  # run as main
 	dns_check = DNS_CENSORSHIP()
 	dns_check.dns_censorship_check("www.redtube.com")
