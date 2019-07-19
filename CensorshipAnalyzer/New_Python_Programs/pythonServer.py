@@ -70,9 +70,9 @@ def processMessage(msg):
 		report.iteration_number = iterationNumber
 		report.type_of_testing = "DNS"
 		# print("Inside pythonServer.py ... typeOfTesting('dns') <PRINTING REPORT> url = " + url)
-		report.printReport()
+		# report.printReport()
 
-		# db.handleReport(report)
+		db.handleReport_DNS(report)
 
 	elif typeOfTesting == 'TCP':
 		print('Run TCP ..... inside pythonServer.py')
@@ -102,9 +102,9 @@ def processMessage(msg):
 			for rep in report_arr:
 				report.tcp_description_arr.append(rep.tcp_description)
 
-		# db.handleReport_TCP(report)
-		print("Now inside pythonServer.py ... printing report")
-		report.printReport()
+		db.handleReport_TCP(report)
+		# print("Now inside pythonServer.py ... printing report")
+		# report.printReport()
 
 	elif typeOfTesting == 'HTTP':
 		print('Run HTTP .... ')
@@ -146,7 +146,7 @@ run_serv: bool = False
 if run_serv:
 	runServer()
 else:
-	str = "source:java$userID:2$connectionID:4$typeOfTesting:TCP$timestamp:17 June 2019, 4 45 am$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+	str = "source:java$userID:2$connectionID:4$typeOfTesting:TCP$timestamp:NULL$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
 	processMessage(str)
 # runServer()
 

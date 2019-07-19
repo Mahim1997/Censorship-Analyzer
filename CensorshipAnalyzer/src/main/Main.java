@@ -1,13 +1,8 @@
 package main;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import debugger.Debugger;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import util.loader.SceneLoader;
@@ -62,10 +57,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        DBHandler.initialiseDBConnection();
-//        DBHandler.testQuery();
-//        System.out.println("Final Report ID (Count): " + DBHandler.getLatestReportID());
-        launch(args);
+        Debugger.testPythonProgram();
+        
+//        launch(args);
     }
     
   

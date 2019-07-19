@@ -19,18 +19,11 @@ class DBHandler:
 		conn.commit()
 		self.closeConnection()
 
-	# addToUser(3, 'vipergon22e@gmail.com', '1234', 'mahim') 	#Kam hoise
-	def getCurrentConnection(self):
+
+	def handleReport_DNS(self, report):
+		# conn = sqlite3.connect("Client Data.db")
+		# c = conn.cursor()
 		pass
-
-
-	def checkIfConnectionExists(self, uIDGiven, networkName, location): 	#NONE TYPE ERROR ASHE !!!
-		self.openConnection()
-		c.execute("SELECT * FROM Connection WHERE Connection.user_id = ? AND Connection.network_name = ? AND Connection.location = ?", (uIDGiven, networkName, location))
-		conn.commit()
-		# TO DO !!!!!!
-		self.closeConnection()
-
 
 	def handleReport_TCP(self, report):
 
