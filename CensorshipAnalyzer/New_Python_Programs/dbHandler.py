@@ -40,6 +40,8 @@ class DBHandler:
                    report.censorship_details))
 
         #  Inserting into DNS Description
+		------------------------------------------------------------------ TO DO -----------------------------------------------------------------------
+		
 		c.execute("INSERT INTO DNS_DESCRIPTION VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 				  (report.report_id, report.dns_description.is_timeout, report.dns_description.is_loopback,
 				   report.dns_description.is_multicast, report.dns_description.is_broadcast, report.dns_description.is_private
