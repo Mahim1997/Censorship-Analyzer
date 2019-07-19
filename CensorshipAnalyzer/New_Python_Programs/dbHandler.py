@@ -14,8 +14,8 @@ class DBHandler:
             # print("--->>>>>>> In handleReport () ... Row[0] : " + str(row[0]))
             num = row[0]  # Don't know exactly why like this !!
 
-        report.reportID = num + 1
-
+        report.report_id = num + 1
+        print("-------------->>> OBTAINED report.report_id = " + str(report.report_id))
         #  Inserting into Report Table
         c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
@@ -24,25 +24,26 @@ class DBHandler:
 
         #  Inserting into DNS Description
 
-        c.execute("INSERT INTO DNS_DESCRIPTION VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        c.execute("INSERT INTO DNS_DESCRIPTION VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.dns_description.is_timeout, report.dns_description.is_loopback,
                    report.dns_description.is_multicast, report.dns_description.is_broadcast,
-                   report.dns_description.is_private,
-                   report.dns_description.is_reserved, report.dns_description.is_nxDomain,
+                   report.dns_description.is_private, report.dns_description.is_bogon,
+                   report.dns_description.is_unknown_error, report.dns_description.is_nxDomain,
                    report.dns_description.is_noAnswerPacket,
                    report.dns_description.is_stubby_failed, report.dns_description.is_topExistingButAuthNotExisting,
                    report.dns_description.is_timeout_local_server, report.dns_description.is_non_overlapping_ip_list,
+                   report.dns_description.is_first_8_to_24_bit_match,
                    report.dns_description.middle_box_hop_count))
 
         #  Local IP list insertion
         for ip_local in report.dns_description.ip_address_list_local:
             c.execute("INSERT INTO DNS_IP_LIST_LOCAL VALUES(?, ?)",
-                      report.report_id, ip_local)
+                      (report.report_id, ip_local) )
 
         #  Remote IP list insertion
         for ip_stubby in report.dns_description.ip_address_list_local:
             c.execute("INSERT INTO DNS_IP_LIST_STUBBY VALUES(?, ?)",
-                      report.report_id, ip_stubby)
+                      (report.report_id, ip_stubby) )
 
         conn.commit()
         c.close()

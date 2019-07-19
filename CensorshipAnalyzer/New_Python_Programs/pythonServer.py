@@ -60,10 +60,11 @@ def processMessage(msg):
 		db = DBHandler()
 		# db.checkAndMakeConnection(userID) 	#TO DO  [Problem [NoneType etc]]
 
-		report = dns_check.dns_censorship_check(url)
+		dns_check.dns_censorship_check(url)  # Actually does NOT RETURN
+		report = dns_check.report
 		# Further modifications ....
 		report.url = url
-		report.timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # In this format
+		report.time_stamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # In this format
 		report.is_file_check = isFile
 		report.is_periodic = isPeriodic
 		report.file_name_periodic = fileNamePeriodic
@@ -142,11 +143,11 @@ def runServer():
 
 # --------------------------------------------------Main Program---------------------------------------------------------------
 
-run_serv: bool = True
+run_serv: bool = False
 if run_serv:
 	runServer()
 else:
-	str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+	str = "source:java$userID:7$connectionID:1$typeOfTesting:DNS$timestamp:NULL$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
 	#str = 'source:java#userID:2#connectionID:4#typeOfTesting:TCP#timestamp:NULL#url:www.xvideos.com#periodicity:forced#isPeriodic:yes#fileNamePeriodic:1505022.txt#iterationNumber:4'
 	processMessage(str)
 # runServer()
