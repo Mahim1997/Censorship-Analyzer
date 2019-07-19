@@ -3,6 +3,7 @@ package debugger;
 import java.util.List;
 import ui.model.Network;
 import util.database.DBHandler;
+import util.pythonCodeExecute.NetworkInfoObtainer;
 import util.pythonCodeExecute.PythonCodeExecutor;
 
 /*
@@ -21,6 +22,21 @@ public class Debugger {
         formConnectionDebug();
     }
 
+
+    private static void formConnectionDebug() {
+        System.out.println("-------- obtaining network info ------------- ");
+        NetworkInfoObtainer.extractNetworkInfo();
+        System.out.println("----------- network info obtained -------------");
+        DBHandler.openConnection();
+        DBHandler.formConnection_ID();
+        DBHandler.closeConnection();
+        System.out.println("---------->> AFTERWARDS ... Network.conID = " + Network.connection_id);
+        
+        
+    }
+
+
+
     public static void testPythonProgram() {
         System.out.println("Inside Debugger.testPythonProgram ... ");
         PythonCodeExecutor pce = new PythonCodeExecutor();
@@ -32,10 +48,4 @@ public class Debugger {
 
     }
 
-    private static void formConnectionDebug() {
-        DBHandler.openConnection();
-        DBHandler.formConnection_ID();
-        DBHandler.closeConnection();
-        System.out.println("---------->> AFTERWARDS ... Network.conID = " + Network.connection_id);
-    }
 }

@@ -198,7 +198,7 @@ public class DBHandler {
             //Now insert ...
             //INSERT INTO USER VALUES (2, 'mahim_mahbub', 'mahim1997mahbub@gmail.com', '1234')
             String sql_inserter = "INSERT INTO USER VALUES (" + User.userID + "," + quote(User.userName) + "," + quote(User.userEmailAddress) + "," + quote(User.userPassword) + ")";
-
+            System.out.println("New user creation <" + sql_inserter + ">");
             ResultSet executeQuery = stmt.executeQuery(sql_inserter);
 
             System.out.println("--->>Created new user ... ");
@@ -212,10 +212,12 @@ public class DBHandler {
     private static void createNewNetwork(Statement stmt) {
 //        openConnection();
         //Create new network
+
         String sql = "INSERT INTO NETWORK VALUES (" + quote(Network.global_ip) + "," + quote(Network.asn) + "," + quote(Network.city) + ","
                 + quote(Network.org) + "," + quote(Network.carrier) + "," + quote(Network.latitude) + "," + quote(Network.longitude) + ","
                 + quote(Network.country) + "," + quote(Network.region) + "," + quote(Network.postal)
                 + ")";
+        System.out.println("New neetwork creator <"  + sql + ">");
         try {
 //            Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
