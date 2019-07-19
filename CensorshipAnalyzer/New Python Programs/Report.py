@@ -27,6 +27,9 @@ class Report:
     http_description = HTTPDescription()
     https_description = HTTPSDescription()
 
+    # Final objects for descripiton
+    # DNS stays as it is
+
     # Final report string
     str_report = ""
 
@@ -45,20 +48,35 @@ class Report:
         self.str_report = self.str_report + "$censorshipDetails:" + self.censorship_details  # 11
 
         if self.type_of_testing == "DNS":  # Lines 13 to the rest
-            self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.dns_description.middle_box_hop_count)  # 12
+            self.str_report = self.str_report + "$middle_box_hop_count:" + str(
+                self.dns_description.middle_box_hop_count)  # 12
             self.dns_description.formDNSDescription()
             self.str_report = self.str_report + self.dns_description.str_dns_description
 
         elif self.type_of_testing == "TCP":  # Lines 13 to the rest
-            self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 12
+            self.str_report = self.str_report + "$middle_box_hop_count:" + str(
+                self.tcp_description.middle_box_hop_count)  # 12
             # TO DO !!! [CHANGE AS DNS]
             str_tcp_description = self.tcp_description.getTCPDescription()
             self.str_report = self.str_report + str_tcp_description
 
         return self.str_report
 
+    def copyFromReport(self, report):
+        self.report_id = report.report_id
+        self.connection_id = report.connection_id
+        self.time_stamp = report.time_stamp
+        self.url = report.url
+        self.type_of_testing = report.type_of_testing
+        self.is_censored = report.is_censored
+        self.is_file_check = report.is_file_check
+        self.is_periodic = report.is_periodic
+        self.file_name_periodic = report.file_name_periodic
+        self.iteration_number = report.iteration_number
+        self.censorship_details = report.censorship_details
 
     def printReport(self):
         print("------------------------------- Printing Report Begin -------------------------------------")
-
+        strReport = self.getReportString()
+        print(strReport)
         print("------------------------------- Printing Report Done -------------------------------------")
