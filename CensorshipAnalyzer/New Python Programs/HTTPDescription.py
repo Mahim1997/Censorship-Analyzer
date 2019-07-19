@@ -1,3 +1,4 @@
+
 class HTTPDescription:
     # per ip
     ip_address = None
@@ -14,3 +15,6 @@ class HTTPDescription:
     threshold_comarison = 0.300  # Default comparison threshold is 30 %
     is_different_wrt_threshold = 0  # Default False
     is_censored_HTTP = 0  # Default FALSE
+    
+    # Middle box hop count
+    middle_box_hop_count = 0

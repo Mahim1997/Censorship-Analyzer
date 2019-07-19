@@ -6,9 +6,12 @@ class DNSDescription:
     is_multicast = 0
     is_broadcast = 0
     is_private = 0
+    is_bogon = 0
+    is_unknown_error = 0
     is_reserved = 0
     is_nxDomain = 0
     is_noAnswerPacket = 0
+    is_stubby_failed = 0
     is_topExistingButAuthNotExisting = 0  # Top level DNS Server has this domain but the authorative dns servers do not
 
     # Ip address lists
@@ -17,3 +20,6 @@ class DNSDescription:
 
     # IS overlapping or not ?
     is_non_overlapping_ip_list = 0  # Default 0/False
+
+    # Middle box hop count
+    middle_box_hop_count = 0

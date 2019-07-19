@@ -3,6 +3,7 @@ from HTTPDescription import HTTPDescription
 from HTTPSDescription import HTTPSDescription
 from TCPDescription import TCPDescription
 
+
 # For report class
 class Report:
     # Normal things
@@ -24,3 +25,12 @@ class Report:
     tcp_description = TCPDescription()
     http_description = HTTPDescription()
     https_description = HTTPSDescription()
+
+
+    def getReport(self):
+
+
+    def printReport(self):
+        print("------------------------------- Printing Report Begin -------------------------------------")
+
+        print("------------------------------- Printing Report Done -------------------------------------")
