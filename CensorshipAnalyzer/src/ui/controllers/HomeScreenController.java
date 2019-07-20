@@ -13,11 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import ui.model.Network;
 import util.loader.SceneLoader;
 import util.loader.Scenes;
-import util.pythonCodeExecute.NetworkInfoObtainer;
-import util.pythonCodeExecute.PythonCodeExecutor;
+import util.pythonCodeExecutorAndNetworkInfo.NetworkInfoObtainer;
 
 /**
  * FXML Controller class

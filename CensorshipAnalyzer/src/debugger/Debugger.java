@@ -3,8 +3,8 @@ package debugger;
 import java.util.List;
 import ui.model.Network;
 import util.database.DBHandler;
-import util.pythonCodeExecute.NetworkInfoObtainer;
-import util.pythonCodeExecute.PythonCodeExecutor;
+import util.pythonCodeExecutorAndNetworkInfo.NetworkInfoObtainer;
+import util.pythonCodeExecutorAndNetworkInfo.PythonCodeExecutor;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

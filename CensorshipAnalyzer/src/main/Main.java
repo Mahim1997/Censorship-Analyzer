@@ -9,6 +9,7 @@ import util.loader.SceneLoader;
 import ui.model.User;
 import util.database.DBHandler;
 import util.loader.Scenes;
+import util.pythonCodeExecutorAndNetworkInfo.NetworkInfoObtainer;
 
 public class Main extends Application {
     public static double STAGE_WIDTH;
@@ -21,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        User.initiateUser();
+//        User.initiateUser();
         Main.stage = primaryStage;
         Main.stage.setTitle(Main.TITLE);
 
@@ -57,9 +58,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Debugger.debugProgram();
-        
-//        launch(args);
+//        Debugger.debugProgram();
+        NetworkInfoObtainer.extractNetworkInfo();
+        launch(args);
     }
     
   

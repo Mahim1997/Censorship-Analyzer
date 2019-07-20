@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util.pythonCodeExecute;
+package util.pythonCodeExecutorAndNetworkInfo;
 
 import java.util.List;
 import ui.model.Network;
