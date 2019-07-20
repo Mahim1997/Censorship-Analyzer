@@ -1,7 +1,6 @@
 package ui.model;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import ui.controllers.CensoredRecordController;
 import ui.controllers.CensoredRecordController_Waiting;
@@ -43,15 +42,15 @@ public class Report {
     }
 
     //---------------------------- Controllers ------------------------------------
-    private CensoredRecordController_Waiting controller2;
-    private CensoredRecordController controller1;
+    private CensoredRecordController_Waiting controller_waiting;
+    private CensoredRecordController controller_for_db;
 
     public void setController2(CensoredRecordController_Waiting controller2) {
-        this.controller2 = controller2;
+        this.controller_waiting = controller2;
     }
 
     public void setController1(CensoredRecordController controller1) {
-        this.controller1 = controller1;
+        this.controller_for_db = controller1;
     }
     //---------------------------- Controllers ------------------------------------
     
@@ -61,17 +60,17 @@ public class Report {
 //        this.dns_details = new DNSDetails(this);
         this.btn_details = new Button("Details");
         this.btn_details.setOnAction((ActionEvent event) -> {
-            if (Report.this.controller2 != null) {
+            if (Report.this.controller_waiting != null) {
                 String testType_Local = Report.this.getTestType();
                 System.out.println("\n================+>>>>>>>>>Inside Report ... getTestType() = " + testType_Local + "\n");
                 switch (testType_Local.toUpperCase()) {
                     case "DNS":
                         //if test type is DNS
-                        Report.this.controller2.goToDetailsDNSRecord(Report.this.reportID);
+                        Report.this.controller_waiting.goToDetailsDNSRecord(Report.this.reportID);
                         break;
                     case "TCP":
                         // if test type is TCP
-                        Report.this.controller2.goToDetailsTCPRecord(Report.this.reportID);
+                        Report.this.controller_waiting.goToDetailsTCPRecord(Report.this.reportID);
                         break;
                     case "HTTP":
                         //TO DO
@@ -80,7 +79,7 @@ public class Report {
                     default:
                         break;
                 }
-            } else if (Report.this.controller1 != null) {
+            } else if (Report.this.controller_for_db != null) {
                 //Same thing also here ...
             }
         });

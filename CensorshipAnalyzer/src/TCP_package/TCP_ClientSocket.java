@@ -9,13 +9,13 @@ package TCP_package;
  *
  * @author kayem
  */
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import javafx.geometry.Pos;
+import ui.sounds.Notification;
 
 public class TCP_ClientSocket {
 
@@ -27,8 +27,8 @@ public class TCP_ClientSocket {
             BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             outToServer.println(sentence);
             clientSocket.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            Notification.push("Warning", "Unable to connect to Software Server", Notification.WARNING, Pos.BOTTOM_RIGHT);
         }
         
     }
