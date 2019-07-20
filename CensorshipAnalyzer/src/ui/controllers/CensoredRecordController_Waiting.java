@@ -160,7 +160,7 @@ public class CensoredRecordController_Waiting {
 
     private Report getReport(int reportID) {
         for (Report report : this.reportsListToBeRefreshed) {
-            if (report.getReportID() == reportID) {
+            if (report.getReport_id()== reportID) {
                 return report;
             }
         }
@@ -253,28 +253,28 @@ public class CensoredRecordController_Waiting {
         });
 
         column_reportID.setCellValueFactory(
-                new PropertyValueFactory<>("reportID")
+                new PropertyValueFactory<>("report_id")
         );
         column_url.setCellValueFactory(
                 new PropertyValueFactory<>("url")
         );
         column_time.setCellValueFactory(
-                new PropertyValueFactory<>("time")
+                new PropertyValueFactory<>("time_stamp")
         );
         column_testType.setCellValueFactory(
-                new PropertyValueFactory<>("testType")
+                new PropertyValueFactory<>("test_type")
         );
         column_networkType.setCellValueFactory(
-                new PropertyValueFactory<>("networkType")
+                new PropertyValueFactory<>("network_type")
         );
         column_networkName.setCellValueFactory(
-                new PropertyValueFactory<>("networkName")
+                new PropertyValueFactory<>("network_name")
         );
         column_censoredType.setCellValueFactory(
-                new PropertyValueFactory<>("censoredType")
+                new PropertyValueFactory<>("censored_type")
         );
         column_censored.setCellValueFactory(
-                new PropertyValueFactory<>("isCensored")
+                new PropertyValueFactory<>("is_censored")
         );
         column_details.setCellValueFactory( //Button for details
                 new PropertyValueFactory<>("btn_details")

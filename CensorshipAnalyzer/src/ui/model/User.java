@@ -1,7 +1,7 @@
  
 package ui.model;
 
-import main.Main;
+//import main.Main;
 
  
 public class User {
@@ -26,25 +26,4 @@ public class User {
     
     public static int userID = 7;   //User ID [obtained from Database]
     
-    public static void initiateUser(){
-        if(Main.USER_DEBUG == 1){
-            userID = 1505022; //example
-            networkName = "Banglalink";
-            networkType = "Mobile";
-            modeOfAccess = "Logged User";
-            userFirstName = "Mahim";
-            userLastName = "Mahbub";
-            userName = userFirstName + "_" + userLastName ;
-            userPassword = "PASSWORD";
-            userEmailAddress = "mahim1997mahbub@gmail.com";
-            location = "Dhaka, Bangladesh";
-            
-            numberOfTests = 1221;
-            numberOfDifferentURLs = 121;
-            numberOfCensordSites = 100;
-            numberOfCensoredDNS = 51;
-            numberOfCensoredHTTP = 30;
-            numberOfCensoredTCP = 19;
-        }
-    }
 }

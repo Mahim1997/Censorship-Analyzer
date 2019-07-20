@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import ui.model.DNSDetails;
 import ui.model.Report;
 import static util.database.DBHandler.conn;
@@ -51,7 +49,7 @@ public class ReportQueryHandler {
         return type;
     }
 
-    public static List<Report> getListOfReports(int startIdx, int endIdx) {
+/*    public static List<Report> getListOfReports(int startIdx, int endIdx) {
         try {
             List<Report> list = new ArrayList<>();
 
@@ -69,14 +67,14 @@ public class ReportQueryHandler {
 
             while (rs.next()) {
                 Report report = new Report();
-                report.setReportID(rs.getInt(1));
-                report.setTime(rs.getString(3));
+                report.setReport_id(rs.getInt(1));
+                report.setTime_stamp(rs.getString(3));
                 report.setUrl(rs.getString(4));
-                report.setIsCensored(rs.getString(5));
-                report.setTestType(rs.getString(6));
-                report.setCensoredType(rs.getString(7));
-                report.setNetworkName(rs.getString(15));
-                report.setNetworkType(getNetworkType(report.getNetworkName()));
+                report.setIs_censored(rs.getString(5));
+                report.setTest_type(rs.getString(6));
+                report.setCensored_type(rs.getString(7));
+                report.network.setNetwork_name(rs.getString(15));
+                report.network.setNetwork_type(getNetworkType(Config.NETWORK_TYPE);
                 report.setCensorship_code(rs.getInt(12));
                 
                 System.out.println("-->>Adding to the list the report ... printing the report");
@@ -145,5 +143,5 @@ public class ReportQueryHandler {
 
         return null;
     }
-
+*/
 }

@@ -2,7 +2,7 @@ class TCPDescription:
     # per ip
     report_id = 0  # [PK, FK]
     ip_address = "NULL"  # PK
-    port_number = 80
+    port_number = -1
     is_tor_not_connected = 0  # Default 0
     is_time_out = 0  # Default false
     is_fin_bit_set = 0  # Default 0
@@ -24,8 +24,8 @@ class TCPDescription:
     def getTCPDescription(self):
         self.description_tcp = ""
         self.description_tcp = self.description_tcp + "$ip_address:" + str(self.ip_address)
-        self.description_tcp = self.description_tcp + "$is_tor_not_connected:" + str(self.is_tor_not_connected)
         self.description_tcp = self.description_tcp + "$port_number:" + str(self.port_number)
+        self.description_tcp = self.description_tcp + "$is_tor_not_connected:" + str(self.is_tor_not_connected)
         self.description_tcp = self.description_tcp + "$is_time_out:" + str(self.is_time_out)
         self.description_tcp = self.description_tcp + "$is_fin_bit_set:" + str(self.is_fin_bit_set)
         self.description_tcp = self.description_tcp + "$is_rst_bit_set:" + str(self.is_rst_bit_set)
@@ -33,5 +33,5 @@ class TCPDescription:
         self.description_tcp = self.description_tcp + "$successful_iteration_tor:" + str(self.successful_iteration_number_tor)
         self.description_tcp = self.description_tcp + "$is_tor_connect_successful:" + str(self.is_tor_connect_successful)
         self.description_tcp = self.description_tcp + "$middle_box_hop_count:" + str(self.middle_box_hop_count)
-        self.description_tcp = self.description_tcp + "is_censored_TCP:" + str(self.is_censored_TCP)
+        self.description_tcp = self.description_tcp + "$is_censored_TCP:" + str(self.is_censored_TCP)
         return self.description_tcp

@@ -70,6 +70,7 @@ public class DBHandler {
         }
     }
 
+
     //---------------------------------- Queries from ReportQueryHandler ... ----------------------------------------------
     public static int getLatestReportID() {
         openConnection();
@@ -78,7 +79,7 @@ public class DBHandler {
         return currentLastReportID;
     }
 
-    public static List<Report> getListOfReports(int startIdx, int endIdx) {
+/*    public static List<Report> getListOfReports(int startIdx, int endIdx) {
         openConnection();
         List<Report> listOfReports = ReportQueryHandler.getListOfReports(startIdx, endIdx);
         closeConnection();
@@ -104,15 +105,15 @@ public class DBHandler {
             System.out.println(e.getMessage());
         }
     }
-
+*/
     public static void formConnection_ID() {
         //FIRST CHECKING IN USER TABLE [USER_ID ALREADY EXISTS]
         System.out.println("----------------- Inside DBHandler.formConnection_ID() ---------------------- ");
-        Network.global_ip = Network.getGlobalIP();
+        Network.global_ip_static = Network.getGlobalIP();
 
 //        String sql_userCheck = "SELECT * FROM CONNECTION WHERE CONNECTION.user_id = " + quote(User.userID);
 //        String sql_networkCheck = "SELECT * FROM CONNECTION WHERE CONNECTION.global_ip = " + quote(Network.getGlobalIP());
-        String sql_conn_check = "SELECT connection_id FROM CONNECTION WHERE user_id = " + User.userID + " AND global_ip = " + quote(Network.global_ip);
+        String sql_conn_check = "SELECT connection_id FROM CONNECTION WHERE user_id = " + User.userID + " AND global_ip = " + quote(Network.global_ip_static);
 
         System.out.println(sql_conn_check);
 
@@ -124,7 +125,7 @@ public class DBHandler {
 
             // loop through the result set  
             if (rs.next() == true) {
-                Network.connection_id = rs.getInt(1);
+                Network.connection_id_static = rs.getInt(1);
                 System.out.println("rs.next == true in connection check table");
                 if_exists_in_connection = true;
             }
@@ -142,7 +143,7 @@ public class DBHandler {
         System.out.println("createNewConnectionID() is called .... ");
         boolean exists_in_network = false, exists_in_user = false;
 
-        String sql_network_check = "SELECT * FROM NETWORK WHERE global_ip = " + quote(Network.global_ip);
+        String sql_network_check = "SELECT * FROM NETWORK WHERE global_ip = " + quote(Network.global_ip_static);
         String sql_user_check = "SELECT * FROM USER WHERE user_id = " + User.userID;
         System.out.println("SQL USER CHECK IS <" + sql_user_check + ">");
         System.out.println("SQL NET CHECK IS <" + sql_network_check + ">");
@@ -213,9 +214,9 @@ public class DBHandler {
 //        openConnection();
         //Create new network
 
-        String sql = "INSERT INTO NETWORK VALUES (" + quote(Network.global_ip) + "," + quote(Network.asn) + "," + quote(Network.city) + ","
-                + quote(Network.org) + "," + quote(Network.carrier) + "," + quote(Network.latitude) + "," + quote(Network.longitude) + ","
-                + quote(Network.country) + "," + quote(Network.region) + "," + quote(Network.postal)
+        String sql = "INSERT INTO NETWORK VALUES (" + quote(Network.global_ip_static) + "," + quote(Network.asn_static) + "," + quote(Network.city_static) + ","
+                + quote(Network.org_static) + "," + quote(Network.carrier_static) + "," + quote(Network.latitude_static) + "," + quote(Network.longitude_static) + ","
+                + quote(Network.country_static) + "," + quote(Network.region_static) + "," + quote(Network.postal_static)
                 + ")";
         System.out.println("New neetwork creator <"  + sql + ">");
         try {
@@ -242,11 +243,11 @@ public class DBHandler {
                 cnt = rs.getInt(1);
             }
             cnt++;
-            Network.connection_id = cnt; //assign user id
-            Network.global_ip = Network.getGlobalIP();
+            Network.connection_id_static = cnt; //assign user id
+            Network.global_ip_static = Network.getGlobalIP();
             //Create new connection
             //INSERT INTO USER VALUES (2, 'mahim_mahbub', 'mahim1997mahbub@gmail.com', '1234')
-            String sql_inserter = "INSERT INTO CONNECTION VALUES (" + Network.connection_id + "," + quote(Network.global_ip) + "," + User.userID + ")";
+            String sql_inserter = "INSERT INTO CONNECTION VALUES (" + Network.connection_id_static + "," + quote(Network.global_ip_static) + "," + User.userID + ")";
 
             ResultSet executeQuery = stmt.executeQuery(sql_inserter);
 
@@ -257,5 +258,4 @@ public class DBHandler {
         }
 //        closeConnection();
     }
-
 }

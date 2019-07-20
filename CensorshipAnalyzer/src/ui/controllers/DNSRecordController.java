@@ -1,11 +1,9 @@
 package ui.controllers;
 
 import com.jfoenix.controls.JFXTextField;
-import com.sun.prism.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -63,9 +61,9 @@ public class DNSRecordController {
         this.text_NetworkName.setText("Network Name: " + this.report.getNetworkName());
         this.text_networkType.setText("Network Type:" + this.report.getNetworkType());
         
-        this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIsCensored());
-        this.text_time.setText("Time: " + this.report.getTime());
-        this.text_testType.setText("Test Type: " + this.report.getTestType());
+        this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIs_censored());
+        this.text_time.setText("Time: " + this.report.getTime_stamp());
+        this.text_testType.setText("Test Type: " + this.report.getTest_type());
         this.text_url.setText("URL:" + this.report.getUrl());
 
         loadIPListLocalDNSServer();
@@ -75,8 +73,6 @@ public class DNSRecordController {
     }
 
     private void loadImages() {
-        int errorCode = this.report.getCensorship_code();
-        System.out.println("---->>>Inside loadImages() ... errorCode = " + errorCode);
 
 //        String crossImagePathName = "../../resources/images_testSites/X_transparent.png";
 //        String crossImagePathName = "resources/images_testSites/D.png";
@@ -90,8 +86,6 @@ public class DNSRecordController {
         this.text_privateIP.setText(whatToDisplay);
         this.text_timeout.setText(whatToDisplay);
 //        }
-        formDetailsUsingErrorCode(errorCode);
-
     }
 
     private void formDetailsUsingErrorCode(int errorCode) {
@@ -151,7 +145,7 @@ public class DNSRecordController {
     private void loadIPListStubby() {
         List<JFXTextField> textFieldList = new ArrayList<>();
 
-        for (String ip : this.report.getDns_details().getListIpStubby()) {
+        for (String ip : this.report.getDns_details().getIp_address_list_stubby()) {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             textField.setText(ip);
@@ -167,7 +161,7 @@ public class DNSRecordController {
     private void loadIPListLocalDNSServer() {
         List<JFXTextField> textFieldList = new ArrayList<>();
 
-        for (String ip : this.report.getDns_details().getListIpLocalDNSServer()) {
+        for (String ip : this.report.getDns_details().getIp_address_list_local()) {
             //each ip is to be loaded in a text field
             JFXTextField textField = new JFXTextField();
             textField.setText(ip);

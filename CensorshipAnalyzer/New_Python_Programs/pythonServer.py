@@ -7,7 +7,6 @@ from dbHandler import DBHandler
 from TCPDescription import TCPDescription
 from Report import Report
 
-
 def isSourceJava(msg):  # Simple function to check if contains source:java as the first line
 	x = msg.split(':')
 
@@ -155,7 +154,7 @@ run_serv: bool = False
 if run_serv:
 	runServer()
 else:
-	str = "source:java$userID:7$connectionID:1$typeOfTesting:DNS$timestamp:NULL$url:www.bdpolitico.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+	str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:www.youtube.com$isFile:yes$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
 	#str = 'source:java#userID:2#connectionID:4#typeOfTesting:TCP#timestamp:NULL#url:www.xvideos.com#periodicity:forced#isPeriodic:yes#fileNamePeriodic:1505022.txt#iterationNumber:4'
 	processMessage(str)
 # runServer()

@@ -30,7 +30,7 @@ public class Debugger {
         DBHandler.openConnection();
         DBHandler.formConnection_ID();
         DBHandler.closeConnection();
-        System.out.println("---------->> AFTERWARDS ... Network.conID = " + Network.connection_id);
+        System.out.println("---------->> AFTERWARDS ... Network.conID = " + Network.connection_id_static);
         
         
     }

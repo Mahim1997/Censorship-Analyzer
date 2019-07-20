@@ -45,27 +45,26 @@ class Report:
         self.str_report = self.str_report + "$URL:" + self.url  # 3
         self.str_report = self.str_report + "$Type_of_Test:" + self.type_of_testing  # 4
         self.str_report = self.str_report + "$is_censored:" + str(self.is_censored)  # 5
-        self.str_report = self.str_report + "$is_file_check:" + str(self.is_file_check)  # 7
-        self.str_report = self.str_report + "$is_periodic:" + str(self.is_periodic)  # 8
-        self.str_report = self.str_report + "$file_name_periodic:" + self.file_name_periodic  # 9
-        self.str_report = self.str_report + "$iteration_number:" + str(self.iteration_number)  # 10
-        self.str_report = self.str_report + "$censorshipDetails:" + self.censorship_details  # 11
+        self.str_report = self.str_report + "$is_periodic:" + str(self.is_periodic)  # 6
+        self.str_report = self.str_report + "$file_name_periodic:" + self.file_name_periodic  # 7
+        self.str_report = self.str_report + "$iteration_number:" + str(self.iteration_number)  # 8
+        self.str_report = self.str_report + "$censorshipDetails:" + self.censorship_details  # 9
 
-        if self.type_of_testing == "DNS":  # Lines 13 to the rest
-            self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.dns_description.middle_box_hop_count)  # 12
+        if self.type_of_testing == "DNS":  # Lines 10 to the rest
+            self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.dns_description.middle_box_hop_count)  # 10
             self.dns_description.formDNSDescription()
             self.str_report = self.str_report + self.dns_description.str_dns_description
 
-        elif self.type_of_testing == "TCP":  # Lines 13 to the rest
+        elif self.type_of_testing == "TCP":  # Lines 10 to the rest
             if self.debug_tcp == 0:
-                self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 12
+                self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 10
                 str_tcp_description = ""
                 for desc in self.tcp_description_arr:
                     str_tcp_description = str_tcp_description + desc.getTCPDescription()
                 self.str_report = self.str_report + str_tcp_description
-            else:
-                #  print("----------->>ELSE CONDITIOn")
-                self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 12
+            else:  # Just one [ONLY FOR CHECKING]
+                #  print("----------->>ELSE CONDITION")
+                self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 10
                 self.str_report = self.str_report + self.tcp_description.getTCPDescription()
 
         return self.str_report
