@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import ui.model.Network;
 import util.loader.SceneLoader;
 import ui.model.User;
 import util.database.DBHandler;
@@ -60,6 +61,9 @@ public class Main extends Application {
     public static void main(String[] args) {
 //        Debugger.debugProgram();
         NetworkInfoObtainer.extractNetworkInfo();
+        User.networkName = Network.org_static;
+        User.networkType = NetworkInfoObtainer.getNetworkType(User.networkName);
+        User.modeOfAccess = Network.status_static;
         launch(args);
     }
     

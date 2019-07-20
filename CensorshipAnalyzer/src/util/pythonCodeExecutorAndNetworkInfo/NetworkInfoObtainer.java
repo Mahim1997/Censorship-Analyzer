@@ -48,4 +48,25 @@ public class NetworkInfoObtainer {
 
         return result;
     }
+
+    public static String getNetworkType(String networkName) {
+        networkName = networkName.toUpperCase();
+        
+        switch (networkName) {
+            case "BANGLALNIK":
+                return "MOBILE";
+            case "AIRTEL":
+                return "MOBILE";
+            case "ROBI":
+                return "MOBILE";
+            case "GP":
+                return "MOBILE";
+            case "GRAMEENPHONE":
+                return "MOBILE";
+            default:
+                break;
+        }
+        
+        return "ISP";
+    }
 }

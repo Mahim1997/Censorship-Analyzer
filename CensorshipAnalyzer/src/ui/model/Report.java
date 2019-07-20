@@ -141,6 +141,14 @@ public class Report {
         return url;
     }
 
+    public Button getBtn_details() {
+        return btn_details;
+    }
+
+    public void setBtn_details(Button btn_details) {
+        this.btn_details = btn_details;
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }

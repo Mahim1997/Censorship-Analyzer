@@ -43,6 +43,7 @@ public class StringProcessor {
         if ((s == null) || (s.trim().equals(""))) {
             return Integer.parseInt(s);
         }
+        s = s.trim();
 
         String[] arr = s.split(":");
         return Integer.parseInt(arr[1]);
