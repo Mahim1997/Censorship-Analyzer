@@ -35,6 +35,8 @@ class Report:
     # Final report string
     str_report = ""
 
+    debug_tcp = 1  # For debugging issue
+
     def getReportString(self):
         self.str_report = ""
         self.str_report = "ReportID:" + str(self.report_id)  # 0
@@ -50,20 +52,20 @@ class Report:
         self.str_report = self.str_report + "$censorshipDetails:" + self.censorship_details  # 11
 
         if self.type_of_testing == "DNS":  # Lines 13 to the rest
-            self.str_report = self.str_report + "$middle_box_hop_count:" + str(
-                self.dns_description.middle_box_hop_count)  # 12
+            self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.dns_description.middle_box_hop_count)  # 12
             self.dns_description.formDNSDescription()
             self.str_report = self.str_report + self.dns_description.str_dns_description
 
         elif self.type_of_testing == "TCP":  # Lines 13 to the rest
-            self.str_report = self.str_report + "$middle_box_hop_count:" + str(
-                self.tcp_description.middle_box_hop_count)  # 12
-            # TO DO !!! [CHANGE AS DNS]
-            str_tcp_description = ""
-            for desc in self.tcp_description_arr:
-                str_tcp_description = str_tcp_description + desc.getTCPDescription()
-            # str_tcp_description = self.tcp_description.getTCPDescription()
-            self.str_report = self.str_report + str_tcp_description
+            if self.debug_tcp == 0:
+                self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 12
+                str_tcp_description = ""
+                for desc in self.tcp_description_arr:
+                    str_tcp_description = str_tcp_description + desc.getTCPDescription()
+                self.str_report = self.str_report + str_tcp_description
+            else:
+                self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 12
+                self.str_report = self.str_report + self.tcp_description.getTCPDescription()
 
         return self.str_report
 
@@ -82,6 +84,6 @@ class Report:
 
     def printReport(self):
         print("------------------------------- Printing Report Begin -------------------------------------")
-        strReport = self.getReportString()
-        print(strReport)
+        str_report = self.getReportString()
+        print(str_report)
         print("------------------------------- Printing Report Done -------------------------------------")

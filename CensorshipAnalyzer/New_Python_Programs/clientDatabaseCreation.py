@@ -64,12 +64,13 @@ class DataBaseCreator:
         self.c.execute("CREATE TABLE IF NOT EXISTS DNS_IP_LIST_STUBBY(report_id INTEGER, ip_address TEXT, PRIMARY KEY"
                        "(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES REPORT(report_id) )")
 
-        # TCP Description [per ip address]
+        #  CREATE TABLE IF NOT EXISTS TCP_DESCRIPTION(report_id INTEGER, ip_address TEXT, port INTEGER, is_tor_not_censored INTEGER, is_time_out INTEGER, is_fin_bit_set INTEGER, is_rst_bit_set INTEGER, successful_iteration_number_local_server INTEGER, successful_iteration_number_tor INTEGER, is_tor_connect_successful INTEGER, middle_box_hop_count INTEGER,is_censored_TCP INTEGER, PRIMARY KEY(report_id, ip_address, port), FOREIGN KEY(report_id) REFERENCES REPORT(report_id))
+        # TCP Description [per ip address] PK: (report_id [FK], ip_address, port)
         self.c.execute("CREATE TABLE IF NOT EXISTS TCP_DESCRIPTION(report_id INTEGER, ip_address TEXT, port INTEGER, "
                        "is_tor_not_censored INTEGER, is_time_out INTEGER, is_fin_bit_set INTEGER, is_rst_bit_set INTEGER, "
                        "successful_iteration_number_local_server INTEGER, successful_iteration_number_tor INTEGER, "
                        "is_tor_connect_successful INTEGER, middle_box_hop_count INTEGER, "
-                       "is_censored_TCP INTEGER, PRIMARY KEY(report_id, ip_address), FOREIGN KEY(report_id) REFERENCES "
+                       "is_censored_TCP INTEGER, PRIMARY KEY(report_id, ip_address, port), FOREIGN KEY(report_id) REFERENCES "
                        "REPORT(report_id))")
 
         # HTTP Description [per ip address]
@@ -87,10 +88,12 @@ class DataBaseCreator:
         self.conn.close()
 
 
-isMain: bool = True
+isMain: bool = False
 if isMain:
     # Run this file
     obj = DataBaseCreator()
     # obj.dropTables()
     obj.createTables()
     obj.closeConnection()
+
+

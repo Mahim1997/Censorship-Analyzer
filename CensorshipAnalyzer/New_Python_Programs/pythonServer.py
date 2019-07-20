@@ -93,6 +93,13 @@ def processMessage(msg):
 		report.iteration_number = iterationNumber
 		report.type_of_testing = "TCP"
 
+		print("---------------------------INSIDE pythonServer.py report_arr.len = " + len(report_arr).__str__() + "-----------------")
+
+		for rep in report_arr:
+			rep.printReport()
+
+		print("----------------------------- DONE PRINTING REPORT [dbHandler.handle report is commented out for now]-----------------------")
+
 		if len(report_arr) > 0:
 			report.censorship_details = report_arr[0].censorship_details
 			report.is_censored = report_arr[0].is_censored
@@ -101,9 +108,10 @@ def processMessage(msg):
 			report.tcp_description_arr = []
 
 			for rep in report_arr:
+				rep.tcp_description.is_censored_TCP = rep.is_censored  # For each TCP_Description ...
 				report.tcp_description_arr.append(rep.tcp_description)
 
-		db.handleReport_TCP(report)
+		#  db.handleReport_TCP(report)
 		# print("Now inside pythonServer.py ... printing report")
 		# report.printReport()
 
@@ -147,7 +155,7 @@ run_serv: bool = False
 if run_serv:
 	runServer()
 else:
-	str = "source:java$userID:7$connectionID:1$typeOfTesting:DNS$timestamp:NULL$url:www.xvideos.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+	str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:www.bdpolitico.com$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
 	#str = 'source:java#userID:2#connectionID:4#typeOfTesting:TCP#timestamp:NULL#url:www.xvideos.com#periodicity:forced#isPeriodic:yes#fileNamePeriodic:1505022.txt#iterationNumber:4'
 	processMessage(str)
 # runServer()

@@ -85,7 +85,7 @@ class TCP_3_WAY_HANDSHAKE:
 			report = Report()
 			report.type_of_testing = "TCP"
 			report.tcp_description.ip_address = ip
-			report.tcp_description.port_number = port
+			report.tcp_description.port_number = 80
 			print("checking(" + ip + ", " + port.__str__() + ")")
 			for j in range(self.Iterate):
 
@@ -137,7 +137,7 @@ class TCP_3_WAY_HANDSHAKE:
 			report = Report()
 			report.type_of_testing = "TCP"
 			report.tcp_description.ip_address = ip
-			report.tcp_description.port_number = port
+			report.tcp_description.port_number = 443
 			print("checking(" + ip + ", " + port.__str__() + ")")
 			for j in range(self.Iterate):
 

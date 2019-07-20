@@ -1,7 +1,7 @@
 class TCPDescription:
     # per ip
     report_id = 0  # [PK, FK]
-    ip_address = ""  # PK
+    ip_address = "NULL"  # PK
     port_number = 80
     is_tor_not_connected = 0  # Default 0
     is_time_out = 0  # Default false
@@ -17,8 +17,10 @@ class TCPDescription:
     middle_box_hop_count = 0
 
     # Is TCP Censored ... is_censored_TCP [INTEGER] in database .... to handle from report_arr
+    is_censored_TCP = 0
 
     description_tcp = ""
+
     def getTCPDescription(self):
         self.description_tcp = ""
         self.description_tcp = self.description_tcp + "$ip_address:" + str(self.ip_address)
@@ -31,4 +33,5 @@ class TCPDescription:
         self.description_tcp = self.description_tcp + "$successful_iteration_tor:" + str(self.successful_iteration_number_tor)
         self.description_tcp = self.description_tcp + "$is_tor_connect_successful:" + str(self.is_tor_connect_successful)
         self.description_tcp = self.description_tcp + "$middle_box_hop_count:" + str(self.middle_box_hop_count)
+        self.description_tcp = self.description_tcp + "is_censored_TCP:" + str(self.is_censored_TCP)
         return self.description_tcp

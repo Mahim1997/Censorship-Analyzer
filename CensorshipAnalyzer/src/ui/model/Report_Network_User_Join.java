@@ -5,13 +5,10 @@
  */
 package ui.model;
 
-import java.util.List;
-
 /**
  *
  * @author mahim
  */
-public class TCPDetails {
-
-
+public class Report_Network_User_Join {
+    //Joined Model ...
 }
