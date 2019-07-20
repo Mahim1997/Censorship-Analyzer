@@ -1,14 +1,10 @@
 package ui.controllers;
 
-import com.jfoenix.controls.JFXTextField;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import ui.model.Report;
-import ui.model.TCPDetails;
 
 public class TCPRecordController {
 

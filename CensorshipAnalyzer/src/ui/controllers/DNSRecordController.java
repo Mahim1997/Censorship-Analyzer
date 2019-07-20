@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import ui.model.DNSDetails;
 import ui.model.Report;
+import ui.model.User;
 
 public class DNSRecordController {
 
@@ -58,8 +59,8 @@ public class DNSRecordController {
     }
 
     public void showThings() {
-        this.text_NetworkName.setText("Network Name: " + this.report.getNetworkName());
-        this.text_networkType.setText("Network Type:" + this.report.getNetworkType());
+        this.text_NetworkName.setText("Network Name: " + User.networkName);
+        this.text_networkType.setText("Network Type:" + User.networkType);
         
         this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIs_censored());
         this.text_time.setText("Time: " + this.report.getTime_stamp());
