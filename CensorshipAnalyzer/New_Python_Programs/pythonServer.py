@@ -93,12 +93,12 @@ def processMessage(msg):
 		report.iteration_number = iterationNumber
 		report.type_of_testing = "TCP"
 
-		print("---------------------------INSIDE pythonServer.py report_arr.len = " + len(report_arr).__str__() + "-----------------")
+		# print("---------------------------INSIDE pythonServer.py report_arr.len = " + len(report_arr).__str__() + "-----------------")
 
-		for rep in report_arr:
-			rep.printReport()
+		# for rep in report_arr:
+			# rep.printReport()
 
-		print("----------------------------- DONE PRINTING REPORT [dbHandler.handle report is commented out for now]-----------------------")
+		# print("----------------------------- DONE PRINTING REPORT [dbHandler.handle report is commented out for now]-----------------------")
 
 		if len(report_arr) > 0:
 			report.censorship_details = report_arr[0].censorship_details
@@ -111,7 +111,7 @@ def processMessage(msg):
 				rep.tcp_description.is_censored_TCP = rep.is_censored  # For each TCP_Description ...
 				report.tcp_description_arr.append(rep.tcp_description)
 
-		#  db.handleReport_TCP(report)
+		db.handleReport_TCP(report)
 		# print("Now inside pythonServer.py ... printing report")
 		# report.printReport()
 

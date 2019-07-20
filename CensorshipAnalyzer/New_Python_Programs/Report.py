@@ -35,7 +35,7 @@ class Report:
     # Final report string
     str_report = ""
 
-    debug_tcp = 1  # For debugging issue
+    debug_tcp = 0  # For debugging issue [0 for normal]
 
     def getReportString(self):
         self.str_report = ""
@@ -64,6 +64,7 @@ class Report:
                     str_tcp_description = str_tcp_description + desc.getTCPDescription()
                 self.str_report = self.str_report + str_tcp_description
             else:
+                #  print("----------->>ELSE CONDITIOn")
                 self.str_report = self.str_report + "$middle_box_hop_count:" + str(self.tcp_description.middle_box_hop_count)  # 12
                 self.str_report = self.str_report + self.tcp_description.getTCPDescription()
 

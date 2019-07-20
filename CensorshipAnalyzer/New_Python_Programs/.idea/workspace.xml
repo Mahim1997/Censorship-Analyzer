@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc5ffce3-9bec-4806-9235-3e845a722528" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client_DataBase.db" beforeDir="false" afterPath="$PROJECT_DIR$/Client_DataBase.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Report.py" beforeDir="false" afterPath="$PROJECT_DIR$/Report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCPDescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/TCPDescription.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clientDatabaseCreation.py" beforeDir="false" afterPath="$PROJECT_DIR$/clientDatabaseCreation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pythonServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tcp_censorship_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tcp_censorship_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/DNSDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/DNSDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/TCPDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/TCPDetails.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tcp_censorship_analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="132" column="84" lean-forward="true" selection-start-line="132" selection-start-column="84" selection-end-line="132" selection-end-column="84" />
+            <state relative-caret-position="-300">
+              <caret line="90" column="19" lean-forward="true" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -47,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pythonServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="100" column="44" lean-forward="true" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+            <state relative-caret-position="704">
+              <caret line="113" column="8" lean-forward="true" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -62,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
+            <state relative-caret-position="412">
               <caret line="77" column="77" lean-forward="true" selection-start-line="77" selection-start-column="77" selection-end-line="77" selection-end-column="77" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -74,17 +66,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TCPDescription.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="785">
-              <caret line="35" column="99" selection-start-line="35" selection-start-column="99" selection-end-line="35" selection-end-column="99" />
+            <state>
+              <caret column="20" selection-start-column="6" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Report.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+            <state relative-caret-position="475">
+              <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -136,8 +128,8 @@
         <option value="$PROJECT_DIR$/dbHandler.py" />
         <option value="$PROJECT_DIR$/clientDatabaseCreation.py" />
         <option value="$PROJECT_DIR$/tcp_censorship_analyzer.py" />
-        <option value="$PROJECT_DIR$/Report.py" />
         <option value="$PROJECT_DIR$/pythonServer.py" />
+        <option value="$PROJECT_DIR$/Report.py" />
       </list>
     </option>
   </component>
@@ -284,16 +276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="77" column="77" lean-forward="true" selection-start-line="77" selection-start-column="77" selection-end-line="77" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clientDatabaseCreation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -301,39 +283,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TCPDescription.py">
+    <entry file="file://$PROJECT_DIR$/dbHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="35" column="99" selection-start-line="35" selection-start-column="99" selection-end-line="35" selection-end-column="99" />
+        <state relative-caret-position="412">
+          <caret line="77" column="77" lean-forward="true" selection-start-line="77" selection-start-column="77" selection-end-line="77" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tcp_censorship_analyzer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="132" column="84" lean-forward="true" selection-start-line="132" selection-start-column="84" selection-end-line="132" selection-end-column="84" />
+        <state relative-caret-position="-300">
+          <caret line="90" column="19" lean-forward="true" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Report.py">
+    <entry file="file://$PROJECT_DIR$/pythonServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+        <state relative-caret-position="704">
+          <caret line="113" column="8" lean-forward="true" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pythonServer.py">
+    <entry file="file://$PROJECT_DIR$/TCPDescription.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="100" column="44" lean-forward="true" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
+        <state>
+          <caret column="20" selection-start-column="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
           <folding>
-            <element signature="e#0#66#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

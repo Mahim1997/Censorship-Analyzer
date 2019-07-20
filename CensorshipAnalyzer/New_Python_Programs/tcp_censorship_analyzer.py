@@ -1,6 +1,7 @@
 from scapy.all import *
 import socks
 import socket
+from TCPDescription import TCPDescription
 import time
 from SocketFunctions_updated import SocketFunctions
 from Report import Report
@@ -83,10 +84,11 @@ class TCP_3_WAY_HANDSHAKE:
 		for ip in ipListRemote:  # EACH IP
 			port = 80
 			report = Report()
+			report.tcp_description = TCPDescription()
 			report.type_of_testing = "TCP"
 			report.tcp_description.ip_address = ip
 			report.tcp_description.port_number = 80
-			print("checking(" + ip + ", " + port.__str__() + ")")
+			print("Checking(" + ip + ", " + port.__str__() + ")")
 			for j in range(self.Iterate):
 
 				statusTor = dnsOb.socketConnectTor(ip, port)
@@ -135,6 +137,7 @@ class TCP_3_WAY_HANDSHAKE:
 		for ip in ipListRemote:  # EACH IP
 			port = 443
 			report = Report()
+			report.tcp_description = TCPDescription()
 			report.type_of_testing = "TCP"
 			report.tcp_description.ip_address = ip
 			report.tcp_description.port_number = 443
