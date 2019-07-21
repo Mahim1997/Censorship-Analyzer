@@ -112,10 +112,11 @@ public class StringProcessor {
 
         int total_lines = arr.length;
         //Printing each line for debugging
+        System.out.println("===================== STRING PROCESSOR ==============================");
         for (int i = 0; i < arr.length; i++) {
-//            System.out.println(i + "->" + arr[i]);
+            System.out.println(i + "->" + arr[i]);
         }
-
+        System.out.println("===================== ****** ==============================");
         // ------------------------------ COMMON THINGS ARE ADDED ---------------------------
         int BASE = 0; //Everything indices will be BASE + 0 ... BASE + 1 ... etc
 
@@ -175,15 +176,15 @@ public class StringProcessor {
                 TCPDetails tcp = new TCPDetails();
                 tcp.setIp_address(getSecondColumn_String(arr[base_iter + 0]));
                 tcp.setPort(getSecondColumn_Int(arr[base_iter + 1]));
-                tcp.setIs_tor_not_connected(getSecondColumn_Int(arr[base_iter + 2]));
-                tcp.setIs_timeout(getSecondColumn_Int(arr[base_iter + 3]));
-                tcp.setIs_fin_bit_set(getSecondColumn_Int(arr[base_iter + 4]));
-                tcp.setIs_rst_bit_set(getSecondColumn_Int(arr[base_iter + 5]));
-                tcp.setSuccessful_iteration_local_server(getSecondColumn_Int(arr[base_iter + 6]));
-                tcp.setSuccessful_iteration_tor(getSecondColumn_Int(arr[base_iter + 7]));
-                tcp.setIs_tor_connect_successful(getSecondColumn_Int(arr[base_iter + 8]));
-                tcp.setMiddle_box_hop_count(getSecondColumn_Int(arr[base_iter + 9]));
-                tcp.setIs_censored_TCP(getSecondColumn_Int(arr[base_iter + 10]));
+                tcp.setIs_tor_not_connected_str(getSecondColumn_String(arr[base_iter + 2]));
+                tcp.setIs_timeout_str(getSecondColumn_String(arr[base_iter + 3]));
+                tcp.setIs_fin_bit_set_str(getSecondColumn_String(arr[base_iter + 4]));
+                tcp.setIs_rst_bit_set_str(getSecondColumn_String(arr[base_iter + 5]));
+                tcp.setSuccessful_iteration_local_server_str(getSecondColumn_String(arr[base_iter + 6]));
+                tcp.setSuccessful_iteration_tor_str(getSecondColumn_String(arr[base_iter + 7]));
+                tcp.setIs_tor_connect_successful_str(getSecondColumn_String(arr[base_iter + 8]));
+                tcp.setMiddle_box_hop_count_str(getSecondColumn_String(arr[base_iter + 9]));
+                tcp.setIs_censored_TCP_str(getSecondColumn_String(arr[base_iter + 10]));
                 // -------------------- Once taken done ------------------------------------
                 report.tcp_details_list.add(tcp);
 

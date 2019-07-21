@@ -13,14 +13,17 @@ import util.loader.Scenes;
 import util.pythonCodeExecutorAndNetworkInfo.NetworkInfoObtainer;
 
 public class Main extends Application {
+
     public static double STAGE_WIDTH;
     public static double STAGE_HEIGHT;
-    
+
     public static Stage stage;
 
     public static int USER_DEBUG = 1;
     public static String TITLE = "Censorship Analysis Tool";
 
+    public static boolean DEBUG_MODE = false;
+    
     @Override
     public void start(Stage primaryStage) {
 //        User.initiateUser();
@@ -31,7 +34,7 @@ public class Main extends Application {
 //
         STAGE_WIDTH = stage.getMaxWidth();
         STAGE_HEIGHT = stage.getMaxHeight();
-        
+
         /*
         try {
             Parent root = FXMLLoader.load(this.getClass().getResource("test.fxml"));
@@ -42,32 +45,31 @@ public class Main extends Application {
             System.out.println("======>>> EXCEPTION WHILE LOADING ");
             ex.printStackTrace();
         }
-        */
-        
+         */
         SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
-
 
 //        SceneLoader.loadSceneInSameStage(Scenes.testSitesScene);
 //        SceneLoader.loadSceneInSameStage(Scenes.dnsRecords);
-
         stage.setOnCloseRequest((WindowEvent e) -> {
             Platform.exit();
             DBHandler.closeConnection();
             System.exit(0);
         });
-        
+
     }
 
     public static void main(String[] args) {
-//        Debugger.debugProgram();
-        NetworkInfoObtainer.extractNetworkInfo();
-        User.networkName = Network.org_static;
-        User.networkType = NetworkInfoObtainer.getNetworkType(User.networkName);
-        User.modeOfAccess = Network.status_static;
-        launch(args);
+        if (Main.DEBUG_MODE == true) {
+            Debugger.debugProgram();
+        } else {
+            NetworkInfoObtainer.extractNetworkInfo();
+            User.networkName = Network.org_static;
+            User.networkType = NetworkInfoObtainer.getNetworkType(User.networkName);
+            User.modeOfAccess = Network.status_static;
+            launch(args);
+        }
+
     }
-    
-  
 
 }
 

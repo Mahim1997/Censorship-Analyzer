@@ -2,9 +2,11 @@ package debugger;
 
 import java.util.List;
 import ui.model.Network;
+import ui.model.Report;
 import util.database.DBHandler;
 import util.pythonCodeExecutorAndNetworkInfo.NetworkInfoObtainer;
 import util.pythonCodeExecutorAndNetworkInfo.PythonCodeExecutor;
+import util.workerAndStates.StringProcessor;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +21,8 @@ public class Debugger {
 
     public static void debugProgram() {
 //        testPythonProgram();
-        formConnectionDebug();
+//        formConnectionDebug();
+        debugStringProcessor();
     }
 
 
@@ -46,6 +49,13 @@ public class Debugger {
 
         System.out.println(result);
 
+    }
+
+    private static void debugStringProcessor() {
+        String str = "ReportID:129$ConnectionID:0$TimeStamp:21-07-2019 07:38:55$URL:bdsaradin.com$Type_of_Test:TCP$is_censored:0$is_periodic:no$file_name_periodic:NULL$iteration_number:0$censorshipDetails:$middle_box_hop_count:-1$ip_address:103.224.182.245$port_number:80$is_tor_not_connected:0$is_time_out:0$is_fin_bit_set:0$is_rst_bit_set:0$successful_iteration_local_server:1$successful_iteration_tor:1$is_tor_connect_successful:1$middle_box_hop_count:-1$is_censored_TCP:0$ip_address:103.224.182.245$port_number:443$is_tor_not_connected:0$is_time_out:0$is_fin_bit_set:0$is_rst_bit_set:0$successful_iteration_local_server:1$successful_iteration_tor:1$is_tor_connect_successful:1$middle_box_hop_count:-1$is_censored_TCP:0";
+        Report report = StringProcessor.processStringAndFormReport(str);
+        
+        report.printReport();
     }
 
 }
