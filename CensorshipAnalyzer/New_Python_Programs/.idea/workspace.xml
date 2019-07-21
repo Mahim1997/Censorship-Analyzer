@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc5ffce3-9bec-4806-9235-3e845a722528" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client_DataBase.db" beforeDir="false" afterPath="$PROJECT_DIR$/Client_DataBase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocketFunctions_updated.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocketFunctions_updated.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcp_censorship_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tcp_censorship_analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../domain_files/fileURLS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../domain_files/fileURLS.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/controllers/CensoredRecordController_Waiting.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/controllers/CensoredRecordController_Waiting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/controllers/TCPRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/controllers/TCPRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/TCPDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/TCPDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/sounds/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/sounds/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/views/censoredRecords_ForWaiting.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/views/censoredRecords_ForWaiting.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/views/tcpRecords.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/views/tcpRecords.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/util/workerAndStates/StringProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/util/workerAndStates/StringProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCPDescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/TCPDescription.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tcp_censorship_analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
@@ -73,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TCPDescription.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="27" column="111" selection-start-line="27" selection-start-column="111" selection-end-line="27" selection-end-column="111" />
+            <state relative-caret-position="345">
+              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -139,10 +126,10 @@
         <option value="$PROJECT_DIR$/dbHandler.py" />
         <option value="$PROJECT_DIR$/clientDatabaseCreation.py" />
         <option value="$PROJECT_DIR$/Report.py" />
-        <option value="$PROJECT_DIR$/TCPDescription.py" />
         <option value="$PROJECT_DIR$/SocketFunctions_updated.py" />
         <option value="$PROJECT_DIR$/pythonServer.py" />
         <option value="$PROJECT_DIR$/tcp_censorship_analyzer.py" />
+        <option value="$PROJECT_DIR$/TCPDescription.py" />
       </list>
     </option>
   </component>
@@ -306,13 +293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TCPDescription.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="27" column="111" selection-start-line="27" selection-start-column="111" selection-end-line="27" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SocketFunctions_updated.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="706">
@@ -340,6 +320,13 @@
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TCPDescription.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
         </state>
       </provider>
     </entry>

@@ -69,6 +69,8 @@ public class TCPRecordController {
     private Text text_overAllHTTPCensored;
     @FXML
     private Text text_overAllHTTPSCensored;
+    @FXML
+    private Text text_time1;
 
     // ---------------------- HTTPS Table View -----------------------------------
     public void setUpThings(Report report) {

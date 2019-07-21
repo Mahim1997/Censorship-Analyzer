@@ -14,7 +14,7 @@ class TCPDescription:
     is_tor_connect_successful = 1
 
     # Middle box hop count
-    middle_box_hop_count = 0
+    middle_box_hop_count = -1
 
     # Is TCP Censored ... is_censored_TCP [INTEGER] in database .... to handle from report_arr
     is_censored_TCP = 0
