@@ -284,10 +284,6 @@ public class CensoredRecordController_Waiting {
         this.reportsListToBeRefreshed.add(report);  //Report is added
 
         if (this.isFile == true) {  //File
-//            System.out.println("=++++===----+++--->>> PRINTING List of reports .... ");
-//            for (int i = 0; i < this.reportsListToBeRefreshed.size(); i++) {
-//                System.out.println(i + "-->" + this.reportsListToBeRefreshed.get(i).toString());
-//            }
             loadTableView();
 
 //            int numRecordsNeeded = this.reportIndex_End - this.reportIndex_Start;
@@ -295,6 +291,8 @@ public class CensoredRecordController_Waiting {
                 //Stop worker thread from running
                 stopWorkerThreadFromRunning();
                 //set the text to DONE as well ...
+
+                text_waiting.setStyle("-fx-text-inner-color: green;");
                 this.text_waiting.setText("COMPLETED !!");
 
             }
@@ -302,11 +300,9 @@ public class CensoredRecordController_Waiting {
             System.out.println("-------------------------================== ***** ================-----------------------------------");
         } else {   //URL
             System.out.println("--------------------- URL : this.listReports.size = " + this.reportsListToBeRefreshed.size() + "  ---------------------------- ");
-//            this.reportsListToBeRefreshed.add(report);
-//            System.out.println(report.toString());
             loadTableView();
+            text_waiting.setStyle("-fx-text-inner-color: green;");
             this.text_waiting.setText("COMPLETED !!! ");
-
             //Stop worker Thread from running
             stopWorkerThreadFromRunning();
             System.out.println("============================ ****URL Running REFRESH COMPLETED*** ===================================");
@@ -331,11 +327,10 @@ public class CensoredRecordController_Waiting {
             TCPRecordController controller = (TCPRecordController) loader.getController();
 
             controller.setUpThings(getReport(reportID));    //Set up which report to show ... 
-            
-            controller.showThings();
-            
-            SceneLoader.loadSceneInNewStage(root, "TCP DETAILS");
 
+            controller.showThings();
+
+            SceneLoader.loadSceneInNewStage(root, "TCP DETAILS");
 
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
@@ -343,9 +338,6 @@ public class CensoredRecordController_Waiting {
     }
 
 }
-
-
-
 
 /*
 try {
@@ -373,19 +365,8 @@ try {
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
         }
-*/
-
-
-
-
-
-
-
-
-
-
-
-/*
+ */
+ /*
 class UDPServer
 {
    public static void main(String args[]) throws Exception

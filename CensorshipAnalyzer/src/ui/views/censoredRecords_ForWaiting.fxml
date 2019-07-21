@@ -24,18 +24,18 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Text fx:id="text_waiting" fill="WHITE" layoutX="20.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waiting ..." textAlignment="CENTER" wrappingWidth="249.6708984375">
+      <Text fx:id="text_waiting" fill="#2ebaf2" layoutX="20.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waiting ..." textAlignment="CENTER" wrappingWidth="249.6708984375">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
       <JFXButton layoutX="44.0" layoutY="103.0" onAction="#goBack" prefHeight="46.0" prefWidth="136.0" text="Home" />
-      <Text fx:id="text_URL" fill="WHITE" layoutX="420.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="123.6708984375">
+      <Text fx:id="text_URL" fill="#d727db" layoutX="242.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" textAlignment="CENTER" wrappingWidth="123.6708984375">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Text fx:id="text_url_actual" fill="WHITE" layoutX="544.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="469.6708984375">
+      <Text fx:id="text_url_actual" fill="#ff7121" layoutX="366.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;&lt; url name &gt;&gt;" wrappingWidth="573.6708984375">
          <font>
             <Font size="25.0" />
          </font>

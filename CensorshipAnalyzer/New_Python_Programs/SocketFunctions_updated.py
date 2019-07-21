@@ -332,3 +332,5 @@ enum {
             except:
                 # return False, None, "unknown error"
                 return False, -1, "unknown error"
+
+        return False, -1, "unknown error"

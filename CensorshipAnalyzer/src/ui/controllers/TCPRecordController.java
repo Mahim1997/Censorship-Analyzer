@@ -100,8 +100,8 @@ public class TCPRecordController {
         int is_cens = 0;
         for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
             TCPDetails tcpDesc = this.report.tcp_details_list.get(i);
-            if (tcpDesc.getIs_censored_TCP() == 1) {
-                //any one is censored
+            if (tcpDesc.getIs_censored_TCP_str().contains("1")) {
+                //any one is censored .. so, overall is censored
                 is_cens = 1;
                 break;
             }
