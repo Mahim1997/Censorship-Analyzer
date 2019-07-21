@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import ui.model.DNSDetails;
-import ui.model.Network;
 //import main.Config;
 import ui.model.Report;
 import ui.model.TCPDetails;
@@ -114,7 +113,7 @@ public class StringProcessor {
         int total_lines = arr.length;
         //Printing each line for debugging
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(i + "->" + arr[i]);
+//            System.out.println(i + "->" + arr[i]);
         }
 
         // ------------------------------ COMMON THINGS ARE ADDED ---------------------------

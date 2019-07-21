@@ -99,7 +99,6 @@ public class CensoredRecordController_Waiting {
         runWorkerThread();
     }
 
-    
     private void fillTextsWithColor(String textForLeft, String textForRight, Color color) {
         this.text_URL.setText(textForLeft);
         this.text_url_actual.setText(textForRight);
@@ -158,11 +157,14 @@ public class CensoredRecordController_Waiting {
     }
 
     private Report getReport(int reportID) {
+        System.out.println("------>>CensoredRecordController_Waiting.getReport() called with reportID = " + reportID);
         for (Report report : this.reportsListToBeRefreshed) {
-            if (report.getReport_id()== reportID) {
+            if (report.getReport_id() == reportID) {
+                System.out.println("------------------- In Report getReport() of CensoredRecordController_Waiting.java ..... --------------- returning report " + report.toString());
                 return report;
             }
         }
+        System.out.println("------------------- In Report getReport() of CensoredRecordController_Waiting.java ..... --------------- returning NULL report ");
         return null;
     }
 
@@ -230,19 +232,6 @@ public class CensoredRecordController_Waiting {
 
     private void loadTableView() {
 
-        /* Report:
-    private int reportID;
-    private String url;
-    private String networkName;
-    private String networkType;
-    private String time;
-    private String testType;
-    private String isCensored;
-    private String censoredType;
-    private Button btn_details;
-
-    private int censorship_code;
-         */
         //Load the table view here ...
         ObservableList<Report> data = FXCollections.observableArrayList(this.reportsListToBeRefreshed);
 
@@ -341,13 +330,42 @@ public class CensoredRecordController_Waiting {
             Parent root = loader.load();
             TCPRecordController controller = (TCPRecordController) loader.getController();
 
+            controller.setUpThings(getReport(reportID));    //Set up which report to show ... 
+            
+            controller.showThings();
+            
+            SceneLoader.loadSceneInNewStage(root, "TCP DETAILS");
+
+
+        } catch (IOException ex) {
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
+        }
+    }
+
+}
+
+
+
+
+/*
+try {
+            String fileNameFXMLToLoad = Scenes.tcpRecords;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+
+            Parent root = loader.load();
+            TCPRecordController controller = (TCPRecordController) loader.getController();
+//            controller.setUpThings(getReport(reportID));    //Set up which report to show ... 
+
+            
+//            Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle("TCP Details");
             stage.setScene(scene);
 
-            
-            controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
+            controller.setUpThings(getReport(reportID));    //Set up which report to show ... 
+
             controller.showThings();
 
             stage.show();
@@ -355,10 +373,17 @@ public class CensoredRecordController_Waiting {
         } catch (IOException ex) {
             System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
         }
-    }
+*/
 
 
-}
+
+
+
+
+
+
+
+
 
 /*
 class UDPServer

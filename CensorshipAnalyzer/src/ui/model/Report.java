@@ -83,7 +83,7 @@ public class Report {
         this.btn_details.setOnAction((ActionEvent event) -> {
             if (Report.this.controller_waiting != null) {
                 String testType_Local = Report.this.getTest_type();
-                System.out.println("\n================+>>>>>>>>>Inside Report ... getTestType() = " + testType_Local + "\n");
+                System.out.println("\n================+>>>>>>>>>Inside Report ... btn_details.setOnAction() --> getTestType() = " + testType_Local + "\n");
                 switch (testType_Local.toUpperCase()) {
                     case "DNS":
                         //if test type is DNS

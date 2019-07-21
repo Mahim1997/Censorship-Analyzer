@@ -71,13 +71,14 @@ public class TCPRecordController {
     private Text text_overAllHTTPSCensored;
 
     // ---------------------- HTTPS Table View -----------------------------------
-    public void setUpThings(Report report, Stage stage) {
+    public void setUpThings(Report report) {
         this.report = report;
-        tabPane.widthProperty().addListener((observable, oldValue, newValue)
-                -> {
-            tabPane.setTabMinWidth(tabPane.getWidth() / 2);
-            tabPane.setTabMaxWidth(tabPane.getWidth() / 2);
-        });
+        
+        System.out.println("---------------IN setUpThings() ... report is -------------------");
+        this.report.printReport();
+        System.out.println("----------------------------------------------------------");
+
+        
         int is_cens = 0;
         for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
             TCPDetails tcpDesc = this.report.tcp_details_list.get(i);
@@ -107,23 +108,28 @@ public class TCPRecordController {
         this.text_time.setText("Time: " + this.report.getTime_stamp());
         this.text_testType.setText("Test Type: " + this.report.getTest_type());
         this.text_url.setText("URL:" + this.report.getUrl());
+        
+        loadTableViewHTTP();
+        loadTableViewHTTPS();
     }
 
     @FXML
     private void selectHTTP_Tab(Event event) {
-        loadTableViewHTTP();
+        System.out.println("-->> To load Table View HTTP");
+//        loadTableViewHTTP();
     }
 
     @FXML
     private void selectHTTPS_Tab(Event event) {
-        loadTableViewHTTPS();
+        System.out.println("-->> To load Table View HTTPS");
+//        loadTableViewHTTPS();
     }
 
     private void loadTableViewHTTP() {
 
         List<TCPDetails> list_tcp_desc = new ArrayList<>();
 
-        System.out.println("------------ Inside loadTableViewHTTP() --------------- ");
+        System.out.println("------------ Inside loadTableViewHTTP() --------------- Printing report ... " + this.report.toString());
         
         //-------- Add only the HTTP records to list_tcp_desc -------------
         for(int i=0; i<this.report.tcp_details_list.size(); i++){
@@ -134,7 +140,7 @@ public class TCPRecordController {
         }
         
         list_tcp_desc.forEach(Util::makeTCPDetailStrings); //make Yes/No things
-        list_tcp_desc.forEach(TCPDetails::makeImageView); //make image view
+//        list_tcp_desc.forEach(TCPDetails::makeImageView); //make image view [STILL ERRORS]
 
         //Now table view things
         ObservableList<TCPDetails> data = FXCollections.observableArrayList(list_tcp_desc);
@@ -163,11 +169,11 @@ public class TCPRecordController {
         col_isCensoredTCP_HTTP.setCellValueFactory(
                 new PropertyValueFactory<>("is_censored_TCP_str")
         );
-
+        this.tableView_HTTP.setItems(data);
     }
 
     private void loadTableViewHTTPS() {
-
+        System.out.println("-->> TODO TCPRecordController.loadTableViewHTTPS()");
     }
 
 }
