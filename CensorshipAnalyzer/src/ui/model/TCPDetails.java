@@ -5,6 +5,8 @@
  */
 package ui.model;
 
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author mahim
@@ -13,6 +15,8 @@ public class TCPDetails {   //This is per IP
 
     private String ip_address;
     private int port; //80 or 453
+
+    // ------------- boolean flags ---------------
     private int is_tor_not_connected;
     private int is_timeout;
     private int is_fin_bit_set;
@@ -22,9 +26,37 @@ public class TCPDetails {   //This is per IP
     private int successful_iteration_tor;
 
     private int is_tor_connect_successful;
+    private int is_censored_TCP = 0; //default 0 [not censored]
+    private int middle_box_hop_count = -1; //default = -1
 
-    private int middle_box_hop_count;
-    private int is_censored_TCP;
+    //-----------------------------------------------------------
+    //---------------- boolean flags in String format ---------------------
+    private String is_tor_not_connected_str;
+    private String is_timeout_str;
+    private String is_fin_bit_set_str;
+    private String is_rst_bit_set_str;
+    private String is_tor_connect_successful_str;
+    private String is_censored_TCP_str = "NO"; //default 0 [not censored]
+    private String middle_box_hop_count_str;
+    //-------------------------------------------------------
+
+    private ImageView imageView_is_censored_TCP;
+
+    public ImageView getImageView_is_censored_TCP() {
+        return imageView_is_censored_TCP;
+    }
+
+    public void setImageView_is_censored_TCP(ImageView imageView_is_censored_TCP) {
+        this.imageView_is_censored_TCP = imageView_is_censored_TCP;
+    }
+
+    public String getMiddle_box_hop_count_str() {
+        return middle_box_hop_count_str;
+    }
+
+    public void setMiddle_box_hop_count_str(String middle_box_hop_count_str) {
+        this.middle_box_hop_count_str = middle_box_hop_count_str;
+    }
 
     public TCPDetails() {
     }
@@ -117,9 +149,64 @@ public class TCPDetails {   //This is per IP
         this.is_censored_TCP = is_censored_TCP;
     }
 
+    public String getIs_tor_not_connected_str() {
+        return is_tor_not_connected_str;
+    }
+
+    public void setIs_tor_not_connected_str(String is_tor_not_connected_str) {
+        this.is_tor_not_connected_str = is_tor_not_connected_str;
+    }
+
+    public String getIs_timeout_str() {
+        return is_timeout_str;
+    }
+
+    public void setIs_timeout_str(String is_timeout_str) {
+        this.is_timeout_str = is_timeout_str;
+    }
+
+    public String getIs_fin_bit_set_str() {
+        return is_fin_bit_set_str;
+    }
+
+    public void setIs_fin_bit_set_str(String is_fin_bit_set_str) {
+        this.is_fin_bit_set_str = is_fin_bit_set_str;
+    }
+
+    public String getIs_rst_bit_set_str() {
+        return is_rst_bit_set_str;
+    }
+
+    public void setIs_rst_bit_set_str(String is_rst_bit_set_str) {
+        this.is_rst_bit_set_str = is_rst_bit_set_str;
+    }
+
+    public String getIs_tor_connect_successful_str() {
+        return is_tor_connect_successful_str;
+    }
+
+    public void setIs_tor_connect_successful_str(String is_tor_connect_successful_str) {
+        this.is_tor_connect_successful_str = is_tor_connect_successful_str;
+    }
+
+    public String getIs_censored_TCP_str() {
+        return is_censored_TCP_str;
+    }
+
+    public void setIs_censored_TCP_str(String is_censored_TCP_str) {
+        this.is_censored_TCP_str = is_censored_TCP_str;
+    }
+
     @Override
     public String toString() {
         return "TCPDetails{" + "ip_address=" + ip_address + ", port=" + port + ", is_tor_not_connected=" + is_tor_not_connected + ", is_timeout=" + is_timeout + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", successful_iteration_local_server=" + successful_iteration_local_server + ", successful_iteration_tor=" + successful_iteration_tor + ", is_tor_connect_successful=" + is_tor_connect_successful + ", middle_box_hop_count=" + middle_box_hop_count + ", is_censored_TCP=" + is_censored_TCP + '}';
     }
 
+    public void makeImageView() {
+        if (this.is_censored_TCP == 0) {
+            this.imageView_is_censored_TCP = new ImageView("src\\resources\\images_tickCross\\green_cross.png");
+        } else {
+            this.imageView_is_censored_TCP = new ImageView("src\\resources\\images_tickCross\\red_tick.png");
+        }
+    }
 }

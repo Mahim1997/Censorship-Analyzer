@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import ui.model.DNSDetails;
+import ui.model.Network;
 //import main.Config;
 import ui.model.Report;
 import ui.model.TCPDetails;
+import ui.model.User;
 
 /**
  *
@@ -160,7 +162,7 @@ public class StringProcessor {
 
         } else if (report.getTest_type().equals("TCP")) {
             //TCP details adding ...
-            report.tcp_details_arr = new ArrayList<>(); //clearing just in case
+            report.tcp_details_list = new ArrayList<>(); //clearing just in case
             //Each TCP Description has 11 lines ...
             int num_lines_per_tcp_description = 11;
             int how_many_desc_tcp = ((total_lines - lines_common_fields) / (num_lines_per_tcp_description)); //correct
@@ -184,13 +186,15 @@ public class StringProcessor {
                 tcp.setMiddle_box_hop_count(getSecondColumn_Int(arr[base_iter + 9]));
                 tcp.setIs_censored_TCP(getSecondColumn_Int(arr[base_iter + 10]));
                 // -------------------- Once taken done ------------------------------------
-                report.tcp_details_arr.add(tcp);
+                report.tcp_details_list.add(tcp);
                 
                 num_got_so_far++;
             }
 
         }
-
+        //FOR NOW
+        report.setNetwork_name(User.networkName);
+        report.setNetwork_type(User.networkType);
         return report;
     }
 }

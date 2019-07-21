@@ -89,6 +89,7 @@ class TCP_3_WAY_HANDSHAKE:
 			report.tcp_description.ip_address = ip
 			report.tcp_description.port_number = 80
 			print("Checking(" + ip + ", " + port.__str__() + ")")
+			statusTor = False
 			for j in range(self.Iterate):
 
 				statusTor = dnsOb.socketConnectTor(ip, port)
@@ -109,7 +110,9 @@ class TCP_3_WAY_HANDSHAKE:
 							break
 
 					if not statusLocal:
+						print("------------->>>Inside if not statusLocal: condition")
 						status, self.hop_count_http, message = dnsOb.tcp_ttl_find(ip, port, 2)
+						print("===>>>Obtained status = " + str(status) + ", hop_cnt_http = " + str(self.hop_count_http))
 						if status:
 							report.tcp_description.successful_iteration_number_local_server = self.Iterate
 						else:
@@ -120,7 +123,7 @@ class TCP_3_WAY_HANDSHAKE:
 								report.tcp_description.is_rst_bit_set = 1
 							else:
 								report.tcp_description.is_fin_bit_set = 1
-							if self.hop_count_http is None:
+							if self.hop_count_http == -1:
 								print("middlebox hop count : Not found")
 								report.tcp_description.middle_box_hop_count = -1
 							else:
@@ -130,6 +133,8 @@ class TCP_3_WAY_HANDSHAKE:
 
 			if not statusTor:  # Full connection failure via tor
 				report.tcp_description.is_tor_connect_successful = 0
+			print("--->>APPENDING TO REPORT ARRAY ... printing report")
+			report.printReport()
 			report_object.append(report)
 
 		# --------------------- Now for HTTPS --------------------------------------
@@ -142,6 +147,7 @@ class TCP_3_WAY_HANDSHAKE:
 			report.tcp_description.ip_address = ip
 			report.tcp_description.port_number = 443
 			print("checking(" + ip + ", " + port.__str__() + ")")
+			statusTor = False
 			for j in range(self.Iterate):
 
 				statusTor = dnsOb.socketConnectTor(ip, port)
@@ -173,7 +179,7 @@ class TCP_3_WAY_HANDSHAKE:
 								report.tcp_description.is_rst_bit_set = 1
 							else:
 								report.tcp_description.is_fin_bit_set = 1
-							if self.hop_count_http is None:
+							if self.hop_count_http == -1:
 								print("middlebox hop count : Not found")
 								report.tcp_description.middle_box_hop_count = -1
 							else:

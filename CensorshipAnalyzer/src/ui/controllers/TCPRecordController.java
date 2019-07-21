@@ -1,13 +1,30 @@
 package ui.controllers;
 
+import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextField;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.Config;
 import ui.model.Report;
+import ui.model.TCPDetails;
+import util.commands.Util;
 
 public class TCPRecordController {
 
+    private Report report;
+
+    // -------------------------- Above network things -----------------------------
     @FXML
     private Text text_url;
     @FXML
@@ -21,95 +38,138 @@ public class TCPRecordController {
     @FXML
     private Text text_censoredOrNot;
 
-    private Report report;
+    // ----------------------- TAB PANE THINGS ----------------------------------
+    @FXML
+    private JFXTabPane tabPane;
+    @FXML
+    private Tab tab_http;
+    @FXML
+    private Tab tab_https;
 
-    private Stage stage;
+    // ---------------------- HTTP Table View ----------------------------------
     @FXML
-    private Text text_details;
+    private TableView tableView_HTTP;
     @FXML
-    private VBox vbox_resolvedIPs;
+    private TableColumn col_ipAddress_HTTP;
     @FXML
-    private VBox vbox_HTTPSuccessAttemptTOR;
+    private TableColumn col_timeout_HTTP;
     @FXML
-    private VBox vbox_HTTPSuccessAttemptLocalServer;
+    private TableColumn col_finBitSet_HTTP;
     @FXML
-    private VBox vbox_HTTPSSuccessAttemptTOR;
+    private TableColumn col_rstBitSet_HTTP;
     @FXML
-    private VBox vbox_HTTPSSuccessAttemptLocalServer;
+    private TableColumn col_localServerIterationSuccess_HTTP;
+    @FXML
+    private TableColumn col_torBrowserIterationSuccess_HTTP;
+    @FXML
+    private TableColumn col_middleBoxHopCount_HTTP;
+    @FXML
+    private TableColumn col_isCensoredTCP_HTTP;
+    @FXML
+    private Text text_overAllHTTPCensored;
+    @FXML
+    private Text text_overAllHTTPSCensored;
 
+    // ---------------------- HTTPS Table View -----------------------------------
     public void setUpThings(Report report, Stage stage) {
         this.report = report;
-        this.stage = stage;
+        tabPane.widthProperty().addListener((observable, oldValue, newValue)
+                -> {
+            tabPane.setTabMinWidth(tabPane.getWidth() / 2);
+            tabPane.setTabMaxWidth(tabPane.getWidth() / 2);
+        });
+        int is_cens = 0;
+        for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
+            TCPDetails tcpDesc = this.report.tcp_details_list.get(i);
+            if (tcpDesc.getIs_censored_TCP() == 1) {
+                //any one is censored
+                is_cens = 1;
+                break;
+            }
+        }
+        if (is_cens == 0) {
+            //not censored
+            this.text_overAllHTTPCensored.setText("Overall Is Censored for HTTP ? NO");
+            this.text_overAllHTTPSCensored.setText("Overall Is Censored for HTTPS ? NO");
+
+        } else {
+            //censored
+            this.text_overAllHTTPCensored.setText("Overall Is Censored for HTTP ? YES");
+            this.text_overAllHTTPSCensored.setText("Overall Is Censored for HTTPS ? YES");
+        }
     }
 
     public void showThings() {
-        this.text_NetworkName.setText("Network Name: " + this.report.getNetworkName());
-        this.text_networkType.setText("Network Type:" + this.report.getNetworkType());
+        this.text_NetworkName.setText("Network Name: " + this.report.getNetwork_name());
+        this.text_networkType.setText("Network Type:" + this.report.getNetwork_type());
 
         this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIs_censored());
         this.text_time.setText("Time: " + this.report.getTime_stamp());
         this.text_testType.setText("Test Type: " + this.report.getTest_type());
         this.text_url.setText("URL:" + this.report.getUrl());
+    }
 
-        loadResolvedIPList();
-        loadHTTPSuccessIteration_TOR();
-        loadHTTPSuccessIteration_LocalServer();
-        loadHTTPSSuccessIteration_TOR();
-        loadHTTPSSuccessIteration_LocalServer();
-        loadCensoredOrNot();
+    @FXML
+    private void selectHTTP_Tab(Event event) {
+        loadTableViewHTTP();
+    }
+
+    @FXML
+    private void selectHTTPS_Tab(Event event) {
+        loadTableViewHTTPS();
+    }
+
+    private void loadTableViewHTTP() {
+
+        List<TCPDetails> list_tcp_desc = new ArrayList<>();
+
+        System.out.println("------------ Inside loadTableViewHTTP() --------------- ");
         
-        //For now DO NOTHING in showDetails
-        this.text_details.setText("");
-    }
-
-    private void loadCensoredOrNot() {
-        boolean isCensoredHTTP = false;
-        boolean isCensoredHTTPS = false;
-
-    }
-
-    private void setUpText(String text) {
-        this.text_censoredOrNot.setText("Is Censored?" + "\n" + text);
-    }
-
-    private void loadResolvedIPList() {
-
-    }
-
-    private void loadHTTPSuccessIteration_TOR() {
-    }
-
-    private void loadHTTPSuccessIteration_LocalServer() {
-
-    }
-
-    private boolean isWithin(String iteration_success) {
-        String s = iteration_success.trim();
-        try {
-            int a = Integer.parseInt(s);
-            if (a >= 1 && a <= 5) {
-                return true;
+        //-------- Add only the HTTP records to list_tcp_desc -------------
+        for(int i=0; i<this.report.tcp_details_list.size(); i++){
+            TCPDetails tcpDet = this.report.tcp_details_list.get(i);
+            if(tcpDet.getPort() == Config.PORT_HTTP){
+                list_tcp_desc.add(tcpDet);
             }
-        } catch (NumberFormatException e) {
-            return false;
         }
+        
+        list_tcp_desc.forEach(Util::makeTCPDetailStrings); //make Yes/No things
+        list_tcp_desc.forEach(TCPDetails::makeImageView); //make image view
 
-        return false;
+        //Now table view things
+        ObservableList<TCPDetails> data = FXCollections.observableArrayList(list_tcp_desc);
+
+        col_ipAddress_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("ip_address")
+        );
+        col_timeout_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("is_timeout_str")
+        );
+        col_finBitSet_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("is_fin_bit_set_str")
+        );
+        col_rstBitSet_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("is_rst_bit_set_str")
+        );
+        col_localServerIterationSuccess_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("successful_iteration_local_server")
+        );
+        col_torBrowserIterationSuccess_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("successful_iteration_tor")
+        );
+        col_middleBoxHopCount_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("middle_box_hop_count_str")
+        );
+        col_isCensoredTCP_HTTP.setCellValueFactory(
+                new PropertyValueFactory<>("is_censored_TCP_str")
+        );
+
     }
 
-    private void loadHTTPSSuccessIteration_TOR() {
+    private void loadTableViewHTTPS() {
+
     }
 
-    private void loadHTTPSSuccessIteration_LocalServer() {
-    }
-
-    private boolean is_censored_http(String iteration_success) {
-        return false;
-    }
-
-    private boolean is_censored_https(String iteration_success) {
-        return false;
-    }
 }
 
 /*
@@ -129,4 +189,4 @@ public class TCPRecordController {
         //Finally add to the vbox
         this.vbox_HTTPSuccessAttemptLocalServer.getChildren().addAll(textFieldList);
 
-*/
+ */

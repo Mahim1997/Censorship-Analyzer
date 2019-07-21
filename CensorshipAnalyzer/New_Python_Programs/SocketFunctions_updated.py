@@ -303,7 +303,7 @@ enum {
     def tcp_ttl_find(self, host_ip, port, timeout):
         isTimeout = False
         timeout_iterate = 0
-        isOther_Error = False
+        is_other_error = False
         for i in range(1, 64, 1):
             try:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -313,7 +313,7 @@ enum {
                 s.connect((host_ip, port))
                 return True, i, "3-way handshake successful"
             except socket.timeout:
-                isOther_Error = False
+                is_other_error = False
                 if isTimeout:
                     timeout_iterate += 1
                 else:
@@ -325,9 +325,10 @@ enum {
             except socket.error as err:
                 isTimeout = False
                 if err.errno != errno.EHOSTUNREACH:
-                    if isOther_Error:
+                    if is_other_error:
                         return False, i - 1, err.__str__()
                     else:
-                        isOther_Error = True
+                        is_other_error = True
             except:
-                return False, None, "unknown error"
+                # return False, None, "unknown error"
+                return False, -1, "unknown error"

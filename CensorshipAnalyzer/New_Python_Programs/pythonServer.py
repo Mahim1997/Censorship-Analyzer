@@ -85,7 +85,7 @@ def processMessage(msg):
 
 		report = Report()
 		report.url = url
-		report.timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # In this format
+		report.time_stamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # In this format
 		report.is_file_check = isFile
 		report.is_periodic = isPeriodic
 		report.file_name_periodic = fileNamePeriodic
@@ -101,7 +101,14 @@ def processMessage(msg):
 
 		if len(report_arr) > 0:
 			report.censorship_details = report_arr[0].censorship_details
-			report.is_censored = report_arr[0].is_censored
+			# report.is_censored = report_arr[0].is_censored
+			is_cens = 1
+			for rep in report_arr:
+				if rep.tcp_description.is_censored_TCP == 0:
+					is_cens = 0
+			report.is_censored = is_cens
+
+
 			report.censorship_details = report_arr[0].censorship_details
 
 			report.tcp_description_arr = []
@@ -154,8 +161,11 @@ run_serv: bool = True
 if run_serv:
 	runServer()
 else:
-	str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:www.bdpolitico.com$isFile:yes$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
-	#str = 'source:java#userID:2#connectionID:4#typeOfTesting:TCP#timestamp:NULL#url:www.xvideos.com#periodicity:forced#isPeriodic:yes#fileNamePeriodic:1505022.txt#iterationNumber:4'
+	# defenseupdatebangladesh.wordpress.com
+	# str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:www.bdpolitico.com$isFile:yes$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+
+	str = "source:java$userID:7$connectionID:1$typeOfTesting:TCP$timestamp:NULL$url:defenseupdatebangladesh.wordpress.com$isFile:yes$periodicity:forced$isPeriodic:yes$fileNamePeriodic:1505022.txt$iterationNumber:4"
+
 	processMessage(str)
 # runServer()
 

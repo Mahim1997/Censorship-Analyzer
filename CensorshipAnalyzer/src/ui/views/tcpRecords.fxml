@@ -1,111 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="2114.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TCPRecordController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="805.0" prefWidth="1378.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TCPRecordController">
    <children>
-      <ScrollPane layoutX="6.0" layoutY="226.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
-         <content>
-            <AnchorPane prefHeight="480.0" prefWidth="1362.0">
-               <children>
-                  <Text fx:id="text_details" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DETAILS:" textAlignment="CENTER" wrappingWidth="909.6708984375" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <HBox prefHeight="599.0" prefWidth="2081.0" spacing="20.0" AnchorPane.topAnchor="40.0">
-                     <children>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <VBox fx:id="vbox_resolvedIPs" alignment="TOP_CENTER" prefHeight="529.0" prefWidth="456.0" spacing="10.0" HBox.hgrow="NEVER">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Resolved IPs" textAlignment="CENTER" wrappingWidth="235.6708984375">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <HBox.margin>
-                              <Insets top="30.0" />
-                           </HBox.margin>
-                           <opaqueInsets>
-                              <Insets top="40.0" />
-                           </opaqueInsets>
-                        </VBox>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="0.0" />
-                        <VBox fx:id="vbox_HTTPSuccessAttemptTOR" alignment="TOP_CENTER" prefHeight="314.0" prefWidth="314.0" spacing="10.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTP Success Attempt TOR" textAlignment="CENTER" wrappingWidth="290.6708984375">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <HBox.margin>
-                              <Insets top="30.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <Separator orientation="VERTICAL" prefHeight="200.0" />
-                        <VBox fx:id="vbox_HTTPSuccessAttemptLocalServer" alignment="TOP_CENTER" prefHeight="373.0" prefWidth="265.0" spacing="10.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTP Success Attempt Local Server" textAlignment="CENTER" wrappingWidth="264.6708984375">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                           <HBox.margin>
-                              <Insets top="30.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <Separator orientation="VERTICAL" prefHeight="428.0" prefWidth="0.0" />
-                        <VBox fx:id="vbox_HTTPSSuccessAttemptTOR" alignment="TOP_CENTER" prefHeight="321.0" prefWidth="291.0" spacing="10.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTPS Success Attempt TOR" textAlignment="CENTER" wrappingWidth="290.6708984375">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                        <VBox fx:id="vbox_HTTPSSuccessAttemptLocalServer" alignment="TOP_CENTER" prefHeight="314.0" prefWidth="314.0" spacing="10.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HTTPS Success Attempt Local Server" textAlignment="CENTER" wrappingWidth="290.6708984375">
-                                 <font>
-                                    <Font size="30.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                     </children>
-                     <opaqueInsets>
-                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="40.0" right="40.0" top="40.0" />
-                     </padding>
-                  </HBox>
-                  <Line endX="1293.0" endY="40.0" startX="44.3291015625" startY="40.0" stroke="WHITE" />
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-      <Text fx:id="text_censoredOrNot" fill="#19948b" layoutX="704.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED/NOT : " textAlignment="CENTER" wrappingWidth="598.9999850094318">
+      <Text fx:id="text_censoredOrNot" fill="#19948b" layoutX="797.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED?" wrappingWidth="641.9999850094318">
          <font>
             <Font name="System Bold Italic" size="35.0" />
          </font>
       </Text>
-      <GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="116.0" prefWidth="599.0" styleClass="mygridStyle" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="138.0" prefWidth="906.0" styleClass="mygridStyle" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="556.0" minWidth="10.0" prefWidth="270.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="279.0" />
@@ -116,7 +30,7 @@
             <RowConstraints maxHeight="651.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text fx:id="text_url" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" wrappingWidth="511.6708984375">
+            <Text fx:id="text_url" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="URL:" wrappingWidth="438.6708984375">
                <font>
                   <Font size="20.0" />
                </font>
@@ -124,7 +38,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_NetworkName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Global IP:" wrappingWidth="511.6708984375" GridPane.rowIndex="1">
+            <Text fx:id="text_NetworkName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name:" wrappingWidth="439.6708984375" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -132,7 +46,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="582.6708984375" GridPane.rowIndex="2">
+            <Text fx:id="text_time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="437.6708984375" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
@@ -140,7 +54,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_testType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1">
+            <Text fx:id="text_testType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Type:" wrappingWidth="443.6708984375" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -148,7 +62,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="text_networkType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="511.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="text_networkType" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="440.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -158,5 +72,49 @@
             </Text>
          </children>
       </GridPane>
+      <JFXTabPane fx:id="tabPane" layoutX="1012.0" layoutY="202.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1257.0" style="-fx-background-color: #aaaaaa;" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="150.0">
+         <tabs>
+            <Tab fx:id="tab_http" onSelectionChanged="#selectHTTP_Tab" text="HTTP (Port = 80)">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="753.0">
+                     <children>
+                        <TableView fx:id="tableView_HTTP" layoutX="193.0" layoutY="86.0" prefHeight="459.0" prefWidth="1000.0">
+                          <columns>
+                            <TableColumn fx:id="col_ipAddress_HTTP" prefWidth="102.0" text="IP Address" />
+                            <TableColumn fx:id="col_timeout_HTTP" prefWidth="48.0" text="Timeout" />
+                              <TableColumn fx:id="col_finBitSet_HTTP" prefWidth="48.0" text="FIN Bit Set ?" />
+                              <TableColumn fx:id="col_rstBitSet_HTTP" prefWidth="48.0" text="RST Bit Set ?" />
+                              <TableColumn fx:id="col_localServerIterationSuccess_HTTP" prefWidth="171.0" text="Local Server" />
+                              <TableColumn fx:id="col_torBrowserIterationSuccess_HTTP" prefWidth="114.0" text="TOR" />
+                              <TableColumn fx:id="col_middleBoxHopCount_HTTP" prefWidth="48.0" text="Middle Box Hop" />
+                              <TableColumn fx:id="col_isCensoredTCP_HTTP" prefWidth="48.0" text="Is Censored?" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Text fx:id="text_overAllHTTPCensored" fill="#19948b" layoutX="62.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overall Is Censored for HTTP ?" wrappingWidth="939.9999850094318">
+                           <font>
+                              <Font name="System Bold Italic" size="35.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tab_https" onSelectionChanged="#selectHTTPS_Tab" text="HTTPS (Port = 443)">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text fx:id="text_overAllHTTPSCensored" fill="#19948b" layoutX="137.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overall Is Censored for HTTPS ?" wrappingWidth="939.9999850094318">
+                           <font>
+                              <Font name="System Bold Italic" size="35.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
    </children>
 </AnchorPane>

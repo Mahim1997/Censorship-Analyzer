@@ -26,29 +26,30 @@ public class Report {
     private String censorship_details;
     private int iteration_number;
     public DNSDetails dns_details;
-    public List<TCPDetails> tcp_details_arr = new ArrayList<>();
+    public List<TCPDetails> tcp_details_list = new ArrayList<>();
 
     // ------------ Network Things ----------------
     public Network network = new Network();
 
-    private String networkName;
-    private String networkType;
+    private String network_name;
+    private String network_type;
 
-    public String getNetworkName() {
-        return networkName;
+    public String getNetwork_name() {
+        return network_name;
     }
 
-    public void setNetworkName(String networkName) {
-        this.networkName = networkName;
+    public void setNetwork_name(String network_name) {
+        this.network_name = network_name;
     }
 
-    public String getNetworkType() {
-        return networkType;
+    public String getNetwork_type() {
+        return network_type;
     }
 
-    public void setNetworkType(String networkType) {
-        this.networkType = networkType;
+    public void setNetwork_type(String network_type) {
+        this.network_type = network_type;
     }
+ 
 
     public int getIteration_number() {
         return iteration_number;
@@ -161,7 +162,20 @@ public class Report {
         this.test_type = test_type;
     }
 
+    public String getYesOrNo(String s){
+        if(s != null){
+//            System.out.println("YES/NO check --> s = <" + s + ">" );
+            if(s.trim().equals("0") || s.trim().equals("NO")){
+                s = "NO";
+            }else{
+                s = "YES";
+            }
+        }
+        return s;
+    }
+    
     public String getIs_censored() {
+        is_censored = getYesOrNo(is_censored);
         return is_censored;
     }
 
@@ -210,11 +224,11 @@ public class Report {
     }
 
     public List<TCPDetails> getTcp_details_arr() {
-        return tcp_details_arr;
+        return tcp_details_list;
     }
 
     public void setTcp_details_arr(List<TCPDetails> tcp_details_arr) {
-        this.tcp_details_arr = tcp_details_arr;
+        this.tcp_details_list = tcp_details_arr;
     }
 //
 //    public CensoredRecordController_Waiting getController_waiting() {
@@ -234,7 +248,7 @@ public class Report {
 //    }
 
     public String getOnlyReportString() {
-        return "Report{" + "report_id=" + report_id + ", time_stamp=" + time_stamp + ", url=" + url + ", test_type=" + test_type + ", is_censored=" + is_censored + ", censored_type=" + censored_type + ", censorship_details=" + censorship_details + ", networkName=" + networkName + ", networkType=" + networkType + '}';
+        return "Report{" + "report_id=" + report_id + ", time_stamp=" + time_stamp + ", url=" + url + ", test_type=" + test_type + ", is_censored=" + is_censored + ", censored_type=" + censored_type + ", censorship_details=" + censorship_details + ", networkName=" + network_name + ", networkType=" + network_type + '}';
     }
 
     @Override
@@ -244,7 +258,7 @@ public class Report {
         if (this.test_type.equals("DNS")) {
             str += this.dns_details.toString();
         } else if (this.test_type.equals("TCP")) {
-            str += this.tcp_details_arr.stream().map((tcpDet) -> tcpDet.toString()).reduce(str, String::concat); //for each tcp_details ... 
+            str += this.tcp_details_list.stream().map((tcpDet) -> tcpDet.toString()).reduce(str, String::concat); //for each tcp_details ... 
         }
         return str;
     }

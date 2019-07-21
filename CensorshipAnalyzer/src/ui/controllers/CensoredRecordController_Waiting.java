@@ -46,7 +46,6 @@ public class CensoredRecordController_Waiting {
     private TableColumn column_testType;
     @FXML
     private TableColumn column_censored;
-    @FXML
     private TableColumn column_censoredType;
     @FXML
     private TableColumn column_details;
@@ -270,9 +269,9 @@ public class CensoredRecordController_Waiting {
         column_networkName.setCellValueFactory(
                 new PropertyValueFactory<>("network_name")
         );
-        column_censoredType.setCellValueFactory(
-                new PropertyValueFactory<>("censored_type")
-        );
+//        column_censoredType.setCellValueFactory(
+//                new PropertyValueFactory<>("censored_type")
+//        );
         column_censored.setCellValueFactory(
                 new PropertyValueFactory<>("is_censored")
         );
