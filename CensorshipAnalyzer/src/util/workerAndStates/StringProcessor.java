@@ -168,7 +168,7 @@ public class StringProcessor {
 
             int num_got_so_far = 0;
 
-            int base_iter = lines_common_fields ; //upto 10 is the common count so, lines_common_fields = 11 is base now
+            int base_iter = lines_common_fields; //upto 10 is the common count so, lines_common_fields = 11 is base now
 //            System.out.println("how_many_desc = " + how_many_desc_tcp);
             while (num_got_so_far < how_many_desc_tcp) {
                 // ---------------------------- Once taken begin ----------------------------
@@ -186,8 +186,9 @@ public class StringProcessor {
                 tcp.setIs_censored_TCP(getSecondColumn_Int(arr[base_iter + 10]));
                 // -------------------- Once taken done ------------------------------------
                 report.tcp_details_list.add(tcp);
-                
+
                 num_got_so_far++;
+                base_iter += (num_lines_per_tcp_description); //Advance the pointer
             }
 
         }
