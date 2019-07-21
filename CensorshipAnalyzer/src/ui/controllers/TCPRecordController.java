@@ -174,10 +174,10 @@ public class TCPRecordController {
                 new PropertyValueFactory<>("is_rst_bit_set_str")
         );
         col_localServerIterationSuccess_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_local_server")
+                new PropertyValueFactory<>("successful_iteration_local_server_str")
         );
         col_torBrowserIterationSuccess_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_tor")
+                new PropertyValueFactory<>("successful_iteration_tor_str")
         );
         col_middleBoxHopCount_HTTP.setCellValueFactory(
                 new PropertyValueFactory<>("middle_box_hop_count_str")
@@ -218,10 +218,10 @@ public class TCPRecordController {
                 new PropertyValueFactory<>("is_rst_bit_set_str")
         );
         col_localServerIterationSuccess_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_local_server")
+                new PropertyValueFactory<>("successful_iteration_local_server_str")
         );
         col_torBrowserIterationSuccess_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_tor")
+                new PropertyValueFactory<>("successful_iteration_tor_str")
         );
         col_middleBoxHopCount_HTTPS.setCellValueFactory(
                 new PropertyValueFactory<>("middle_box_hop_count_str")

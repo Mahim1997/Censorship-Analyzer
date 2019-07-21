@@ -33,6 +33,11 @@ public class Util {
         } else {
             tcp.setMiddle_box_hop_count_str(String.valueOf(tcp.getMiddle_box_hop_count()));
         }
+        String str_loc = "Success at Attempt " + String.valueOf(tcp.getSuccessful_iteration_local_server());
+        tcp.setSuccessful_iteration_local_server_str(str_loc);
+
+        String str_tor = "Success at Attempt " + String.valueOf(tcp.getSuccessful_iteration_tor());
+        tcp.setSuccessful_iteration_tor_str(str_tor);
     }
 
 }

@@ -8,14 +8,12 @@ class DBHandler:
         UDP_IP = '127.0.0.1'  # loop back ip
         UDP_PORT = 7731  # Java listening port
 
-        # MESSAGE = report.getReportString()
-
-        print("----------------------------------- SENDING TO JAVA UDP ------------------------------------------")
+        print("----------------------------------- SENDING TO JAVA UDP [MESSAGE] ------------------------------------------")
         # print("UDP target IP:", UDP_IP)
         # print("UDP target port:", UDP_PORT)
-        print("message:", MESSAGE)
-        print("----------------------------------------------------------------------------------------------------")
-        # print("Sending to Java UDP ... [7731] In dbHandler.py ")
+        print(MESSAGE)
+        print("-------------------------------------SENDING COMPLETED TO JAVA UDP-------------------------------------")
+        # print("Sending to Java UDP is completed -> In dbHandler.py ")
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
         sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))
@@ -82,8 +80,8 @@ class DBHandler:
             num = row[0]  # Don't know exactly why like this !!
 
         report.report_id = num + 1
-        print("---->> [In dbHandler.py] TCP: Inserting into Report Table ... PRINTING REPORT ")
-        report.printReport()
+        # print("---->> [In dbHandler.py] TCP: Inserting into Report Table ... PRINTING REPORT ")
+        # report.printReport()
         c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
                    report.is_censored, report.is_periodic, report.file_name_periodic, report.iteration_number,

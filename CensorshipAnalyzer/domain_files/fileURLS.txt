@@ -1,6 +1,2 @@
-www.economist.com
-www.hillbd24.com
-www.ipnewsbd.com
-www.linkedin.com
-www.bdpolitico.com
-www.quora.com
+bdpolitico.com
+bdsaradin.com

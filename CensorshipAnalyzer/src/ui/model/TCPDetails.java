@@ -38,6 +38,26 @@ public class TCPDetails {   //This is per IP
     private String is_tor_connect_successful_str;
     private String is_censored_TCP_str = "NO"; //default 0 [not censored]
     private String middle_box_hop_count_str;
+    
+    private String successful_iteration_local_server_str;
+    private String successful_iteration_tor_str;
+
+    public String getSuccessful_iteration_local_server_str() {
+        return successful_iteration_local_server_str;
+    }
+
+    public void setSuccessful_iteration_local_server_str(String successful_iteration_local_server_str) {
+        this.successful_iteration_local_server_str = successful_iteration_local_server_str;
+    }
+
+    public String getSuccessful_iteration_tor_str() {
+        return successful_iteration_tor_str;
+    }
+
+    public void setSuccessful_iteration_tor_str(String successful_iteration_tor_str) {
+        this.successful_iteration_tor_str = successful_iteration_tor_str;
+    }
+    
     //-------------------------------------------------------
 
     private ImageView imageView_is_censored_TCP;

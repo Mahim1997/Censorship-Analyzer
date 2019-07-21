@@ -53,7 +53,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <children>
-                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name:" wrappingWidth="155.6708984375">
+                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Name: " wrappingWidth="162.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -70,7 +70,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <children>
-                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="64.6708984375">
+                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="79.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -104,7 +104,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <children>
-                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type:" wrappingWidth="148.6708984375">
+                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Network Type: " wrappingWidth="170.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -124,7 +124,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="753.0">
                      <children>
-                        <TableView fx:id="tableView_HTTP" layoutX="193.0" layoutY="86.0" prefHeight="459.0" prefWidth="1000.0">
+                        <TableView fx:id="tableView_HTTP" layoutX="193.0" layoutY="86.0" prefHeight="459.0" prefWidth="1000.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                           <columns>
                             <TableColumn fx:id="col_ipAddress_HTTP" prefWidth="102.0" text="IP Address" />
                             <TableColumn fx:id="col_timeout_HTTP" prefWidth="48.0" text="Timeout" />
@@ -157,7 +157,7 @@
                               <Font name="System Bold Italic" size="29.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="tableView_HTTPS" layoutX="233.0" layoutY="100.0" prefHeight="459.0" prefWidth="1000.0">
+                        <TableView fx:id="tableView_HTTPS" layoutX="233.0" layoutY="100.0" prefHeight="459.0" prefWidth="1000.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                            <columns>
                               <TableColumn fx:id="col_ipAddress_HTTPS" prefWidth="102.0" text="IP Address" />
                               <TableColumn fx:id="col_timeout_HTTPS" prefWidth="48.0" text="Timeout" />
