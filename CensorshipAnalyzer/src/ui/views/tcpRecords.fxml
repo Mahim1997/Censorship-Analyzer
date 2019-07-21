@@ -15,20 +15,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1539.0" stylesheets="@../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.TCPRecordController">
    <children>
-      <Text fx:id="text_censoredOrNot" fill="#19948b" layoutX="1088.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED?" wrappingWidth="424.99998500943184">
+      <Text fx:id="text_censoredOrNot" fill="#19948b" layoutX="1039.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORED?" wrappingWidth="424.99998500943184">
          <font>
             <Font name="System Bold Italic" size="35.0" />
          </font>
       </Text>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="142.0" prefWidth="992.0" styleClass="mygridStyle" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="1124.0" styleClass="mygridStyle" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="556.0" minWidth="10.0" prefWidth="270.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.0" minWidth="10.0" prefWidth="279.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="245.0" minHeight="0.0" prefHeight="62.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="509.0" minHeight="0.0" prefHeight="83.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="651.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="245.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="509.0" minHeight="0.0" prefHeight="73.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="651.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <HBox>
@@ -41,7 +41,7 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="text_url" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;URL&gt;" textAlignment="CENTER" wrappingWidth="374.6708984375">
+                  <Text fx:id="text_url" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;URL&gt;" wrappingWidth="374.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -58,7 +58,7 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="text_NetworkName" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Network Name&gt;" textAlignment="CENTER" wrappingWidth="334.6708984375">
+                  <Text fx:id="text_NetworkName" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Network Name&gt;" wrappingWidth="334.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -70,12 +70,12 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <children>
-                  <Text fx:id="text_time" fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="64.6708984375">
+                  <Text fill="#3db3ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" wrappingWidth="64.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="text_time1" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Time&gt;" textAlignment="CENTER" wrappingWidth="415.6708984375">
+                  <Text fx:id="text_time" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Time&gt;" wrappingWidth="415.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -92,7 +92,7 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="text_testType" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Test Type&gt;" textAlignment="CENTER" wrappingWidth="415.6708984375">
+                  <Text fx:id="text_testType" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Test Type&gt;" wrappingWidth="415.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -109,7 +109,7 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="text_networkType" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Network Type&gt;" textAlignment="CENTER" wrappingWidth="415.6708984375">
+                  <Text fx:id="text_networkType" fill="#fc4949" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Network Type&gt;" wrappingWidth="415.6708984375">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -157,6 +157,21 @@
                               <Font name="System Bold Italic" size="29.0" />
                            </font>
                         </Text>
+                        <TableView fx:id="tableView_HTTPS" layoutX="233.0" layoutY="100.0" prefHeight="459.0" prefWidth="1000.0">
+                           <columns>
+                              <TableColumn fx:id="col_ipAddress_HTTPS" prefWidth="102.0" text="IP Address" />
+                              <TableColumn fx:id="col_timeout_HTTPS" prefWidth="48.0" text="Timeout" />
+                              <TableColumn fx:id="col_finBitSet_HTTPS" prefWidth="48.0" text="FIN Bit Set ?" />
+                              <TableColumn fx:id="col_rstBitSet_HTTPS" prefWidth="48.0" text="RST Bit Set ?" />
+                              <TableColumn fx:id="col_localServerIterationSuccess_HTTPS" prefWidth="171.0" text="Local Server" />
+                              <TableColumn fx:id="col_torBrowserIterationSuccess_HTTPS" prefWidth="114.0" text="TOR" />
+                              <TableColumn fx:id="col_middleBoxHopCount_HTTPS" prefWidth="48.0" text="Middle Box Hop" />
+                              <TableColumn fx:id="col_isCensoredTCP_HTTPS" prefWidth="48.0" text="Is Censored?" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
                      </children></AnchorPane>
                </content>
             </Tab>

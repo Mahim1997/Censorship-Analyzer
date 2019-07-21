@@ -71,16 +71,32 @@ public class TCPRecordController {
     private Text text_overAllHTTPSCensored;
     @FXML
     private Text text_time1;
+    @FXML
+    private TableView tableView_HTTPS;
+    @FXML
+    private TableColumn col_ipAddress_HTTPS;
+    @FXML
+    private TableColumn col_timeout_HTTPS;
+    @FXML
+    private TableColumn col_finBitSet_HTTPS;
+    @FXML
+    private TableColumn col_rstBitSet_HTTPS;
+    @FXML
+    private TableColumn col_localServerIterationSuccess_HTTPS;
+    @FXML
+    private TableColumn col_torBrowserIterationSuccess_HTTPS;
+    @FXML
+    private TableColumn col_middleBoxHopCount_HTTPS;
+    @FXML
+    private TableColumn col_isCensoredTCP_HTTPS;
 
     // ---------------------- HTTPS Table View -----------------------------------
     public void setUpThings(Report report) {
         this.report = report;
-        
-        System.out.println("---------------IN setUpThings() ... report is -------------------");
-        this.report.printReport();
-        System.out.println("----------------------------------------------------------");
 
-        
+//        System.out.println("---------------IN setUpThings() ... report is -------------------");
+//        this.report.printReport();
+//        System.out.println("----------------------------------------------------------");
         int is_cens = 0;
         for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
             TCPDetails tcpDesc = this.report.tcp_details_list.get(i);
@@ -103,14 +119,13 @@ public class TCPRecordController {
     }
 
     public void showThings() {
-        this.text_NetworkName.setText("Network Name: " + this.report.getNetwork_name());
-        this.text_networkType.setText("Network Type:" + this.report.getNetwork_type());
-
+        this.text_NetworkName.setText(this.report.getNetwork_name());
+        this.text_networkType.setText(this.report.getNetwork_type());
         this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIs_censored());
-        this.text_time.setText("Time: " + this.report.getTime_stamp());
-        this.text_testType.setText("Test Type: " + this.report.getTest_type());
-        this.text_url.setText("URL:" + this.report.getUrl());
-        
+        this.text_time.setText(this.report.getTime_stamp());
+        this.text_testType.setText(this.report.getTest_type());
+        this.text_url.setText(this.report.getUrl());
+
         loadTableViewHTTP();
         loadTableViewHTTPS();
     }
@@ -131,16 +146,15 @@ public class TCPRecordController {
 
         List<TCPDetails> list_tcp_desc = new ArrayList<>();
 
-        System.out.println("------------ Inside loadTableViewHTTP() --------------- Printing report ... " + this.report.toString());
-        
+//        System.out.println("------------ Inside loadTableViewHTTP() --------------- Printing report ... " + this.report.toString());
         //-------- Add only the HTTP records to list_tcp_desc -------------
-        for(int i=0; i<this.report.tcp_details_list.size(); i++){
+        for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
             TCPDetails tcpDet = this.report.tcp_details_list.get(i);
-            if(tcpDet.getPort() == Config.PORT_HTTP){
+            if (tcpDet.getPort() == Config.PORT_HTTP) {
                 list_tcp_desc.add(tcpDet);
             }
         }
-        
+
         list_tcp_desc.forEach(Util::makeTCPDetailStrings); //make Yes/No things
 //        list_tcp_desc.forEach(TCPDetails::makeImageView); //make image view [STILL ERRORS]
 
@@ -175,7 +189,47 @@ public class TCPRecordController {
     }
 
     private void loadTableViewHTTPS() {
-        System.out.println("-->> TODO TCPRecordController.loadTableViewHTTPS()");
+        List<TCPDetails> list_tcp_desc = new ArrayList<>();
+
+//        System.out.println("------------ Inside loadTableViewHTTPS() --------------- Printing report ... " + this.report.toString());
+        //-------- Add only the HTTP records to list_tcp_desc -------------
+        for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
+            TCPDetails tcpDet = this.report.tcp_details_list.get(i);
+            if (tcpDet.getPort() == Config.PORT_HTTPS) {
+                list_tcp_desc.add(tcpDet);
+            }
+        }
+        System.out.println("====+++----->> loadTableViewHTTPS() ... list_tcp_desc.size() = " + list_tcp_desc.size());
+        
+        list_tcp_desc.forEach(Util::makeTCPDetailStrings); //make Yes/No things
+
+        ObservableList<TCPDetails> data = FXCollections.observableArrayList(list_tcp_desc);
+
+        col_ipAddress_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("ip_address")
+        );
+        col_timeout_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("is_timeout_str")
+        );
+        col_finBitSet_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("is_fin_bit_set_str")
+        );
+        col_rstBitSet_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("is_rst_bit_set_str")
+        );
+        col_localServerIterationSuccess_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("successful_iteration_local_server")
+        );
+        col_torBrowserIterationSuccess_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("successful_iteration_tor")
+        );
+        col_middleBoxHopCount_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("middle_box_hop_count_str")
+        );
+        col_isCensoredTCP_HTTPS.setCellValueFactory(
+                new PropertyValueFactory<>("is_censored_TCP_str")
+        );
+        this.tableView_HTTPS.setItems(data);
     }
 
 }
