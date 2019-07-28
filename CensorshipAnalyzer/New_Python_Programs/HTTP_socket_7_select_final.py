@@ -4,13 +4,16 @@ from requests_toolbelt.adapters import host_header_ssl
 from urllib.parse import urlparse
 from urllib.parse import urljoin
 from pprint import pprint as pp
-from SocketFunctions import SocketFunctions
 import requests
 from requests.exceptions import Timeout
 import dns.resolver # NOTE: dnspython package
 import tldextract
 import socket
 import urllib3
+import re
+from urllib3.poolmanager import PoolManager
+from SocketFunctions_updated import SocketFunctions
+from Report import Report
 
 import select
 from bs4 import BeautifulSoup
@@ -18,10 +21,32 @@ from difflib import SequenceMatcher
 urllib3.disable_warnings()
 
 #---------------------------------------https---------------------------------------
-from requests.adapters import HTTPAdapter
 import socket
 import ssl,os
 
+from requests.adapters import HTTPAdapter
+'''from requests.packages.urllib3.poolmanager import PoolManager
+from requests.packages.urllib3.util import ssl_
+
+
+class TlsAdapter(HTTPAdapter):
+
+    def __init__(self, ssl_options=0, **kwargs):
+        self.ssl_options = ssl_options
+        super(TlsAdapter, self).__init__(**kwargs)
+
+    def init_poolmanager(self, *pool_args, **pool_kwargs):
+        ctx = ssl_.create_urllib3_context(ssl.PROTOCOL_TLS)
+        # extend the default context options, which is to disable ssl2, ssl3
+        # and ssl compression, see:
+        # https://github.com/shazow/urllib3/blob/6a6cfe9/urllib3/util/ssl_.py#L241
+        ctx.options |= self.ssl_options
+        self.poolmanager = PoolManager(*pool_args,
+                                       ssl_context=ctx,
+                                       **pool_kwargs)
+
+
+'''
 class HostHeaderSSLAdapter(HTTPAdapter):
 	def send(self, request, **kwargs):
 		# HTTP headers are case-insensitive (RFC 7230)
@@ -103,8 +128,8 @@ import requests
 
 r = requests.get('http://' + 'bit.ly/english-4-it')
 
-print(r.history)
-print(r.url)
+self.print_message(r.history)
+self.print_message(r.url)
 
 result:
 
@@ -144,7 +169,22 @@ class http_https_data:
 	http_hop_count = -1
 	is_http_response_rec = False
 	is_tcp_censored = False
+	
+	
+	
+	def __init__(self):
+		self.line_number = 0			#for files line number
+		self.message_file = open('http_message.txt','w')
+		self.http_report = Report()
+		self.https_report = Report()
 		
+	def print_message_1(self,message):
+		self.line_number+=1
+		self.message_file.write(self.line_number.__str__()+"$"+message+"\n")
+	
+	def print_message(self,message):
+		print(message)
+		self.print_message_1(message.replace('\n',''))
 	
 	#--------------------------------https-------------------------------------------------------------
 	def https_through_tor(self,url,ip,isTor):
@@ -158,9 +198,13 @@ class http_https_data:
 				parsed = parsed._replace(netloc=ip)
 				ip_url = parsed.geturl()
 				s = requests.Session()
+				
 				s.mount('https://', HostHeaderSSLAdapter())
-				#print(ip_url)
-				#print(hostname)
+				#s.mount('https://', TlsAdapter())
+				
+				#self.print_message(ip_url)
+				#self.print_message(hostname)
+				error_message = ""
 				if isTor:
 					s.proxies = self.proxies
 				for i in range(5):
@@ -172,8 +216,8 @@ class http_https_data:
 							'Connection': 'keep-alive',
 						}
 						response = s.get(ip_url ,headers=headers,allow_redirects = False,verify = False, timeout=5)
-						#print(response.headers)
-						#print(response.content)
+						#self.print_message(response.headers)
+						#self.print_message(response.content)
 						if response.status_code >= 400 and response.status_code < 600:
 							soup = BeautifulSoup(response.content, features="html.parser")
 							token = soup.find(class_ ='g-recaptcha')
@@ -181,26 +225,39 @@ class http_https_data:
 								isCaptcha = True
 							elif 'captcha' in response.text:
 								isCaptcha = True
-								
-						'''if response.status_code == 200:
-							regex= '/window\.location\.replace\s*=\s*\"([^"]+)\"/'
-							occurance = regex.exec(responce.text)
-							if (occurance[1]): 
-								print(occurance[1]) '''
+							return True,response.status_code,response.content,response.headers,isCaptcha,response.text
+						
+						if response.status_code == 200:
+							try:
+								regex= re.compile('window\.location\.replace')
+								occurance = regex.search(response.text)
+								if occurance is not None:
+									str = response.text.split('window.location.replace(\'')[1]
+									#self.print_message(str)
+									str = str.split('\')')[0]
+									#self.print_message(str)
+									response.headers['Location'] = str
+									response.status_code = 301
+									return True,response.status_code,response.content,response.headers,isCaptcha,response.text
+							except:
+								pass
 							
 							
 						return True,response.status_code,response.content,response.headers,isCaptcha,response.text
 					except requests.exceptions.ConnectTimeout as e:
 						status_code = 1001
+						error_message = e.__str__()
 					except requests.exceptions.ReadTimeout:
 						status_code = 1002
+						error_message = e.__str__()
 					except requests.exceptions.ConnectionError as e:
 						status_code = 1003
+						error_message = e.__str__()
 					except:
 						status_code = 1004
-					
-				return False,status_code,None,None,None,None
-			
+				#print(error_message)
+				return False,status_code,None,None,None,error_message
+				
 		except:
 			return False,status_code,None,None,None,None
 			
@@ -241,7 +298,7 @@ class http_https_data:
 				break
 			except socket.error as err:
 				#a = self.getTCPInfo(conn)
-				#print("error: "+a.__str__())
+				#self.print_message("error: "+a.__str__())
 				return False, 4
 		
 		a = self.getTCPInfo(conn)
@@ -318,23 +375,7 @@ class http_https_data:
 		return False
 		
 	
-	'''
-	enum {
-	    TCP_ESTABLISHED = 1,
-	    TCP_SYN_SENT = 2,	#no response(tcp censored)
-	    TCP_SYN_RECV = 3,	
-	    TCP_FIN_WAIT1 = 4,	#fin received
-	    TCP_FIN_WAIT2 = 5,	#fin received
-	    TCP_TIME_WAIT = 6,	#fin received
-	    TCP_CLOSE = 7,	#rst received
-	    TCP_CLOSE_WAIT = 8,	#fin received
-	    TCP_LAST_ACK = 9,	#fin received
-	    TCP_LISTEN = 10,
-	    TCP_CLOSING = 11,    /* Now a valid state */#fin received
-	    TCP_MAX_STATES = 12  /* Leave at the end! */
-	};
-
-	'''
+	
 	#'socket create error' = 1
 	#'fin bit received' = 2
 	#'rst bit received' = 3
@@ -361,7 +402,7 @@ class http_https_data:
 				break
 			except socket.error as err:
 				#a = self.getTCPInfo(s)
-				#print("error: "+a.__str__())
+				#self.print_message("error: "+a.__str__())
 				return False, 4
 		
 		a = self.getTCPInfo(s)
@@ -412,8 +453,8 @@ class http_https_data:
 							'Connection': 'keep-alive',
 						}
 						response = s.get(ip_url ,headers=headers,allow_redirects = False,timeout=5,verify=False)
-						#print(response.headers)
-						#print(response.content)
+						#print("\n\ntext\n\n\n"+response.text)
+						#print("\n\nheaders\n\n\n"+response.headers.__str__()+"\n------------\n")
 						if response.status_code >= 400 and response.status_code < 600:
 							soup = BeautifulSoup(response.content, features="html.parser")
 							token = soup.find(class_ ='g-recaptcha')
@@ -421,14 +462,24 @@ class http_https_data:
 								isCaptcha = True
 							elif 'captcha' in response.text:
 								isCaptcha = True
+							#print("captcha: "+isCaptcha.__str__())
+							return True,response.status_code,response.content,response.headers,isCaptcha,response.text
+						
+						if response.status_code == 200:
+							try:
+								regex= re.compile('window\.location\.replace')
+								occurance = regex.search(response.text)
+								if occurance is not None:
+									str = response.text.split('window.location.replace(\'')[1]
+									#self.print_message(str)
+									str = str.split('\')')[0]
+									#self.print_message(str)
+									response.headers['Location'] = str
+									response.status_code = 301
+									return True,response.status_code,response.content,response.headers,isCaptcha,response.text
+							except:
+								pass
 								
-						'''if response.status_code == 200:
-							regex= '/window\.location\.replace\s*=\s*\"([^"]+)\"/'
-							occurance = regex.exec(responce.text)
-							if (occurance[1]): 
-								print(occurance[1]) '''
-							
-							
 						return True,response.status_code,response.content,response.headers,isCaptcha,response.text
 					except requests.exceptions.ConnectTimeout as e:
 						status_code = 1001
@@ -440,7 +491,7 @@ class http_https_data:
 						status_code = 1004
 					
 				return False,status_code,None,None,None,None
-			
+				
 		except:
 			return False,status_code,None,None
 			
@@ -453,134 +504,188 @@ class http_https_data:
 			parsed = urlparse(url)
 			hostname = parsed.netloc
 		except:
-			print("Invalid Url")
+			self.print_message("Invalid Url")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "Invalid Url"
 			return None
-		print("_________"+url+"___________")
+		self.print_message("_________"+url+"___________")
 		ip = self.get_ip(hostname)
+		self.print_message("hostname: "+hostname)
 		if ip == None:
-			print ("Domain doesnot exist")
+			self.print_message ("Domain doesnot exist")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "Domain doesnot exist"
 			return None
-		print("ip: "+ip.__str__())
-		print("Dns done through Tor")
+		self.print_message("ip: "+ip.__str__())
+		self.print_message("Dns done through Tor")
 		
-		
+		self.http_report.http_description.redirection_history_local.append(url)
+		self.http_report.http_description.redirection_history_tor.append(url)
+		self.http_report.http_description.ip_address.append(ip.__str__())
 		#checking no response-----------------------------------------------------------------------------------------------------
 		
 		status,error_code = self.checking_no_response(ip,hostname,parsed.path,80)
 		if not status:
+			if error_code == 4:
+				self.http_report.http_description.is_other_error = 1
+				self.http_report.http_description.message_http = "tcp 3-way handshake not established"
+				self.print_message("tcp 3-way handshake not established")
 			if error_code == 2:
-				print("fin bit received after connect")
+				self.print_message("fin bit received after connect")
+				self.http_report.http_description.is_fin_bit_set = 1
 			elif error_code == 3:
-				print("rst bit received after connect")
-			elif error_code == 4:
-				print("tcp 3-way not established")
+				self.print_message("rst bit received after connect")
+				self.http_report.http_description.is_rst_bit_set = 1
+			self.http_report.is_censored = 1
 			return None
-		#print('--------------------------------------------\n')
-		
-		
-		
-		
+		#self.print_message('--------------------------------------------\n')
 		
 		
 		statusT,scT,cT,hT,isCaptchaT,tT = self.http_through_tor(url,ip,True)
 		if scT == 1003:
-			print("connection error:please check your internet connection")
+			self.print_message("connection error:please check your internet connection")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "connection error:please check your internet connection"
 			return None
 		if not statusT:
-			print("Tor: No HTTP response received")
+			self.print_message("Tor: No HTTP response received")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "Tor: No HTTP response received"
 			return None
+		
+		self.http_report.http_description.http_response_code_tor.append(scT)
 		statusL,scL,cL,hL,isCaptchaL,tL = self.http_through_tor(url,ip,False)
 		if (not statusL) and scL == 1001:
-			print("connect timeout")
+			self.print_message("connect timeout")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "connect timeout"
 			return None
 		elif (not statusL) and scL == 1002:
-			print("read timeout")
-			print("http error")
+			self.print_message("read timeout")
+			self.print_message("http error")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "read timeout"
 			return None
 		elif not statusL:
-			print("no response")
+			self.print_message("no response")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "no response"
 			return None
+		self.http_report.http_description.http_response_code_local.append(scL)
 		
-		print("Tor response status code: "+scT.__str__())
-		print("Local response status code: "+scL.__str__())
-
-
-
+		self.print_message("Tor response status code: "+scT.__str__())
+		self.print_message("Local response status code: "+scL.__str__())
+		
+		
+		
 		if ((scL >= 300 and scL < 400) and (scT == 200)):
-			print("Http censorship applied: Http response status code mismatch")
+			self.print_message("Http censorship applied: Http response status code mismatch")
+			self.http_report.is_censored = 1
+			self.http_report.http_description.message_http = "Http censorship applied: Http response status code mismatch"
 			return None
 		if ((scT >= 300 and scT < 400) and (scL == 200)):
-			#if 'http-equiv="Refresh' in cL:
-				#return hT['Location']
-			#if 'window.location.replace' in cL or 'window.location' in cL:
-				#return  hT['Location']
-				
-			#else:
-			print("Http censorship applied: Http response status code mismatch")
-			return None
 			
+			self.print_message("Http censorship applied: Http response status code mismatch")
+			self.http_report.is_censored = 1
+			self.http_report.http_description.message_http = "Http censorship applied: Http response status code mismatch"
 			
-		if scT == 200 and isCaptchaL:
-			print("Http: Not censored(local received captcha)")
+			new_url_tor = hT['Location']
+			if "https://" in new_url_tor:
+				self.print_message("new url tor: "+new_url_tor)
+				return new_url_tor
+			
 			return None
 		
+		if((scT >= 300 and scT < 400) and (scL >= 300 and scL < 400)):
+			new_url_local = hL['Location']
+			if "http://" in new_url_local or "https://" in new_url_local:
+				self.print_message("new url local: "+new_url_local)
+				return new_url_local
+			new_url = urljoin(url,new_url_local)
+			self.print_message("new url: "+new_url_local)
+			return new_url
+		
 		if isCaptchaL:
-			print("Http: Not censored(local_1 captcha received)")
+			if (scT >=300 and scT <400):
+				new_url_tor = hT['Location']
+				if "http://" in new_url_tor or "https://" in new_url_tor:
+					self.print_message("new url tor: "+new_url_tor)
+					return new_url_tor
+				new_url = urljoin(url,new_url_tor)
+				self.print_message("new url: "+new_url_tor)
+				return new_url
+			self.print_message("http: Not censored(local receiver received captcha)")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "http: Not censored(local receiver received captcha)"
 			return None
 		if isCaptchaT:
-			'''if scL >=300 and scL < 400:
-				print("Http censorship applied: Http response status code mismatch(tor received captcha)")
-				return None'''
+			if (scL >=300 and scL <400):
+				new_url_local = hL['Location']
+				if "http://" in new_url_local or "https://" in new_url_local:
+					self.print_message("new url local: "+new_url_local)
+					return new_url_local
+				new_url = urljoin(url,new_url_local)
+				self.print_message("new url: "+new_url_local)
+				return new_url
 			if scL == 200:
 				if len(cL) < 1024:
 					if 'block' in tL or 'blocked' in tL: 
-						print("Http censorship applied:(response content length < 1024 and (block,blocked) keyword found)")
+						self.print_message("http censorship applied:(response content length < 1024 and (block,blocked) keyword found)")
+						self.http_report.is_censored = 1
+						self.http_report.http_description.message_http = "http censorship applied:(response content length < 1024 and (block,blocked) keyword found)"
 						return None
-				print("Http: Not censored(tor received captcha)")
-				return None
-			else:
-				print("Http: Not censored(tor captcha received)")
-				return None
-				
+			self.print_message("http: Not censored(tor received captcha)")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "http: Not censored(tor received captcha)"
+			return None
+		
+		if scL>=300 and scL <400:
+			new_url_local = hL['Location']
+			if "http://" in new_url_local or "https://" in new_url_local:
+				self.print_message("new url local: "+new_url_local)
+				return new_url_local
+			new_url = urljoin(url,new_url_local)
+			self.print_message("new url: "+new_url_local)
+			return new_url
+			
+		if (scT >=300 and scT <400):
+			new_url_tor = hT['Location']
+			if "http://" in new_url_tor or "https://" in new_url_tor:
+				self.print_message("new url tor: "+new_url_tor)
+				return new_url_tor
+			new_url = urljoin(url,new_url_tor)
+			self.print_message("new url: "+new_url_tor)
+			return new_url
+		
 		if scT != scL:
-			print("Http response status code mismatch")
+			self.print_message("http response status code mismatch")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "http response status code mismatch"
 			return None
 		elif (scT == 200) and (scL == 200):
 			if len(cL) < 1024:
 				if 'block' in tL or 'blocked' in tL: 
-					print("Http censorship applied")
-			print("start html ")
+					self.print_message("http censorship applied")
+			self.print_message("start html ")
 			m = SequenceMatcher(None, cT, cL)
 			#percentage = 1 - m.ratio()
 			percentage = 1 - m.quick_ratio()
-			print("difference: "+percentage.__str__())
+			self.print_message("difference: "+percentage.__str__())
 			if percentage > 0.3000:
-				print("Http censorship applied: Http content difference "+(percentage*100).__str__()+"%")
+				self.print_message("http censorship applied: http content difference "+(percentage*100).__str__()+"%")
+				self.http_report.is_censored = 1
+				self.http_report.http_description.message_http = "http censorship applied: http content difference "+(percentage*100).__str__()+"%"
 				return None
-			print("Http: Not censored")
+			self.print_message("http: Not censored")
+			self.http_report.http_description.message_http = "http: Not censored"
 			return None
 		elif scL >= 400:
-			print("Http (server side or client side) error received")
+			self.print_message("http (server side or client side) error received")
+			self.http_report.http_description.is_other_error = 1
+			self.http_report.http_description.message_http = "http (server side or client side) error received"
 			return None
-		elif scL >= 300 and scL < 400:
-			new_url_tor = hT['Location']
-			new_url_local = hL['Location']
-			if 'https://' in new_url_tor and 'https://' not in new_url_tor:
-				print("Http censorship applied: new url mismatch")
-				return None
-			if 'http://' in new_url_tor and 'http://' not in new_url_tor:
-				print("Http censorship applied: new url mismatch")
-				return None
-			if "http://" in new_url_tor or "https://" in new_url_tor:
-				print("new url tor: "+new_url_tor)
-				print("new url local: "+new_url_local)
-				return new_url_tor
-			new_url = urljoin(url,new_url_local)
-			new_url_ =  urljoin(url,new_url_tor)
-			print("new url: "+new_url_local)
-			print("new url tor: "+new_url_tor)
-			return new_url
-			
+		return None
+	
 			
 	#----------------------------------------https----------------------------------------------------------
 	def https_censorship_check(self,url):
@@ -592,148 +697,234 @@ class http_https_data:
 			parsed = urlparse(url)
 			hostname = parsed.netloc
 		except:
-			print("Invalid Url")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Invalid Url"
+			self.print_message("Invalid Url")
 			return None
-		print("_________"+url+"___________")
+		self.print_message("_________"+url+"___________")
 		ip = self.get_ip(hostname)
 		if ip == None:
-			print ("Domain doesnot exist")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Domain doesnot exist"
+			self.print_message ("Domain doesnot exist")
 			return None
-		print("ip: "+ip.__str__())
-		print("Dns done through Tor")
+		self.print_message("ip: "+ip.__str__())
+		self.print_message("Dns done through Tor")
 		
-		
+		self.https_report.https_description.redirection_history_local.append(url)
+		self.https_report.https_description.redirection_history_tor.append(url)
+		self.https_report.https_description.ip_address.append(ip.__str__())
 		#checking no response-----------------------------------------------------------------------------------------------------
 		
 		status,error_code = self.checking_no_response_https(ip,hostname,parsed.path,443)############
 		if not status:
+			if error_code == 4:
+				self.https_report.https_description.is_other_error = 1
+				self.https_report.https_description.message_https = "tcp 3-way handshake not established"
+				self.print_message("tcp 3-way handshake not established")
 			if error_code == 2:
-				print("fin bit received after connect")
+				self.print_message("fin bit received after connect")
+				self.https_report.https_description.is_fin_bit_set = 1
 			elif error_code == 3:
-				print("rst bit received after connect")
-			elif error_code == 4:
-				print("tcp 3-way not established")
+				self.print_message("rst bit received after connect")
+				self.https_report.https_description.is_rst_bit_set = 1
 			elif error_code == 5:
-				print("tls handshake failed")
+				self.print_message("tls handshake failed")
+				self.https_report.https_description.is_tls_handshake_failed = 1
+			self.https_report.is_censored = 1
 			return None
-		#print('--------------------------------------------\n')
+
+		#self.print_message('--------------------------------------------\n')
 		
-		print("no response check done")
+		#self.print_message("no response check done")
 		
 		
 		
 		
 		statusT,scT,cT,hT,isCaptchaT,tT = self.https_through_tor(url,ip,True)
 		if scT == 1003:
-			print("connection error:please check your internet connection")
+			self.print_message("connection error")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "connection error:please check your internet connection"
 			return None
 		if not statusT:
-			print("Tor: No HTTP response received")
+			self.print_message("Tor: No HTTP response received")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Tor: No HTTP response received"
 			return None
+		
+		print("after tor")
+		self.https_report.https_description.https_response_code_tor.append(scT)
 		statusL,scL,cL,hL,isCaptchaL,tL = self.https_through_tor(url,ip,False)
 		if (not statusL) and scL == 1001:
-			print("connect timeout")
+			self.print_message("connect timeout")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "connect timeout"
 			return None
 		elif (not statusL) and scL == 1002:
-			print("read timeout")
-			print("http error")
+			self.print_message("read timeout")
+			self.print_message("http error")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "read timeout"
 			return None
 		elif not statusL:
-			print("no response")
+			self.print_message("no response")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "no response"
 			return None
+		self.https_report.https_description.https_response_code_local.append(scL)
 		
-		print("Tor response status code: "+scT.__str__())
-		print("Local response status code: "+scL.__str__())
+		self.print_message("Tor response status code: "+scT.__str__())
+		self.print_message("Local response status code: "+scL.__str__())
 
-
+		
 
 		if ((scL >= 300 and scL < 400) and (scT == 200)):
-			print("Https censorship applied: Https response status code mismatch")
+			self.print_message("Https censorship applied: Https response status code mismatch")
+			self.https_report.is_censored = 1
+			self.https_report.https_description.message_https = "Https censorship applied: Https response status code mismatch"
 			return None
 		if ((scT >= 300 and scT < 400) and (scL == 200)):
-			#if 'http-equiv="Refresh' in cL:
-				#return hT['Location']
-			#if 'window.location.replace' in cL or 'window.location' in cL:
-				#return  hT['Location']
-				
-			#else:
-			print("Https censorship applied: Https response status code mismatch")
-			return None
-			
-			
-		if scT == 200 and isCaptchaL:
-			print("Https: Not censored(local received captcha)")
+			self.print_message("Https censorship applied: Https response status code mismatch")
+			self.https_report.is_censored = 1
+			self.https_report.https_description.message_https = "Https censorship applied: Https response status code mismatch"
 			return None
 		
+		if((scT >= 300 and scT < 400) and (scL >= 300 and scL < 400)):
+			new_url_local = hL['Location']
+			if "http://" in new_url_local or "https://" in new_url_local:
+				self.print_message("new url local: "+new_url_local)
+				return new_url_local
+			new_url = urljoin(url,new_url_local)
+			self.print_message("new url: "+new_url_local)
+			return new_url
+			
+		
 		if isCaptchaL:
-			print("Https: Not censored(local_1 captcha received)")
+			if (scT >=300 and scT <400):
+				new_url_tor = hT['Location']
+				if "http://" in new_url_tor or "https://" in new_url_tor:
+					self.print_message("new url tor: "+new_url_tor)
+					return new_url_tor
+				new_url = urljoin(url,new_url_tor)
+				self.print_message("new url: "+new_url_tor)
+				return new_url
+			self.print_message("Https: Not censored(local receiver received captcha)")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Https: Not censored(local receiver received captcha)"
 			return None
 		if isCaptchaT:
-			'''if scL >=300 and scL < 400:
-				print("Https censorship applied: Https response status code mismatch(tor received captcha)")
-				return None'''
+			if (scL >=300 and scL <400):
+				new_url_local = hL['Location']
+				if "http://" in new_url_local or "https://" in new_url_local:
+					self.print_message("new url local: "+new_url_local)
+					return new_url_local
+				new_url = urljoin(url,new_url_local)
+				self.print_message("new url: "+new_url_local)
+				return new_url
 			if scL == 200:
 				if len(cL) < 1024:
 					if 'block' in tL or 'blocked' in tL: 
-						print("Https censorship applied:(response content length < 1024 and (block,blocked) keyword found)")
+						self.print_message("Https censorship applied:(response content length < 1024 and (block,blocked) keyword found)")
+						self.https_report.is_censored = 1
+						self.https_report.https_description.message_https = "Https censorship applied:(response content length < 1024 and (block,blocked) keyword found)"
 						return None
-				print("Https: Not censored(tor received captcha)")
-				return None
-			else:
-				print("Https: Not censored(tor captcha received)")
-				return None
+			self.print_message("Https: Not censored(tor received captcha)")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Https: Not censored(tor received captcha)"
+			return None
+			
+		if scL>=300 and scL <400:
+			new_url_local = hL['Location']
+			if "http://" in new_url_local or "https://" in new_url_local:
+				self.print_message("new url local: "+new_url_local)
+				return new_url_local
+			new_url = urljoin(url,new_url_local)
+			self.print_message("new url: "+new_url_local)
+			return new_url
+			
+		if (scT >=300 and scT <400):
+			new_url_tor = hT['Location']
+			if "http://" in new_url_tor or "https://" in new_url_tor:
+				self.print_message("new url tor: "+new_url_tor)
+				return new_url_tor
+			new_url = urljoin(url,new_url_tor)
+			self.print_message("new url: "+new_url_tor)
+			return new_url
 				
 		if scT != scL:
-			print("Https response status code mismatch")
+			self.print_message("Https response status code mismatch")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Https response status code mismatch"
 			return None
 		elif (scT == 200) and (scL == 200):
 			if len(cL) < 1024:
 				if 'block' in tL or 'blocked' in tL: 
-					print("Https censorship applied")
-			print("start html ")
+					self.print_message("Https censorship applied")
+			self.print_message("start html ")
 			m = SequenceMatcher(None, cT, cL)
 			#percentage = 1 - m.ratio()
 			percentage = 1 - m.quick_ratio()
-			print("difference: "+percentage.__str__())
+			self.print_message("difference: "+percentage.__str__())
 			if percentage > 0.3000:
-				print("Https censorship applied: Https content difference "+(percentage*100).__str__()+"%")
+				self.print_message("Https censorship applied: Https content difference "+(percentage*100).__str__()+"%")
+				self.https_report.is_censored = 1
+				self.https_report.https_description.message_https = "Https censorship applied: Https content difference "+(percentage*100).__str__()+"%"
 				return None
-			print("Https: Not censored")
+			self.print_message("Https: Not censored")
+			self.https_report.https_description.message_https = "Https: Not censored"
 			return None
 		elif scL >= 400:
-			print("Https (server side or client side) error received")
+			self.print_message("Https (server side or client side) error received")
+			self.https_report.https_description.is_other_error = 1
+			self.https_report.https_description.message_https = "Https (server side or client side) error received"
 			return None
-		elif scL >= 300 and scL < 400:
-			new_url_tor = hT['Location']
-			new_url_local = hL['Location']
-			if 'https://' in new_url_tor and 'https://' not in new_url_tor:
-				print("Http censorship applied: new url mismatch")
-				return None
-			if 'http://' in new_url_tor and 'http://' not in new_url_tor:
-				print("Http censorship applied: new url mismatch")
-				return None
-			if "http://" in new_url_tor or "https://" in new_url_tor:
-				print("new url tor: "+new_url_tor)
-				print("new url local: "+new_url_local)
-				return new_url_tor
-			new_url = urljoin(url,new_url_local)
-			new_url_ =  urljoin(url,new_url_tor)
-			print("new url: "+new_url_local)
-			print("new url tor: "+new_url_tor)
-			return new_url
+		return None
 	
 	#-------------------------------------------------------------------------------------------------------
+	
+	def check_http_https_censorship(self,url):
+		self.http_report.type_of_testing = 'HTTP'
+		self.https_report.type_of_testing = 'HTTPS'
+		
+		for i in range(4):
+			if 'http://' in url:
+				new_url = self.http_censorship_check(url)
+			elif 'https://' in url:
+				new_url = self.https_censorship_check(url)
+			else:
+				new_url = self.http_censorship_check(url)
+			if new_url is None:
+				break
+			else:
+				url = new_url
+		if new_url != None:
+			self.print_message("more than 3 redirection")
+			self.https_report.https_description.is_max_redirection_reached = 1
+			self.http_report.http_description.is_max_redirection_reached = 1
+		report = []
+		report.append(self.http_report)
+		report.append(self.https_report)
+		return report
+
+
 
 ob = http_https_data()
-#ob.http("www.pornhub.com/","66.254.114.41")
-#ob.http("www.youtube.com","74.125.68.93")
-#ob.http("www.ranker.com","103.243.13.160")
-#sc,c,h = ob.http_through_tor("bdpolitico.com","104.28.1.128")
 url_list = open('domain_name.txt','r')
 urls = url_list.read().splitlines()
 new_url = None
 for url in urls:
-	print("\n---------------------start-----------------------\n")
+	new_url = ob.check_http_https_censorship(url)
+
+
+'''
+ob = http_https_data()
+url_list = open('domain_name.txt','r')
+urls = url_list.read().splitlines()
+new_url = None
+for url in urls:
+	self.print_message("\n---------------------start-----------------------\n")
+	#url = 'http://banglamail71.info'
 	for i in range(3):
 	
 		if 'http://' in url:
@@ -742,22 +933,22 @@ for url in urls:
 			new_url = ob.https_censorship_check(url)
 		else:
 			new_url = ob.http_censorship_check(url)
-		#print("new url__: "+new_url)
+		#self.print_message("new url__: "+new_url)
 		if new_url is None:
 			break
 		else:
 			url = new_url
 	if new_url != None:
-		print("more than 3 redirection")
-	print("\n---------------------end-----------------------\n")
+		self.print_message("more than 3 redirection")
+	self.print_message("\n---------------------end-----------------------\n")
+'''
 '''
 sys.stdout = orig_stdout
 f.close()'''
 #st = ob.tcp_connectivity_check("172.217.168.196",80)
 
-#print(sc)
+#self.print_message(sc)
 
 #"GET / HTTP/1.1\r\nHost: www.google.com\r\n\r\n".encode('utf-8')
 #request_header ='GET '+'/'+' HTTP/1.0\r\n'+'Host: www.google.com'+'\r\n\r\n'
-
 
