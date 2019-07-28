@@ -908,7 +908,7 @@ class http_https_data:
 		return report
 
 
-
+'''
 ob = http_https_data()
 url_list = open('domain_name.txt','r')
 urls = url_list.read().splitlines()
@@ -916,7 +916,7 @@ new_url = None
 for url in urls:
 	new_url = ob.check_http_https_censorship(url)
 
-
+'''
 '''
 ob = http_https_data()
 url_list = open('domain_name.txt','r')
