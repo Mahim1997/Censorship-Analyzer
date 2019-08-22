@@ -1,8 +1,0 @@
-www.youtube.com:172.217.17.110
-www.youtube.com:172.217.17.46
-www.youtube.com:172.217.168.238
-www.youtube.com:172.217.17.142
-www.youtube.com:172.217.20.110
-www.youtube.com:172.217.168.206
-www.youtube.com:216.58.211.110
-www.youtube.com:216.58.208.110

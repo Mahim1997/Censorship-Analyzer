@@ -1,0 +1,8 @@
+1$---------------Dns Resolution Of bdpolitico.com:-------------------
+2$->Local Dns Server:
+3$Local:209.99.40.222
+4$Remote:209.99.40.222
+5$Remote:104.28.0.128
+6$Remote:104.28.1.128
+7$bdpolitico.com is not censored
+8$Local Dns Server and Stubby Return Overlapped Ip Address

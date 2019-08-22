@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="854.0" prefWidth="1030.0" styleClass="anchor-pane" stylesheets="@../../resources/style-sheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.HomeScreenController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="892.0" prefWidth="166.0" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="113.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/emptyPic_trans.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton onAction="#addProfilePicture" text="+" textFill="WHITE">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <Label fx:id="label_username" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="225.0" stylesheets="@../../resources/style-sheet.css" text="UserName" textAlignment="JUSTIFY" />
+            <JFXButton onAction="#goHome" styleClass="dashBoardButton" stylesheets="@../../resources/style-sheet.css" text="Home">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#testSites" styleClass="dashBoardButton" stylesheets="@../../resources/style-sheet.css" text="Test Sites">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/icons8_Xbox_Menu_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#seeReports" styleClass="dashBoardButton" stylesheets="@../../resources/style-sheet.css" text="See Reports">
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/reports.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#miscallenousTasks" styleClass="dashBoardButton" stylesheets="@../../resources/style-sheet.css" text="Miscallenous Tasks">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/icons8_Meanpath_64px_2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#periodicUpdates" styleClass="dashBoardButton" stylesheets="@../../resources/style-sheet.css" text="Periodic Updates">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton onAction="#seeComparisons" styleClass="dashBoardButton" stylesheets="@../../resources/style-sheet.css" text="Comparisons">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/icons8_GPS_Antenna_64px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Text fill="#ef1cff" layoutX="341.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORSHIP ANALYZER" textAlignment="CENTER" wrappingWidth="589.6708984375" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Text>
+      
+      
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="280.0" layoutY="200" prefHeight="120" prefWidth="800" text="Status" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="800" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_status" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="800.0" stylesheets="@../../resources/style-sheet.css" text="STATUS : " textAlignment="LEFT" /> 
+          </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="280.0" layoutY="320" prefHeight="120" prefWidth="800" text="AUTONOMOUS SYSTEM NUMBER" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="800" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_asn" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="800.0" stylesheets="@../../resources/style-sheet.css" text="ASN : " textAlignment="LEFT" />
+           
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="280.0" layoutY="440" prefHeight="120" prefWidth="800" text="ORGANIZATION" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="800" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_org" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="800.0" stylesheets="@../../resources/style-sheet.css" text="ORGANISATION : " textAlignment="LEFT" />
+          </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="280.0" layoutY="560" prefHeight="120" prefWidth="400" text="CITY" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_city" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="CITY : " textAlignment="LEFT" />
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="680.0" layoutY="560" prefHeight="120" prefWidth="400" text="CONTINENT" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_continent" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="CONTINENT : " textAlignment="LEFT" />
+            
+           
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="280.0" layoutY="680" prefHeight="120" prefWidth="400" text="COUNTRY" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_country" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="COUNTRY : " textAlignment="LEFT" />
+            
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="680.0" layoutY="680" prefHeight="120" prefWidth="400" text="LATITUDE" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_latitude" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="LATITUDE : " textAlignment="LEFT" />
+            
+           
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="280.0" layoutY="800" prefHeight="120" prefWidth="400" text="LONGITUDE" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_longitude" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="LONGITUDE : " textAlignment="LEFT" />
+            
+           
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="680.0" layoutY="800" prefHeight="120" prefWidth="400" text="POSTAL ADDRESS" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_postal" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="POSTAL : " textAlignment="LEFT" />
+            
+           
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="1100.0" layoutY="200" prefHeight="120" prefWidth="400" text="REGION" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_region" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="REGION : " textAlignment="LEFT" />
+            
+        </VBox>
+        
+        
+      </TitledPane>
+      
+      <TitledPane animated="true" collapsible="true" expanded="true" layoutX="1100.0" layoutY="320" prefHeight="120" prefWidth="400" text="CARRIER" textAlignment="CENTER" textFill="blue">      
+          <font>
+            <Font size="30.0" />
+          </font>
+          <VBox alignment="TOP_CENTER" prefHeight="50" prefWidth="400" styleClass="vbox_dashboard" stylesheets="@../../resources/style-sheet.css">
+            <Label fx:id="label_carrier" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="400.0" stylesheets="@../../resources/style-sheet.css" text="CARRIER : " textAlignment="LEFT" />
+            
+           
+        </VBox>
+        
+        
+      </TitledPane>
+      <JFXButton fx:id="btn_refreshInfo" layoutX="306.0" layoutY="87.0" onAction="#refreshInfoHome" prefHeight="53.0" prefWidth="173.0" stylesheets="@../../resources/dark-theme.css" text="Refresh Info" textAlignment="CENTER" textFill="#242fbf">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

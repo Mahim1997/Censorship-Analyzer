@@ -1,0 +1,10 @@
+1$_________http://www.pornhub.com___________
+2$hostname: www.pornhub.com
+3$ip: 66.254.114.41
+4$Dns done through Tor
+5$Tor response status code: 200
+6$Local response status code: 200
+7$Keyword: 'block' in local server html file returned -->> so, http censorship applied
+8$start html 
+9$difference: 0.9064327485380117
+10$http censorship applied: http content difference 90.64327485380117%
