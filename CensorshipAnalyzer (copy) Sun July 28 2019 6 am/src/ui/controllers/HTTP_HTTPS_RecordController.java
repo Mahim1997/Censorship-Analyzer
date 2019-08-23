@@ -268,7 +268,47 @@ public class HTTP_HTTPS_RecordController {
         
     }
 
-    private void loadForHTTPS() {
+    private void loadForHTTPS() { //Loading for HTTPS
+        //1, Load the IP address
+        this.text_ip_11.setText(this.report.httpsDetails.getIp_address().get(0));
+        this.text_ip_21.setText(this.report.httpsDetails.getIp_address().get(1));
+        this.text_ip_31.setText(this.report.httpsDetails.getIp_address().get(2));
+        this.text_ip_41.setText(this.report.httpsDetails.getIp_address().get(3));
 
+        //2, load response codes
+        //2.1 Local response codes
+        this.text_localServer_responseCode_11.setText(this.report.httpsDetails.getHttps_response_code_local().get(0));
+        this.text_localServer_responseCode_21.setText(this.report.httpsDetails.getHttps_response_code_local().get(1));
+        this.text_localServer_responseCode_31.setText(this.report.httpsDetails.getHttps_response_code_local().get(2));
+        this.text_localServer_responseCode_41.setText(this.report.httpsDetails.getHttps_response_code_local().get(3));
+        //2.2 TOR response codes
+        this.text_TOR_responseCode_11.setText(this.report.httpsDetails.getHttps_response_code_tor().get(0));
+        this.text_TOR_responseCode_21.setText(this.report.httpsDetails.getHttps_response_code_tor().get(1));
+        this.text_TOR_responseCode_31.setText(this.report.httpsDetails.getHttps_response_code_tor().get(2));
+        this.text_TOR_responseCode_41.setText(this.report.httpsDetails.getHttps_response_code_tor().get(3));
+
+        //3, Load redirection histories
+        //3.1 Local Server redirection urls
+        this.text_localServerRedirection_11.setText(this.report.httpsDetails.getRedirection_history_local().get(0));
+        this.text_localServerRedirection_21.setText(this.report.httpsDetails.getRedirection_history_local().get(1));
+        this.text_localServerRedirection_31.setText(this.report.httpsDetails.getRedirection_history_local().get(2));
+        this.text_localServerRedirection_41.setText(this.report.httpsDetails.getRedirection_history_local().get(3));
+        //3.2 TOR redirection urls
+        this.text_TOR_Redirection_11.setText(this.report.httpsDetails.getRedirection_history_tor().get(0));
+        this.text_TOR_Redirection_21.setText(this.report.httpsDetails.getRedirection_history_tor().get(1));
+        this.text_TOR_Redirection_31.setText(this.report.httpsDetails.getRedirection_history_tor().get(2));
+        this.text_TOR_Redirection_41.setText(this.report.httpsDetails.getRedirection_history_tor().get(3));
+
+        //4, Messages
+        this.text_HTTPMessage1.setText(this.report.httpsDetails.getMessage_HTTPS());
+        this.text_otherErrorPresent1.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_other_error()));
+        this.text_middleBoxHopCount1.setText(this.report.httpsDetails.getMiddle_box_hop_count());
+        this.text_is_fin_bit_set1.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_fin_bit_set()));
+        this.text_is_rst_bit_set1.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_rst_bit_set()));
+        this.text_max_redirection_cnt1.setText(this.report.httpsDetails.getMax_redirection_count());
+        this.text_thresholdComparison1.setText(HelperFunctions.getPercentage(this.report.httpsDetails.getThreshold_comparison()));
+        this.text_contentMismatch1.setText(this.report.httpsDetails.getContent_difference());
+        this.text_isCensoredWRTThresholdContentMismatch1.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_different_wrt_threshold()));
+        this.text_tlsHandshakeFailed.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_tls_handshake_failed()));
     }
 }

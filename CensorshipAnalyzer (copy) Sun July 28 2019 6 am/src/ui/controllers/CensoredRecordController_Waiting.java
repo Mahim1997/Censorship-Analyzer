@@ -438,7 +438,7 @@ public class CensoredRecordController_Waiting {
             loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
 
             Parent root = loader.load();
-            TCPRecordController controller = (TCPRecordController) loader.getController();
+            HTTP_HTTPS_RecordController controller = (HTTP_HTTPS_RecordController) loader.getController();
 
             controller.setUpThings(getReport(report_id));    //Set up which report to show ... 
 
