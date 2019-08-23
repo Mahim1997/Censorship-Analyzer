@@ -202,25 +202,47 @@ public class StringProcessor {
 
             //Add HTTP
             report.httpDetails = new HTTPDetails();
-            report.httpDetails.setIp_address(getListStringDelimmedSecondColumn(arr[10], "#"));
-            report.httpDetails.setHttp_response_code_local(getListStringDelimmedSecondColumn(arr[11], "#"));
-            report.httpDetails.setHttp_response_code_tor(getListStringDelimmedSecondColumn(arr[12], "#"));
-            report.httpDetails.setIs_other_error(getSecondColumn_String(arr[13]));
-            report.httpDetails.setMessage_HTTP(getSecondColumn_String(arr[14]));
-            report.httpDetails.setIs_fin_bit_set(getSecondColumn_String(arr[15]));
-            report.httpDetails.setIs_rst_bit_set(getSecondColumn_String(arr[16]));
-            report.httpDetails.setRedirection_history_local(getListStringDelimmedSecondColumn(arr[17], "#"));
-            report.httpDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn(arr[18], "#"));
-            report.httpDetails.setThreshold_comparison(getSecondColumn_String(arr[19]));
-            report.httpDetails.setIs_different_wrt_threshold(getSecondColumn_String(arr[20]));
-            report.httpDetails.setContent_difference(getSecondColumn_String(arr[21]));
-            report.httpDetails.setIs_max_redirection_reached(getSecondColumn_String(arr[22]));
-            report.httpDetails.setMax_redirection_count(getSecondColumn_String(arr[23]));
-            report.httpDetails.setMiddle_box_hop_count(getSecondColumn_String(arr[24]));
-            
+            int base_itr_to_be_added = 10;
+            report.httpDetails.setIp_address(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 0], "#"));
+            report.httpDetails.setHttp_response_code_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 1], "#"));
+            report.httpDetails.setHttp_response_code_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 2], "#"));
+            report.httpDetails.setIs_other_error(getSecondColumn_String(arr[base_itr_to_be_added + 3]));
+            report.httpDetails.setMessage_HTTP(getSecondColumn_String(arr[base_itr_to_be_added + 4]));
+            report.httpDetails.setIs_fin_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 5]));
+            report.httpDetails.setIs_rst_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 6]));
+            report.httpDetails.setRedirection_history_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 7], "#"));
+            report.httpDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 8], "#"));
+            report.httpDetails.setThreshold_comparison(getSecondColumn_String(arr[base_itr_to_be_added + 9]));
+            report.httpDetails.setIs_different_wrt_threshold(getSecondColumn_String(arr[base_itr_to_be_added + 10]));
+            report.httpDetails.setContent_difference(getSecondColumn_String(arr[base_itr_to_be_added + 11]));
+            report.httpDetails.setIs_max_redirection_reached(getSecondColumn_String(arr[base_itr_to_be_added + 12]));
+            report.httpDetails.setMax_redirection_count(getSecondColumn_String(arr[base_itr_to_be_added + 13]));
+            report.httpDetails.setMiddle_box_hop_count(getSecondColumn_String(arr[base_itr_to_be_added + 14]));
+
             //Add HTTPS
             report.httpsDetails = new HTTPSDetails();
+            base_itr_to_be_added = 25;
+            report.httpsDetails.setIp_address(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 0], "#"));
+            report.httpsDetails.setHttps_response_code_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 1], "#"));
+            report.httpsDetails.setHttps_response_code_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 2], "#"));
+            report.httpsDetails.setIs_other_error(getSecondColumn_String(arr[base_itr_to_be_added + 3]));
+            report.httpsDetails.setMessage_HTTPS(getSecondColumn_String(arr[base_itr_to_be_added + 4]));
+            report.httpsDetails.setIs_fin_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 5]));
+            report.httpsDetails.setIs_rst_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 6]));
+            report.httpsDetails.setRedirection_history_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 7], "#"));
+            report.httpsDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 8], "#"));
+            report.httpsDetails.setThreshold_comparison(getSecondColumn_String(arr[base_itr_to_be_added + 9]));
+            report.httpsDetails.setIs_different_wrt_threshold(getSecondColumn_String(arr[base_itr_to_be_added + 10]));
+            report.httpsDetails.setContent_difference(getSecondColumn_String(arr[base_itr_to_be_added + 11]));
+            report.httpsDetails.setIs_max_redirection_reached(getSecondColumn_String(arr[base_itr_to_be_added + 12]));
+            report.httpsDetails.setMax_redirection_count(getSecondColumn_String(arr[base_itr_to_be_added + 13]));
+            report.httpsDetails.setMiddle_box_hop_count(getSecondColumn_String(arr[base_itr_to_be_added + 14]));
+
         
+            System.out.println("-------->>> RECEIVED printing http and https details");
+            System.out.println(report.httpDetails.toString());
+            System.out.println("-----------");
+            System.out.println(report.httpsDetails.toString());
         }
         //FOR NOW
         report.setNetwork_name(User.networkName);
