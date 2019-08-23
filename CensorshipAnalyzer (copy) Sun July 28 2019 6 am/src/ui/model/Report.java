@@ -71,7 +71,10 @@ public class Report {
                         break;
                     case "HTTP":
                         //TO DO
-                        System.out.println("==========+>>>>>>>>> Inside Report.Report() constructor .... TO DO LINE 78");
+                        Report.this.controller_waiting.goToDetailsHTTP_HTTPSRecord(Report.this.report_id);
+                        break;
+                    case "HTTPS":
+                        Report.this.controller_waiting.goToDetailsHTTP_HTTPSRecord(Report.this.report_id);
                         break;
                     default:
                         break;

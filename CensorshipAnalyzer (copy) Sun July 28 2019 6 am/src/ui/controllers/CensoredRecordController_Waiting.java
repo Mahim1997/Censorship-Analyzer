@@ -308,7 +308,7 @@ public class CensoredRecordController_Waiting {
             System.out.println("-->EXCEPTION in CensoredRecordController_Waiting.setUpInitial() ... loader.load()");
         }
         RealTimeDetailsController controller = (RealTimeDetailsController) loader.getController();
-        
+
         Scene scene = new Scene(this.root_for_details);//, Main.STAGE_WIDTH, Main.STAGE_HEIGHT);
         stage.setScene(scene);
         stage.setMaximized(false);
@@ -426,7 +426,27 @@ public class CensoredRecordController_Waiting {
             SceneLoader.loadSceneInNewStage(root, "TCP DETAILS");
 
         } catch (IOException ex) {
-            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.goToDetailsTCPRecord function() .... ");
+        }
+    }
+
+    public void goToDetailsHTTP_HTTPSRecord(int report_id) {
+        System.out.println("--->>> Method goToDetailsHTTP_HTTPSRecord() is called reportID = " + report_id);
+        try{
+            String fileNameFXMLToLoad = Scenes.http_https_Records;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+
+            Parent root = loader.load();
+            TCPRecordController controller = (TCPRecordController) loader.getController();
+
+            controller.setUpThings(getReport(report_id));    //Set up which report to show ... 
+
+            controller.showThings();
+
+            SceneLoader.loadSceneInNewStage(root, "HTTP and HTTPS DETAILS");            
+        }catch (IOException ex) {
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.goToDetailsHTTP_HTTPSRecord function() .... ");
         }
     }
 

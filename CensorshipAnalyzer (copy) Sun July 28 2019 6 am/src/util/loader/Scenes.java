@@ -10,6 +10,10 @@ public class Scenes {
     public static String censoredRecordsWaitingFXML = "/ui/views/censoredRecords_ForWaiting.fxml";
     public static String dnsRecords = "/ui/views/dnsRecords.fxml";
     public static String tcpRecords = "/ui/views/tcpRecords.fxml";
+    public static String http_https_Records = "/ui/views/http_https_Records.fxml";
+    
+    
     public static String realTimeDetails = "/ui/views/RealTimeDetails.fxml";
+
 
 }
