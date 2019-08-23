@@ -119,18 +119,18 @@
          <tabs>
             <Tab fx:id="tab_http" onSelectionChanged="#selectHTTP_Tab" text="HTTP (Port = 80)">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="753.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1418.0">
                      <children>
                         <Text fx:id="text_overAllHTTPCensored" fill="#41188f" layoutX="62.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is Censored for HTTP ?" wrappingWidth="939.9999850094318">
                            <font>
                               <Font name="System Bold Italic" size="27.0" />
                            </font>
                         </Text>
-                        <HBox layoutX="20.0" layoutY="73.0" prefHeight="491.0" prefWidth="1336.0" spacing="10.0">
+                        <HBox layoutX="20.0" layoutY="73.0" prefHeight="238.0" prefWidth="1336.0" spacing="10.0">
                            <children>
                               <VBox prefHeight="482.0" prefWidth="187.0">
                                  <children>
-                                    <VBox prefHeight="78.0" prefWidth="189.0">
+                                    <VBox prefHeight="73.0" prefWidth="189.0">
                                        <children>
                                           <Text fx:id="text_overAllHTTPCensored11" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="IP Addresses" textAlignment="CENTER" wrappingWidth="188.67088116705418">
                                              <font>
@@ -190,7 +190,7 @@
                               </VBox>
                               <VBox prefHeight="491.0" prefWidth="322.0">
                                  <children>
-                                    <VBox prefHeight="79.0" prefWidth="326.0">
+                                    <VBox prefHeight="77.0" prefWidth="326.0">
                                        <children>
                                           <Text fx:id="text_overAllHTTPCensored1211" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="TOR Browser Redirection History URLS" textAlignment="CENTER" wrappingWidth="325.6708811670542">
                                              <font>
@@ -205,6 +205,168 @@
                                     <JFXTextField />
                                  </children>
                               </VBox>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="19.0" layoutY="352.0" prefHeight="34.0" prefWidth="1064.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="HTTP Message :" textAlignment="CENTER" wrappingWidth="198.67088116705418">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_HTTPMessage" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="853.6708811670542">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="14.0" layoutY="386.0" prefHeight="34.0" prefWidth="554.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored1111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Any Other Errors Present ?" textAlignment="CENTER" wrappingWidth="341.6708811670542">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_otherErrorPresent" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="819.0" layoutY="431.0" prefHeight="34.0" prefWidth="438.0" spacing="20.0">
+                           <children>
+                              <VBox prefHeight="34.0" prefWidth="302.0">
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored11111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Redirection Count :" textAlignment="CENTER" wrappingWidth="341.6708811670542">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_max_redirection_cnt" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="116.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="20.0" layoutY="431.0" prefHeight="34.0" prefWidth="375.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored111111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Is FIN Bit set ?" wrappingWidth="191.67088116705418">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_is_fin_bit_set" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="443.0" layoutY="431.0" prefHeight="34.0" prefWidth="375.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored1111111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Is RST Bit set ?" wrappingWidth="191.67088116705418">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_is_rst_bit_set" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="13.0" layoutY="472.0" prefHeight="34.0" prefWidth="375.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored11111111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Threshold for Comparison (%):" wrappingWidth="373.6708811670542">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_thresholdComparison" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="660.0" layoutY="472.0" prefHeight="34.0" prefWidth="375.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored111111111" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Content Mismatch (%)" wrappingWidth="280.6708811670542">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_contentMismatch" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="631.0" layoutY="386.0" prefHeight="34.0" prefWidth="554.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored11112" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Middle Box Hop Count :" textAlignment="CENTER" wrappingWidth="341.6708811670542">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_middleBoxHopCount" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="496.0" layoutY="532.0" prefHeight="34.0" prefWidth="375.0" spacing="20.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text fx:id="text_overAllHTTPCensored111111112" fill="#2b5ae3" strokeType="OUTSIDE" strokeWidth="0.0" text="Is Censored With Respect to Content Mismatch ?" wrappingWidth="373.6708811670542">
+                                       <font>
+                                          <Font name="System Bold Italic" size="21.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <Text fx:id="text_isCensoredWRTThresholdContentMismatch" fill="#e32b74" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="161.67088116705418">
+                                 <font>
+                                    <Font name="System Bold Italic" size="21.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </HBox>
                      </children>
