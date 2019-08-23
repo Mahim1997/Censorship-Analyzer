@@ -63,8 +63,10 @@ class HTTPDescription:
 		self.str_description = self.str_description + "$message_HTTP:" + str(self.message_http)
 		self.str_description = self.str_description + "$is_fin_bit_set:" + str(self.is_fin_bit_set)
 		self.str_description = self.str_description + "$is_rst_bit_set:" + str(self.is_rst_bit_set)
-		self.str_description = self.str_description + "$redirection_history_local:" + self.getRedirectionHistoryLocalHashed()
-		self.str_description = self.str_description + "$redirection_history_tor:" + self.getRedirectionHistoryTorHashed()
+
+		self.str_description = self.str_description + "$redirection_history_local#" + self.getRedirectionHistoryLocalHashed()
+		self.str_description = self.str_description + "$redirection_history_tor#" + self.getRedirectionHistoryTorHashed()
+
 		self.str_description = self.str_description + "$threshold_comparison:" + str(self.threshold_comarison)
 		self.str_description = self.str_description + "$is_different_wrt_threshold:" + str(self.is_different_wrt_threshold)
 		self.str_description = self.str_description + "$content_difference:" + str(self.content_difference)

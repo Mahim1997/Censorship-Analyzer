@@ -63,8 +63,10 @@ class HTTPSDescription:
 		self.str_description = self.str_description + "$message_HTTP:" + str(self.message_https)
 		self.str_description = self.str_description + "$is_fin_bit_set:" + str(self.is_fin_bit_set)
 		self.str_description = self.str_description + "$is_rst_bit_set:" + str(self.is_rst_bit_set)
-		self.str_description = self.str_description + "$redirection_history_local:" + self.getRedirectionHistoryLocalHashed()
-		self.str_description = self.str_description + "$redirection_history_tor:" + self.getRedirectionHistoryTorHashed()
+
+		self.str_description = self.str_description + "$redirection_history_local#" + self.getRedirectionHistoryLocalHashed()
+		self.str_description = self.str_description + "$redirection_history_tor#" + self.getRedirectionHistoryTorHashed()
+
 		self.str_description = self.str_description + "$threshold_comparison:" + str(self.threshold_comarison)
 		self.str_description = self.str_description + "$is_different_wrt_threshold:" + str(
 			self.is_different_wrt_threshold)
@@ -73,5 +75,5 @@ class HTTPSDescription:
 			self.is_max_redirection_reached)
 		self.str_description = self.str_description + "$max_redirection_count:" + str(self.max_redirection_count)
 		self.str_description = self.str_description + "$middle_box_hop_count:" + str(self.middle_box_hop_count)
-		self.str_description = self.str_description + "is_tls_handshake_failed:" + str(self.is_tls_handshake_failed)
+		self.str_description = self.str_description + "$is_tls_handshake_failed:" + str(self.is_tls_handshake_failed)
 		return self.str_description

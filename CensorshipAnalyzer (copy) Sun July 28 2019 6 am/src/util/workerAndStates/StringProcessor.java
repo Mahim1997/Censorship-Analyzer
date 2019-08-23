@@ -210,8 +210,10 @@ public class StringProcessor {
             report.httpDetails.setMessage_HTTP(getSecondColumn_String(arr[base_itr_to_be_added + 4]));
             report.httpDetails.setIs_fin_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 5]));
             report.httpDetails.setIs_rst_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 6]));
-            report.httpDetails.setRedirection_history_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 7], "#"));
-            report.httpDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 8], "#"));
+
+            report.httpDetails.setRedirection_history_local(getListStringDelimmedSecondColumn_URL(arr[base_itr_to_be_added + 7], "#"));
+            report.httpDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn_URL(arr[base_itr_to_be_added + 8], "#"));
+
             report.httpDetails.setThreshold_comparison(getSecondColumn_String(arr[base_itr_to_be_added + 9]));
             report.httpDetails.setIs_different_wrt_threshold(getSecondColumn_String(arr[base_itr_to_be_added + 10]));
             report.httpDetails.setContent_difference(getSecondColumn_String(arr[base_itr_to_be_added + 11]));
@@ -229,8 +231,10 @@ public class StringProcessor {
             report.httpsDetails.setMessage_HTTPS(getSecondColumn_String(arr[base_itr_to_be_added + 4]));
             report.httpsDetails.setIs_fin_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 5]));
             report.httpsDetails.setIs_rst_bit_set(getSecondColumn_String(arr[base_itr_to_be_added + 6]));
-            report.httpsDetails.setRedirection_history_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 7], "#"));
-            report.httpsDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 8], "#"));
+
+            report.httpsDetails.setRedirection_history_local(getListStringDelimmedSecondColumn_URL(arr[base_itr_to_be_added + 7], "#"));
+            report.httpsDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn_URL(arr[base_itr_to_be_added + 8], "#"));
+
             report.httpsDetails.setThreshold_comparison(getSecondColumn_String(arr[base_itr_to_be_added + 9]));
             report.httpsDetails.setIs_different_wrt_threshold(getSecondColumn_String(arr[base_itr_to_be_added + 10]));
             report.httpsDetails.setContent_difference(getSecondColumn_String(arr[base_itr_to_be_added + 11]));
@@ -238,7 +242,6 @@ public class StringProcessor {
             report.httpsDetails.setMax_redirection_count(getSecondColumn_String(arr[base_itr_to_be_added + 13]));
             report.httpsDetails.setMiddle_box_hop_count(getSecondColumn_String(arr[base_itr_to_be_added + 14]));
 
-        
             System.out.println("-------->>> RECEIVED printing http and https details");
             System.out.println(report.httpDetails.toString());
             System.out.println("-----------");
@@ -248,5 +251,28 @@ public class StringProcessor {
         report.setNetwork_name(User.networkName);
         report.setNetwork_type(User.networkType);
         return report;
+    }
+
+    private static List<String> getListStringDelimmedSecondColumn_URL(String s, String delim) {
+        List<String> list = new ArrayList<>();
+
+        String[] arr = s.split("#");  //initial split too
+        if (arr.length == 1) {
+            return list;
+        }
+
+        //else
+        String ips = arr[1];
+//        String[] arr2 = ips.split(",");
+        String[] arr2 = ips.split(delim);
+
+        for (int i = 0; i < arr2.length; i++) {
+            if (arr2[i].trim().equals("") == false) {
+                list.add(arr2[i].trim());
+            }
+        }
+
+        return list;
+
     }
 }
