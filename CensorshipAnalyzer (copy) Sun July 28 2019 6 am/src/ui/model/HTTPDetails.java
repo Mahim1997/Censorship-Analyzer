@@ -64,7 +64,7 @@ public class HTTPDetails {
     }
 
     public String getMessage_HTTP() {
-        return message_HTTP;
+        return message_HTTP.toUpperCase();
     }
 
     public void setMessage_HTTP(String message_HTTP) {

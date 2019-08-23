@@ -33,7 +33,9 @@ public class HelperFunctions {
     }
 
     public static String getYesOrNo(String boolValue) {
-
+        if(boolValue == null){
+            return "NO";
+        }
         if (boolValue.trim().equals('0')) {
             return "NO";
         } else if (boolValue.trim().equals("null")) {
@@ -45,6 +47,9 @@ public class HelperFunctions {
     }
 
     public static String getPercentage(String valStr) {
+        if(valStr == null){
+            return "0.0";
+        }
         double valDouble;
         try {
             valDouble = Double.parseDouble(valStr);

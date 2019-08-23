@@ -65,7 +65,7 @@ public class HTTPSDetails {
     }
 
     public String getMessage_HTTPS() {
-        return message_HTTPS;
+        return message_HTTPS.toUpperCase();
     }
 
     public void setMessage_HTTPS(String message_HTTPS) {
