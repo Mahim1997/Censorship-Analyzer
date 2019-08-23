@@ -63,7 +63,7 @@ public class StringProcessor {
         return arr[1];
     }
 
-    static List<String> getListStringDelimbyCommaSecondColumn(String s) {
+    static List<String> getListStringDelimmedSecondColumn(String s, String delim) {
         List<String> list = new ArrayList<>();
 
         String[] arr = s.split(":");
@@ -73,7 +73,8 @@ public class StringProcessor {
 
         //else
         String ips = arr[1];
-        String[] arr2 = ips.split(",");
+//        String[] arr2 = ips.split(",");
+        String[] arr2 = ips.split(delim);
 
         for (int i = 0; i < arr2.length; i++) {
             if (arr2[i].trim().equals("") == false) {
@@ -84,7 +85,7 @@ public class StringProcessor {
         return list;
     }
 
-    static List<Integer> getListIntegers(String s) {
+    static List<Integer> getListIntegers(String s, String delim) {
         List<Integer> list = new ArrayList<>();
 
         String[] arr = s.split(":");
@@ -94,7 +95,8 @@ public class StringProcessor {
 
         //else
         String ips = arr[1];
-        String[] arr2 = ips.split(",");
+//        String[] arr2 = ips.split(",");
+        String[] arr2 = ips.split(delim);
 
         for (int i = 0; i < arr2.length; i++) {
             if (arr2[i].trim().equals("") == false) {
@@ -112,7 +114,7 @@ public class StringProcessor {
 
         int total_lines = arr.length;
         //Printing each line for debugging
-        System.out.println("===================== STRING PROCESSOR ==============================");
+        System.out.println("===================== Inside STRING PROCESSOR ... printing arr after split ... ==============================");
         for (int i = 0; i < arr.length; i++) {
             System.out.println(i + "->" + arr[i]);
         }
@@ -153,8 +155,8 @@ public class StringProcessor {
             report.dns_details.setIs_is_first_8_to_24_bit_match(getSecondColumn_String(arr[24]));
 
             //obtain list of ip addresses
-            report.dns_details.setIp_address_list_local(getListStringDelimbyCommaSecondColumn(arr[25]));
-            report.dns_details.setIp_address_list_stubby(getListStringDelimbyCommaSecondColumn(arr[26]));
+            report.dns_details.setIp_address_list_local(getListStringDelimmedSecondColumn(arr[25], ","));
+            report.dns_details.setIp_address_list_stubby(getListStringDelimmedSecondColumn(arr[26], ","));
 
             // Last two fields
             report.dns_details.setIs_non_overlapping_ip_list(getSecondColumn_String(arr[27]));
@@ -193,6 +195,11 @@ public class StringProcessor {
                 base_iter += (num_lines_per_tcp_description); //Advance the pointer
             }
 
+        } else if (report.getTest_type().equals("HTTP") || report.getTest_type().equals("HTTPS")) {
+            System.out.println("------->>>HTTP/HTTPS TEST TYPE .... TO DO!! ");
+
+            
+        
         }
         //FOR NOW
         report.setNetwork_name(User.networkName);

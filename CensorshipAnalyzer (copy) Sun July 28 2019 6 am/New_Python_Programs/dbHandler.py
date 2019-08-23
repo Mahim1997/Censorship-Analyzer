@@ -131,10 +131,6 @@ class DBHandler:
 
         report.report_id = num + 1
 
-
-
-
-        # ----------- TO DO ------------------
         print(" =====>>> [In dbHandler.py] HTTP: Inserting into Report Table ... ")
 
         print("----->> BEFORE INSERTING ... printing report ... ")
@@ -186,7 +182,10 @@ class DBHandler:
                       str(report.https_description.is_tls_handshake_failed)
                   ))
 
-
         conn.commit()
+        
+        str_to_send_to_java = report.getReportString()
+        self.sendToJava(str_to_send_to_java)
+
         c.close()
         conn.close()

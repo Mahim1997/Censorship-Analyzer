@@ -189,7 +189,8 @@ def runServer():
 
 # --------------------------------------------------Main Program---------------------------------------------------------------
 
-run_serv: bool = False
+# run_serv: bool = False
+run_serv: bool = True
 if run_serv:
 	runServer()
 else:

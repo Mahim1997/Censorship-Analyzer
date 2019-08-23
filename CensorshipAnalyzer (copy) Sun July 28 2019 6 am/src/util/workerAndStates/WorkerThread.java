@@ -88,12 +88,15 @@ public class WorkerThread implements Runnable {
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     TCPClient client = new TCPClient();
                     String s = client.formReportNetworkUser(report);
-                    if (Main.SEND_TO_SERVER == true) {
+                    if (Config.SEND_TO_SERVER == true) {
+                        System.out.println("------>>>Inside WorkerThread.java ... client.send(s) is DONE");
                         client.send(s);
+                        System.out.println("----------------->>> SENT TO SERVER .... ");
+                        System.out.println("MESSAGE SENT IS ");
+                        System.out.println(s);
+                        System.out.println("---------------------------------------------------------------");
                     }
-//                    System.out.println("============================");
-//                    System.out.println(s);
-                    System.out.println("----------------->>> SENT TO SERVER .... ");
+
 
 //                    client.send(ReportQueryHandler.getReportAndAll(report.getReport_id(),report));
                     Platform.runLater(() -> {
@@ -106,7 +109,7 @@ public class WorkerThread implements Runnable {
 
                             this.controller_censored_waiting.text_how_many_lines_completed.setText(textToSet);
 
-                        }else{
+                        } else {
                             this.controller_censored_waiting.text_how_many_lines_completed.setText("1 out of 1 done");
                         }
 

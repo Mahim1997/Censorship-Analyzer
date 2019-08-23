@@ -914,7 +914,7 @@ class http_https_data:
 
 isMain = False
 if isMain == True:
-    URL = "www.pornhub.com"
+    URL = "www.facebook.com"
     ob = http_https_data()
     rp_http, rp_https = ob.check_http_https_censorship(URL)
     print(" >>> Printing rp_http ...")

@@ -31,7 +31,7 @@ public class TCPClient {
 
     public void send(String output) {
         try {
-            s = new Socket(Config.IP_ADDRESS, 7777);
+            s = new Socket(Config.SERVER_IP_ADDRESS, 7777);
 
             br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             pr = new PrintWriter(s.getOutputStream());

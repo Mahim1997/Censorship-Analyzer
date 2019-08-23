@@ -23,7 +23,7 @@ public class Main extends Application {
     public static String TITLE = "Censorship Analysis Tool";
 
     public static boolean DEBUG_MODE = false;
-    public static boolean SEND_TO_SERVER = true;
+
 
     @Override
     public void start(Stage primaryStage) {

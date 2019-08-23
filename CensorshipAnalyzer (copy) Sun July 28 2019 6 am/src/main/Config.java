@@ -12,5 +12,7 @@ public class Config {
     public static int PORT_JAVA_SECONDARY = 5777;
 
 //    public static String IP_ADDRESS = "172.20.56.47";
-    public static String IP_ADDRESS = "192.168.43.208";
+    public static boolean SEND_TO_SERVER = true;
+
+    public static String SERVER_IP_ADDRESS = "192.168.43.208";
 }

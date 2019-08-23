@@ -22,7 +22,7 @@ public class TCP_ClientSocket {
 
     public void sendSomething(String sentence) {
         try {
-            InetAddress ip_address = InetAddress.getByAddress(Config.IP_ADDRESS.getBytes());
+            InetAddress ip_address = InetAddress.getByAddress(Config.SERVER_IP_ADDRESS.getBytes());
             try (Socket clientSocket = new Socket(ip_address, 7777)) { //"localhost"
                 BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
                 PrintWriter outToServer = new PrintWriter(clientSocket.getOutputStream());

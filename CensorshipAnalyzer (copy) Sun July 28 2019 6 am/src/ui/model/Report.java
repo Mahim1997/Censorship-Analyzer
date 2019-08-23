@@ -5,7 +5,6 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import ui.controllers.CensoredRecordController;
-import ui.controllers.CensoredRecordController;
 import ui.controllers.CensoredRecordController_Waiting;
 
 public class Report {
@@ -19,7 +18,7 @@ public class Report {
     private String is_censored; //0 or 1 -> No or Yes
     private String censored_type;
 
-    //-----------File Things --------------------
+    //-----------File Things and DETAILS --------------------
     private String is_file_check;
     private String is_periodic;
     private String file_name_periodic;
@@ -27,37 +26,14 @@ public class Report {
     private int iteration_number;
     public DNSDetails dns_details;
     public List<TCPDetails> tcp_details_list = new ArrayList<>();
+    public HTTPDetails httpDetails;
+    public HTTPSDetails httpsDetails;
 
     // ------------ Network Things ----------------
     public Network network = new Network();
 
     private String network_name;
     private String network_type;
-
-    public String getNetwork_name() {
-        return network_name;
-    }
-
-    public void setNetwork_name(String network_name) {
-        this.network_name = network_name;
-    }
-
-    public String getNetwork_type() {
-        return network_type;
-    }
-
-    public void setNetwork_type(String network_type) {
-        this.network_type = network_type;
-    }
- 
-
-    public int getIteration_number() {
-        return iteration_number;
-    }
-
-    public void setIteration_number(int iteration_number) {
-        this.iteration_number = iteration_number;
-    }
 
     //Button
     private Button btn_details;
@@ -104,8 +80,31 @@ public class Report {
                 //Same thing also here ...
             }
         });
-        
-        
+
+    }
+
+    public String getNetwork_name() {
+        return network_name;
+    }
+
+    public void setNetwork_name(String network_name) {
+        this.network_name = network_name;
+    }
+
+    public String getNetwork_type() {
+        return network_type;
+    }
+
+    public void setNetwork_type(String network_type) {
+        this.network_type = network_type;
+    }
+
+    public int getIteration_number() {
+        return iteration_number;
+    }
+
+    public void setIteration_number(int iteration_number) {
+        this.iteration_number = iteration_number;
     }
 
     public String getCensored_type() {
@@ -164,18 +163,18 @@ public class Report {
         this.test_type = test_type;
     }
 
-    public String getYesOrNo(String s){
-        if(s != null){
+    public String getYesOrNo(String s) {
+        if (s != null) {
 //            System.out.println("YES/NO check --> s = <" + s + ">" );
-            if(s.trim().equals("0") || s.trim().equals("NO")){
+            if (s.trim().equals("0") || s.trim().equals("NO")) {
                 s = "NO";
-            }else{
+            } else {
                 s = "YES";
             }
         }
         return s;
     }
-    
+
     public String getIs_censored() {
         is_censored = getYesOrNo(is_censored);
         return is_censored;
@@ -270,36 +269,33 @@ public class Report {
         System.out.println(this.toString());
         System.out.println("-------------------- *** Printing report end *** ----------------------");
     }
-    
-    public String getReportString(){
+
+    public String getReportString() {
         String s = "";
-        
-        s += ("$REPORT$" + String.valueOf(report_id) + "$" + String.valueOf(connection_id)  + "$" + time_stamp  + "$" + 
-                url  + "$" + test_type  + "$" + String.valueOf(is_censored)  + "$" + String.valueOf(is_periodic)
-                 + "$" + String.valueOf(file_name_periodic)  + "$" + String.valueOf(iteration_number));
+
+        s += ("$REPORT$" + String.valueOf(report_id) + "$" + String.valueOf(connection_id) + "$" + time_stamp + "$"
+                + url + "$" + test_type + "$" + String.valueOf(is_censored) + "$" + String.valueOf(is_periodic)
+                + "$" + String.valueOf(file_name_periodic) + "$" + String.valueOf(iteration_number));
         s += "$#";
-        
-        if(this.getTest_type().equals("DNS")){
+
+        if (this.getTest_type().equals("DNS")) {
             s += ("$DNS_DESCRIPTION$" + this.report_id + "$");
             s += this.dns_details.getDNSDetails();
             s += "$#";
-        }
-        else if(this.getTest_type().equals("TCP")){
+        } else if (this.getTest_type().equals("TCP")) {
             s += ("$TCP_DESCRIPTION$" + this.report_id + "$");
-            for(int i=0; i<this.tcp_details_list.size(); i++){
+            for (int i = 0; i < this.tcp_details_list.size(); i++) {
                 s += ("$");
                 TCPDetails det = this.tcp_details_list.get(i);
                 s += det.getTCPDetails();
             }
-            
+
             s += "$#";
         }
-        
-//        System.out.println("---------------------------------------------------------");
 
+//        System.out.println("---------------------------------------------------------");
 //        System.out.println(s);
 //        System.out.println("---------------------------------------------------------");
-        
         return s;
     }
 
