@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import ui.model.DNSDetails;
+import ui.model.HTTPDetails;
+import ui.model.HTTPSDetails;
 //import main.Config;
 import ui.model.Report;
 import ui.model.TCPDetails;
@@ -198,7 +200,26 @@ public class StringProcessor {
         } else if (report.getTest_type().equals("HTTP") || report.getTest_type().equals("HTTPS")) {
             System.out.println("------->>>HTTP/HTTPS TEST TYPE .... TO DO!! ");
 
+            //Add HTTP
+            report.httpDetails = new HTTPDetails();
+            report.httpDetails.setIp_address(getListStringDelimmedSecondColumn(arr[10], "#"));
+            report.httpDetails.setHttp_response_code_local(getListStringDelimmedSecondColumn(arr[11], "#"));
+            report.httpDetails.setHttp_response_code_tor(getListStringDelimmedSecondColumn(arr[12], "#"));
+            report.httpDetails.setIs_other_error(getSecondColumn_String(arr[13]));
+            report.httpDetails.setMessage_HTTP(getSecondColumn_String(arr[14]));
+            report.httpDetails.setIs_fin_bit_set(getSecondColumn_String(arr[15]));
+            report.httpDetails.setIs_rst_bit_set(getSecondColumn_String(arr[16]));
+            report.httpDetails.setRedirection_history_local(getListStringDelimmedSecondColumn(arr[17], "#"));
+            report.httpDetails.setRedirection_history_tor(getListStringDelimmedSecondColumn(arr[18], "#"));
+            report.httpDetails.setThreshold_comparison(getSecondColumn_String(arr[19]));
+            report.httpDetails.setIs_different_wrt_threshold(getSecondColumn_String(arr[20]));
+            report.httpDetails.setContent_difference(getSecondColumn_String(arr[21]));
+            report.httpDetails.setIs_max_redirection_reached(getSecondColumn_String(arr[22]));
+            report.httpDetails.setMax_redirection_count(getSecondColumn_String(arr[23]));
+            report.httpDetails.setMiddle_box_hop_count(getSecondColumn_String(arr[24]));
             
+            //Add HTTPS
+            report.httpsDetails = new HTTPSDetails();
         
         }
         //FOR NOW
