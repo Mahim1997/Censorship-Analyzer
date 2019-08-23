@@ -1,105 +1,195 @@
 package ui.controllers;
 
 import com.jfoenix.controls.JFXTabPane;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.jfoenix.controls.JFXTextField;
+import helper.HelperFunctions;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-import main.Config;
 import ui.model.Report;
 import ui.model.TCPDetails;
-import util.commands.Util;
 
 public class HTTP_HTTPS_RecordController {
 
     private Report report;
 
-    // -------------------------- Above network things -----------------------------
     @FXML
     private Text text_url;
     @FXML
     private Text text_NetworkName;
     @FXML
+    private Text text_time;
+    @FXML
     private Text text_testType;
     @FXML
     private Text text_networkType;
-    @FXML
-    private Text text_time;
-    private Text text_censoredOrNot;
-
-    // ----------------------- TAB PANE THINGS ----------------------------------
     @FXML
     private JFXTabPane tabPane;
     @FXML
     private Tab tab_http;
     @FXML
-    private Tab tab_https;
-
-    // ---------------------- HTTP Table View ----------------------------------
-    @FXML
-    private TableView tableView_HTTP;
-    @FXML
-    private TableColumn col_ipAddress_HTTP;
-    @FXML
-    private TableColumn col_timeout_HTTP;
-    @FXML
-    private TableColumn col_finBitSet_HTTP;
-    @FXML
-    private TableColumn col_rstBitSet_HTTP;
-    @FXML
-    private TableColumn col_localServerIterationSuccess_HTTP;
-    @FXML
-    private TableColumn col_torBrowserIterationSuccess_HTTP;
-    @FXML
-    private TableColumn col_middleBoxHopCount_HTTP;
-    @FXML
-    private TableColumn col_isCensoredTCP_HTTP;
-    @FXML
     private Text text_overAllHTTPCensored;
+    @FXML
+    private JFXTextField text_ip_1;
+    @FXML
+    private JFXTextField text_ip_2;
+    @FXML
+    private JFXTextField text_ip_3;
+    @FXML
+    private JFXTextField text_ip_4;
+    @FXML
+    private JFXTextField text_localServer_responseCode_1;
+    @FXML
+    private JFXTextField text_localServer_responseCode_2;
+    @FXML
+    private JFXTextField text_localServer_responseCode_3;
+    @FXML
+    private JFXTextField text_localServer_responseCode_4;
+    @FXML
+    private JFXTextField text_TOR_responseCode_1;
+    @FXML
+    private JFXTextField text_TOR_responseCode_2;
+    @FXML
+    private JFXTextField text_TOR_responseCode_3;
+    @FXML
+    private JFXTextField text_TOR_responseCode_4;
+    @FXML
+    private JFXTextField text_localServerRedirection_1;
+    @FXML
+    private JFXTextField text_localServerRedirection_2;
+    @FXML
+    private JFXTextField text_localServerRedirection_3;
+    @FXML
+    private JFXTextField text_localServerRedirection_4;
+    @FXML
+    private JFXTextField text_TOR_Redirection_1;
+    @FXML
+    private JFXTextField text_TOR_Redirection_2;
+    @FXML
+    private JFXTextField text_TOR_Redirection_3;
+    @FXML
+    private JFXTextField text_TOR_Redirection_4;
+    @FXML
+    private Text text_overAllHTTPCensored111;
+    @FXML
+    private Text text_HTTPMessage;
+    @FXML
+    private Text text_overAllHTTPCensored1111;
+    @FXML
+    private Text text_otherErrorPresent;
+    @FXML
+    private Text text_overAllHTTPCensored11111;
+    @FXML
+    private Text text_max_redirection_cnt;
+    @FXML
+    private Text text_overAllHTTPCensored111111;
+    @FXML
+    private Text text_is_fin_bit_set;
+    @FXML
+    private Text text_overAllHTTPCensored1111111;
+    @FXML
+    private Text text_is_rst_bit_set;
+    @FXML
+    private Text text_overAllHTTPCensored11111111;
+    @FXML
+    private Text text_thresholdComparison;
+    @FXML
+    private Text text_overAllHTTPCensored111111111;
+    @FXML
+    private Text text_contentMismatch;
+    @FXML
+    private Text text_overAllHTTPCensored11112;
+    @FXML
+    private Text text_middleBoxHopCount;
+    @FXML
+    private Text text_overAllHTTPCensored111111112;
+    @FXML
+    private Text text_isCensoredWRTThresholdContentMismatch;
+    @FXML
+    private Tab tab_https;
     @FXML
     private Text text_overAllHTTPSCensored;
     @FXML
-    private TableView tableView_HTTPS;
+    private JFXTextField text_ip_11;
     @FXML
-    private TableColumn col_ipAddress_HTTPS;
+    private JFXTextField text_ip_21;
     @FXML
-    private TableColumn col_timeout_HTTPS;
+    private JFXTextField text_ip_31;
     @FXML
-    private TableColumn col_finBitSet_HTTPS;
+    private JFXTextField text_ip_41;
     @FXML
-    private TableColumn col_rstBitSet_HTTPS;
+    private JFXTextField text_localServer_responseCode_11;
     @FXML
-    private TableColumn col_localServerIterationSuccess_HTTPS;
+    private JFXTextField text_localServer_responseCode_21;
     @FXML
-    private TableColumn col_torBrowserIterationSuccess_HTTPS;
+    private JFXTextField text_localServer_responseCode_31;
     @FXML
-    private TableColumn col_middleBoxHopCount_HTTPS;
+    private JFXTextField text_localServer_responseCode_41;
     @FXML
-    private TableColumn col_isCensoredTCP_HTTPS;
+    private JFXTextField text_TOR_responseCode_11;
+    @FXML
+    private JFXTextField text_TOR_responseCode_21;
+    @FXML
+    private JFXTextField text_TOR_responseCode_31;
+    @FXML
+    private JFXTextField text_TOR_responseCode_41;
+    @FXML
+    private JFXTextField text_localServerRedirection_11;
+    @FXML
+    private JFXTextField text_localServerRedirection_21;
+    @FXML
+    private JFXTextField text_localServerRedirection_31;
+    @FXML
+    private JFXTextField text_localServerRedirection_41;
+    @FXML
+    private JFXTextField text_TOR_Redirection_11;
+    @FXML
+    private JFXTextField text_TOR_Redirection_21;
+    @FXML
+    private JFXTextField text_TOR_Redirection_31;
+    @FXML
+    private JFXTextField text_TOR_Redirection_41;
+    @FXML
+    private Text text_HTTPMessage1;
+    @FXML
+    private Text text_otherErrorPresent1;
+    @FXML
+    private Text text_max_redirection_cnt1;
+    @FXML
+    private Text text_is_fin_bit_set1;
+    @FXML
+    private Text text_is_rst_bit_set1;
+    @FXML
+    private Text text_thresholdComparison1;
+    @FXML
+    private Text text_overAllHTTPCensored1111111111;
+    @FXML
+    private Text text_contentMismatch1;
+    @FXML
+    private Text text_overAllHTTPCensored111121;
+    @FXML
+    private Text text_middleBoxHopCount1;
+    @FXML
+    private Text text_overAllHTTPCensored1111111121;
+    @FXML
+    private Text text_isCensoredWRTThresholdContentMismatch1;
+    @FXML
+    private Text text_overAllHTTPCensored11111111211;
+    @FXML
+    private Text text_tlsHandshakeFailed;
 
-    // ---------------------- HTTPS Table View -----------------------------------
+    @FXML
+    private void selectHTTP_Tab(Event event) {
+    }
+
+    @FXML
+    private void selectHTTPS_Tab(Event event) {
+    }
+
     public void setUpThings(Report report) {
         this.report = report;
-
-//        System.out.println("---------------IN setUpThings() ... report is -------------------");
-//        this.report.printReport();
-//        System.out.println("----------------------------------------------------------");
         int is_cens = 0;
-        for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
-            TCPDetails tcpDesc = this.report.tcp_details_list.get(i);
-            if (tcpDesc.getIs_censored_TCP_str().contains("1")) {
-                //any one is censored .. so, overall is censored
-                is_cens = 1;
-                break;
-            }
-        }
         if (is_cens == 0) {
             //not censored
             this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? NO");
@@ -112,7 +202,7 @@ public class HTTP_HTTPS_RecordController {
         }
     }
 
-    public void showThings() {
+    private void loadNetworkThings() {
         this.text_NetworkName.setText(this.report.getNetwork_name());
         this.text_networkType.setText(this.report.getNetwork_type());
 //        this.text_censoredOrNot.setText("IS CENSORED? " + this.report.getIs_censored());
@@ -120,132 +210,65 @@ public class HTTP_HTTPS_RecordController {
         this.text_testType.setText(this.report.getTest_type());
         this.text_url.setText(this.report.getUrl());
 
-        loadTableViewHTTP();
-        loadTableViewHTTPS();
     }
 
-    @FXML
-    private void selectHTTP_Tab(Event event) {
-        System.out.println("-->> To load Table View HTTP");
-//        loadTableViewHTTP();
+    public void showThings() {
+        loadNetworkThings();
+
+        //Pad the list
+        int MAX_REDIRECT = 4;
+        this.report.httpDetails.pad_fields_for_http(MAX_REDIRECT);
+        this.report.httpsDetails.pad_fields_for_https(MAX_REDIRECT);
+
+        loadForHTTP();
+        loadForHTTPS();
     }
 
-    @FXML
-    private void selectHTTPS_Tab(Event event) {
-        System.out.println("-->> To load Table View HTTPS");
-//        loadTableViewHTTPS();
-    }
+    private void loadForHTTP() {        //Load the things for HTTP
+        //1, Load the IP address
+        this.text_ip_1.setText(this.report.httpDetails.getIp_address().get(0));
+        this.text_ip_2.setText(this.report.httpDetails.getIp_address().get(1));
+        this.text_ip_3.setText(this.report.httpDetails.getIp_address().get(2));
+        this.text_ip_4.setText(this.report.httpDetails.getIp_address().get(3));
 
-    private void loadTableViewHTTP() {
+        //2, load response codes
+        //2.1 Local response codes
+        this.text_localServer_responseCode_1.setText(this.report.httpDetails.getHttp_response_code_local().get(0));
+        this.text_localServer_responseCode_2.setText(this.report.httpDetails.getHttp_response_code_local().get(1));
+        this.text_localServer_responseCode_3.setText(this.report.httpDetails.getHttp_response_code_local().get(2));
+        this.text_localServer_responseCode_4.setText(this.report.httpDetails.getHttp_response_code_local().get(3));
+        //2.2 TOR response codes
+        this.text_TOR_responseCode_1.setText(this.report.httpDetails.getHttp_response_code_tor().get(0));
+        this.text_TOR_responseCode_2.setText(this.report.httpDetails.getHttp_response_code_tor().get(1));
+        this.text_TOR_responseCode_3.setText(this.report.httpDetails.getHttp_response_code_tor().get(2));
+        this.text_TOR_responseCode_4.setText(this.report.httpDetails.getHttp_response_code_tor().get(3));
 
-        List<TCPDetails> list_tcp_desc = new ArrayList<>();
+        //3, Load redirection histories
+        //3.1 Local Server redirection urls
+        this.text_localServerRedirection_1.setText(this.report.httpDetails.getRedirection_history_local().get(0));
+        this.text_localServerRedirection_2.setText(this.report.httpDetails.getRedirection_history_local().get(1));
+        this.text_localServerRedirection_3.setText(this.report.httpDetails.getRedirection_history_local().get(2));
+        this.text_localServerRedirection_4.setText(this.report.httpDetails.getRedirection_history_local().get(3));
+        //3.2 TOR redirection urls
+        this.text_TOR_Redirection_1.setText(this.report.httpDetails.getRedirection_history_tor().get(0));
+        this.text_TOR_Redirection_2.setText(this.report.httpDetails.getRedirection_history_tor().get(1));
+        this.text_TOR_Redirection_3.setText(this.report.httpDetails.getRedirection_history_tor().get(2));
+        this.text_TOR_Redirection_4.setText(this.report.httpDetails.getRedirection_history_tor().get(3));
 
-//        System.out.println("------------ Inside loadTableViewHTTP() --------------- Printing report ... " + this.report.toString());
-        //-------- Add only the HTTP records to list_tcp_desc -------------
-        for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
-            TCPDetails tcpDet = this.report.tcp_details_list.get(i);
-            if (tcpDet.getPort() == Config.PORT_HTTP) {
-                list_tcp_desc.add(tcpDet);
-            }
-        }
-
-        list_tcp_desc.forEach(Util::makeTCPDetailStrings); //make Yes/No things
-//        list_tcp_desc.forEach(TCPDetails::makeImageView); //make image view [STILL ERRORS]
-
-        //Now table view things
-        ObservableList<TCPDetails> data = FXCollections.observableArrayList(list_tcp_desc);
-
-        col_ipAddress_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("ip_address")
-        );
-        col_timeout_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("is_timeout_str")
-        );
-        col_finBitSet_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("is_fin_bit_set_str")
-        );
-        col_rstBitSet_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("is_rst_bit_set_str")
-        );
-        col_localServerIterationSuccess_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_local_server_str")
-        );
-        col_torBrowserIterationSuccess_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_tor_str")
-        );
-        col_middleBoxHopCount_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("middle_box_hop_count_str")
-        );
-        col_isCensoredTCP_HTTP.setCellValueFactory(
-                new PropertyValueFactory<>("is_censored_TCP_str")
-        );
-        this.tableView_HTTP.setItems(data);
-    }
-
-    private void loadTableViewHTTPS() {
-        List<TCPDetails> list_tcp_desc = new ArrayList<>();
-
-//        System.out.println("------------ Inside loadTableViewHTTPS() --------------- Printing report ... " + this.report.toString());
-        //-------- Add only the HTTP records to list_tcp_desc -------------
-        for (int i = 0; i < this.report.tcp_details_list.size(); i++) {
-            TCPDetails tcpDet = this.report.tcp_details_list.get(i);
-            if (tcpDet.getPort() == Config.PORT_HTTPS) {
-                list_tcp_desc.add(tcpDet);
-            }
-        }
+        //4, Messages
+        this.text_HTTPMessage.setText(this.report.httpDetails.getMessage_HTTP());
+        this.text_otherErrorPresent.setText(HelperFunctions.getYesOrNo(this.report.httpDetails.getIs_other_error()));
+        this.text_middleBoxHopCount.setText(this.report.httpDetails.getMiddle_box_hop_count());
+        this.text_is_fin_bit_set.setText(HelperFunctions.getYesOrNo(this.report.httpDetails.getIs_fin_bit_set()));
+        this.text_is_rst_bit_set.setText(HelperFunctions.getYesOrNo(this.report.httpDetails.getIs_rst_bit_set()));
+        this.text_max_redirection_cnt.setText(this.report.httpDetails.getMax_redirection_count());
+        this.text_thresholdComparison.setText(HelperFunctions.getPercentage(this.report.httpDetails.getThreshold_comparison()));
+        this.text_contentMismatch.setText(this.report.httpDetails.getContent_difference());
+        this.text_isCensoredWRTThresholdContentMismatch.setText(HelperFunctions.getYesOrNo(this.report.httpDetails.getIs_different_wrt_threshold()));
         
-        
-        System.out.println("====+++----->> loadTableViewHTTPS() ... list_tcp_desc.size() = " + list_tcp_desc.size() + " ... printing the list");
-        
-        
-        list_tcp_desc.forEach(Util::makeTCPDetailStrings); //make Yes/No things
-
-        ObservableList<TCPDetails> data = FXCollections.observableArrayList(list_tcp_desc);
-
-        col_ipAddress_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("ip_address")
-        );
-        col_timeout_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("is_timeout_str")
-        );
-        col_finBitSet_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("is_fin_bit_set_str")
-        );
-        col_rstBitSet_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("is_rst_bit_set_str")
-        );
-        col_localServerIterationSuccess_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_local_server_str")
-        );
-        col_torBrowserIterationSuccess_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("successful_iteration_tor_str")
-        );
-        col_middleBoxHopCount_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("middle_box_hop_count_str")
-        );
-        col_isCensoredTCP_HTTPS.setCellValueFactory(
-                new PropertyValueFactory<>("is_censored_TCP_str")
-        );
-        this.tableView_HTTPS.setItems(data);
     }
 
+    private void loadForHTTPS() {
+
+    }
 }
-
-/*
-        List<JFXTextField> textFieldList = new ArrayList<>();
-
-        for (String iteration_success : this.report.getTcp_details().getIteration_success_local_http()) {
-            //each ip is to be loaded in a text field
-            JFXTextField textField = new JFXTextField();
-            if (isWithin(iteration_success)) {
-                textField.setText("Attempt " + iteration_success + " Successful");
-            }
-            textField.setEditable(false);
-            textField.setStyle("-fx-text-fill: #000000; ");//-fx-font-size: 16px;");
-            textFieldList.add(textField);
-        }
-
-        //Finally add to the vbox
-        this.vbox_HTTPSuccessAttemptLocalServer.getChildren().addAll(textFieldList);
-
- */

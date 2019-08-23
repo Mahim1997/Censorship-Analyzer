@@ -5,6 +5,7 @@
  */
 package ui.model;
 
+import helper.HelperFunctions;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @author mahim
  */
 public class HTTPDetails {
+
     private List<String> ip_address = new ArrayList<>();
     private List<String> http_response_code_local = new ArrayList<>();
     private List<String> http_response_code_tor = new ArrayList<>();
@@ -21,7 +23,7 @@ public class HTTPDetails {
     private String is_fin_bit_set;
     private String is_rst_bit_set;
     private List<String> redirection_history_local = new ArrayList<>();
-    private List<String> redirection_history_tor = new ArrayList<>();  
+    private List<String> redirection_history_tor = new ArrayList<>();
     private String threshold_comparison;
     private String is_different_wrt_threshold;
     private String content_difference; //in percentage
@@ -154,5 +156,14 @@ public class HTTPDetails {
         return "HTTPDetails{" + "ip_address=" + ip_address + ", http_response_code_local=" + http_response_code_local + ", http_response_code_tor=" + http_response_code_tor + ", is_other_error=" + is_other_error + ", message_HTTP=" + message_HTTP + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", redirection_history_local=" + redirection_history_local + ", redirection_history_tor=" + redirection_history_tor + ", threshold_comparison=" + threshold_comparison + ", is_different_wrt_threshold=" + is_different_wrt_threshold + ", content_difference=" + content_difference + ", is_max_redirection_reached=" + is_max_redirection_reached + ", max_redirection_count=" + max_redirection_count + ", middle_box_hop_count=" + middle_box_hop_count + '}';
     }
 
-    
+    public void pad_fields_for_http(int MAX_REDIRECT) {
+        //pad the array
+        String padder = "";
+        this.ip_address = HelperFunctions.padListWith(padder, MAX_REDIRECT, ip_address);
+        this.http_response_code_local = HelperFunctions.padListWith(padder, MAX_REDIRECT, http_response_code_local);
+        this.http_response_code_tor = HelperFunctions.padListWith(padder, MAX_REDIRECT, http_response_code_tor);
+        this.redirection_history_local = HelperFunctions.padListWith(padder, MAX_REDIRECT, redirection_history_local);
+        this.redirection_history_tor = HelperFunctions.padListWith(padder, MAX_REDIRECT, redirection_history_tor);
+    }
+
 }
