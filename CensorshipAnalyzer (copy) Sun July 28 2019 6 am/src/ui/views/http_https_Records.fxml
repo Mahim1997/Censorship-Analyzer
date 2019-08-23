@@ -139,10 +139,10 @@
                                           </Text>
                                        </children>
                                     </VBox>
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
+                                    <JFXTextField fx:id="text_ip_1" />
+                                    <JFXTextField fx:id="text_ip_2" />
+                                    <JFXTextField fx:id="text_ip_3" />
+                                    <JFXTextField fx:id="text_ip_4" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="482.0" prefWidth="169.0">
@@ -152,10 +152,10 @@
                                           <Font name="System Bold Italic" size="21.0" />
                                        </font>
                                     </Text>
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
+                                    <JFXTextField fx:id="text_localServer_responseCode_1" />
+                                    <JFXTextField fx:id="text_localServer_responseCode_2" />
+                                    <JFXTextField fx:id="text_localServer_responseCode_3" />
+                                    <JFXTextField fx:id="text_localServer_responseCode_4" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="482.0" prefWidth="189.0">
@@ -165,10 +165,10 @@
                                           <Font name="System Bold Italic" size="21.0" />
                                        </font>
                                     </Text>
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
+                                    <JFXTextField fx:id="text_TOR_responseCode_1" />
+                                    <JFXTextField fx:id="text_TOR_responseCode_2" />
+                                    <JFXTextField fx:id="text_TOR_responseCode_3" />
+                                    <JFXTextField fx:id="text_TOR_responseCode_4" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="491.0" prefWidth="300.0">
@@ -182,10 +182,10 @@
                                           </Text>
                                        </children>
                                     </VBox>
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
+                                    <JFXTextField fx:id="text_localServerRedirection_1" />
+                                    <JFXTextField fx:id="text_localServerRedirection_2" />
+                                    <JFXTextField fx:id="text_localServerRedirection_3" />
+                                    <JFXTextField fx:id="text_localServerRedirection_4" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="491.0" prefWidth="322.0">
@@ -199,10 +199,10 @@
                                           </Text>
                                        </children>
                                     </VBox>
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
-                                    <JFXTextField />
+                                    <JFXTextField fx:id="text_TOR_Redirection_1" />
+                                    <JFXTextField fx:id="text_TOR_Redirection_2" />
+                                    <JFXTextField fx:id="text_TOR_Redirection_3" />
+                                    <JFXTextField fx:id="text_TOR_Redirection_4" />
                                  </children>
                               </VBox>
                            </children>
