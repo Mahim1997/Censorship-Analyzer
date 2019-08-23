@@ -88,6 +88,7 @@ public class WorkerThread implements Runnable {
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     TCPClient client = new TCPClient();
                     String s = client.formReportNetworkUser(report);
+                    
                     if (Config.SEND_TO_SERVER == true) {
                         System.out.println("------>>>Inside WorkerThread.java ... client.send(s) is DONE");
                         client.send(s);

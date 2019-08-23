@@ -110,7 +110,7 @@ public class StringProcessor {
     }
 
     public static Report processStringAndFormReport(String str) {
-        Report report = new Report();
+        
 
         String[] arr = str.split("\\$");
 
@@ -124,6 +124,8 @@ public class StringProcessor {
         // ------------------------------ COMMON THINGS ARE ADDED ---------------------------
         int BASE = 0; //Everything indices will be BASE + 0 ... BASE + 1 ... etc
 
+        Report report = new Report();
+        
         report.setReport_id(getSecondColumn_Int(arr[0]));
         report.setConnection_id(getSecondColumn_Int(arr[1]));
         report.setTime_stamp(getSecondColumn_TimeStamp(arr[2]));
@@ -203,6 +205,7 @@ public class StringProcessor {
             //Add HTTP
             report.httpDetails = new HTTPDetails();
             int base_itr_to_be_added = 10;
+            report.httpDetails.setReportIDDebug(report.getReport_id());
             report.httpDetails.setIp_address(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 0], "#"));
             report.httpDetails.setHttp_response_code_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 1], "#"));
             report.httpDetails.setHttp_response_code_tor(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 2], "#"));
@@ -223,6 +226,7 @@ public class StringProcessor {
 
             //Add HTTPS
             report.httpsDetails = new HTTPSDetails();
+            report.httpsDetails.setReportIDDebug(report.getReport_id());
             base_itr_to_be_added = 25;
             report.httpsDetails.setIp_address(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 0], "#"));
             report.httpsDetails.setHttps_response_code_local(getListStringDelimmedSecondColumn(arr[base_itr_to_be_added + 1], "#"));

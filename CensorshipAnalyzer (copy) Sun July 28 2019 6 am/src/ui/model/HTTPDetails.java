@@ -15,6 +15,28 @@ import java.util.List;
  */
 public class HTTPDetails {
 
+    
+    
+    public int reportIDDebug;
+
+    public int getReportIDDebug() {
+        return reportIDDebug;
+    }
+
+    public void setReportIDDebug(int reportIDDebug) {
+        this.reportIDDebug = reportIDDebug;
+    }
+    
+    
+    public HTTPDetails() {
+        System.out.println("-->>>CLEARING HTTP Details ... ");
+        this.ip_address.clear();
+        this.http_response_code_local.clear();
+        this.http_response_code_tor.clear();
+        this.redirection_history_local.clear();
+        this.redirection_history_tor.clear();
+    }
+
     private List<String> ip_address = new ArrayList<>();
     private List<String> http_response_code_local = new ArrayList<>();
     private List<String> http_response_code_tor = new ArrayList<>();
@@ -36,6 +58,8 @@ public class HTTPDetails {
     }
 
     public void setIp_address(List<String> ip_address) {
+        System.out.println("-->>>INSIDE HTTPDetails.setIP_address() ... setting ");
+        HelperFunctions.printListNoLine(ip_address);
         this.ip_address = ip_address;
     }
 
@@ -153,8 +177,10 @@ public class HTTPDetails {
 
     @Override
     public String toString() {
-        return "HTTPDetails{" + "ip_address=" + ip_address + ", http_response_code_local=" + http_response_code_local + ", http_response_code_tor=" + http_response_code_tor + ", is_other_error=" + is_other_error + ", message_HTTP=" + message_HTTP + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", redirection_history_local=" + redirection_history_local + ", redirection_history_tor=" + redirection_history_tor + ", threshold_comparison=" + threshold_comparison + ", is_different_wrt_threshold=" + is_different_wrt_threshold + ", content_difference=" + content_difference + ", is_max_redirection_reached=" + is_max_redirection_reached + ", max_redirection_count=" + max_redirection_count + ", middle_box_hop_count=" + middle_box_hop_count + '}';
+        return "HTTPDetails{" + "reportIDDebug=" + reportIDDebug + ", ip_address=" + ip_address + ", http_response_code_local=" + http_response_code_local + ", http_response_code_tor=" + http_response_code_tor + ", is_other_error=" + is_other_error + ", message_HTTP=" + message_HTTP + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", redirection_history_local=" + redirection_history_local + ", redirection_history_tor=" + redirection_history_tor + ", threshold_comparison=" + threshold_comparison + ", is_different_wrt_threshold=" + is_different_wrt_threshold + ", content_difference=" + content_difference + ", is_max_redirection_reached=" + is_max_redirection_reached + ", max_redirection_count=" + max_redirection_count + ", middle_box_hop_count=" + middle_box_hop_count + '}';
     }
+
+
 
     public void pad_fields_for_http(int MAX_REDIRECT) {
         //pad the array

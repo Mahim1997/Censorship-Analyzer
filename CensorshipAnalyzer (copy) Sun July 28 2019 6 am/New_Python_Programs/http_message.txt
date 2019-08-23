@@ -1,15 +1,15 @@
-1$_________http://belovedbd.com___________
-2$hostname: belovedbd.com
-3$ip: 103.224.212.222
+1$_________http://m.facebook.com___________
+2$hostname: m.facebook.com
+3$ip: 31.13.64.35
 4$Dns done through Tor
-5$read timeout
-6$http error
-one through Tor
-5$Tor response status code: 301
-6$Local response status code: 200
-7$Http censorship applied: Http response status code mismatch
-8$new url tor: https://defenseupdatebangladesh.wordpress.com/
-9$_________https://defenseupdatebangladesh.wordpress.com/___________
-10$ip: 192.0.78.12
-11$Dns done through Tor
-12$tls handshake failed
+5$Tor response status code: 302
+6$Local response status code: 302
+7$new url local: https://m.facebook.com/
+8$_________https://m.facebook.com/___________
+9$ip: 31.13.92.36
+10$Dns done through Tor
+11$Tor response status code: 200
+12$Local response status code: 200
+13$start html 
+14$difference: 0.01308360285992527
+15$Https: Not censored

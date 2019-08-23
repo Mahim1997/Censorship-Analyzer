@@ -238,34 +238,6 @@ public class CensoredRecordController_Waiting {
         return null;
     }
 
-    public void goToDetailsDNSRecord(int reportID) {
-        //Called when button is clicked ... 
-        System.out.println("------->>> Method goToDetailsDNSRecord() is called reportID = " + reportID);
-
-        try {
-            String fileNameFXMLToLoad = Scenes.dnsRecords;
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
-
-            Parent root = loader.load();
-            DNSRecordController controller = (DNSRecordController) loader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("DNS Details");
-            stage.setScene(scene);
-
-            controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
-            controller.showThings();
-
-            stage.show();
-
-        } catch (IOException ex) {
-            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
-        }
-
-    }
-
     private List<String> readFile() {
         List<String> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(this.absFileName))) {
@@ -407,6 +379,36 @@ public class CensoredRecordController_Waiting {
         JavaUDPServerClient.sendThreadExitCommand();    //Send a loop-back command to JAVA PORT
     }
 
+    
+    public void goToDetailsDNSRecord(int reportID) {
+        //Called when button is clicked ... 
+        System.out.println("------->>> Method goToDetailsDNSRecord() is called reportID = " + reportID);
+
+        try {
+            String fileNameFXMLToLoad = Scenes.dnsRecords;
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource(fileNameFXMLToLoad));
+
+            Parent root = loader.load();
+            DNSRecordController controller = (DNSRecordController) loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("DNS Details");
+            stage.setScene(scene);
+
+            controller.setUpThings(getReport(reportID), stage);    //Set up which report to show ... 
+            controller.showThings();
+
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println("\n--->>> EXCEPTION IN TestSitesController.submitFile function() .... ");
+        }
+
+    }
+
+    
     public void goToDetailsTCPRecord(int reportID) {
         //Called when button is clicked ... 
         System.out.println("------->>> Method goToDetailsTCPRecord() is called reportID = " + reportID);

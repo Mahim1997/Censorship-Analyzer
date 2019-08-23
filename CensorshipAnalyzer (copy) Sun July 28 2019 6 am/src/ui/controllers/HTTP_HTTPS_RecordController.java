@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.text.Text;
 import ui.model.Report;
-import ui.model.TCPDetails;
 
 public class HTTP_HTTPS_RecordController {
 
@@ -188,7 +187,16 @@ public class HTTP_HTTPS_RecordController {
     }
 
     public void setUpThings(Report report) {
+        this.report = new Report();
         this.report = report;
+        System.out.println("--->>>Inside HTTP_HTTPS_Controller.setUpThings() .. printing Report");
+        System.out.println(this.report.toString());
+        System.out.println("---===>> PRINTING HTTP Details");
+        System.out.println(this.report.httpDetails.toString());
+        System.out.println("===+++-->>> Now PRINTING HTTPS Details");
+        System.out.println(this.report.httpsDetails.toString());
+        
+
         int is_cens = 0;
         if (is_cens == 0) {
             //not censored

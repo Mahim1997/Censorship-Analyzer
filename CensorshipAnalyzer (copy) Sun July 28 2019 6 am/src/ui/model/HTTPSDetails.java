@@ -15,6 +15,25 @@ import java.util.List;
  */
 public class HTTPSDetails {
 
+    public int reportIDDebug;
+
+    public int getReportIDDebug() {
+        return reportIDDebug;
+    }
+
+    public void setReportIDDebug(int reportIDDebug) {
+        this.reportIDDebug = reportIDDebug;
+    }
+
+    public HTTPSDetails() {
+        System.out.println("-->>>CLEARING HTTPS Details ... ");
+        this.ip_address.clear();
+        this.https_response_code_local.clear();
+        this.https_response_code_tor.clear();
+        this.redirection_history_local.clear();
+        this.redirection_history_tor.clear();
+    }
+
     private List<String> ip_address = new ArrayList<>();
     private List<String> https_response_code_local = new ArrayList<>();
     private List<String> https_response_code_tor = new ArrayList<>();
@@ -162,7 +181,7 @@ public class HTTPSDetails {
 
     @Override
     public String toString() {
-        return "HTTPSDetails{" + "ip_address=" + ip_address + ", https_response_code_local=" + https_response_code_local + ", https_response_code_tor=" + https_response_code_tor + ", is_other_error=" + is_other_error + ", message_HTTPS=" + message_HTTPS + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", redirection_history_local=" + redirection_history_local + ", redirection_history_tor=" + redirection_history_tor + ", threshold_comparison=" + threshold_comparison + ", is_different_wrt_threshold=" + is_different_wrt_threshold + ", content_difference=" + content_difference + ", is_max_redirection_reached=" + is_max_redirection_reached + ", max_redirection_count=" + max_redirection_count + ", middle_box_hop_count=" + middle_box_hop_count + ", is_tls_handshake_failed=" + is_tls_handshake_failed + '}';
+        return "HTTPSDetails{" + "reportIDDebug=" + reportIDDebug + ", ip_address=" + ip_address + ", https_response_code_local=" + https_response_code_local + ", https_response_code_tor=" + https_response_code_tor + ", is_other_error=" + is_other_error + ", message_HTTPS=" + message_HTTPS + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", redirection_history_local=" + redirection_history_local + ", redirection_history_tor=" + redirection_history_tor + ", threshold_comparison=" + threshold_comparison + ", is_different_wrt_threshold=" + is_different_wrt_threshold + ", content_difference=" + content_difference + ", is_max_redirection_reached=" + is_max_redirection_reached + ", max_redirection_count=" + max_redirection_count + ", middle_box_hop_count=" + middle_box_hop_count + ", is_tls_handshake_failed=" + is_tls_handshake_failed + '}';
     }
 
     public void pad_fields_for_https(int MAX_REDIRECT) {

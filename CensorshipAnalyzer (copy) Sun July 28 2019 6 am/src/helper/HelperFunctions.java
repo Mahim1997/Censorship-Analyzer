@@ -36,7 +36,7 @@ public class HelperFunctions {
         if(boolValue == null){
             return "NO";
         }
-        if (boolValue.trim().equals('0')) {
+        if (boolValue.trim().contains("0")) {
             return "NO";
         } else if (boolValue.trim().equals("null")) {
             return "NO";
@@ -59,6 +59,13 @@ public class HelperFunctions {
             return valStr;
         }
 
+    }
+
+    public static void printListNoLine(List<String> ip_address) {
+        ip_address.forEach((x) -> {
+            System.out.print(x + " ");
+        });
+        System.out.println("");
     }
 
 }

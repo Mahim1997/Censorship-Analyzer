@@ -1,7 +1,6 @@
-1$---------------Dns Resolution Of youtube.com:-------------------
+1$---------------Dns Resolution Of m.facebook.com:-------------------
 2$->Local Dns Server:
-3$Local:172.217.163.78
-4$Remote:216.58.211.110
-5$Remote:172.217.19.206
-6$Remote:172.217.22.14
-7$youtube.com is not censored(first 8-24 bit matched)
+3$Local:157.240.7.35
+4$Remote:31.13.64.35
+5$Remote:157.240.195.35
+6$m.facebook.com is not censored(first 8-24 bit matched)
