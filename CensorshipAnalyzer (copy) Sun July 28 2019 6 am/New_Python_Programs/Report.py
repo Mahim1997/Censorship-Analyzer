@@ -39,6 +39,9 @@ class Report:
     def __init__(self):
         print("-->>Initializing Report.py class")
         self.is_censored = 0  # Make false for now
+        self.https_description = HTTPSDescription()
+        self.http_description = HTTPDescription()
+
 
     def getReportString(self):
         self.str_report = ""

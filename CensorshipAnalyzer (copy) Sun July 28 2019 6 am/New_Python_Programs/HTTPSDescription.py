@@ -25,6 +25,33 @@ class HTTPSDescription:
 	# For printing
 	str_description = ""
 
+	def __init__(self):
+		# ALL IP
+		self.ip_address = []
+		self.https_response_code_local = []
+		self.https_response_code_tor = []
+		self.is_other_error = 0  # Default false
+		self.message_https = ""  # Default nothing
+
+		self.is_fin_bit_set = 0
+		self.is_rst_bit_set = 0
+		self.is_tls_handshake_failed = 0
+
+		self.redirection_history_local = []
+		self.redirection_history_tor = []
+
+		self.threshold_comarison = 0.300  # Default comparison threshold is 30 %
+		self.is_different_wrt_threshold = 0  # Default False
+		self.content_difference = 0.0
+		self.is_max_redirection_reached = 0
+
+		# Middle box hop count
+		self.middle_box_hop_count = 0
+
+		self.max_redirection_count = 0
+		# For printing
+		self.str_description = ""
+
 	def getIPAddressesHashed(self):
 		str_ret = ""
 		for ip in self.ip_address:

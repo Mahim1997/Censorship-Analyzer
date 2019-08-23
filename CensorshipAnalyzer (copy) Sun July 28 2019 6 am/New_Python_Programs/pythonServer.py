@@ -128,10 +128,9 @@ def processMessage(msg):
 		http_obj = http_https_data()  # For HTTP Checking
 
 		db = DBHandler()
-		# Check for 5 iterations
+
 		rep_HTTP, rep_HTTPS = http_obj.check_http_https_censorship(url)
 
-		rep_HTTP = Report()
 		rep_HTTP.url = url
 		rep_HTTP.time_stamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # In this format
 		rep_HTTP.is_file_check = isFile
@@ -140,7 +139,6 @@ def processMessage(msg):
 		rep_HTTP.iteration_number = iterationNumber
 		rep_HTTP.type_of_testing = "HTTP"
 
-		rep_HTTPS = Report()
 		rep_HTTPS.url = url
 		rep_HTTPS.time_stamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # In this format
 		rep_HTTPS.is_file_check = isFile
