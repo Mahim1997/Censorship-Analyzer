@@ -114,3 +114,4 @@ class Report:
         str_report = self.getReportString()
         print(str_report)
         print("------------------------------- Printing Report Done -------------------------------------")
+        return str_report
