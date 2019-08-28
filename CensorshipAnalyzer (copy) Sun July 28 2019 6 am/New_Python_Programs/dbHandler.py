@@ -134,7 +134,7 @@ class DBHandler:
         print(" =====>>> [In dbHandler.py] HTTP: Inserting into Report Table ... ")
 
         print("----->> BEFORE INSERTING ... printing report ... ")
-        report.printReport()
+        str_to_send_to_java = report.printReport()
 
         c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
@@ -184,7 +184,7 @@ class DBHandler:
 
         conn.commit()
         
-        str_to_send_to_java = report.getReportString()
+        #str_to_send_to_java = report.getReportString()
         self.sendToJava(str_to_send_to_java)
 
         c.close()
