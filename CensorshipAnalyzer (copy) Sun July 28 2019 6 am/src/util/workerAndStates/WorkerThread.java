@@ -75,7 +75,7 @@ public class WorkerThread implements Runnable {
                     DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                     serverSocket.receive(receivePacket);
 
-                    String receivedString = new String(receivePacket.getData());
+                    String receivedString = new String(receivePacket.getData()).replace("\0", "").trim();
                     System.out.println("RECEIVED: " + receivedString);
 
                     //EXIT CHECKING BEGIN
@@ -87,7 +87,7 @@ public class WorkerThread implements Runnable {
 
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     TCPClient client = new TCPClient();
-                    String s = client.formReportNetworkUser(report);
+                    String s = client.formReportNetworkUser(report).replace("\0", "").trim();
                     
                     if (Config.SEND_TO_SERVER == true) {
                         System.out.println("------>>>Inside WorkerThread.java ... client.send(s) is DONE");
