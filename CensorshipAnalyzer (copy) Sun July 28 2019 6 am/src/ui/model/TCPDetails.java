@@ -235,7 +235,7 @@ public class TCPDetails {   //This is per IP
         s += (this.ip_address + "$" + this.port + "$" + this.is_tor_not_connected_str + "$" + this.is_timeout_str + "$"
                 + this.is_fin_bit_set_str + "$" + this.is_rst_bit_set_str + "$" + this.successful_iteration_local_server_str
                 + "$" + this.successful_iteration_tor_str + "$" + this.middle_box_hop_count_str
-                + "$" + this.is_censored_TCP_str);
+                + "$" + String.valueOf(this.is_censored_TCP));
 
         return s;
     }

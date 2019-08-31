@@ -91,7 +91,7 @@ public class WorkerThread implements Runnable {
                     if ((Config.SEND_TO_SERVER == true) && (report.getUrl() != null || (report.getUrl().trim().equals("") == false))) {
                         System.out.println("------>>>Inside WorkerThread.java ... client.send(s) is DONE");
 //                        client.send(report);
-                        String s = client.formReportNetworkUser_New(report).replace("\0", "").trim();
+                        String s = client.formReportNetworkUser(report).replace("\0", "").trim();
                         client.send(s);
                         System.out.println("----------------->>> SENT TO SERVER .... DONE !!");
                     }

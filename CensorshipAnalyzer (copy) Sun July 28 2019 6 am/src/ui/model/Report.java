@@ -294,6 +294,12 @@ public class Report {
             }
 
             s += "$#";
+        } else if (this.getTest_type().equals("HTTP") || (this.getTest_type().equals("HTTPS"))) {
+            s += ("$HTTP_DESCRIPTION$" + String.valueOf(this.report_id) + "$");
+            s += (this.httpDetails.getDescription());
+            s += ("$HTTPS_DESCRIPTION$" + String.valueOf(this.report_id) + "$");
+            s += (this.httpsDetails.getDescription());
+            s += "$#";
         }
 
         return s;
@@ -302,13 +308,12 @@ public class Report {
     public String getReportString_New() {
         String s = "";
 
-        s += "</>"; //for Report
-        s += (String.valueOf(report_id) + "$" +  String.valueOf(connection_id) + "$" + time_stamp + "$" + url + "$" + test_type + "$" + 
-                String.valueOf(is_censored) + "$" + String.valueOf(is_periodic) + "$" + 
-                String.valueOf(file_name_periodic) + "$" + String.valueOf(iteration_number));
-        
-        s += "$</>$"; // for Details
+        s += "</>$"; //for Report
+        s += (String.valueOf(report_id) + "$" + String.valueOf(connection_id) + "$" + time_stamp + "$" + url + "$" + test_type + "$"
+                + String.valueOf(is_censored) + "$" + String.valueOf(is_periodic) + "$"
+                + String.valueOf(file_name_periodic) + "$" + String.valueOf(iteration_number));
 
+        s += "$</>$"; // for Details
 
         if (this.getTest_type().equals("DNS")) {
             s += (String.valueOf(this.report_id) + "$");
@@ -317,8 +322,9 @@ public class Report {
         } else if (this.getTest_type().equals("TCP")) {
 //            s += ("$TCP_DESCRIPTION$" + this.report_id + "$");
             s += (String.valueOf(this.report_id));
+            String numberOfTCPRecords = String.valueOf(this.tcp_details_list.size());
             for (int i = 0; i < this.tcp_details_list.size(); i++) {
-                s += ("$<#>$");
+                s += ("$<#" + numberOfTCPRecords + ">$");
                 TCPDetails det = this.tcp_details_list.get(i);
                 s += det.getTCPDetails();
             }

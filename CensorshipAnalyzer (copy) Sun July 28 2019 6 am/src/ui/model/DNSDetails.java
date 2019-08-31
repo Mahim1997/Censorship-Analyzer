@@ -216,8 +216,10 @@ public class DNSDetails {
     public String getDNSDetails() {
         String s = "";
 
-        s += (this.is_timeout + "$" + this.is_loopback + "$" + this.is_multicast + "$" + this.is_broadcast + "$" + this.is_private
-                + "$" + this.is_bogon + "$" + this.is_unknown_error + "$" + this.is_nxDomain + "$" + this.is_noAnswerPacket
+        s += (this.is_timeout + "$" + this.is_loopback + "$" + this.is_multicast 
+                + "$" + this.is_broadcast + "$" + this.is_private
+                + "$" + this.is_bogon + "$" + this.is_unknown_error 
+                + "$" + this.is_nxDomain + "$" + this.is_noAnswerPacket
                 + "$" + this.is_stubby_failed + "$" + this.is_topExistingButAuthNotExisting
                 + "$" + this.is_timeout_local_server + "$" + this.is_non_overlapping_ip_list
                 + "$" + this.is_is_first_8_to_24_bit_match

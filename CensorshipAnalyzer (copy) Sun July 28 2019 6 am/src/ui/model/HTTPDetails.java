@@ -15,8 +15,6 @@ import java.util.List;
  */
 public class HTTPDetails {
 
-    
-    
     public int reportIDDebug;
 
     public int getReportIDDebug() {
@@ -26,8 +24,7 @@ public class HTTPDetails {
     public void setReportIDDebug(int reportIDDebug) {
         this.reportIDDebug = reportIDDebug;
     }
-    
-    
+
     public HTTPDetails() {
         System.out.println("-->>>CLEARING HTTP Details ... ");
         this.ip_address.clear();
@@ -180,8 +177,6 @@ public class HTTPDetails {
         return "HTTPDetails{" + "reportIDDebug=" + reportIDDebug + ", ip_address=" + ip_address + ", http_response_code_local=" + http_response_code_local + ", http_response_code_tor=" + http_response_code_tor + ", is_other_error=" + is_other_error + ", message_HTTP=" + message_HTTP + ", is_fin_bit_set=" + is_fin_bit_set + ", is_rst_bit_set=" + is_rst_bit_set + ", redirection_history_local=" + redirection_history_local + ", redirection_history_tor=" + redirection_history_tor + ", threshold_comparison=" + threshold_comparison + ", is_different_wrt_threshold=" + is_different_wrt_threshold + ", content_difference=" + content_difference + ", is_max_redirection_reached=" + is_max_redirection_reached + ", max_redirection_count=" + max_redirection_count + ", middle_box_hop_count=" + middle_box_hop_count + '}';
     }
 
-
-
     public void pad_fields_for_http(int MAX_REDIRECT) {
         //pad the array
         String padder = "";
@@ -190,6 +185,67 @@ public class HTTPDetails {
         this.http_response_code_tor = HelperFunctions.padListWith(padder, MAX_REDIRECT, http_response_code_tor);
         this.redirection_history_local = HelperFunctions.padListWith(padder, MAX_REDIRECT, redirection_history_local);
         this.redirection_history_tor = HelperFunctions.padListWith(padder, MAX_REDIRECT, redirection_history_tor);
+    }
+
+    private String getHTTPResponseCodeLocal() {
+        String s = "";
+        for (String ip : this.http_response_code_local) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getHTTPResponseCodeTOR() {
+        String s = "";
+        for (String ip : this.http_response_code_tor) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getRedirectionHistoryLocal() {
+        String s = "";
+        for (String ip : this.redirection_history_local) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getRedirectionHistoryTOR() {
+        String s = "";
+        for (String ip : this.redirection_history_tor) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getIPAddresses() {
+        String s = "";
+        for (String ip : this.ip_address) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    public String getDescription() {
+        String s = "";
+        s += (this.message_HTTP + "$");
+        s += (this.is_fin_bit_set + "$");
+        s += (this.is_rst_bit_set + "$");
+        s += (this.is_different_wrt_threshold + "$");
+        s += (this.content_difference + "$");
+        s += (getHTTPResponseCodeLocal() + "$");
+        s += (getHTTPResponseCodeTOR() + "$");
+        s += (this.is_max_redirection_reached + "$");
+        s += (this.is_other_error + "$");
+        s += (this.max_redirection_count + "$");
+        s += (this.middle_box_hop_count + "$");
+        s += (getRedirectionHistoryLocal() + "$");
+        s += (getRedirectionHistoryTOR() + "$");
+        s += (this.threshold_comparison + "$");
+        s += (getIPAddresses() + "$");
+
+        return s;
     }
 
 }

@@ -196,4 +196,67 @@ public class HTTPSDetails {
 
     }
 
+    private String getHTTPSResponseCodeLocal() {
+        String s = "";
+        for (String ip : this.https_response_code_local) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getHTTPSResponseCodeTOR() {
+        String s = "";
+        for (String ip : this.https_response_code_tor) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getRedirectionHistoryLocal() {
+        String s = "";
+        for (String ip : this.redirection_history_local) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getRedirectionHistoryTOR() {
+        String s = "";
+        for (String ip : this.redirection_history_tor) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    private String getIPAddresses() {
+        String s = "";
+        for (String ip : this.ip_address) {
+            s += (ip + ",");
+        }
+        return s;
+    }
+
+    public String getDescription() {
+        String s = "";
+        s += (getIPAddresses() + "$");
+        s += (getHTTPSResponseCodeLocal() + "$");
+        s += (getHTTPSResponseCodeTOR() + "$");
+        s += (this.is_other_error + "$");
+        s += (this.message_HTTPS + "$");
+        s += (this.is_fin_bit_set + "$");
+        s += (this.is_rst_bit_set + "$");
+        s += (getRedirectionHistoryLocal() + "$");
+        s += (getRedirectionHistoryTOR() + "$");
+        s += (this.threshold_comparison + "$");
+        s += (this.is_different_wrt_threshold + "$");
+        s += (this.content_difference + "$");
+        s += (this.is_max_redirection_reached + "$");
+        s += (this.max_redirection_count + "$");
+        s += (this.middle_box_hop_count + "$");
+        s += (this.middle_box_hop_count + "$");
+        s += (this.is_tls_handshake_failed + "$");
+
+        return s;
+    }
+
 }
