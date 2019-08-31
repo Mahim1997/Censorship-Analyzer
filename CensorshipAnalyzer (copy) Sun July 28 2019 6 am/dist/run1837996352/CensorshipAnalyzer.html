@@ -1,0 +1,45 @@
+<html><head>
+  <SCRIPT src="./web-files/dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'CensorshipAnalyzer.jnlp',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPGpubHAgc3BlYz0iMS4wIiB4bWxuczpqZng9Imh0dHA6Ly9qYXZhZnguY29tIiBocmVmPSJDZW5zb3JzaGlwQW5hbHl6ZXIuam5scCI+CiAgPGluZm9ybWF0aW9uPgogICAgPHRpdGxlPkNlbnNvcnNoaXBBbmFseXplcjwvdGl0bGU+CiAgICA8dmVuZG9yPmVzZnM8L3ZlbmRvcj4KICAgIDxkZXNjcmlwdGlvbj5udWxsPC9kZXNjcmlwdGlvbj4KICAgIDxvZmZsaW5lLWFsbG93ZWQvPgogIDwvaW5mb3JtYXRpb24+CiAgPHJlc291cmNlcz4KICAgIDxqMnNlIHZlcnNpb249IjEuNisiIGhyZWY9Imh0dHA6Ly9qYXZhLnN1bi5jb20vcHJvZHVjdHMvYXV0b2RsL2oyc2UiLz4KICAgIDxqYXIgaHJlZj0iQ2Vuc29yc2hpcEFuYWx5emVyLmphciIgc2l6ZT0iMTA3NzAwMiIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvY2hhcm0tZ2xpc3Rlbi00LjQuMS5qYXIiIHNpemU9IjEwNDA3ODciIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbW1vbnMtY29kZWMtMS40LmphciIgc2l6ZT0iNTgxNjAiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbnRyb2xzZngtOC40MC4xNC5qYXIiIHNpemU9IjEyMTU2NDMiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbnRyb2xzZngtc2FtcGxlcy04LjQwLjE0LmphciIgc2l6ZT0iNzI1NzA3IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9mb250YXdlc29tZWZ4LTguOS1qYXZhZG9jLmphciIgc2l6ZT0iMjc5MTg1IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9mb250YXdlc29tZWZ4LTguOS1zb3VyY2VzLmphciIgc2l6ZT0iNDQ4NzE2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9mb250YXdlc29tZWZ4LTguOS5qYXIiIHNpemU9IjU3MTA2OCIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvZm9udGF3ZXNvbWVmeC1jb21tb25zLTguMTUuamFyIiBzaXplPSIyMDk1NyIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvZm9udGF3ZXNvbWVmeC1mb250YXdlc29tZS00LjcuMC01LmphciIgc2l6ZT0iMTM2ODkxIiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9meHNhbXBsZXItMS4wLjEwLmphciIgc2l6ZT0iMzA4ODIiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2dzb24tMi44LjEuamFyIiBzaXplPSIyMzI2MjAiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2pmb2VuaXguamFyIiBzaXplPSIyMzkwOTAwIiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9vcmctbmV0YmVhbnMtbW9kdWxlcy1qYXZhLWoyc2Vwcm9qZWN0LWNvcHlsaWJzdGFzay5qYXIiIHNpemU9IjI2NzE2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9zcWxpdGUtamRiYy0zLjI3LjIuMS5qYXIiIHNpemU9IjYwMTIxMDciIGRvd25sb2FkPSJlYWdlciIgLz4KICA8L3Jlc291cmNlcz4KICA8YXBwbGV0LWRlc2MgIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBtYWluLWNsYXNzPSJjb20uamF2YWZ4Lm1haW4uTm9KYXZhRlhGYWxsYmFjayIgIG5hbWU9IkNlbnNvcnNoaXBBbmFseXplciIgPgogICAgPHBhcmFtIG5hbWU9InJlcXVpcmVkRlhWZXJzaW9uIiB2YWx1ZT0iOC4wKyIvPgogIDwvYXBwbGV0LWRlc2M+CiAgPGpmeDpqYXZhZngtZGVzYyAgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIG1haW4tY2xhc3M9Im1haW4uTWFpbiIgIG5hbWU9IkNlbnNvcnNoaXBBbmFseXplciIgLz4KICA8dXBkYXRlIGNoZWNrPSJhbHdheXMiLz4KPC9qbmxwPgo='
+            },
+            {
+                javafx : '8.0+'
+            },
+            {}
+        );
+        return false;
+    }
+</script>
+
+<script>
+    function javafxEmbedmain() {
+        dtjava.embed(
+            {
+                id : 'main',
+                url : 'CensorshipAnalyzer.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : '800',
+                height : '600',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPGpubHAgc3BlYz0iMS4wIiB4bWxuczpqZng9Imh0dHA6Ly9qYXZhZnguY29tIiBocmVmPSJDZW5zb3JzaGlwQW5hbHl6ZXIuam5scCI+CiAgPGluZm9ybWF0aW9uPgogICAgPHRpdGxlPkNlbnNvcnNoaXBBbmFseXplcjwvdGl0bGU+CiAgICA8dmVuZG9yPmVzZnM8L3ZlbmRvcj4KICAgIDxkZXNjcmlwdGlvbj5udWxsPC9kZXNjcmlwdGlvbj4KICAgIDxvZmZsaW5lLWFsbG93ZWQvPgogIDwvaW5mb3JtYXRpb24+CiAgPHJlc291cmNlcz4KICAgIDxqMnNlIHZlcnNpb249IjEuNisiIGhyZWY9Imh0dHA6Ly9qYXZhLnN1bi5jb20vcHJvZHVjdHMvYXV0b2RsL2oyc2UiLz4KICAgIDxqYXIgaHJlZj0iQ2Vuc29yc2hpcEFuYWx5emVyLmphciIgc2l6ZT0iMTA3NzAwMiIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvY2hhcm0tZ2xpc3Rlbi00LjQuMS5qYXIiIHNpemU9IjEwNDA3ODciIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbW1vbnMtY29kZWMtMS40LmphciIgc2l6ZT0iNTgxNjAiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbnRyb2xzZngtOC40MC4xNC5qYXIiIHNpemU9IjEyMTU2NDMiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbnRyb2xzZngtc2FtcGxlcy04LjQwLjE0LmphciIgc2l6ZT0iNzI1NzA3IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9mb250YXdlc29tZWZ4LTguOS1qYXZhZG9jLmphciIgc2l6ZT0iMjc5MTg1IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9mb250YXdlc29tZWZ4LTguOS1zb3VyY2VzLmphciIgc2l6ZT0iNDQ4NzE2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9mb250YXdlc29tZWZ4LTguOS5qYXIiIHNpemU9IjU3MTA2OCIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvZm9udGF3ZXNvbWVmeC1jb21tb25zLTguMTUuamFyIiBzaXplPSIyMDk1NyIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvZm9udGF3ZXNvbWVmeC1mb250YXdlc29tZS00LjcuMC01LmphciIgc2l6ZT0iMTM2ODkxIiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9meHNhbXBsZXItMS4wLjEwLmphciIgc2l6ZT0iMzA4ODIiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2dzb24tMi44LjEuamFyIiBzaXplPSIyMzI2MjAiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2pmb2VuaXguamFyIiBzaXplPSIyMzkwOTAwIiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9vcmctbmV0YmVhbnMtbW9kdWxlcy1qYXZhLWoyc2Vwcm9qZWN0LWNvcHlsaWJzdGFzay5qYXIiIHNpemU9IjI2NzE2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9zcWxpdGUtamRiYy0zLjI3LjIuMS5qYXIiIHNpemU9IjYwMTIxMDciIGRvd25sb2FkPSJlYWdlciIgLz4KICA8L3Jlc291cmNlcz4KICA8YXBwbGV0LWRlc2MgIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBtYWluLWNsYXNzPSJjb20uamF2YWZ4Lm1haW4uTm9KYXZhRlhGYWxsYmFjayIgIG5hbWU9IkNlbnNvcnNoaXBBbmFseXplciIgPgogICAgPHBhcmFtIG5hbWU9InJlcXVpcmVkRlhWZXJzaW9uIiB2YWx1ZT0iOC4wKyIvPgogIDwvYXBwbGV0LWRlc2M+CiAgPGpmeDpqYXZhZngtZGVzYyAgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIG1haW4tY2xhc3M9Im1haW4uTWFpbiIgIG5hbWU9IkNlbnNvcnNoaXBBbmFseXplciIgLz4KICA8dXBkYXRlIGNoZWNrPSJhbHdheXMiLz4KPC9qbmxwPgo='
+            },
+            {
+                javafx : '8.0+'
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbedmain);
+</script>
+
+</head><body>
+<h2>Test page for <b>CensorshipAnalyzer</b></h2>
+  <b>Webstart:</b> <a href='CensorshipAnalyzer.jnlp' onclick="return launchApplication('CensorshipAnalyzer.jnlp');">click to launch this app as webstart</a><br><hr><br>
+
+  <!-- Applet will be inserted here -->
+  <div id='javafx-app-placeholder'></div>
+</body></html>

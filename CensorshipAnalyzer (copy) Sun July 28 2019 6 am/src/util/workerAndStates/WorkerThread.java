@@ -11,7 +11,6 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import javafx.application.Platform;
 import main.Config;
-import main.Main;
 import ui.controllers.CensoredRecordController_Waiting;
 import ui.model.Report;
 import util.client.TCPClient;
@@ -87,17 +86,15 @@ public class WorkerThread implements Runnable {
 
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     TCPClient client = new TCPClient();
-                    String s = client.formReportNetworkUser(report);
-                    
-                    if (Config.SEND_TO_SERVER == true) {
-                        System.out.println("------>>>Inside WorkerThread.java ... client.send(s) is DONE");
-                        client.send(s);
-                        System.out.println("----------------->>> SENT TO SERVER .... ");
-                        System.out.println("MESSAGE SENT IS ");
-                        System.out.println(s);
-                        System.out.println("---------------------------------------------------------------");
-                    }
+//                    String s = client.formReportNetworkUser(report);
 
+                    if ((Config.SEND_TO_SERVER == true) && (report.getUrl() != null || (report.getUrl().trim().equals("") == false))) {
+                        System.out.println("------>>>Inside WorkerThread.java ... client.send(s) is DONE");
+//                        client.send(report);
+                        String s = client.formReportNetworkUser_New(report).replace("\0", "").trim();
+                        client.send(s);
+                        System.out.println("----------------->>> SENT TO SERVER .... DONE !!");
+                    }
 
 //                    client.send(ReportQueryHandler.getReportAndAll(report.getReport_id(),report));
                     Platform.runLater(() -> {

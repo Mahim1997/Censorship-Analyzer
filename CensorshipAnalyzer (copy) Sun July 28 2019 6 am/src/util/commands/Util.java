@@ -56,15 +56,25 @@ public class Util {
         tcp.setIs_timeout_str(Util.getYesOrNo(tcp.getIs_timeout_str()));
         tcp.setIs_tor_connect_successful_str(Util.getYesOrNo(tcp.getIs_tor_connect_successful_str()));
         tcp.setIs_tor_not_connected_str(Util.getYesOrNo(tcp.getIs_tor_not_connected_str()));
-        
+
         if (tcp.getMiddle_box_hop_count_str().contains("-1")) {
             tcp.setMiddle_box_hop_count_str("-");
         }
-        
+
         String str_loc = "Success at Attempt " + tcp.getSuccessful_iteration_local_server_str();
-        tcp.setSuccessful_iteration_local_server_str(str_loc);
+
+        if (tcp.getSuccessful_iteration_local_server_str().contains("Success")) {
+            //do nothing
+        } else {
+            tcp.setSuccessful_iteration_local_server_str(str_loc);
+        }
 
         String str_tor = "Success at Attempt " + tcp.getSuccessful_iteration_tor_str();
-        tcp.setSuccessful_iteration_tor_str(str_tor);
+        if (tcp.getSuccessful_iteration_tor_str().contains("Success")) {
+            //do nothing
+        } else {
+            tcp.setSuccessful_iteration_tor_str(str_tor);
+        }
+
     }
 }

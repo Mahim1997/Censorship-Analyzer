@@ -111,7 +111,7 @@ public class StringProcessor {
 
     public static Report processStringAndFormReport(String str) {
         
-
+        str = str.replace("\0", "");
         String[] arr = str.split("\\$");
 
         int total_lines = arr.length;
@@ -139,6 +139,12 @@ public class StringProcessor {
         //10th field is mid_box_hop_count --> is not taken
         int lines_common_fields = 11; // 0 to 10 are common so, 11 lines
 
+        
+//        if((report.getUrl() == null) || (report.getUrl().trim().equals(""))){
+//            System.out.println("------>>>NULL URL so, returnning null report");
+//            return null;
+//        }
+        
         // ---------------------------------- TEST TYPE SPECIFIC ---------------------------------
         if (report.getTest_type().equals("DNS")) {
             //First fields of DNS details
@@ -164,7 +170,8 @@ public class StringProcessor {
 
             // Last two fields
             report.dns_details.setIs_non_overlapping_ip_list(getSecondColumn_String(arr[27]));
-            report.dns_details.setMiddle_box_hop_count(getSecondColumn_String(arr[28]));
+//            report.dns_details.setMiddle_box_hop_count(getSecondColumn_String(arr[28]));
+            report.dns_details.setMiddle_box_hop_count(getSecondColumn_String(arr[10]));
 
         } else if (report.getTest_type().equals("TCP")) {
             //TCP details adding ...

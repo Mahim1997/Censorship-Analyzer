@@ -195,8 +195,18 @@ public class HTTP_HTTPS_RecordController {
         System.out.println(this.report.httpDetails.toString());
         System.out.println("===+++-->>> Now PRINTING HTTPS Details");
         System.out.println(this.report.httpsDetails.toString());
-        
 
+
+
+        if (this.report.getIs_censored().equals("0") || this.report.getIs_censored().toUpperCase().equals("NO")) {
+            this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? NO");
+            this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? NO");
+        } else {
+            this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? YES");
+            this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? YES");
+        }
+
+        /*
         int is_cens = 0;
         if (is_cens == 0) {
             //not censored
@@ -208,6 +218,7 @@ public class HTTP_HTTPS_RecordController {
             this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? YES");
             this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? YES");
         }
+        */
     }
 
     private void loadNetworkThings() {
@@ -273,7 +284,7 @@ public class HTTP_HTTPS_RecordController {
         this.text_thresholdComparison.setText(HelperFunctions.getPercentage(this.report.httpDetails.getThreshold_comparison()));
         this.text_contentMismatch.setText(this.report.httpDetails.getContent_difference());
         this.text_isCensoredWRTThresholdContentMismatch.setText(HelperFunctions.getYesOrNo(this.report.httpDetails.getIs_different_wrt_threshold()));
-        
+
     }
 
     private void loadForHTTPS() { //Loading for HTTPS

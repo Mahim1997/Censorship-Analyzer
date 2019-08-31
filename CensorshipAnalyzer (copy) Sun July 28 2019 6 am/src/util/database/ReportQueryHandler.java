@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import ui.model.Network;
 import ui.model.Report;
-import ui.model.Report_Network_User_Join;
-import ui.model.TCPDetails;
 import ui.model.User;
 import static util.database.DBHandler.conn;
 
@@ -125,7 +123,7 @@ public class ReportQueryHandler {
         System.out.println(report.getReport_id() + " : " + report.getConnection_id() + " : " + report.getTime_stamp() + " : " + report.getUrl() + " : " + report.getTest_type() + " : " + report.getIs_censored() + " : " + report.getNetwork_name() + " : " + report.getNetwork_type());
     }
 
-    public Report_Network_User_Join getFullReport(int report_id) {
+/*    public Report_Network_User_Join getFullReport(int report_id) {
         DBHandler.openConnection();
 
         String query = "SELECT REPORT_ID,REPORT.CONNECTION_ID,timestamp,url,type_of_testing,is_censored, CONNECTION.global_ip,asn,city,organization,carrier_name,latitude,longitude,country_name,region,postal\n"
@@ -205,5 +203,5 @@ public class ReportQueryHandler {
         return null;
 
     }
-
+*/
 }

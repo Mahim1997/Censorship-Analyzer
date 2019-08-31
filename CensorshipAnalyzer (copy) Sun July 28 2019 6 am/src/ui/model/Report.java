@@ -296,11 +296,36 @@ public class Report {
             s += "$#";
         }
 
-//        System.out.println("---------------------------------------------------------");
-//        System.out.println(s);
-//        System.out.println("---------------------------------------------------------");
         return s;
     }
 
+    public String getReportString_New() {
+        String s = "";
+
+        s += "</>"; //for Report
+        s += (String.valueOf(report_id) + "$" +  String.valueOf(connection_id) + "$" + time_stamp + "$" + url + "$" + test_type + "$" + 
+                String.valueOf(is_censored) + "$" + String.valueOf(is_periodic) + "$" + 
+                String.valueOf(file_name_periodic) + "$" + String.valueOf(iteration_number));
+        
+        s += "$</>$"; // for Details
+
+
+        if (this.getTest_type().equals("DNS")) {
+            s += (String.valueOf(this.report_id) + "$");
+            s += this.dns_details.getDNSDetails();
+            s += "$<END>";
+        } else if (this.getTest_type().equals("TCP")) {
+//            s += ("$TCP_DESCRIPTION$" + this.report_id + "$");
+            s += (String.valueOf(this.report_id));
+            for (int i = 0; i < this.tcp_details_list.size(); i++) {
+                s += ("$<#>$");
+                TCPDetails det = this.tcp_details_list.get(i);
+                s += det.getTCPDetails();
+            }
+            s += "$<END>$";
+        }
+
+        return s;
+    }
 
 }

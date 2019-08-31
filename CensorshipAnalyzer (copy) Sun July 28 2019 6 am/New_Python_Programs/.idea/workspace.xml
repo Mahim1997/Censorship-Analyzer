@@ -4,18 +4,29 @@
     <list default="true" id="cc5ffce3-9bec-4806-9235-3e845a722528" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client_DataBase.db" beforeDir="false" afterPath="$PROJECT_DIR$/Client_DataBase.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTTPDescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/HTTPDescription.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTTPSDescription.py" beforeDir="false" afterPath="$PROJECT_DIR$/HTTPSDescription.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTTP_socket_7_select_final.py" beforeDir="false" afterPath="$PROJECT_DIR$/HTTP_socket_7_select_final.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report.py" beforeDir="false" afterPath="$PROJECT_DIR$/Report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dns_censorship_single_url_class_updated.py" beforeDir="false" afterPath="$PROJECT_DIR$/dns_censorship_single_url_class_updated.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/http_message.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pythonServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_messages.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output_messages.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tcp_censorship_analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tcp_censorship_analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/built-jar.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/ui/controllers/HTTP_HTTPS_RecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/ui/controllers/HTTP_HTTPS_RecordController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jnlp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ui/controllers/HTTP_HTTPS_RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/controllers/HTTP_HTTPS_RecordController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />

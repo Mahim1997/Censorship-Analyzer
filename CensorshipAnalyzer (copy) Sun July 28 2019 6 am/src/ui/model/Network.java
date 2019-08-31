@@ -31,6 +31,15 @@ public class Network {
    
     public static int connection_id_static = 1; ///DEBUG [default: 1]
 
+    public static String getNetworkDetails_New() {
+        String s = "";
+
+        s += (global_ip_static + "$" + asn_static + "$" + city_static + "$" + org_static + "$" + carrier_static
+                + "$" + latitude_static + "$" + longitude_static + "$" + country_static + "$" + region_static + "$" + postal_static);
+
+        return s;
+    }
+    
     public static String getNetworkDetails() {
         String s = "";
 

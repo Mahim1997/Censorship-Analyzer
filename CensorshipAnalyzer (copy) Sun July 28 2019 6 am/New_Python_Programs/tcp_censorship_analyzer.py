@@ -35,10 +35,10 @@ class TCP_3_WAY_HANDSHAKE:
 		UDP_IP = '127.0.0.1'  # loop back ip
 		UDP_PORT = 5777  # Java listening port
 		# print(MESSAGE + "\n")
-		MESSAGE = MESSAGE + "\r\n"
-		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
-		sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))
-		print("-->>Sent to java done...")
+		# MESSAGE = MESSAGE + "\r\n"
+		# sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+		# sock.sendto(bytes(MESSAGE, "utf-8"), (UDP_IP, UDP_PORT))
+		# print("-->>Sent to java done...")
 
 	def print_message(self, message):
 		self.line_number += 1

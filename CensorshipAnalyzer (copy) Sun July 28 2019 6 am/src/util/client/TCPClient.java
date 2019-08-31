@@ -9,11 +9,17 @@ package util.client;
  *
  * @author kayem
  */
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Config;
 import ui.model.Network;
 import ui.model.Report;
@@ -31,7 +37,7 @@ public class TCPClient {
 
     public void send(String output) {
         try {
-            s = new Socket(Config.SERVER_IP_ADDRESS, 7777);
+            s = new Socket(Config.SERVER_IP_ADDRESS, Config.SERVER_PORT);
 
             br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             pr = new PrintWriter(s.getOutputStream());
@@ -42,8 +48,8 @@ public class TCPClient {
             System.out.println("----------------- SENDING TO SERVER BEGIN -------------------------");
 
             System.out.println(strSend);
-            System.out.println("----------------- SENDING TO SERVER DONE -------------------------");            
-            
+            System.out.println("----------------- SENDING TO SERVER DONE -------------------------");
+
             pr.println(strSend);
             pr.println();
             pr.flush();
@@ -67,6 +73,7 @@ public class TCPClient {
         }
     }
 
+    // ---------------- NOT USED ---------------
     public String formReportNetworkUser(Report report) {
         String str = "";
 
@@ -76,6 +83,44 @@ public class TCPClient {
         str += "#";
         str += report.getReportString();
         return str;
+
+    }
+
+    // ---- USED ------_
+    public String formReportNetworkUser_New(Report report) {
+        String str = "";
+
+        str += User.getUserDetails_New();
+        str += "$";
+        str += Network.getNetworkDetails_New();
+        str += "$";
+        str += report.getReportString_New();
+        return str;
+
+    }
+
+    public void send(Report report) {
+        try {
+            ReportDetailedThing reportDetailedThing = new ReportDetailedThing();
+            reportDetailedThing.setReportThings(report);
+            reportDetailedThing.setNetworkDetails();
+            reportDetailedThing.setDetailsAccordingToTestType(report);
+            s = new Socket(Config.SERVER_IP_ADDRESS, Config.SERVER_PORT);
+            
+            try {
+                ObjectOutputStream oot = new ObjectOutputStream(new BufferedOutputStream(s.getOutputStream()));
+                oot.writeObject(reportDetailedThing);
+                oot.flush();
+                oot.close();
+
+            } catch (IOException e) {
+                System.out.println("-->>OBJECT OUTPUT STREAM WRITING ERROR !!!");
+                e.printStackTrace(System.err);
+            }
+            
+        } catch (IOException ex) {
+            System.out.println("-->>[SOCKET OPENING ERROR]EXCEPTION IN SENDING MESSAGE TO TCP_SERVER");
+        }
 
     }
 

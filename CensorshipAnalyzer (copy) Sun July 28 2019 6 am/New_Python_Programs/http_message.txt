@@ -1,8 +1,7 @@
-1$_________http://xvideos.com___________
-2$hostname: xvideos.com
-3$ip: 185.88.181.7
+1$_________http://www.bdtruenews24.com___________
+2$hostname: www.bdtruenews24.com
+3$ip: 104.27.184.38
 4$Dns done through Tor
-5$read timeout
-6$http error
-timeout
-6$http error
+5$Tor response status code: 403
+6$Local response status code: 200
+7$http: Not censored(tor received captcha)
