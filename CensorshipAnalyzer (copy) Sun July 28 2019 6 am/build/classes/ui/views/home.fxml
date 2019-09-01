@@ -86,7 +86,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <Text fill="#ef1cff" layoutX="341.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORSHIP ANALYZER" textAlignment="CENTER" wrappingWidth="589.6708984375" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="100.0">
+      <Text fill="#ef1cff" layoutX="341.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENSORSHIP ANALYZER" textAlignment="CENTER" wrappingWidth="589.6708984375" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="50.0" />
          </font>

@@ -1,2 +1,4 @@
-1$Checking TCP for url: www.razniti.net
-2$Domain doesnot exist
+1$---------------Dns Resolution Of www.razniti.net:-------------------
+2$->Local Dns Server:
+3$DNS Resolution Unsuccessful
+4$www.razniti.net is not censored

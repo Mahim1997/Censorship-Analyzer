@@ -11,8 +11,7 @@ public class Config {
     public static int PORT_HTTPS = 443;
     public static int PORT_JAVA_SECONDARY = 5777;
 
-//    public static String IP_ADDRESS = "172.20.56.47";
-    public static boolean SEND_TO_SERVER = true;
+    public static boolean SEND_TO_SERVER = false;
 
     public static String SERVER_IP_ADDRESS = "192.168.0.103";
     public static int SERVER_PORT = 7777;

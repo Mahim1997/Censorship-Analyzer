@@ -6,13 +6,43 @@
       <change beforePath="$PROJECT_DIR$/Client_DataBase.db" beforeDir="false" afterPath="$PROJECT_DIR$/Client_DataBase.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/http_message.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../build/built-jar.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build/classes/ui/model/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/ui/model/Report.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/main/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/main/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/ui/controllers/HTTP_HTTPS_RecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/ui/controllers/HTTP_HTTPS_RecordController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/ui/model/Network.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/ui/model/Network.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/ui/views/http_https_Records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/ui/views/http_https_Records.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jnlp" beforeDir="false" afterPath="$PROJECT_DIR$/../dist/CensorshipAnalyzer.jnlp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../filex.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../filex.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/DNSDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/DNSDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ui/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/CensorshipAnalyzer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/CensorshipAnalyzer.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/CensorshipAnalyzer.jnlp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/charm-glisten-4.4.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/commons-codec-1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/controlsfx-8.40.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/controlsfx-samples-8.40.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/fontawesomefx-8.9-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/fontawesomefx-8.9-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/fontawesomefx-8.9.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/fontawesomefx-commons-8.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/fontawesomefx-fontawesome-4.7.0-5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/fxsampler-1.0.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/gson-2.8.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/jfoenix.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/org-netbeans-modules-java-j2seproject-copylibstask.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/lib/sqlite-jdbc-3.27.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/dtjava.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/get_java.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/get_javafx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/javafx-chrome.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/javafx-loading-100x100.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/javafx-loading-25x25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/upgrade_java.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dist/run1319129886/web-files/upgrade_javafx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ui/controllers/HTTP_HTTPS_RecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/controllers/HTTP_HTTPS_RecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ui/model/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/model/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ui/views/http_https_Records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/ui/views/http_https_Records.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +64,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../dashboard/django-gentelella/gentelella" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

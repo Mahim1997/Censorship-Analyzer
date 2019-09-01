@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -45,6 +44,8 @@ public class CensoredRecordController implements Initializable {
     private TableColumn column_censoredType;
     @FXML
     private TableColumn column_details;
+    @FXML
+    private TableColumn column_numberAttempts;
 
     @FXML
     private JFXTextField textField_url;
@@ -197,7 +198,6 @@ public class CensoredRecordController implements Initializable {
                 }
 
 //                System.out.println("--------------IS CENSORED FILTER PASSED : " + i);
-
                 if (this.networkType) {
                     if (!report.getNetwork_type().equalsIgnoreCase("ISP")) {
                         continue;
@@ -275,7 +275,9 @@ public class CensoredRecordController implements Initializable {
         ObservableList<Report> data = FXCollections.observableArrayList(this.reportsListToBeRefreshed);
 
         System.out.println("========>>> INSIDE LoadTableView ... this.reportsListToBeRefreshed.size = " + this.reportsListToBeRefreshed.size() + " .. printing ");
-
+        System.out.println("--->>> HERE, number_of_attempts = " + this.reports.get(0).number_of_attempts);
+        
+        
         column_url.setCellValueFactory(
                 new PropertyValueFactory<>("url")
         );
@@ -300,8 +302,12 @@ public class CensoredRecordController implements Initializable {
         column_details.setCellValueFactory( //Button for details
                 new PropertyValueFactory<>("btn_details_censored")
         );
+        column_numberAttempts.setCellValueFactory( //Button for details
+                new PropertyValueFactory<>("number_of_attempts")
+        );
 
-        this.text_whichPage.setText("Page : " + this.currentPage+"/"+this.totalPage);
+
+        this.text_whichPage.setText("Page : " + this.currentPage + "/" + this.totalPage);
 
         this.tableView.setItems(data);
     }
@@ -342,7 +348,7 @@ public class CensoredRecordController implements Initializable {
         }
         this.currentPage = 1;
         this.loadTableView();
-        this.text_whichPage.setText("Page : " + this.currentPage+"/"+this.totalPage);
+        this.text_whichPage.setText("Page : " + this.currentPage + "/" + this.totalPage);
         this.initializeComboBox();
         isFilter = false;
 

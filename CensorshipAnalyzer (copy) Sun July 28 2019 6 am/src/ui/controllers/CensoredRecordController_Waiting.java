@@ -95,6 +95,8 @@ public class CensoredRecordController_Waiting {
     Parent root_for_details; //for details controller
     @FXML
     private JFXButton btn_viewFile;
+    @FXML
+    private TableColumn<?, ?> column_numberOfAttempts;
 
     public void setUpInitial(boolean isFile, String name, String absolutPathOrCommandForURL, int start, int end, String testingMode) {
 //        String fileNameFXMLToLoad = Scenes.realTimeDetails;
@@ -328,7 +330,12 @@ public class CensoredRecordController_Waiting {
         column_details.setCellValueFactory( //Button for details
                 new PropertyValueFactory<>("btn_details")
         );
-
+        column_numberOfAttempts.setCellValueFactory( //Button for details
+                new PropertyValueFactory<>("number_of_attempts")
+        );
+        
+        
+        
         this.tableView.setItems(data);
     }
 

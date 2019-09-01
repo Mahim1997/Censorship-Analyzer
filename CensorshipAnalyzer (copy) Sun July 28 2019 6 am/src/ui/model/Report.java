@@ -9,6 +9,16 @@ import ui.controllers.CensoredRecordController_Waiting;
 
 public class Report {
 
+    public String number_of_attempts = "2";
+
+    public String getNumber_of_attempts() {
+        return number_of_attempts;
+    }
+
+    public void setNumber_of_attempts(String number_of_attempts) {
+        this.number_of_attempts = number_of_attempts;
+    }
+
     //------------ Normal Things ---------------
     private int report_id;
     private int connection_id;

@@ -32,10 +32,10 @@ class DBHandler:
 
         report.report_id = num + 1
         print("[In dbHandler.py] DNS: Inserting into Report Table ... ")
-        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
                    report.is_censored, report.is_periodic, report.file_name_periodic, report.iteration_number,
-                   report.censorship_details))
+                   report.censorship_details, 2))
 
         #  Inserting into DNS Description
 
@@ -92,10 +92,10 @@ class DBHandler:
 
         # print("---->> [In dbHandler.py] TCP: Inserting into Report Table ... PRINTING REPORT ")
         # report.printReport()
-        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
                    report.is_censored, report.is_periodic, report.file_name_periodic, report.iteration_number,
-                   report.censorship_details))
+                   report.censorship_details, 2))
 
         #  Inserting into TCP Description
 
@@ -136,10 +136,10 @@ class DBHandler:
         print("----->> BEFORE INSERTING ... printing report ... ")
         report.printReport()
 
-        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        c.execute("INSERT INTO Report VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (report.report_id, report.connection_id, report.time_stamp, report.url, report.type_of_testing,
                    report.is_censored, report.is_periodic, report.file_name_periodic, report.iteration_number,
-                   report.censorship_details))
+                   report.censorship_details, 2))
 
         # Insert into HTTP DESCRIPTION
         c.execute("INSERT INTO HTTP_DESCRIPTION Values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",

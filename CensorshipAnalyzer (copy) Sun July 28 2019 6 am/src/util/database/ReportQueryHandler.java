@@ -84,7 +84,7 @@ public class ReportQueryHandler {
         //DBHandler.closeConnection();
         DBHandler.openConnection();
         List<Report> list = new ArrayList<>();
-        String query = "SELECT REPORT_ID,REPORT.CONNECTION_ID,timestamp,url,type_of_testing,is_censored, CONNECTION.global_ip,asn,city,organization,carrier_name,latitude,longitude,country_name,region,postal\n"
+        String query = "SELECT REPORT_ID,REPORT.CONNECTION_ID,timestamp,url,type_of_testing,is_censored, CONNECTION.global_ip,asn,city,organization,carrier_name,latitude,longitude,country_name,region,postal, REPORT.number_of_attempts\n"
                 + "FROM REPORT INNER JOIN CONNECTION ON REPORT.CONNECTION_ID = CONNECTION.CONNECTION_ID INNER JOIN NETWORK ON CONNECTION.global_ip=NETWORK.global_ip;";
 
         try {
@@ -106,6 +106,7 @@ public class ReportQueryHandler {
                 } else {
                     report.setNetwork_name(rs.getString("carrier_name"));
                 }
+                report.setNumber_of_attempts(rs.getString("number_of_attempts"));
                 list.add(report);
                 ReportQueryHandler.printReport(report);
             }

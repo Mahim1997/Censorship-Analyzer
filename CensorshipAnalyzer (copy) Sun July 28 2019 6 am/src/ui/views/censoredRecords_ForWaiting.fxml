@@ -21,6 +21,7 @@
             <TableColumn fx:id="column_testType" prefWidth="90.0" text="Test Type" />
             <TableColumn fx:id="column_censored" prefWidth="78.0" text="Censored" />
             <TableColumn fx:id="column_details" prefWidth="70.0" text="Details" />
+            <TableColumn fx:id="column_numberOfAttempts" prefWidth="70.0" text="No. attempts" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

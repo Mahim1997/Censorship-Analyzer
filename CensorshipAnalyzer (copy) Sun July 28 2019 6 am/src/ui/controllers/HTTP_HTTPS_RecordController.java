@@ -6,6 +6,9 @@ import helper.HelperFunctions;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import ui.model.Report;
 
@@ -70,44 +73,25 @@ public class HTTP_HTTPS_RecordController {
     @FXML
     private JFXTextField text_TOR_Redirection_4;
     @FXML
-    private Text text_overAllHTTPCensored111;
-    @FXML
     private Text text_HTTPMessage;
-    @FXML
-    private Text text_overAllHTTPCensored1111;
     @FXML
     private Text text_otherErrorPresent;
     @FXML
-    private Text text_overAllHTTPCensored11111;
-    @FXML
     private Text text_max_redirection_cnt;
-    @FXML
-    private Text text_overAllHTTPCensored111111;
     @FXML
     private Text text_is_fin_bit_set;
     @FXML
-    private Text text_overAllHTTPCensored1111111;
-    @FXML
     private Text text_is_rst_bit_set;
-    @FXML
-    private Text text_overAllHTTPCensored11111111;
     @FXML
     private Text text_thresholdComparison;
     @FXML
-    private Text text_overAllHTTPCensored111111111;
-    @FXML
     private Text text_contentMismatch;
     @FXML
-    private Text text_overAllHTTPCensored11112;
-    @FXML
     private Text text_middleBoxHopCount;
-    @FXML
-    private Text text_overAllHTTPCensored111111112;
     @FXML
     private Text text_isCensoredWRTThresholdContentMismatch;
     @FXML
     private Tab tab_https;
-    @FXML
     private Text text_overAllHTTPSCensored;
     @FXML
     private JFXTextField text_ip_11;
@@ -162,21 +146,33 @@ public class HTTP_HTTPS_RecordController {
     @FXML
     private Text text_thresholdComparison1;
     @FXML
-    private Text text_overAllHTTPCensored1111111111;
-    @FXML
     private Text text_contentMismatch1;
-    @FXML
-    private Text text_overAllHTTPCensored111121;
     @FXML
     private Text text_middleBoxHopCount1;
     @FXML
-    private Text text_overAllHTTPCensored1111111121;
-    @FXML
     private Text text_isCensoredWRTThresholdContentMismatch1;
     @FXML
-    private Text text_overAllHTTPCensored11111111211;
-    @FXML
     private Text text_tlsHandshakeFailed;
+    @FXML
+    private HBox hbox_contentMismatch;
+    @FXML
+    private HBox hbox_isCensoredWRTContentMismatch;
+    @FXML
+    private GridPane gridPane_LeftMostThings;
+    @FXML
+    private GridPane gridPane_isFinAndRSTBitsSet;
+    @FXML
+    private HBox hbox_contentMismatch1;
+    @FXML
+    private HBox hbox_isCensoredWRTContentMismatch1;
+    @FXML
+    private GridPane gridPane_LeftMostThings1;
+    @FXML
+    private GridPane gridPane_isFinAndRSTBitsSet1;
+    @FXML
+    private Text text_overAllHTTPCensored1;
+    @FXML
+    private Text text_middleBoxHopCount11;
 
     @FXML
     private void selectHTTP_Tab(Event event) {
@@ -196,14 +192,25 @@ public class HTTP_HTTPS_RecordController {
         System.out.println("===+++-->>> Now PRINTING HTTPS Details");
         System.out.println(this.report.httpsDetails.toString());
 
-
-
         if (this.report.getIs_censored().equals("0") || this.report.getIs_censored().toUpperCase().equals("NO")) {
-            this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? NO");
-            this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? NO");
+//            this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? NO");
+//            this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? NO");
+
+            this.text_overAllHTTPCensored.setFill(Color.RED);
+            this.text_overAllHTTPCensored.setText("NO");
+
+            this.text_overAllHTTPCensored1.setFill(Color.RED);
+            this.text_overAllHTTPCensored1.setText("NO");
+
         } else {
-            this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? YES");
-            this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? YES");
+//            this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? YES");
+//            this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? YES");
+
+            this.text_overAllHTTPCensored.setFill(Color.GREEN);
+            this.text_overAllHTTPCensored.setText("YES");
+
+            this.text_overAllHTTPCensored1.setFill(Color.GREEN);
+            this.text_overAllHTTPCensored1.setText("YES");
         }
 
         /*
@@ -218,7 +225,7 @@ public class HTTP_HTTPS_RecordController {
             this.text_overAllHTTPCensored.setText("Is Censored for HTTP ? YES");
             this.text_overAllHTTPSCensored.setText("Is Censored for HTTPS ? YES");
         }
-        */
+         */
     }
 
     private void loadNetworkThings() {
@@ -329,5 +336,28 @@ public class HTTP_HTTPS_RecordController {
         this.text_contentMismatch1.setText(this.report.httpsDetails.getContent_difference());
         this.text_isCensoredWRTThresholdContentMismatch1.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_different_wrt_threshold()));
         this.text_tlsHandshakeFailed.setText(HelperFunctions.getYesOrNo(this.report.httpsDetails.getIs_tls_handshake_failed()));
+
+        if (this.text_otherErrorPresent.getText().toUpperCase().equals("YES")) {
+            //make opaque HTTP
+//            this.gridPane_LeftMostThings.setOpacity(0);
+            this.hbox_contentMismatch.setOpacity(0);
+            this.hbox_isCensoredWRTContentMismatch.setOpacity(0);
+            this.gridPane_isFinAndRSTBitsSet.setOpacity(0);
+        }
+        if (this.text_otherErrorPresent1.getText().toUpperCase().equals("YES")) {
+            //make opaque HTTPS
+//            this.gridPane_LeftMostThings1.setOpacity(0);
+            this.hbox_contentMismatch1.setOpacity(0);
+            this.hbox_isCensoredWRTContentMismatch1.setOpacity(0);
+            this.gridPane_isFinAndRSTBitsSet1.setOpacity(0);
+        }
+
+        if (this.text_isCensoredWRTThresholdContentMismatch.getText().toUpperCase().equals("YES")) {
+            this.text_isCensoredWRTThresholdContentMismatch.setFill(Color.GREEN);
+        }
+        if (this.text_isCensoredWRTThresholdContentMismatch1.getText().toUpperCase().equals("YES")) {
+            this.text_isCensoredWRTThresholdContentMismatch1.setFill(Color.GREEN);
+        }
+
     }
 }

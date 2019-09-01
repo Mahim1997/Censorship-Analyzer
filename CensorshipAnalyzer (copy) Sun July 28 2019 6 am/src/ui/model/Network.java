@@ -59,7 +59,7 @@ public class Network {
             return ip;
         } catch (IOException ex) {
             System.out.println("-->>>Exception in obtaining global ip ... ");
-            Notification.push("Error", "Unable to obtain global IP of network ... please check internet connection", Notification.FAILURE, Pos.BOTTOM_RIGHT);
+//            Notification.push("Error", "Unable to obtain global IP of network ... please check internet connection", Notification.FAILURE, Pos.BOTTOM_RIGHT);
         }
         return "NA";
     }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CensorshipAnalyzer.jnlp">
+  <information>
+    <title>CensorshipAnalyzer</title>
+    <vendor>esfs</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CensorshipAnalyzer.jar" size="1087481" download="eager" />
+    <jar href="lib/charm-glisten-4.4.1.jar" size="1040787" download="eager" />
+    <jar href="lib/commons-codec-1.4.jar" size="58160" download="eager" />
+    <jar href="lib/controlsfx-8.40.14.jar" size="1215643" download="eager" />
+    <jar href="lib/controlsfx-samples-8.40.14.jar" size="725707" download="eager" />
+    <jar href="lib/fontawesomefx-8.9-javadoc.jar" size="279185" download="eager" />
+    <jar href="lib/fontawesomefx-8.9-sources.jar" size="448716" download="eager" />
+    <jar href="lib/fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib/fontawesomefx-commons-8.15.jar" size="20957" download="eager" />
+    <jar href="lib/fontawesomefx-fontawesome-4.7.0-5.jar" size="136891" download="eager" />
+    <jar href="lib/fxsampler-1.0.10.jar" size="30882" download="eager" />
+    <jar href="lib/gson-2.8.1.jar" size="232620" download="eager" />
+    <jar href="lib/jfoenix.jar" size="2390900" download="eager" />
+    <jar href="lib/org-netbeans-modules-java-j2seproject-copylibstask.jar" size="26716" download="eager" />
+    <jar href="lib/sqlite-jdbc-3.27.2.1.jar" size="6012107" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CensorshipAnalyzer" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="main.Main"  name="CensorshipAnalyzer" />
+  <update check="always"/>
+</jnlp>

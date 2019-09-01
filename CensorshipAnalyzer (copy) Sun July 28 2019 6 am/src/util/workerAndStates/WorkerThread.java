@@ -14,6 +14,7 @@ import main.Config;
 import ui.controllers.CensoredRecordController_Waiting;
 import ui.model.Report;
 import util.client.TCPClient;
+import util.database.DBHandler;
 import util.loader.Scenes;
 
 /**
@@ -86,6 +87,7 @@ public class WorkerThread implements Runnable {
 
                     Report report = StringProcessor.processStringAndFormReport(receivedString);
                     TCPClient client = new TCPClient();
+                    report.setNumber_of_attempts(DBHandler.getNumberOfAttempts());
 //                    String s = client.formReportNetworkUser(report);
 
                     if ((Config.SEND_TO_SERVER == true) && (report.getUrl() != null || (report.getUrl().trim().equals("") == false))) {

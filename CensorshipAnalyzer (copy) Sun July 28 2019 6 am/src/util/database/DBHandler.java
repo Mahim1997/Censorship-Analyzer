@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ui.model.Network;
 import ui.model.Report;
 import ui.model.User;
+import static util.database.ReportQueryHandler.stmt;
 
 public class DBHandler {
 
@@ -48,7 +51,7 @@ public class DBHandler {
     }
 
     private static String quote(String s) {
-        if(s == null){
+        if (s == null) {
             return s;
         }
         if (s.charAt(0) != '\'') {
@@ -70,7 +73,6 @@ public class DBHandler {
         }
     }
 
-
     //---------------------------------- Queries from ReportQueryHandler ... ----------------------------------------------
     public static int getLatestReportID() {
         openConnection();
@@ -79,7 +81,7 @@ public class DBHandler {
         return currentLastReportID;
     }
 
-/*    public static List<Report> getListOfReports(int startIdx, int endIdx) {
+    /*    public static List<Report> getListOfReports(int startIdx, int endIdx) {
         openConnection();
         List<Report> listOfReports = ReportQueryHandler.getListOfReports(startIdx, endIdx);
         closeConnection();
@@ -105,7 +107,7 @@ public class DBHandler {
             System.out.println(e.getMessage());
         }
     }
-*/
+     */
     public static void formConnection_ID() {
         //FIRST CHECKING IN USER TABLE [USER_ID ALREADY EXISTS]
         System.out.println("----------------- Inside DBHandler.formConnection_ID() ---------------------- ");
@@ -167,12 +169,12 @@ public class DBHandler {
             }
 
             System.out.println("After two results ... exists_in_net = " + exists_in_network + " , exists_in_user = " + exists_in_user);
-            
+
             if (!exists_in_user) {
                 createNewUser(stmt);
             }
             if (!exists_in_network) {
-                createNewNetwork(stmt); 
+                createNewNetwork(stmt);
             }
             createNewConnection(stmt);
 
@@ -218,7 +220,7 @@ public class DBHandler {
                 + quote(Network.org_static) + "," + quote(Network.carrier_static) + "," + quote(Network.latitude_static) + "," + quote(Network.longitude_static) + ","
                 + quote(Network.country_static) + "," + quote(Network.region_static) + "," + quote(Network.postal_static)
                 + ")";
-        System.out.println("New neetwork creator <"  + sql + ">");
+        System.out.println("New neetwork creator <" + sql + ">");
         try {
 //            Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -257,5 +259,36 @@ public class DBHandler {
             System.out.println(e.getMessage());
         }
 //        closeConnection();
+    }
+
+    public static String getNumberOfAttempts() {
+        String num_attempts = "2";
+
+        try {
+            openConnection();
+            String sql = "SELECT distinct(number_of_attempts) FROM REPORT";
+            Statement stmt = conn.createStatement();
+            try {
+//            Statement stmt = conn.createStatement();
+                System.out.println("-->>BEFORE executing query");
+                ResultSet rs = stmt.executeQuery(sql);
+                int cnt = 0;
+                System.out.println("-->>EXECUTED QUERY DONE !!!");
+                if (rs.next()) {
+                    cnt = rs.getInt(1);
+                    num_attempts = String.valueOf(cnt);
+                    System.out.println("-->>>RECEIVED ... num_attempts = " + num_attempts);
+                }
+
+            } catch (SQLException e) {
+                System.out.println("======+++--->>>> getNumberOfAttempts() ERROR EXCEPTIOn");
+            }
+            closeConnection();
+
+        } catch (SQLException ex) {
+            System.out.println("-->>>SQL Exception !!!");
+        }
+        return num_attempts;
+
     }
 }
