@@ -2,6 +2,7 @@ package util.loader;
 
 public class Scenes {
 
+    public static String loginFXML = "/ui/views/login.fxml";
     public static String homeScreenFXML = "/ui/views/home.fxml";
     public static String testSitesScene = "/ui/views/testSites.fxml";
 
