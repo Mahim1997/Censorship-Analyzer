@@ -114,7 +114,12 @@ public class HomeScreenController implements Initializable {
             label_region.setText("NA");
             label_carrier.setText("NA");
         }
-
+        if(Main.USER_NAME.equalsIgnoreCase("")){
+            label_username.setText("NA");
+        }
+        else{
+            label_username.setText(Main.USER_NAME);
+        }
     }
 
     @FXML
