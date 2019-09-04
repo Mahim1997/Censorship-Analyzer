@@ -16,6 +16,7 @@ public class Main extends Application {
 
     public static double STAGE_WIDTH;
     public static double STAGE_HEIGHT;
+    public static int USER_ID = 0;
 
     public static Stage stage;
 
@@ -47,7 +48,8 @@ public class Main extends Application {
             ex.printStackTrace();
         }
          */
-        SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
+        //SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
+        SceneLoader.loadSceneInSameStage(Scenes.loginFXML);
 
         
         
