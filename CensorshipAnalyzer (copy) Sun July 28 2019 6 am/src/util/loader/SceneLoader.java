@@ -55,9 +55,11 @@ public class SceneLoader {
 //        Main.stage.setScene(scene);
 
             Main.stage.setScene(scene);
-            Main.stage.setHeight(Main.STAGE_HEIGHT);
-            Main.stage.setWidth(Main.STAGE_WIDTH);
-            Main.stage.setMaximized(true);
+            if(!fileName.equals("/ui/views/login.fxml")){
+                Main.stage.setHeight(Main.STAGE_HEIGHT);
+                Main.stage.setWidth(Main.STAGE_WIDTH);
+                Main.stage.setMaximized(true);
+            }
             Main.stage.show();
 
         } catch (IOException ex) {
