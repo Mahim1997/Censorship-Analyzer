@@ -17,6 +17,7 @@ public class Main extends Application {
     public static double STAGE_WIDTH;
     public static double STAGE_HEIGHT;
     public static int USER_ID = 0;
+    public static String USER_NAME = "";
 
     public static Stage stage;
 
