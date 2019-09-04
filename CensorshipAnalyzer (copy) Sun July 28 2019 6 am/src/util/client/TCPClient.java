@@ -57,7 +57,7 @@ public class TCPClient {
 
     }
     
-    public int login_send_receive(String output) {
+    public String login_send_receive(String output) {
         try {
             s = new Socket(Config.SERVER_IP_ADDRESS, 7777);
 
@@ -77,15 +77,18 @@ public class TCPClient {
             pr.flush();
             System.out.println("----------------- SENDING TO SERVER DONE -------------------------");    
             strRecv = br.readLine();
+            System.out.println("----------------- SENDING TO SERVER DONE -------------------------");    
+            strRecv = br.readLine();
             System.out.println("Received data: "+strRecv);
-            int userid = Integer.parseInt(strRecv);
+            //String []str_id_name = strRecv.split("#");
+            //int userid = Integer.parseInt(strRecv);
             cleanUp();
-            return userid;
+            return strRecv;
 
         } catch (IOException e) {
             System.out.println("Problem in connecting with the server in TCPClient.send(). Exiting main.");
 //            Notification.push("Error", "Cannot connect to System Server to send data", Notification.FAILURE, Pos.CENTER);
-            return 0;
+            return "";
         }
 
     }
