@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="668.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.LoginController">
+   <children>
+      <JFXTextField fx:id="email" focusColor="#a2a2ab" layoutX="256.0" layoutY="100.0" prefHeight="30.0" prefWidth="221.0" promptText="Username" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#b1b8a0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="password" focusColor="#a2a2ab" layoutX="256.0" layoutY="174.0" prefHeight="30.0" prefWidth="221.0" promptText=" Password" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#a2a2ab" />
+      <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="192.0" layoutY="96.0" opacity="0.81" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/images/user-male-circle.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="196.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/images/download%20(1).png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="login" layoutX="411.0" layoutY="256.0" onAction="#setlogin" prefHeight="29.0" prefWidth="66.0" ripplerFill="#d08787" style="-fx-background-color: LIGHTGRAY;" text="Login" textFill="#020000">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <Hyperlink fx:id="skip" layoutX="571.0" layoutY="30.0" onAction="#skip_login" text="Skip" textFill="#f8fff7" underline="true" />
+   </children>
+</AnchorPane>
