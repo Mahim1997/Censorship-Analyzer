@@ -43,8 +43,13 @@ public class LoginController {
         String password_ = password.getText().trim();
         String send_message = "login#"+email_+"$"+password_;
         TCPClient client = new TCPClient();
-        Main.USER_ID = client.login_send_receive(send_message);
+        String str = client.login_send_receive(send_message);
+        String []str_id_name = str.split("#");
+        int userid = Integer.parseInt(str_id_name[0]);
+        Main.USER_ID = userid;
         if(Main.USER_ID!=0){
+            Main.USER_NAME = str_id_name[1];
+            System.out.println("user name: "+Main.USER_NAME);
             SceneLoader.loadSceneInSameStage(Scenes.homeScreenFXML);
         }
         else{
