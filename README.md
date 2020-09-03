@@ -6,14 +6,20 @@ The aim of this project is to determine different methods of censorship applied 
 There are basically 3 types where censorship is applied: DNS, TCP, HTTP
 Our first step is to autonomously detect, given a url, whether it is censored and if so, then which censorship method is applied on it.
 We also plan to produce an interactive user-interface as well i.e. a desktop application for easier analysis.
-The **Censorship Detection** part is coded in **Python**
-The **Desktop GUI** part is coded in **Java FX** and **SQLite** used for desktop **Database**
-We also intend to have a **Server Side** to store these results for further analysis, which is to be done by **Django**
+
+- The **Censorship Detection** part is coded in **Python**
+
+- Other **networking modules** are also implemented in **Python** using various packages like **Scapy**, **TShark**, etc.
+
+- The **Desktop GUI** part is coded in **Java FX**  
+
+- **SQLite** used for desktop **Database**
 
 ## Topics Covered in this project
+
 ### Python Codes
 <!-- UL -->
-Throughout we use various python packages(eg. socket, scapy) and external programs (eg. stubby)
+We have used various python packages (eg. socket, scapy) and external programs (eg. stubby)
 * DNS Censorship detection
 * TCP Censorship detection
 * HTTP Censorship detection
@@ -32,14 +38,14 @@ Throughout we use various python packages(eg. socket, scapy) and external progra
 * UDP Sockets(for Loopback IP) are used to transfer information from Java desktop program to python modules and vice-vers
 * SQLite used to maintain the records obtained by the python modules
 
-### Server Side
+<!--### Server Side
 While desktop application may be used for per-user basis, after obtaining a record and entering in **local database**, we also
-make sure the record goes to a remote server so that a full high-level analysis can be done
+make sure the record goes to a remote server so that a full high-level analysis can be done.
+This Server Side is in -->
 
 
 
-
-## How the Censorship detection methods work?
+## How do the different Censorship Detection Methods work?
 
 ### DNS Censorship Detection Method
 First the program will ask for the Local DNS Server to resolve the ip address mapping, given a url as input.
