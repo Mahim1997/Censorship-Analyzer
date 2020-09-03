@@ -1,5 +1,5 @@
 # SoftwareProject [Censorship Analyzer]
-This project was done during the Level 3 Term 2(ISD) and the Level 4 Term 1 (Software development) courses.
+This project was done during the Level 3 Term 2 (ISD) and the Level 4 Term 1 (Software development) courses.
 
 ## Short description
 The aim of this project is to determine different methods of censorship applied in the ISPs.
@@ -76,12 +76,28 @@ We use Local Server to obtain the http content and use TOR to do the same.
 Applying a comparison between them within a certain threshold, we conclude whether HTTP related censorship is done or not.
 HTTPS related censorship detection methods is also checked in this case.
 
+## Execution Dependencies
+We might need to setup some packages/modules.
+```bash
+sudo apt install python3-pip  #Need to install python pip
 
-## To run
+pip3 install PySocks
+
+sudo apt-get install python3-socks	#To import 'socks'
+
+sudo apt-get install python3-dnspython  #For dnspython import 'dns'
+
+sudo apt-get install python3-netaddr	#To import 'netaddr'
+
+pip3 install tshark
+```
+
+
+## Commands to run
 <!-- UL -->
 * First run the *pythonServer.py* program in terminal
 ```bash
-  pushd "CensorshipAnalyzer/Python Programs/"
+  pushd "CensorshipAnalyzer/New_Python_Programs/"
   python3 pythonServer.py                       # This python program acts like a server to accept instructions from Java Program
   popd
 ```
