@@ -1,0 +1,265 @@
+%\documentclass[12pt]{report}
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{algorithm2e}
+\usepackage{amsmath}
+\usepackage{float}
+
+%------------- For bib ------------------
+%\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+%\usepackage{biblatex}
+%\addbibresource{sample.bib}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear,open={((},close={))}}
+%------------- For bib ------------------
+
+%\renewcommand{\thesection}{\arabic{section}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+\newcommand{\ackname}{Acknowledgements}
+
+%\title{A Project on \vspace{0.5cm}\\
+\title{Software Documentation on \vspace{0.5cm}\\
+\emph{ISP Censorship Analyzer}	}							
+\author{Mahim Mahbub\\
+Md Hasan Al Kayem\\
+Md. Imran Hasan}								
+\date{\today}											
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+%\rhead{\theauthor}
+\lhead{ISP Censorship Analyzer}
+\cfoot{\thepage}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+    \includegraphics[height=2.5cm]{buet_logo.png}\\[1.0 cm]	% University Logo
+    \textsc{\large Bangladesh University of Engineering and Technology}\\[2.0 cm]	% University Name
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	\textsc{\Large Course Code: CSE 408}\\[0.5 cm]				% Course Code
+	\textsc{\large Course Name: Software Development}\\[0.5 cm]				% Course Name
+    \vspace{1cm}
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Author:}\\
+			\theauthor
+			\end{flushleft}
+			\end{minipage}~
+			\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+			\emph{Student ID:} \\
+			1505022\\
+			1505023\\
+			1505026
+		\end{flushright}
+	\end{minipage}\\[2 cm]
+	
+	{\large \thedate}\\[2 cm]
+ 
+	\vfill
+	
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Vision Statement}
+% Vision statement from file
+\input{mahim_texFiles/VisionStatement.tex}
+\section{Software Requirement Specification}
+% Table of revision history
+%\section{Introduction}
+\subsection{Overview}
+This software is mainly desktop based. A website is created for central data management where users can store their data if they create user account. Using this software users can explore network problems and analyze his/her network for censorship. The website for this software provides more information and statistics about a network to users.
+\subsection{Goals and Objectives}
+The main goal of this project is to create a automated system that can analyze the network for both network problems and censorship such that a user can understand what is going on under the hood. 
+\subsection{Scopes}
+The desktop site of $\boldsymbol{ISP\ Censorship\ Analyzer}$ software will:
+\begin{itemize}
+  \item provide users a automated way to analyze network problems
+  \item allow a user to check for internet censorship applied by his $\boldsymbol{ISP}$
+\end{itemize}
+The website for our software will:
+\begin{itemize}
+  \item provide users more information about his network
+  \item provide admins a central network statistics about censorship 
+\end{itemize}
+\subsection{Definitions}
+$\boldsymbol{user:}$ who interacts with the software.\newline
+$\boldsymbol{ISP:}$ who provides internet service.\newline
+$\boldsymbol{admin:}$ mainly maintains website.\newline
+$\boldsymbol{Internet\ Censorship:}$ control or suppression of what can be accessed, published, or viewed on the Internet\newline
+$\boldsymbol{Stubby:}$ DNS Privacy stub resolver (using DNS-over-TLS)\newline
+$\boldsymbol{Tor}$ redirect internet traffic through overlay network consisting of more than seven thousand relays\newline
+$\boldsymbol{middle box:}$ an entity that applies censorship 
+
+\section{General Design Constraints}
+\subsection{ISP Censorship Analyzer Environment}
+%It is designed to work on browsers.
+Part one of ISP Censorship Analyzer (desktop end) will work on desktop side to collect data and run tests.
+Part two of ISP Censorship Analyzer (website end) will work on browsers.
+\subsection{User Characteristics}
+The user of this software must have some knowledge on networking and its protocols.
+% User must also be aware of various censorship types that may appear insi
+\subsection{Mandated Constraints}
+This software requires UBUNTU operating system to operate.
+Software also needs some python modules and tshark to be installed in the operating system.
+\section{Non-functional Requirements}
+\subsection{Operational Requirements}
+Users need to know about networking and how it works to operate this software. Users with networking knowledge can easily operate this software by following user manual.
+\subsection{Performance Requirements}
+\begin{itemize}
+    \item This software needs strong internet connection and proper setup for better performance.
+    \item The software also needs some modules of python (eg. scapy) to be installed.
+    \item The software also needs tshark to be installed.
+\end{itemize}
+
+\subsection{Security Requirements}
+All the users password are kept in encrypted form in database. Sometimes the software needs to run packet sniffer for operate correctly. The software does not misuse this root privilege. It only sniff packets to identify middle box hop count.
+\subsection{Documentation and Training}
+User guide and system documentation to operate the software will be provided to software users. The user guide also includes guide for website usage. 
+%\subsection{External Interface}
+
+%\subsubsection{User Interface}
+%false
+\section{Functional Requirements}
+\subsection{Required Features}
+\subsubsection{Desktop Side}
+\begin{itemize}
+  \item DNS Censorship Analysis
+  \item TCP Censorship Analysis
+  \item HTTP/HTTPS Censorship Analysis
+\end{itemize}
+\subsubsection{Website Side}
+\begin{itemize}
+   \item Website Dashboard to analyze various statistics
+    \item Website also used to download report(s) in CSV format for user's future usage
+\end{itemize}
+
+\subsection{Optional Features of Desktop Side}
+\begin{itemize}
+  \item Get information about connected ISP (eg. Global IP, Organization, ASN number, etc.)
+  \item Filter reports based on certain constraints (eg. URL, date etc.) 
+\end{itemize}
+
+%\section{Software Project Management Plan}
+%\subsection{Project Deliverables}
+%false
+%\subsection{Assumptions and Constraints}
+%\subsubsection{Assumptions}
+%false
+%\subsubsection{Constraints}
+%false
+%\subsection{Success Criteria}
+%false
+%\subsection{Definitions}
+%false
+
+
+
+\section{Architecture \& Design}
+\subsection{Use Case Diagrams}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/ucdns.png}
+    \caption{Use-Case: Dns Censorship Analysis}
+    \label{fig:ucdns}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/uctcp.png}
+    \caption{Use-Case: TCP Censorship Analysis}
+    \label{fig:ucdns}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/uchttp.png}
+    \caption{Use-Case: HTTP Censorship Analysis}
+    \label{fig:ucdns}
+\end{figure}
+
+\input{mahim_texFiles/ArchitectureAndDesign.tex}
+
+\subsection{Class Diagrams}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/cddns.png}
+    \caption{Class Diagram: Dns Censorship Analysis}
+    \label{fig:ucdns}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/cddns.png}
+    \caption{Class Diagram: TCP Censorship Analysis}
+    \label{fig:ucdns}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Diagrams/cddns.png}
+    \caption{Class Diagram: HTTP Censorship Analysis}
+    \label{fig:ucdns}
+\end{figure}
+
+
+\section{User Guide}
+\subsection{First step: Registration through website}
+\input{kayemtex/firststep.tex}
+
+
+\subsection{Second step: Login through desktop app}
+\input{kayemtex/secondstep.tex}
+
+
+\subsection{Third step: Checking censorship}
+\input{kayemtex/thirdstep.tex}
+
+\subsection{Fourth step: Checking statistics and downloading csv files}
+\input{kayemtex/fourthstep.tex}
+
+
+
+\end{document}
+
+

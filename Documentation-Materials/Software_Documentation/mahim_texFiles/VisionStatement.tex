@@ -1,0 +1,61 @@
+% Vision statement
+
+People all over the world have differing opinion regarding censorship in any commu-
+nication medium. Internet, being the most popular communication medium of this
+age, has enhanced this dispute. According to Freedom on the Net, Bangladesh is among
+the list of countries that have partly free internet. Our project, ISP Cenosrship Analyzer aims to
+investigate the existing internet censorship mechanism in Bangladesh.
+
+% Project Goals
+
+\subsection{Project Goals}
+
+	% itemize
+	\begin{itemize}
+	
+	\item To detect whether censorship is applied to a url or a list of urls
+	\item To detect which type of censorship is applied to a url or list of urls, if censorship is actually applied.
+	\item To analyze the pattern of censorship types over a period of time per user basis.
+	\item To help an ISP obtain whether their censorship is correctly applied, in a short amount of time.
+	
+	\end{itemize}
+	
+	
+% Project Scope
+\subsection{Project Scope}
+	We classify method of censorship into three broad categories: DNS, TCP, HTTP related censorship.
+	In this section, we describe the features a user can use.
+	
+\subsubsection{Desktop End}
+	% Desktop end has a relatively simple GUI, with a few buttons and 
+	\begin{itemize}	
+		\item Users can create an account in the website using their email, and run tests on a single url or a list of urls (inside a text file).
+		\item Users can choose which test type to run for detection (DNS, TCP, HTTP) in their desktop application.
+		\item Users can login using their email in the desktop application to send the reports back to the system website server.
+		\item Users can view their reports in the desktop application with respect to many filters (eg. within a certain time interval, test type only TCP, on a particular url, etc).
+	\end{itemize}
+
+\subsubsection{Website End}
+	\begin{itemize}
+		\item On the website end, users (after logging in) are introduced to a dashboard showing various data for their past reports (eg. top 5 urls queried by user, percentage of DNS, TCP, HTTP censorships, etc).
+		\item On the website end, users will also have a screen to view all their reports (and apply various filtering).
+		\item Users will also be able to download the reports in a csv format if they want to run their own custom queries for later use.
+	\end{itemize}
+
+	
+% Milestones and Deliverables
+\subsection{Milestones and Deliverables}
+	
+	\begin{enumerate}
+	    \item Requirement Analysis, Class Diagram, E.R Diagram
+	    \item Database Implementation using MySql and Desktop User Interface design.
+	    \item DNS Censorship Detection sub-system implementation.
+	    \item DNS Censorship Detection sub-system integration with Desktop User Interface.
+	    \item TCP Censorship Detection sub-system implementation with Desktop User Interface.
+	    \item HTTP Censorship Detection sub-system implementation with Desktop User Interface.
+        \item Website Dashboard design and implementation.
+        \item Website integration testing with Desktop side and all three test types.
+	\end{enumerate}
+	
+	
+	
