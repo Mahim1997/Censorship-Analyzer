@@ -1,5 +1,5 @@
 # SoftwareProject [Censorship Analyzer]
-This project was done during the Level 3 Term 2 (ISD) and the Level 4 Term 1 (Software development) courses.
+This project was done during the Level 3 Term 2 (ISD Sessional) and the Level 4 Term 1 (Software Development Sessional) courses.
 
 ## Short description
 The aim of this project is to determine different methods of censorship applied in the ISPs.
