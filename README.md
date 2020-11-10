@@ -1,4 +1,4 @@
-# SoftwareProject [Censorship Analyzer]
+# Final Year Project [Censorship Analyzer]
 This project was done during the Level 3 Term 2 (ISD Sessional) and the Level 4 Term 1 (Software Development Sessional) courses.
 
 ## Short description
