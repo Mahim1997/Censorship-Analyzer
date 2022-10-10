@@ -3,7 +3,7 @@ This project was done during the Level 3 Term 2 (ISD Sessional) and the Level 4 
 
 ## Short description
 The aim of this project is to determine different methods of censorship applied in the ISPs.
-There are basically 3 types where censorship is applied: DNS, TCP, HTTP
+There are basically 3 types where censorship is applied: DNS, TCP, HTTP.
 Our first step is to autonomously detect, given a url, whether it is censored and if so, then which censorship method is applied on it.
 We also plan to produce an interactive user-interface as well i.e. a desktop application for easier analysis.
 
